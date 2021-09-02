@@ -1,0 +1,40 @@
+---
+title: "Chapter 2"
+author: "Ryan Spjut"
+date: "9/1/2021"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+```{r load libraries, include=FALSE}
+library(tidyverse)
+```
+
+---
+# General Housekeeping
+- Learn the theory
+- Do the exercises
+- Sign up to lead a discussion
+
+---
+# Learning Objectives
+- Begin to make some plots 
+
+
+---
+# Slide with R Output
+
+```{r cars, echo = TRUE}
+summary(mpg)
+```
+
+## Slide with Plot
+
+```{r pressure}
+
+```
+
