@@ -14,7 +14,7 @@ If you would like to present, please add your name next to a chapter using the [
 
 - 2021-08-30: Chapter 1: Introduction: Priyanka Gagneja
 - 2021-09-13: Chapter 2: First steps: Ryan S
-
+- 2021-09-20: Chapter 3: Individual Geoms: Lydia Gibson
 
 ## How to Present
 
