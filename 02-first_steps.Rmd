@@ -12,8 +12,9 @@ library(ggplot2)
 library(tidyverse)
 ```
 
+# Chapter 2:  First Steps
 
-# General Housekeeping Items
+## General Housekeeping Items
 
 - This is a learning opportunity so feel free to ask any question at any time.
 - Take time to learn the theory, in particular Grammar of Graphics.
@@ -22,7 +23,7 @@ library(tidyverse)
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 - Brief introduction to ggplot's capabilities
 - Learn about key components of every plot: data, aesthetics, geoms
@@ -33,7 +34,7 @@ library(tidyverse)
 
 ---
 
-# Main data set
+## Main data set
 
 For this chapter, we'll mainly use the `mpg` dataset that comes with `ggplot`.
 
@@ -50,7 +51,7 @@ mpg
 
 ---
 
-# Components of every plot
+## Components of every plot
 ![Three components](components.png)
 
 ```{r plot-mpg}
@@ -62,7 +63,7 @@ It's allowable to omit the `x =` and `y =` arguments of `aes`.  In other words, 
 
 ---
 
-# A few exercises
+## A few exercises
 
 - What does the below plot show?  Is it useful?  How could it improve?
 
@@ -95,7 +96,7 @@ ggplot(mpg, aes(cty)) +
 
 ---
 
-# Other aesthetic attributes
+## Other aesthetic attributes
 
 - color, shape and size can be mapped to variables in the data
 
@@ -144,7 +145,7 @@ ggplot(mpg, aes(manufacturer, drv, size = displ)) +
 
 ---
 
-# Faceting
+## Faceting
 
 Faceting creates graphics by splitting the data into subsets and displaying the same graph for each subset.  Really helpful if there are lots of values, making color/shape less meaningful.
 
@@ -169,7 +170,7 @@ ggplot(mpg, aes(displ, hwy)) +
   facet_wrap(~cyl)
 ```
 
-# Geoms
+## Geoms
 
 The `geom_point()` geom gives a familiar scatterplot.
 
@@ -266,7 +267,7 @@ ggplot(economics, aes(unemploy / pop, uempmed)) +
   geom_point(aes(color = year(date)))
 ```
   
-# Modifying the Axes
+## Modifying the Axes
 
 - `xlab()` and `ylab()` modify the axis labels
 
@@ -298,7 +299,7 @@ ggplot(mpg, aes(drv, hwy)) +
   ylim(20, 30)
 ```
 
-#  Output
+##  Output
 
 - Save the plot to a variable
 ```{r output-to-variable}
