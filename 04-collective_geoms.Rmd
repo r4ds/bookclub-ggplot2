@@ -12,7 +12,7 @@ library(tidyverse)
 ```
 
 
-# Chapter 4:  Collective Geoms
+# Collective Geoms
 
 ## General Housekeeping Items
 
@@ -285,5 +285,7 @@ ggplot(mpg, aes(x = ceiling(displ), cty, group = ceiling(displ))) +
 
 ```
 
+### Matching Aesthetics to Graphic Objects
 
+(Not covered in the preso)
 

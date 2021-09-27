@@ -12,7 +12,7 @@ library(ggplot2)
 library(tidyverse)
 ```
 
-# Chapter 2:  First Steps
+# First Steps
 
 ## General Housekeeping Items
 
