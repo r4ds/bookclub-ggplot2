@@ -7,7 +7,7 @@ output:
 
 ---
 
-```{r load-libraries, include=FALSE}
+```{r 02-load-libraries, include=FALSE}
 library(ggplot2)
 library(tidyverse)
 ```
@@ -38,7 +38,7 @@ library(tidyverse)
 
 For this chapter, we'll mainly use the `mpg` dataset that comes with `ggplot`.
 
-```{r inspect-mpg-dataset}
+```{r 02-inspect-mpg-dataset}
 mpg
 ```
 
@@ -54,7 +54,7 @@ mpg
 ## Components of every plot
 ![Three components](components.png)
 
-```{r plot-mpg}
+```{r 02-plot-mpg}
 ggplot(mpg, aes(x = displ, y = hwy)) +
   geom_point()
 ```
@@ -67,28 +67,28 @@ It's allowable to omit the `x =` and `y =` arguments of `aes`.  In other words, 
 
 - What does the below plot show?  Is it useful?  How could it improve?
 
-```{r a-few-exercises}
+```{r 02-a-few-exercises}
 ggplot(mpg, aes(model, manufacturer)) + 
   geom_point() +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 - Practice coding the following plots.  Anticipate what the output will look like.  Become familiar with the common components of the plots.
-```{r scatterplot-with-mpg}
+```{r 02-scatterplot-with-mpg}
 ggplot(mpg, aes(cty, hwy)) + 
   geom_point()
 ```
 
-```{r scatterplot-with-diamonds}
+```{r 02-scatterplot-with-diamonds}
 ggplot(diamonds, aes(carat, price)) + 
   geom_point()
 ```
 
-```{r scatterplot-with-economics}
+```{r 02-scatterplot-with-economics}
 ggplot(economics, aes(date, unemploy)) + 
   geom_line()
 ```
 
-```{r histogram-with-mpg, message=FALSE}
+```{r 02-histogram-with-mpg, message=FALSE}
 ggplot(mpg, aes(cty)) + 
   geom_histogram()
 ```
@@ -102,12 +102,12 @@ ggplot(mpg, aes(cty)) +
 
 
 The `class` variable of the `mpg` dataset has seven unique values.  The plot can assign a specific color to each value by mapping `class` to color _within_ the aesthetic function.
-```{r distinct-class, echo= FALSE}
+```{r 02-distinct-class, echo= FALSE}
 mpg %>% distinct(class)
 ```
 
 
-```{r scatterplot-with-color}
+```{r 02-scatterplot-with-color}
 ggplot(mpg, aes(displ, hwy, color = class)) +
   geom_point()
 ```
@@ -117,7 +117,7 @@ ggplot(mpg, aes(displ, hwy, color = class)) +
 
 Including a color assignment _outside_ the aesthetic of the _geometry_ layer will make all of the points that color.
 
-```{r color-outside-aes}
+```{r 02-color-outside-aes}
 ggplot(mpg, aes(displ, hwy)) +
   geom_point(color = "blue")
 ```
@@ -127,7 +127,7 @@ ggplot(mpg, aes(displ, hwy)) +
 
 Mapping a variable to `shape` and `color` adds some diversity and information to the plot.
 
-```{r mapping-shape-and-color}
+```{r 02-mapping-shape-and-color}
 ggplot(mpg, aes(displ, hwy, shape = drv, color = drv)) + 
   geom_point()
 ```
@@ -137,7 +137,7 @@ ggplot(mpg, aes(displ, hwy, shape = drv, color = drv)) +
 
 Mapping a variable to `size` can also add some new insights.
 
-```{r mapping-size}
+```{r 02-mapping-size}
 ggplot(mpg, aes(manufacturer, drv, size = displ)) +
   geom_point() +
   theme(axis.text.x = element_text(angle = 90))
@@ -149,7 +149,7 @@ ggplot(mpg, aes(manufacturer, drv, size = displ)) +
 
 Faceting creates graphics by splitting the data into subsets and displaying the same graph for each subset.  Really helpful if there are lots of values, making color/shape less meaningful.
 
-```{r faceting-intro}
+```{r 02-faceting-intro}
 ggplot(mpg, aes(displ, hwy)) +
   geom_point() +
   facet_wrap(~class)
@@ -158,13 +158,13 @@ ggplot(mpg, aes(displ, hwy)) +
 Exercise: Use faceting to explore the three-way relationship between fuel economy, engine size and number of cylinders.  How does faceting by number of cylinders change your assessment of the relationship between engine size and fuel economy?
 
 **NOT FACETED BY `cyl`**
-```{r not-faceted}
+```{r 02-not-faceted}
 ggplot(mpg, aes(displ, hwy)) +
   geom_point()
 ```
 
 **FACETED BY `cyl`**
-```{r faceted}
+```{r 02-faceted}
 ggplot(mpg, aes(displ, hwy)) +
   geom_point() +
   facet_wrap(~cyl)
@@ -180,7 +180,7 @@ Other `geoms` include:
 - `geom_smooth()` which fits a smooth line to the data
 
   - check `help` to see `geom_smooth`'s arguments like `method`, `se` or `span`.
-```{r geom-smooth-example, message=FALSE}
+```{r 02-geom-smooth-example, message=FALSE}
 ggplot(mpg, aes(displ, hwy)) +
   geom_point() +
   geom_smooth()
@@ -190,13 +190,13 @@ ggplot(mpg, aes(displ, hwy)) +
 
   - check `help` to see `geom_boxplot`'s arguments like `outlier` arguments, and `coef` which adjusts the whisker length.
   
-```{r geom-boxplot-example}
+```{r 02-geom-boxplot-example}
 ggplot(mpg, aes(drv, hwy)) +
   geom_boxplot()
 ```
 
   - consider boxplot variants like `geom_jitter` and `geom_violin`
-```{r geom-jitter-and-geom-violing-examples}
+```{r 02-geom-jitter-and-geom-violing-examples}
 ggplot(mpg, aes(drv, hwy)) +
   geom_jitter()
 
@@ -207,7 +207,7 @@ ggplot(mpg, aes(drv, hwy)) +
 - `geom_histogram` which generates a histogram and `geom_freqpoly` which generates a frequency polygon
   - check `help` to see `geom_histogram`'s arguments like `position` and `binwidth`.
   
-```{r geom-histogram-and-geom-freqpoly-example}
+```{r 02-geom-histogram-and-geom-freqpoly-example}
 ggplot(mpg, aes(hwy)) +
   geom_histogram()
 
@@ -218,28 +218,28 @@ ggplot(mpg, aes(hwy)) +
 - `geom_bar` which generates a bar chart
   - check `help` to see `geom_bar`'s arguments like `position` and `width`
 
-```{r geom-bar-example}
+```{r 02-geom-bar-example}
 ggplot(mpg, aes(manufacturer)) +
   geom_bar()
 ```
 
 We'll take a second here to talk about the `stat` argument.  Note that in the first bar chart, the y-axis shows the number of observations labeled as `count`.
 
-```{r stat-intro}
+```{r 02-stat-intro}
 mpg %>% group_by(manufacturer) %>% count()
 ```
 
 What if you wanted to sum a certain value for each manufacturer, then you have to tell ggplot "don't just return the number of observations, add up the values in this certain column".  You do this using the `stat` argument and by specifying a new variable for the y-axis.  For instance, we might be interested in knowing the total price of all vehicles in the data set for each manufacturer.  It may be interesting to see if four Land Rovers are more expensive than 14 Hyundais.  (No disrepect to Hyundai drivers...  I am one myself!)  Unfortunately, price isn't a variable in this dataset so, let's use `displ` instead.  The sum of `displ` isn't particularly meaningful in real life, but it illustrates the use of the `stat` argument.
 
 This graph below uses `displ` for `y` in the aesthetic and uses the `stat` of `identity` so that it sums the total displacement for each manufacturer.
-```{r stat-identity}
+```{r 02-stat-identity}
 ggplot(mpg, aes(manufacturer, displ)) +
   geom_bar(stat = "identity")
 ```
 
 This plot now shows the total displacement.
 
-```{r stat-identity-table}
+```{r 02-stat-identity-table}
 mpg %>% group_by(manufacturer) %>% summarize(sum(displ))
 ```
 
@@ -247,7 +247,7 @@ mpg %>% group_by(manufacturer) %>% summarize(sum(displ))
 - `geom_line` and `geom_path` which generates a line chart or path chart (useful for time series data)
   - check `help` to see `geom_line`'s arguments like `lineend` and `arrow`
   
-```{r geom-line-and-geom-path-examples}
+```{r 02-geom-line-and-geom-path-examples}
 ggplot(economics, aes(date, unemploy / pop)) +
   geom_line()
 
@@ -257,7 +257,7 @@ ggplot(economics, aes(date, uempmed)) +
   
   To investigate these plots further, we can draw them on the same plot.
   
-```{r same-plot}
+```{r 02-same-plot}
 
 year <- function(x) as.POSIXlt(x)$year + 1900
 
@@ -271,7 +271,7 @@ ggplot(economics, aes(unemploy / pop, uempmed)) +
 
 - `xlab()` and `ylab()` modify the axis labels
 
-```{r modifying-axes}
+```{r 02-modifying-axes}
 ggplot(mpg, aes(cty, hwy)) +
   geom_point(alpha = 1/3)
 
@@ -289,7 +289,7 @@ ggplot(mpg, aes(cty, hwy)) +
 
 
 - `xlim()` and `ylim()` modify the limits of the axes (boundaries)
-```{r modifying-limits}
+```{r 02-modifying-limits}
 ggplot(mpg, aes(drv, hwy)) +
   geom_jitter(width = 0.25)
 
@@ -302,23 +302,23 @@ ggplot(mpg, aes(drv, hwy)) +
 ##  Output
 
 - Save the plot to a variable
-```{r output-to-variable}
+```{r 02-output-to-variable}
 p <- ggplot(mpg, aes(displ, hwy, color = factor(cyl))) +
   geom_point()
 ```
 
 - Then print it
-```{r printing-plot}
+```{r 02-printing-plot}
 print(p)
 ```
 
 - Save it to disk
-```{r saving-plot-to-disk-}
+```{r 02-saving-plot-to-disk-}
 ggsave("plot.png", p, width = 5, height = 5)
 ```
 
 - Describe its structure
-```{r plot-structure}
+```{r 02-plot-structure}
 summary(p)
 ```
 

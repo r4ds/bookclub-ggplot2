@@ -7,7 +7,7 @@ output:
 ---
 
 
-```{r load-libraries, include=FALSE, message=FALSE, warning=FALSE}
+```{r 04-load-libraries, include=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
 ```
 
@@ -47,7 +47,7 @@ library(tidyverse)
 [This blog post](https://drsimonj.svbtle.com/plotting-individual-observations-and-group-means-with-ggplot2) by Simon Jackson illustrates these foundations using `mtcars`.  The points are individual geoms and the bars are a collective geom showing the average of the individual observations.
 
 
-```{r drsimonj-blog-post, message=FALSE, warning=FALSE}
+```{r 04-drsimonj-blog-post, message=FALSE, warning=FALSE}
 
 id <- mtcars %>% 
   tibble::rownames_to_column() %>%
@@ -74,7 +74,7 @@ ggplot(id, aes(x = am, y = hp, color = am, fill = am)) +
 
 Next, a separate longitudinal study from the blog post (because the book example is also a longitudinal study).  This example uses the `ourworldindata` dataset which shows healthcare spending per country over time.
 
-```{r plot-ourworldindata, message=FALSE, warning=FALSE}
+```{r 04-plot-ourworldindata, message=FALSE, warning=FALSE}
 
 #library(devtools)
 #install_github("drsimonj/ourworldindata")
@@ -89,13 +89,13 @@ id <- financing_healthcare %>%
 
 - raw data
 
-```{r id-raw-data, message=FALSE, warning=FALSE}
+```{r 04-id-raw-data, message=FALSE, warning=FALSE}
 id
 ```
 
 - individual observations are at the combined country-year level. For the purposes of plotting, though, the "individual geom" will just be the country and all of the yearly observations for each country.
 
-```{r ourworldindata-plot, message=FALSE, warning=FALSE}
+```{r 04-ourworldindata-plot, message=FALSE, warning=FALSE}
 gd <- id %>% 
         group_by(continent, year) %>% 
         summarise(health_exp_total = mean(health_exp_total))
@@ -120,7 +120,7 @@ ggplot(id, aes(x = year, y = health_exp_total, color = continent)) +
 - also a longitudinal study.
 - note that the age is standardized.
 
-```{r Oxboys-data, message=FALSE, warning=FALSE}
+```{r 04-Oxboys-data, message=FALSE, warning=FALSE}
 
 data(Oxboys, package = "nlme")
 
@@ -148,7 +148,7 @@ In the case of Oxboys, we want to plot a line over time for each boy, so `Subjec
 
 
 
-```{r plot-Oxboys, message=FALSE, warning=FALSE}
+```{r 04-plot-Oxboys, message=FALSE, warning=FALSE}
 
 ggplot(Oxboys, aes(age, height, group = Subject)) +
   geom_point() +
@@ -160,7 +160,7 @@ ggplot(Oxboys, aes(age, height, group = Subject)) +
 - incorrectly specifying the grouping variable leads to a "characteristic sawtooth appearance".
 
 
-```{r sawtooth}
+```{r 04-sawtooth}
 
 ggplot(Oxboys, aes(age, height)) +
 geom_point() +
@@ -181,7 +181,7 @@ From the book:
 
 
 
-```{r group-at-ggplot-layer}
+```{r 04-group-at-ggplot-layer}
 
 ggplot(Oxboys, aes(age, height, group = Subject)) +
   geom_line() + 
@@ -199,7 +199,7 @@ ggplot(Oxboys, aes(age, height, group = Subject)) +
 - to get what we intend, we need to uncouple the grouping variable at the `ggplot` layer and add it where we want the grouping to happen, namely only at the `geom_line` layer.  That allows the default grouping from the `ggplot` layer (i.e., no special grouping or just group on the whole dataset) to flow down to the `geom_smooth` layer.
 
 
-```{r group-at-line-layer}
+```{r 04-group-at-line-layer}
 
 ggplot(Oxboys, aes(age, height)) + 
   geom_line(aes(group = Subject)) + 
@@ -222,7 +222,7 @@ Here's another example to help illustrate this point a little better.  Thanks to
 
 
 Subtitles are added to these plots to describe what's going on.
-```{r overriding}
+```{r 04-overriding}
 
 ggplot(mpg, aes(drv, hwy)) +
   geom_jitter() +
@@ -246,7 +246,7 @@ stat_boxplot(fill = NA, aes(group = drv)) +
 
 ### A couple of exercises
 
-```{r exercises-1}
+```{r 04-exercises-1}
 
 mpg %>% head(2)
 
@@ -267,7 +267,7 @@ ggplot(mpg, aes(cyl, hwy, group = as.factor(cyl))) +
 
 
 
-```{r exercises-2}
+```{r 04-exercises-2}
 
 #Modify the following plot so that you get one boxplot per integer value of displ.
 
