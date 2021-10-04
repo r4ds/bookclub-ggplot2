@@ -1,7 +1,5 @@
 ---
 title: "02-First_steps"
-author: 
-date: 
 output: ioslides_presentation
 ---
 
