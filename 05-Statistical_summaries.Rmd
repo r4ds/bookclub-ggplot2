@@ -97,6 +97,6 @@ ggplot(midwest, aes(percbelowpoverty)) +
   ylab("Population (millions)")
 ```
 
-```{r}
+```{r fig.cap="Diamond Dimensions", echo=FALSE}
 knitr::include_graphics("diagrams/diamond-dimensions.png", dpi = 300)
 ```
