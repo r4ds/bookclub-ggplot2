@@ -1,0 +1,17 @@
+---
+title: "05-Statistical_summaries"
+author: "Ryan L. Metcalf"
+date: "10/3/2021"
+output: ioslides_presentation
+---
+
+## Statistical Summaries
+### Learning Objectives
+- Use ggplot2 to plot possible uncertainty in your data
+- Determine which geometric object (geom) best presents your type of data
+- 
+
+## Defintions in this Chapter
+> grobs: graphical object
+
+
