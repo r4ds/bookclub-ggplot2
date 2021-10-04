@@ -5,8 +5,8 @@ date: "10/3/2021"
 output: ioslides_presentation
 ---
 
-## Statistical Summaries
-### Learning Objectives
+# Statistical Summaries
+## Learning Objectives
 - Use ggplot2 to plot possible uncertainty in your data
 - Determine which geometric object (geom) best presents your type of data
 - 
