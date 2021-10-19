@@ -59,36 +59,6 @@ ggplot(mpg, aes(hwy)) + geom_histogram()
 ggplot(mpg, aes(manufacturer)) + 
   geom_bar() 
 ```
-
-## Pie Chart
-```{r include=FALSE}
-df <- data.frame(
-  group = c("Male", "Female", "Child"),
-  value = c(25, 25, 50)
-  )
-head(df)
-
-# Barplot
-barplot<- ggplot(df, aes(x="", y=value, fill=group))+
-geom_bar(width = 1, stat = "identity")
-barplot
-```
-
-
-```{r, include=FALSE}
-barplot + coord_polar("y", start=0)
-```
-
-**Note:** Pie chart data excepted from 
- **http://www.sthda.com/english/wiki/ggplot2-pie-chart-quick-start-guide-r-software-and-data-visualization**
- 
-```{r, include=FALSE}
-barplot<- ggplot(df, aes(x="", y=value, fill=group))+
-geom_bar(width = 1, stat = "identity")
-barplot
-```
- 
-
 ## geom_path() connects points in order of appearance.
 ```{r include=FALSE}
 df <- data.frame(
