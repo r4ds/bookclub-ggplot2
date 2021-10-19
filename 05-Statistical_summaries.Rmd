@@ -10,16 +10,15 @@ library(ggplot2)
 ```
 
 # Statistical Summaries
-## Learning Objectives
-- Use ggplot2 to plot possible uncertainty in your data
-- Determine which geometric object (geom) best presents your type of data
-- 
+- ***Learning Objectives:***
+  - Use ggplot2 to plot possible uncertainty in your data
+  - Determine which geometric object (geom) best presents your type of data
 
 ## Defintions (in this Chapter)
 
 > **discrete value**: a finite number, something that is countable with beginning and end (input user definition welcomed)
 
-> **continous value**: infinite number, something that never ends. Infinity is continous. (input user definition welcomed)
+> **continuous value**: infinite number, something that never ends. Infinity is continous. (input user definition welcomed)
 
 > **grobs**: graphical object
 
@@ -33,7 +32,7 @@ Four primary types of geometric objects (geom) are used:
 3. Continuous x, range: `geom_ribbon()`
 4. Continuous x, range & center: `geom_smooth(stat = "identity")`
 
-```{r}
+```{r first group of plots, include=TRUE}
 y <- c(18, 11, 16)
 df <- data.frame(x = 1:3, y = y, se = c(1.2, 0.5, 1.0))
 
@@ -41,18 +40,20 @@ base <- ggplot(df, aes(x, y, ymin = y - se, ymax = y + se))
 base + geom_crossbar()
 base + geom_pointrange()
 base + geom_smooth(stat = "identity")
+
+df
 ```
 
-```{r}
+```{r lots of plots, include=TRUE}
 base + geom_errorbar()
 base + geom_linerange()
 base + geom_ribbon()
 ```
 
 ## Weighted Data
-If each row of your dataframe contains mulitiple observations, we can use a weight to visually give scale to observations
+If each row of your dataframe contains multiple observations, we can use a weight to visually give scale to observations
 
-```{r miss-basic} 
+```{r miss-basic, include=TRUE} 
 # Unweighted
 ggplot(midwest, aes(percwhite, percbelowpoverty)) + 
   geom_point()
@@ -62,7 +63,7 @@ ggplot(midwest, aes(percwhite, percbelowpoverty)) +
   scale_size_area("Population\n(millions)", breaks = c(0.5, 1, 2, 4))
 ```
 
-```{r weight-lm} 
+```{r weight-lm, include=TRUE} 
 # Unweighted
 ggplot(midwest, aes(percwhite, percbelowpoverty)) + 
   geom_point() + 
@@ -74,7 +75,7 @@ ggplot(midwest, aes(percwhite, percbelowpoverty)) +
   scale_size_area(guide = "none")
 ```
 
-```{r weight-hist} 
+```{r weight-hist, include=TRUE} 
 ggplot(midwest, aes(percbelowpoverty)) +
   geom_histogram(binwidth = 1) + 
   ylab("Counties")
@@ -85,18 +86,215 @@ ggplot(midwest, aes(percbelowpoverty)) +
 
 >Question for the group: Is the above `ylab` correct? Check out the next two figures, can you see the difference?
 
-```{r weight-hist-option-1} 
+```{r weight-hist-option-1, include=TRUE} 
 ggplot(midwest, aes(percbelowpoverty)) +
   geom_histogram(aes(weight = poptotal/1e3), binwidth = 1) +
   ylab("Population (1000s)")
 ```
 
-```{r weight-hist-option-2} 
+```{r weight-hist-option-2, include=TRUE} 
 ggplot(midwest, aes(percbelowpoverty)) +
   geom_histogram(aes(weight = poptotal/1e6), binwidth = 1) +
   ylab("Population (millions)")
 ```
 
+## Displaying distributions
+Using built-in `diamonds` dataset
+
 ```{r fig.cap="Diamond Dimensions", echo=FALSE}
 knitr::include_graphics("diagrams/diamond-dimensions.png", dpi = 300)
+```
+
+For 1-Dimensional continuous data (1d), the histogram is arguably the most important geom
+
+```{r geom-1d-con, include=TRUE} 
+ggplot(diamonds, aes(depth)) + 
+  geom_histogram()
+ggplot(diamonds, aes(depth)) + 
+  geom_histogram(binwidth = 0.1) + 
+  xlim(55, 70)
+```
+
+Never rely on the defaults. Always adjust your `bin` or `xlim` to "zoom" in our out of your data. There is no hard or fast rule, only experimentation to discover coorelation in your plot.
+
+For your audience/reader, ensure you add a caption for your scale, for example `binwidth`.
+
+Three ways to compare distribution:
+- Show small multiples of the histogram, `facet_wrap(~ var)`.
+- Use colour and a frequency polygon, `geom_freqpoly()`.
+- Use a “conditional density plot”, `geom_histogram(position = "fill")`.
+
+```{r compare-dist, include=TRUE} 
+ggplot(diamonds, aes(depth)) + 
+  geom_freqpoly(aes(colour = cut), binwidth = 0.1, na.rm = TRUE) +
+  xlim(58, 68) + 
+  theme(legend.position = "none")
+ggplot(diamonds, aes(depth)) + 
+  geom_histogram(aes(fill = cut), binwidth = 0.1, position = "fill",
+    na.rm = TRUE) +
+  xlim(58, 68) + 
+  theme(legend.position = "none")
+```
+
+You can also plot density using `geom_density()`. Use a density plot when you know that the underlying density is smooth, continuous and unbounded.
+
+```{r geom-density, include=TRUE} 
+ggplot(diamonds, aes(depth)) +
+  geom_density(na.rm = TRUE) + 
+  xlim(58, 68) + 
+  theme(legend.position = "none")
+ggplot(diamonds, aes(depth, fill = cut, colour = cut)) +
+  geom_density(alpha = 0.2, na.rm = TRUE) + 
+  xlim(58, 68) + 
+  theme(legend.position = "none")
+```
+
+It is often the case and advisable to sacrifice quality for quantity. The following three types of graph provide examples of this thought.
+
+`geom_boxplot()`:
+
+```{r geom-boxplot, include=TRUE} 
+    ggplot(diamonds, aes(clarity, depth)) + 
+      geom_boxplot()
+    ggplot(diamonds, aes(carat, depth)) + 
+      geom_boxplot(aes(group = cut_width(carat, 0.1))) + 
+      xlim(NA, 2.05)
+```
+    
+`geom_violin()`:
+
+```{r geom_violin(), include=TRUE}
+ggplot(diamonds, aes(clarity, depth)) + 
+  geom_violin()
+ggplot(diamonds, aes(carat, depth)) + 
+  geom_violin(aes(group = cut_width(carat, 0.1))) + 
+  xlim(NA, 2.05)
+```
+
+`geom_dotplot()`:
+
+### Exercise:
+
+1.  What binwidth tells you the most interesting story about the distribution
+    of `carat`?
+    >The number of bins or the binwidth should be exploration exercise. There is not direct hard or fast rule for scaling the binwidth. What is important is to find the appropriate size that best captures the representation (or distribution) of your analysis. This correlates to your story as you are explaining the importance. Find a binwidth that best captures your ideas.
+    
+2.  Draw a histogram of `price`. What interesting patterns do you see?
+
+```{r Exercise #2, include=TRUE} 
+ggplot(diamonds, aes(price)) + 
+  geom_histogram(binwidth = 5)
+```
+
+>The smaller the quantity (assuming quality), the higher the price. I presume that carat size would also have a strong correlation with quantity and price.
+
+3.  How does the distribution of `price` vary with `clarity`?
+
+```{r Exercise #3, include=TRUE}
+    ggplot(diamonds, aes(clarity, price)) + 
+      geom_violin()
+
+    ggplot(diamonds, aes(clarity, price)) + 
+      geom_boxplot()
+```
+
+>I presume using different geoms, the higher the clarity, the higher the price, the fewer the quantity. 
+
+4.  Overlay a frequency polygon and density plot of `depth`. What computed
+    variable do you need to map to `y` to make the two plots comparable? 
+    (You can either modify `geom_freqpoly()` or `geom_density()`.)
+    
+>Not completed.
+
+## Dealing with overplotting
+
+- Scatterplot is a very important tool for assessing relationship
+  - Too large a dataset may obscure any true relationship
+  - This is called *Over plotting*
+  
+To compensate for Over plotting, tweaking the aesthetic can help. Techniques like hollow glyphs can help.
+
+```{r overp-glyph, dev = "png", include=TRUE} 
+df <- data.frame(x = rnorm(2000), y = rnorm(2000))
+norm <- ggplot(df, aes(x, y)) + xlab(NULL) + ylab(NULL)
+norm + geom_point()
+norm + geom_point(shape = 1) # Hollow circles
+norm + geom_point(shape = 96) # Pixel sized
+```
+
+Alternative ways using large data sets, you can use alpha blending (transparency). If you specify `alpha` as a ratio, the denominator gives the number of points that must be over plotted to give a solid color.
+
+```{r overp-alpha, dev = "png", include=TRUE} 
+norm + geom_point(alpha = 1 / 3)
+norm + geom_point(alpha = 1 / 5)
+norm + geom_point(alpha = 1 / 10)
+```
+
+`geom_jitter()` can be used if your data has *some* discreteness. By default, 40% is used. You can overide the default with `width` and `height` arguments.
+
+Alternatively, we can think of overplotting as a 2d density estimation problem, which gives rise to two more approaches:
+
+- Bin the points and count the number in each bin, then visualise that count (the 2d generalisation of the histogram), `geom_bin2d()`.
+  - The code below compares square and hexagonal bins, using parameters `bins` and `binwidth` to control the number and size of the bins.
+  
+```{r overp-bin, include=TRUE}
+norm + geom_bin2d()
+norm + geom_bin2d(bins = 10)
+```
+
+```{r overp-bin-hex, include=TRUE}
+library(hexbin)
+norm + geom_hex()
+norm + geom_hex(bins = 10)
+```
+
+Another approach to dealing with overplotting is to add data summaries to help guide the eye to the true shape of the pattern within the data.
+
+## Statistical Summaries
+
+`geom_histogram()` and `geom_bin2d()` use a familiar geom, `geom_bar()` and `geom_raster()`, combined with a new statistical transformation, `stat_bin()` and `stat_bin2d()`. `stat_bin()` and `stat_bin2d()` combine the data into bins and count the number of observations in each bin. But what if we want a summary other than count? So far, we've just used the default statistical transformation associated with each geom. Now we're going to explore how to use  `stat_summary_bin()` to `stat_summary_2d()` to compute different summaries.
+
+```{r geom_bar(), include=TRUE}
+ggplot(diamonds, aes(color)) + 
+  geom_bar()
+ggplot(diamonds, aes(color, price)) + 
+  geom_bar(stat = "summary_bin", fun = mean)
+```
+
+```{r geom_bin2d(), include=TRUE}
+ggplot(diamonds, aes(table, depth)) + 
+  geom_bin2d(binwidth = 1, na.rm = TRUE) + 
+  xlim(50, 70) + 
+  ylim(50, 70)
+ggplot(diamonds, aes(table, depth, z = price)) + 
+  geom_raster(binwidth = 1, stat = "summary_2d", fun = mean, 
+    na.rm = TRUE) + 
+  xlim(50, 70) + 
+  ylim(50, 70)
+```
+
+So far we've considered two classes of geoms:
+
+- Simple geoms where there's a one-on-one correspondence between rows in the data frame and physical elements of the geom
+
+- Statistical geoms where introduce a layer of statistical summaries in between the raw data and the result
+
+Although ggplot2 does not have direct 3d support, it does provide the ability to plot 2d images representing 3d data. These include: contours, colored tiles, and bubble plots.
+
+```{r geom_contour(), include=TRUE}
+ggplot(faithfuld, aes(eruptions, waiting)) + 
+  geom_contour(aes(z = density, colour = ..level..))
+```
+
+```{r geom_raster(), include = TRUE}
+ggplot(faithfuld, aes(eruptions, waiting)) + 
+  geom_raster(aes(fill = density))
+```
+
+```{r bubble plot, include=TRUE}
+# Bubble plots work better with fewer observations
+small <- faithfuld[seq(1, nrow(faithfuld), by = 10), ]
+ggplot(small, aes(eruptions, waiting)) + 
+  geom_point(aes(size = density), alpha = 1/3) + 
+  scale_size_area()
 ```

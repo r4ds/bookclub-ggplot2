@@ -1,0 +1,59 @@
+---
+title: "06-Maps"
+author: "Ryan L. Metcalf"
+date: "10/18/2021"
+output: html_document
+---
+# Maps
+
+**Learning Objectives:**
+ - Plot simple maps using `geom_polygon()`
+ - Using *simple features* `sf` to plot GIS data `geom_sf()`
+ - Work with map projections and underlying `sf` data structure
+ - Draw maps using Raster data
+ 
+Plotting geospacial data is a common visualization task. The process may require spcialized tools. You can decompse the problem into two paths:
+  - Using one data source to draw a map (if you have GIS data)
+  - Adding metadata from another information source to the map (more common with relation to geographic areas)
+  
+> NOTE: X = Longitude, Y=Latitude. When pronounced "Lat/Lon" it is actually measured as Y/X. Not confusing....just keeping with vocabulary and measurements!
+
+## Polygon Maps
+The simplest approach to mapping is using geom_polygon(). This forms bounderies around regions.
+
+```{r mi-countries, include=TRUE}
+library(ggplot2)
+mi_counties <- map_data("county", "michigan") %>% 
+  select(lon = long, lat, group, id = subregion)
+head(mi_counties)
+```
+
+In this data set we have four variables:
+ - `lat`: Latitude of the vertex (as measured by horizontal paths)
+ - `long`: Longitude of the vertex (as measured by vertical paths)
+ - `id`: name of the region
+ - `group`: unique identifier for contiguous areas within a region
+ 
+```{r coord_quickmap(), include=TRUE}
+ggplot(mi_counties, aes(lon, lat)) + 
+  geom_point(size = .25, show.legend = FALSE) +
+  coord_quickmap()
+ggplot(mi_counties, aes(lon, lat, group = group)) +
+  geom_polygon(fill = "white", colour = "grey50") + 
+  coord_quickmap()
+```
+
+In this plot, `coord_quickmap()` is used to adjust the axes to ensure longitude and latitude are rendered on the same scale
+
+For a more advanced use of ggplot2 for mapping, we'll see the use of `geom_sf()` and `coord_sf()` to handle spatial data specified in simple features format.
+
+## Simple Features Maps
+You *can* use the above examples...but not real world pratical. Instead, most GIS data is written as *simple features* and produced by the (Open Geospatial Consortium]https://www.ogc.org/)
+
+### Layered Maps
+### Labelled Maps
+### Adding Other Geoms
+## Map Projections
+## Working with `sf` Data
+## Raster Maps
+## Data Sources
