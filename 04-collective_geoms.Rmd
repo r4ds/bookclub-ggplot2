@@ -1,0 +1,291 @@
+---
+title: "Chapter 4"
+author: "Ryan S"
+date: "9/27/2021"
+output: 
+  ioslides_presentation
+---
+
+
+```{r 04-load-libraries, include=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+
+# Collective Geoms
+
+## General Housekeeping Items
+
+-   This is a learning opportunity so feel free to ask any question at any time.
+-   Take time to learn the theory, in particular Grammar of Graphics.
+-   Please do the chapter exercises. Second-best learning opportunity!
+-   Please plan to facilitate one of the discussions. Best learning opportunity!
+
+------------------------------------------------------------------------
+
+## Learning Objectives
+
+-   Understand the difference between individual geoms and collective geoms
+-   Explore some plots that use individual and collective geoms together
+-   Reinforce understand of the Grammar of Graphics (particularly the use of layers) to create plots
+
+
+------------------------------------------------------------------------
+
+## Quick Intuition on Collective Geoms
+
+- Last chapter was on individual geoms. This chapter is on collective geoms.
+- Oversimplification (but maybe useful)
+  - individual numbers vs the sum of the numbers
+    - sum converts a series of numbers ("individual"): `4, 7, 9, 3, 3`
+    - to a single number ("collective"):  `26`
+  - home prices
+    - under *individual geoms* each home price has a point on a plot/table
+    - under *collective geoms* we may use `median` as a single number that summarizes all individuals
+
+
+[This blog post](https://drsimonj.svbtle.com/plotting-individual-observations-and-group-means-with-ggplot2) by Simon Jackson illustrates these foundations using `mtcars`.  The points are individual geoms and the bars are a collective geom showing the average of the individual observations.
+
+
+```{r 04-drsimonj-blog-post, message=FALSE, warning=FALSE}
+
+id <- mtcars %>% 
+  tibble::rownames_to_column() %>%
+  as_tibble() %>%
+  mutate(am = factor(am, levels = c(0, 1), labels = c("automatic", "manual")))
+
+gd <- id %>% 
+        group_by(am) %>% 
+        summarise(hp = mean(hp))
+
+ggplot(id, aes(x = am, y = hp, color = am, fill = am)) +
+  geom_bar(data = gd, stat = "identity", alpha = 0.3) +
+  ggrepel::geom_text_repel(aes(label = rowname), color = "black", size = 2.5, segment.color = "grey") +
+  geom_point() +
+  guides(color = "none", fill = "none") +
+  theme_bw() +
+  labs(
+    title = "Car horespower by transmission type",
+    x = "Transmission",
+    y = "Horsepower"
+  )
+
+```
+
+Next, a separate longitudinal study from the blog post (because the book example is also a longitudinal study).  This example uses the `ourworldindata` dataset which shows healthcare spending per country over time.
+
+```{r 04-plot-ourworldindata, message=FALSE, warning=FALSE}
+
+#library(devtools)
+#install_github("drsimonj/ourworldindata")
+
+library(ourworldindata)
+
+id <- financing_healthcare %>% 
+        filter(continent %in% c("Oceania", "Europe") & between(year, 2001, 2005)) %>% 
+        select(continent, country, year, health_exp_total) %>% 
+        na.omit()
+```
+
+- raw data
+
+```{r 04-id-raw-data, message=FALSE, warning=FALSE}
+id
+```
+
+- individual observations are at the combined country-year level. For the purposes of plotting, though, the "individual geom" will just be the country and all of the yearly observations for each country.
+
+```{r 04-ourworldindata-plot, message=FALSE, warning=FALSE}
+gd <- id %>% 
+        group_by(continent, year) %>% 
+        summarise(health_exp_total = mean(health_exp_total))
+
+
+ggplot(id, aes(x = year, y = health_exp_total, color = continent)) +
+  geom_line(aes(group = country), alpha = 0.3) +
+  geom_line(data = gd, alpha = 0.8, size = 3) +
+  theme_bw() +
+  labs(
+    title = "Changes in healthcare spending\nacross countries and world regions",
+    x = NULL,
+    y = "Total healthcare investment ($)",
+    color = NULL
+  )
+
+```
+
+## From the ggplot2 book
+
+- dataset called Oxboys which shows the age and corresponding height of 26 boys from Oxford.
+- also a longitudinal study.
+- note that the age is standardized.
+
+```{r 04-Oxboys-data, message=FALSE, warning=FALSE}
+
+data(Oxboys, package = "nlme")
+
+head(Oxboys, 9)
+
+```
+
+### Multiple Groups, One Aesthetic
+
+As the book says: 
+
+> In many situations, you want to separate your data into groups, but render them in the same way. In other words, you want to be able to distinguish individual subjects but not identify them.
+
+- sometimes you want the individual geom to be a **group** of observations *for the same individual*.
+- you do this by adding a group argument to the aesthetic.
+- If you're trying to figure out which variable to use as the grouping variable, fill in the blank "I have multiple observations for each \_\_\_\_\_". Or for longitudinal studies, "I want to plot one line over time for each \_\_\_\_\_".
+
+
+<details>
+  <summary> What's the grouping variable for Oxboys?</summary>
+  
+In the case of Oxboys, we want to plot a line over time for each boy, so `Subject` is the grouping variable in the aesthetic.
+
+</details>
+
+
+
+```{r 04-plot-Oxboys, message=FALSE, warning=FALSE}
+
+ggplot(Oxboys, aes(age, height, group = Subject)) +
+  geom_point() +
+  geom_line()
+
+```
+
+
+- incorrectly specifying the grouping variable leads to a "characteristic sawtooth appearance".
+
+
+```{r 04-sawtooth}
+
+ggplot(Oxboys, aes(age, height)) +
+geom_point() +
+  geom_line()
+
+```
+
+
+
+### Different Groups on Different Layers
+
+From the book:
+
+> Sometimes we want to plot summaries that use different levels of aggregation: one layer might display individuals, while another displays an overall summary.
+
+- now that we have plotted individual geoms, let's add a collective geom which is the trendline for all boys together.
+
+
+
+
+```{r 04-group-at-ggplot-layer}
+
+ggplot(Oxboys, aes(age, height, group = Subject)) +
+  geom_line() + 
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+#> `geom_smooth()` using formula 'y ~ x'
+
+```
+
+
+- something doesn't look right
+- expecting a collective geom (one summary line for all subjects), but we got individual geoms again -- a trendline for each individual instead of a trendline for all individuals.
+- "grouping controls both the display of the geoms, and the operation of the stats: one statistical transformation is run for each group".
+- we got multiple `geom_smooth`s because we had the grouping variable in the `ggplot` line so the grouping flows down to all layers of the plot
+- to get what we intend, we need to uncouple the grouping variable at the `ggplot` layer and add it where we want the grouping to happen, namely only at the `geom_line` layer.  That allows the default grouping from the `ggplot` layer (i.e., no special grouping or just group on the whole dataset) to flow down to the `geom_smooth` layer.
+
+
+```{r 04-group-at-line-layer}
+
+ggplot(Oxboys, aes(age, height)) + 
+  geom_line(aes(group = Subject)) + 
+  geom_point() +
+  geom_smooth(method = "lm", size = 2, se = FALSE)
+#> `geom_smooth()` using formula 'y ~ x'
+
+```
+
+
+### Overriding the Default Grouping
+
+In the last exercise, we finally got the grouping right.
+
+This hints at the approach of overriding the default grouping.
+
+By adding the grouping to `geom_line`, we overrode the default grouping, which was "no special grouping".
+
+Here's another example to help illustrate this point a little better.  Thanks to [this](https://www.gl-li.com/2017/08/13/ggplot2-group-overrides-default-grouping/) blog post.
+
+
+Subtitles are added to these plots to describe what's going on.
+```{r 04-overriding}
+
+ggplot(mpg, aes(drv, hwy)) +
+  geom_jitter() +
+  stat_boxplot(fill = NA) +
+  labs(subtitle = "stat_boxplot automatically uses the groups set by the categorical variable drv.\nNotice that there is only one boxplot for each value of drv.")
+
+ggplot(mpg, aes(drv, hwy, color = factor(year))) +
+  geom_jitter() +
+  stat_boxplot(fill = NA) +
+  labs(subtitle = "by now adding color based on year, it creates a new group for the boxplots as well,\nand there are now two for each categorical.  This may not be what you want.")
+
+
+
+ggplot(mpg, aes(drv, hwy, color = factor(year))) +
+geom_jitter() +
+stat_boxplot(fill = NA, aes(group = drv)) +
+  labs(subtitle = "we override the default or earlier grouping by adding\na group -- inside the aes -- on the layer where we want it")
+
+```
+
+
+### A couple of exercises
+
+```{r 04-exercises-1}
+
+mpg %>% head(2)
+
+
+#Draw a boxplot of hwy for each value of cyl, without turning cyl into a factor. What extra aesthetic do you need to set?
+
+# Wrong... but cyl is an integer data type -- are integers considered continuous?
+ggplot(mpg, aes(cyl, hwy)) +
+  geom_boxplot()
+
+# Right
+ggplot(mpg, aes(cyl, hwy, group = as.factor(cyl))) +
+  geom_boxplot()
+
+
+```
+
+
+
+
+```{r 04-exercises-2}
+
+#Modify the following plot so that you get one boxplot per integer value of displ.
+
+ggplot(mpg, aes(displ, cty)) + 
+  geom_boxplot()
+
+
+# probably better ways to do this, especially ways to make the boxplot line up with the x-axis
+ggplot(mpg, aes(x = ceiling(displ), cty, group = ceiling(displ))) + 
+  geom_boxplot()
+
+
+
+
+
+```
+
+### Matching Aesthetics to Graphic Objects
+
+(Not covered in the preso)
+
