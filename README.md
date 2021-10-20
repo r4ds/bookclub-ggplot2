@@ -10,11 +10,15 @@ As we read, we are producing [notes about the book](https://r4ds.github.io/bookc
 
 If you would like to present, please add your name next to a chapter using the [GitHub Web Editor](https://youtu.be/d41oc2OMAuI)!
 
-*Cohort 1: (starts 2021-08-30) - Mondays, 14:00 EST/EDT*
+*Cohort 1: (starts 2021-08-30) - Mondays, 13:30 EST/EDT*
 
 - 2021-08-30: Chapter 1: Introduction: Priyanka Gagneja
 - 2021-09-13: Chapter 2: First steps: Ryan S
 - 2021-09-20: Chapter 3: Individual Geoms: Lydia Gibson
+- 2021-09-27: Chapter 4: Collective geoms: Ryan S
+- 2021-10-04: Chapter 5: Statistical summaries: Ryan Metcalf
+- 2021-10-11: Break (Columbus Day)
+- 2021-10-18: Chapter 6: Maps: Ryan Metcalf
 
 ## How to Present
 
