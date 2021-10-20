@@ -1,9 +1,3 @@
----
-title: "06-Maps"
-author: "Ryan L. Metcalf"
-date: "10/18/2021"
-output: html_document
----
 # Maps
 
 **Learning Objectives:**

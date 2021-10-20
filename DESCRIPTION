@@ -11,6 +11,11 @@ Imports:
     bookdown,
     details,
     emo,
+    ggrepel,
+    hexbin,
+    maps,
+    ourworldindata,
     tidyverse
 Remotes: 
-    hadley/emo
+    hadley/emo,
+    drsimonj/ourworldindata

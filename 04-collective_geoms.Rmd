@@ -1,18 +1,8 @@
----
-title: "Chapter 4"
-author: "Ryan S"
-date: "9/27/2021"
-output: 
-  ioslides_presentation
----
-
+# Collective Geoms
 
 ```{r 04-load-libraries, include=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
 ```
-
-
-# Collective Geoms
 
 ## General Housekeeping Items
 

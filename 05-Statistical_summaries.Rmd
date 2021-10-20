@@ -1,15 +1,9 @@
----
-title: "05-Statistical_summaries"
-author: "Ryan L. Metcalf"
-date: "10/3/2021"
-output: ioslides_presentation
----
+# Statistical Summaries
 
 ```{r, include = FALSE}
 library(ggplot2)
 ```
 
-# Statistical Summaries
 - ***Learning Objectives:***
   - Use ggplot2 to plot possible uncertainty in your data
   - Determine which geometric object (geom) best presents your type of data
@@ -102,7 +96,7 @@ ggplot(midwest, aes(percbelowpoverty)) +
 Using built-in `diamonds` dataset
 
 ```{r fig.cap="Diamond Dimensions", echo=FALSE}
-knitr::include_graphics("diagrams/diamond-dimensions.png", dpi = 300)
+knitr::include_graphics("images/diamond-dimensions.png", dpi = 300)
 ```
 
 For 1-Dimensional continuous data (1d), the histogram is arguably the most important geom
