@@ -17,7 +17,7 @@ If you would like to present, please add your name next to a chapter using the [
 - 2021-09-20: Chapter 3: Individual Geoms: Lydia Gibson
 - 2021-09-27: Chapter 4: Collective geoms: Ryan S
 - 2021-10-04: Chapter 5: Statistical summaries: Ryan Metcalf
-- 2021-10-11: Break (Columbus Day)
+- 2021-10-11: Break (Indigenous Peoples' Day)
 - 2021-10-18: Chapter 6: Maps: Ryan Metcalf
 
 ## How to Present
