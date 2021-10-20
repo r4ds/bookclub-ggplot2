@@ -96,7 +96,7 @@ ggplot(midwest, aes(percbelowpoverty)) +
 Using built-in `diamonds` dataset
 
 ```{r fig.cap="Diamond Dimensions", echo=FALSE}
-knitr::include_graphics("diagrams/diamond-dimensions.png", dpi = 300)
+knitr::include_graphics("images/diamond-dimensions.png", dpi = 300)
 ```
 
 For 1-Dimensional continuous data (1d), the histogram is arguably the most important geom

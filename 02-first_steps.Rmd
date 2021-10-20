@@ -43,7 +43,7 @@ mpg
 ---
 
 ## Components of every plot
-![Three components](components.png)
+![Three components](images/components.png)
 
 ```{r 02-plot-mpg}
 ggplot(mpg, aes(x = displ, y = hwy)) +
