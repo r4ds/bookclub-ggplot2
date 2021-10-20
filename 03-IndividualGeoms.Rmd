@@ -1,0 +1,111 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Layers
+
+*Introduction*
+
+- Based on the *Grammar of Graphics*, GGplot2 encourages you to build plots in a structured manner building upon on your plots with various layers. 
+- The purposes of the layers are: 
+- to display the **data**. 
+- to display a **statistical summary** of the data.
+- to add **metadata** such as context, annotations or references to your plot.
+
+## Layers: Chapters
+
+**The section on layers is broken up into the following chapters:**
+
+- Chapter 3. Individual Geoms
+- Chapter 4. Collective Geoms
+- Chapter 5. Statistical Summaries
+- Chapter 6. Maps
+- Chapter 7. Networks
+- Chapter 8. Annotations
+- Chapter 9. Arranging Plots
+
+## Chapter 3: Individual Geoms
+```{r 03-individualgeoms, include=FALSE}
+
+library(ggplot2)
+library(tidyverse)
+```
+- Geoms are the fundamental building blocks of ggplot2.
+- Most of the geoms are associated with a named plot.
+- Some geoms can be added on to low-level geoms to create more complex plots.
+- To find out more about individual geoms see their documentation.
+
+## Scatterplot:
+```{r 03-scatter}
+ggplot(mpg, aes(x = displ, y = hwy)) + 
+  geom_point()
+```
+
+##  Line plot:
+```{r 03-lineplot}
+ggplot(economics, aes(date, unemploy / pop)) +
+  geom_line() 
+```
+
+## Histogram: 
+```{r 03-hist}
+ggplot(mpg, aes(hwy)) + geom_histogram() 
+```
+
+## Bar chart
+```{r 03-bar}
+ggplot(mpg, aes(manufacturer)) + 
+  geom_bar() 
+```
+## geom_path() connects points in order of appearance.
+```{r 03-df, include=FALSE}
+df <- data.frame(
+  x = c(3, 1, 5), 
+  y = c(2, 4, 6), 
+  label = c("a","b","c")
+)
+p <- ggplot(df, aes(x, y, label = label)) + 
+  labs(x = NULL, y = NULL) + # Hide axis label
+  theme(plot.title = element_text(size = 12))
+```
+
+```{r 03-path}
+p + geom_path()
+```
+
+## geom_polygon() draws polygons which are filled paths.
+```{r 03-poly}
+p + geom_polygon() 
+```
+
+## geom_line() connects points from left to right.
+```{r 03-line}
+p + geom_line() 
+```
+
+
+## What low-level geoms are used to draw geom_smooth()? 
+Geom_smooth() fits a smoother to data, displaying the smooth and its standard error, allowing you to see a dominant pattern within a scatterplot with a lot of "noise". The low level geom for geom_smooth() are geom_path(), geom_area() and geom_point().
+
+```{r 03-smooth}
+ggplot(mpg, aes(displ, hwy)) + 
+  geom_point() + 
+  geom_smooth()
+```
+
+## What low-level geoms are used to draw geom_boxplot()? 
+Box plots are used to summarize the distribution of a set of points using summary statistics. The low level geom for geom_boxplot() are geom_rect(), geom_line() and geom_point(). 
+
+```{r 03-box}
+ggplot(mpg, aes(drv, hwy)) + geom_boxplot()
+```
+
+## What low-level geoms are used to draw geom_violin()?
+Violin plots show a compact representation of the density of the distribution highlighting the areas where most of the points are found. The low level geom for geom_violin() are geom_area() and geom_path(). 
+
+```{r 03-violin}
+ggplot(mpg, aes(drv, hwy)) + geom_violin()
+```
+
