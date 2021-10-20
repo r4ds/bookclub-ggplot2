@@ -1,6 +1,0 @@
----
-title: "04-Collective_geoms"
-output: ioslides_presentation
----
-
-# Update to Slides required
