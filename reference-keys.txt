@@ -2,3 +2,15 @@ introduction
 slide-1-title
 meeting-videos
 cohort-1
+layers
+layers-chapters
+chapter-3-individual-geoms
+scatterplot
+line-plot
+histogram
+bar-chart
+geom_polygon-draws-polygons-which-are-filled-paths.
+geom_line-connects-points-from-left-to-right.
+what-low-level-geoms-are-used-to-draw-geom_smooth
+what-low-level-geoms-are-used-to-draw-geom_boxplot
+what-low-level-geoms-are-used-to-draw-geom_violin
