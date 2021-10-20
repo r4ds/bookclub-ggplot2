@@ -1,10 +1,4 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
-
-# Layers
+# Layers {-}
 
 *Introduction*
 
@@ -26,12 +20,14 @@ output:
 - Chapter 8. Annotations
 - Chapter 9. Arranging Plots
 
-## Chapter 3: Individual Geoms
+# Individual Geoms
+
 ```{r 03-individualgeoms, include=FALSE}
 
 library(ggplot2)
 library(tidyverse)
 ```
+
 - Geoms are the fundamental building blocks of ggplot2.
 - Most of the geoms are associated with a named plot.
 - Some geoms can be added on to low-level geoms to create more complex plots.
