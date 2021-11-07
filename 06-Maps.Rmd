@@ -279,16 +279,17 @@ ggplot(dawson[-69]) +
 
 >NOTE: `bomrang` is no longer available from CRAN. you must use `devtools::install_github("ropensci/bomrang", build_vignettes = TRUE)` instead. Further, there are particular details in this section that are assumed: A) you can use the package; B) you are familar with alternative methods to acquire raster images; C) Some sites require authentification as well.
 
-But, what if our source of geospacial data doesn't come in a `sf` form? Say, maybe a GeoTIFF. This **raster** form of images, like PNG, JPG, TIFF, Bitmap contain metadata representing geospacial information. This isn't a problem, as the [Geospatial Data Abstraction Library (GDAL)](https://gdal.org/) can handle this data injestion for you. In fact, the `sf` package contains GDAL drivers in the form of `sf::gdal_read()`. There is a good chance you may not even require this as there are higher order functions that take care of this for you.
+But, what if our source of geospacial data doesn't come in a `sf` form? Say, maybe a GeoTIFF. This **raster** form of images, like PNG, JPG, TIFF, Bitmap contain metadata representing geospacial information. This isn't a problem, as the [Geospatial Data Abstraction Library (GDAL)](https://gdal.org/) can handle this data ingestion for you. In fact, the `sf` package contains GDAL drivers in the form of `sf::gdal_read()`. There is a good chance you may not even require this as there are higher order functions that take care of this for you.
 
 Lets download some Raster Images from the Australian Bureau of Meterorology (BOM). In this example, we will use the `{bomrang}` package.
 
 ```{r, download raster, include = TRUE}
+library(bomrang)
 # list of all file names with time stamp 2021-10-23 21:00 GMT 
 # (BOM images are retained for 24 hours, so this will return an
 # empty vector if you run this code without editing the time stamp)
 files <- bomrang::get_available_imagery() %>%
-  stringr::str_subset("202110232100") 
+  stringr::str_subset("202111062300") 
 # use curl_download() to obtain a single file, and purrr to 
 # vectorise this operation
 purrr::walk2(
@@ -297,8 +298,98 @@ purrr::walk2(
   .f = ~ download.file(url = .x, destfile = .y)
 )
 ```
+NOTE: Be very specific of the file names you have downloaded from the previous step.
+```{r, Set File Path, include = TRUE}
+img_vis <- file.path("raster", "IDE00422.202111062300.tif")
+img_inf <- file.path("raster", "IDE00421.202111062300.tif")
+```
 
->Slide Deck ends here....will work on finishing this week.
+This code chuck runs the `{stars}` package. A service to ingest spacial information.
+```{r, Ingest Raster, include = TRUE}
+#install.packages('stars')
+library(stars)
+sat_vis <- read_stars(img_vis, RasterIO = list(nBufXSize = 600, nBufYSize = 600))
+sat_inf <- read_stars(img_inf, RasterIO = list(nBufXSize = 600, nBufYSize = 600))
+```
+
+In the code above, the first argument specifies the path to the raster file, and the `RasterIO` argument is used to pass a list of low-level parameters to GDAL. In this case, `nBufXSize` and `nBufYSize` ensure that R reads the data at low resolution. To see what information R has imported, we can inspect the `sat_vis` object:
+
+```{r, print sat_vis dataframe, include = TRUE}
+sat_vis
+```
+
+To plot the `sat_vis` object using `ggplot2` we will apply the `geom_stars` object:
+
+```{r, plot geom_stars, include = TRUE}
+library(ggplot2)
+ggplot() + 
+  geom_stars(data = sat_vis) + 
+  coord_equal()
+```
+
+The `geom_stars()` function requires the `data` argument to be a stars object, and maps the raster data to the fill aesthetic. Accordingly, the blue shading in the satellite image above is determined by the ggplot2 scale, not the image itself. That is, although `sat_vis` contains three bands, the plot above only displays the first one, and the raw data values (which range from 0 to 255) are mapped onto the default blue palette that ggplot2 uses for continuous data. To see what the image file "really" looks like we can separate the bands using `facet_wrap()`:
+
+```{r, facet_wrap, include = TRUE}
+ggplot() + 
+  geom_stars(data = sat_vis, show.legend = FALSE) +
+  facet_wrap(vars(band)) + 
+  coord_equal() + 
+  scale_fill_gradient(low = "black", high = "white")
+```
+One limitation to displaying only the raw image is that it is not easy to work out where the relevant landmasses are, and we may wish to overlay the satellite data with the `oz_states` vector map to show the outlines of Australian political entities. However, some care is required in doing so because the two data sources are associated with different coordinate reference systems. To project the `oz_states` data correctly, the data should be transformed using the `st_transform()` function from the sf package. You first extract the CRS from the `sat_vis` raster object, and transform the `oz_states` data to use the same system.
+
+```{r, transform oz_states, include = TRUE}
+oz_states <- st_transform(oz_states, crs = st_crs(sat_vis))
+```
+
+Having done so, we can now draw the vector map over the top of the raster image to make the image more interpretable to the reader. 
+
+```{r, plot with overlay, include = TRUE}
+ggplot() + 
+  geom_stars(data = sat_vis, show.legend = FALSE) +
+  geom_sf(data = oz_states, fill = NA, color = "white") + 
+  coord_sf() + 
+  theme_void() + 
+  scale_fill_gradient(low = "black", high = "white")
+```
+
+What if we wanted to plot more conventional data over the top? A simple example of this would be to plot the locations of the Australian capital cities per the `oz_capitals` data frame that contains latitude and longitude data. However, because these data are not associated with a CRS and are not on the same scale as the raster data in `sat_vis`, these will *also* need to be transformed. To do so, we first need to create an sf object from the `oz_capitals` data using `st_as_sf()`:
+
+```{r, transform cities df, include = TRUE}
+cities <- oz_capitals %>% 
+  st_as_sf(coords = c("lon", "lat"), crs = 4326, remove = FALSE)
+```
+
+This projection is set using the EPSG code 4326, an ellipsoidal projection using the latitude and longitude values as co-ordinates and relying on the WGS84 datum. Having done so we can now transform the co-ordinates from the latitude-longitude geometry to the match the geometry of our `sat_vis` data:
+
+```{r, transform cities df, include = TRUE}
+cities <- st_transform(cities, st_crs(sat_vis))
+```
+
+The transformed data can now be overlaid using `geom_sf()`:
+
+```{r}
+ggplot() + 
+  geom_stars(data = sat_vis, show.legend = FALSE) +
+  geom_sf(data = oz_states, fill = NA, color = "white") + 
+  geom_sf(data = cities, color = "red") + 
+  coord_sf() + 
+  theme_void() + 
+  scale_fill_gradient(low = "black", high = "white")
+```
+
+You can add the city name labels using the `geom_sf_text()` function. Though some care would be required to ensure the text is positioned nicely.
+
+```{r eval = FALSE}
+ggplot() + 
+  geom_stars(data = sat_vis, show.legend = FALSE) +
+  geom_sf(data = oz_states, fill = NA, color = "white") + 
+  geom_sf(data = cities, color = "red") + 
+  coord_sf() + 
+  theme_void() + 
+  scale_fill_gradient(low = "black", high = "white")+
+  geom_sf_text(data = cities, mapping = aes(label = city), color = "yellow") 
+```
 
 ## Data Sources
 
