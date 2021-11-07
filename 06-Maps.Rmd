@@ -380,7 +380,7 @@ ggplot() +
 
 You can add the city name labels using the `geom_sf_text()` function. Though some care would be required to ensure the text is positioned nicely.
 
-```{r eval = FALSE}
+```{r, adding city text, include = TRUE}
 ggplot() + 
   geom_stars(data = sat_vis, show.legend = FALSE) +
   geom_sf(data = oz_states, fill = NA, color = "white") + 
