@@ -17,13 +17,13 @@ Plotting geospacial data is a common visualization task. The process may require
 ## Polygon Maps
 The simplest approach to mapping is using geom_polygon(). This forms bounderies around regions.
 
-```{r, mi-countries, include = TRUE}
-library(ggplot2)
-library(magrittr)
-mi_counties <- map_data("county", "michigan") %>% 
-  select(lon = long, lat, group, id = subregion)
-head(mi_counties)
-```
+##```{r, mi-countries, include = TRUE}
+##library(ggplot2)
+##library(magrittr)
+##mi_counties <- map_data("county", "michigan") %>% 
+##  select(lon = long, lat, group, id = subregion)
+##head(mi_counties)
+##```
 
 In this data set we have four variables:
 
@@ -33,7 +33,7 @@ In this data set we have four variables:
  - `id`: name of the region
 
  
-```{r, coord_quickmap(), include = TRUE}
+##```{r, coord_quickmap(), include = TRUE}
 # First graph uses geom_point then coord_quickmap()
 ggplot(mi_counties, aes(lon, lat)) + 
   geom_point(size = .25, show.legend = FALSE) +
@@ -44,7 +44,7 @@ ggplot(mi_counties, aes(lon, lat, group = group)) +
   geom_label(aes(label=id)) +
   coord_quickmap()
  
-```
+##```
 >NOTE: The `id` is the County Name. I wanted to be fancy and add a label with `label=id`, but all tries were creating errors. Thoughts from the team?
 
 In this plot, `coord_quickmap()` is used to adjust the axes to ensure longitude and latitude are rendered on the same scale.
@@ -283,7 +283,7 @@ But, what if our source of geospacial data doesn't come in a `sf` form? Say, may
 
 Lets download some Raster Images from the Australian Bureau of Meterorology (BOM). In this example, we will use the `{bomrang}` package.
 
-```{r, download raster, include = TRUE}
+```{r, download raster, include = TRUE, eval = FALSE}
 library(bomrang)
 # list of all file names with time stamp 2021-10-23 21:00 GMT 
 # (BOM images are retained for 24 hours, so this will return an
@@ -362,7 +362,7 @@ cities <- oz_capitals %>%
 
 This projection is set using the EPSG code 4326, an ellipsoidal projection using the latitude and longitude values as co-ordinates and relying on the WGS84 datum. Having done so we can now transform the co-ordinates from the latitude-longitude geometry to the match the geometry of our `sat_vis` data:
 
-```{r, transform cities df, include = TRUE}
+```{r, transform cities df 2, include = TRUE}
 cities <- st_transform(cities, st_crs(sat_vis))
 ```
 
