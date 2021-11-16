@@ -15,7 +15,10 @@ Imports:
     hexbin,
     maps,
     ourworldindata,
-    tidyverse
+    tidyverse,
+    tidygraph,
+    ggraph,
+    igraph
 Remotes: 
     hadley/emo,
     drsimonj/ourworldindata
