@@ -11,14 +11,15 @@ Imports:
     bookdown,
     details,
     emo,
+    ggraph,
     ggrepel,
     hexbin,
+    igraph,
     maps,
     ourworldindata,
+    seriation,
     tidyverse,
-    tidygraph,
-    ggraph,
-    igraph
+    tidygraph
 Remotes: 
     hadley/emo,
     drsimonj/ourworldindata

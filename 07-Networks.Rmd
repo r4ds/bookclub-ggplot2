@@ -33,7 +33,7 @@ New functions:
 - `.N()` which gives access to the node data of the current graph even when working with the edges
       - `.E()` and `.G()` to access the edges or the whole graph)
 
-```{r message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+```{r 07-01, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 library(tidyverse)
 ```
 
@@ -161,7 +161,7 @@ As an **example** we take the `data(highschool, package = "ggraph")` and make a 
       hs_graph <- tidygraph::as_tbl_graph(highschool, 
                                           directed = FALSE)
 
-```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+```{r 07-02, message=FALSE, warning=FALSE, paged.print=FALSE}
 library(ggraph)
 ggraph(hs_graph) + 
   geom_edge_link() + 
@@ -170,7 +170,7 @@ ggraph(hs_graph) +
 
 A second **example** is with more features:
 
-```{r}
+```{r 07-03}
 hs_graph <- hs_graph %>%
   tidygraph::activate(edges) %>% 
              mutate(edge_weights = runif(n()))
@@ -198,7 +198,7 @@ ggraph(layout) +
 
 Instead of {tidygraph} we use {igraph}, with layout = "kk": layout.kamada.kawai
 
-```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+```{r 07-04, message=FALSE, warning=FALSE, paged.print=FALSE}
 require(ggraph)
 require(igraph)
 
@@ -276,7 +276,7 @@ More features could be added to calculate node and edge centrality, such as:
 - centrality_power()   
 - centrality_degree()  
 
-```{r}
+```{r 07-05}
 ggraph(luv_graph, layout = "stress") + 
   geom_edge_link() + 
   geom_node_point(aes(colour =centrality_power()))
@@ -284,7 +284,7 @@ ggraph(luv_graph, layout = "stress") +
 
 Or making tiles:
 
-```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+```{r 07-06, message=FALSE, warning=FALSE, paged.print=FALSE}
 ggraph(luv_graph, layout = "treemap") + 
   geom_node_tile(aes(fill = depth))
 ```
