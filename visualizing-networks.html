@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>8.3 Visualizing networks | ggplot2 Book Club</title>
+  <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="8.3 Visualizing networks | ggplot2 Book Club" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
+  <meta name="github-repo" content="r4ds/bookclub-ggplot2" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="8.3 Visualizing networks | ggplot2 Book Club" />
+  
+  <meta name="twitter:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
+  
+
+<meta name="author" content="The R4DS Online Learning Community" />
+
+
+<meta name="date" content="2021-11-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="what-is-network-data.html"/>
+<link rel="next" href="conclusions.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">ggplot2 with R Book Club</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
+<li class="chapter" data-level="" data-path="book-club-meetings.html"><a href="book-club-meetings.html"><i class="fa fa-check"></i>Book club meetings</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="slide-1-title.html"><a href="slide-1-title.html"><i class="fa fa-check"></i><b>1.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="1.2" data-path="meeting-videos.html"><a href="meeting-videos.html"><i class="fa fa-check"></i><b>1.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="meeting-videos.html"><a href="meeting-videos.html#cohort-1"><i class="fa fa-check"></i><b>1.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="first-steps.html"><a href="first-steps.html"><i class="fa fa-check"></i><b>2</b> First Steps</a><ul>
+<li class="chapter" data-level="2.1" data-path="general-housekeeping-items.html"><a href="general-housekeeping-items.html"><i class="fa fa-check"></i><b>2.1</b> General Housekeeping Items</a></li>
+<li class="chapter" data-level="2.2" data-path="learning-objectives.html"><a href="learning-objectives.html"><i class="fa fa-check"></i><b>2.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="2.3" data-path="main-data-set.html"><a href="main-data-set.html"><i class="fa fa-check"></i><b>2.3</b> Main data set</a></li>
+<li class="chapter" data-level="2.4" data-path="components-of-every-plot.html"><a href="components-of-every-plot.html"><i class="fa fa-check"></i><b>2.4</b> Components of every plot</a></li>
+<li class="chapter" data-level="2.5" data-path="a-few-exercises.html"><a href="a-few-exercises.html"><i class="fa fa-check"></i><b>2.5</b> A few exercises</a></li>
+<li class="chapter" data-level="2.6" data-path="other-aesthetic-attributes.html"><a href="other-aesthetic-attributes.html"><i class="fa fa-check"></i><b>2.6</b> Other aesthetic attributes</a></li>
+<li class="chapter" data-level="2.7" data-path="faceting.html"><a href="faceting.html"><i class="fa fa-check"></i><b>2.7</b> Faceting</a></li>
+<li class="chapter" data-level="2.8" data-path="geoms.html"><a href="geoms.html"><i class="fa fa-check"></i><b>2.8</b> Geoms</a></li>
+<li class="chapter" data-level="2.9" data-path="modifying-the-axes.html"><a href="modifying-the-axes.html"><i class="fa fa-check"></i><b>2.9</b> Modifying the Axes</a></li>
+<li class="chapter" data-level="2.10" data-path="output.html"><a href="output.html"><i class="fa fa-check"></i><b>2.10</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="layers.html"><a href="layers.html"><i class="fa fa-check"></i><b>3</b> Layers</a><ul>
+<li class="chapter" data-level="3.1" data-path="layers-chapters.html"><a href="layers-chapters.html"><i class="fa fa-check"></i><b>3.1</b> Layers: Chapters</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="individual-geoms.html"><a href="individual-geoms.html"><i class="fa fa-check"></i><b>4</b> Individual Geoms</a><ul>
+<li class="chapter" data-level="4.1" data-path="scatterplot.html"><a href="scatterplot.html"><i class="fa fa-check"></i><b>4.1</b> Scatterplot:</a></li>
+<li class="chapter" data-level="4.2" data-path="line-plot.html"><a href="line-plot.html"><i class="fa fa-check"></i><b>4.2</b> Line plot:</a></li>
+<li class="chapter" data-level="4.3" data-path="histogram.html"><a href="histogram.html"><i class="fa fa-check"></i><b>4.3</b> Histogram:</a></li>
+<li class="chapter" data-level="4.4" data-path="bar-chart.html"><a href="bar-chart.html"><i class="fa fa-check"></i><b>4.4</b> Bar chart</a></li>
+<li class="chapter" data-level="4.5" data-path="geom_polygon-draws-polygons-which-are-filled-paths..html"><a href="geom_polygon-draws-polygons-which-are-filled-paths..html"><i class="fa fa-check"></i><b>4.5</b> geom_polygon() draws polygons which are filled paths.</a></li>
+<li class="chapter" data-level="4.6" data-path="geom_line-connects-points-from-left-to-right..html"><a href="geom_line-connects-points-from-left-to-right..html"><i class="fa fa-check"></i><b>4.6</b> geom_line() connects points from left to right.</a></li>
+<li class="chapter" data-level="4.7" data-path="what-low-level-geoms-are-used-to-draw-geom_smooth.html"><a href="what-low-level-geoms-are-used-to-draw-geom_smooth.html"><i class="fa fa-check"></i><b>4.7</b> What low-level geoms are used to draw geom_smooth()?</a></li>
+<li class="chapter" data-level="4.8" data-path="what-low-level-geoms-are-used-to-draw-geom_boxplot.html"><a href="what-low-level-geoms-are-used-to-draw-geom_boxplot.html"><i class="fa fa-check"></i><b>4.8</b> What low-level geoms are used to draw geom_boxplot()?</a></li>
+<li class="chapter" data-level="4.9" data-path="what-low-level-geoms-are-used-to-draw-geom_violin.html"><a href="what-low-level-geoms-are-used-to-draw-geom_violin.html"><i class="fa fa-check"></i><b>4.9</b> What low-level geoms are used to draw geom_violin()?</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="collective-geoms.html"><a href="collective-geoms.html"><i class="fa fa-check"></i><b>5</b> Collective Geoms</a><ul>
+<li class="chapter" data-level="5.1" data-path="general-housekeeping-items-1.html"><a href="general-housekeeping-items-1.html"><i class="fa fa-check"></i><b>5.1</b> General Housekeeping Items</a></li>
+<li class="chapter" data-level="5.2" data-path="learning-objectives-1.html"><a href="learning-objectives-1.html"><i class="fa fa-check"></i><b>5.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="5.3" data-path="quick-intuition-on-collective-geoms.html"><a href="quick-intuition-on-collective-geoms.html"><i class="fa fa-check"></i><b>5.3</b> Quick Intuition on Collective Geoms</a></li>
+<li class="chapter" data-level="5.4" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html"><i class="fa fa-check"></i><b>5.4</b> From the ggplot2 book</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html#multiple-groups-one-aesthetic"><i class="fa fa-check"></i><b>5.4.1</b> Multiple Groups, One Aesthetic</a></li>
+<li class="chapter" data-level="5.4.2" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html#different-groups-on-different-layers"><i class="fa fa-check"></i><b>5.4.2</b> Different Groups on Different Layers</a></li>
+<li class="chapter" data-level="5.4.3" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html#overriding-the-default-grouping"><i class="fa fa-check"></i><b>5.4.3</b> Overriding the Default Grouping</a></li>
+<li class="chapter" data-level="5.4.4" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html#a-couple-of-exercises"><i class="fa fa-check"></i><b>5.4.4</b> A couple of exercises</a></li>
+<li class="chapter" data-level="5.4.5" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html#matching-aesthetics-to-graphic-objects"><i class="fa fa-check"></i><b>5.4.5</b> Matching Aesthetics to Graphic Objects</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="statistical-summaries.html"><a href="statistical-summaries.html"><i class="fa fa-check"></i><b>6</b> Statistical Summaries</a><ul>
+<li class="chapter" data-level="6.1" data-path="defintions-in-this-chapter.html"><a href="defintions-in-this-chapter.html"><i class="fa fa-check"></i><b>6.1</b> Defintions (in this Chapter)</a></li>
+<li class="chapter" data-level="6.2" data-path="revealing-uncertainty.html"><a href="revealing-uncertainty.html"><i class="fa fa-check"></i><b>6.2</b> Revealing Uncertainty</a></li>
+<li class="chapter" data-level="6.3" data-path="weighted-data.html"><a href="weighted-data.html"><i class="fa fa-check"></i><b>6.3</b> Weighted Data</a></li>
+<li class="chapter" data-level="6.4" data-path="displaying-distributions.html"><a href="displaying-distributions.html"><i class="fa fa-check"></i><b>6.4</b> Displaying distributions</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="displaying-distributions.html"><a href="displaying-distributions.html#exercise"><i class="fa fa-check"></i><b>6.4.1</b> Exercise:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="dealing-with-overplotting.html"><a href="dealing-with-overplotting.html"><i class="fa fa-check"></i><b>6.5</b> Dealing with overplotting</a></li>
+<li class="chapter" data-level="6.6" data-path="statistical-summaries-1.html"><a href="statistical-summaries-1.html"><i class="fa fa-check"></i><b>6.6</b> Statistical Summaries</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>7</b> Maps</a><ul>
+<li class="chapter" data-level="7.1" data-path="polygon-maps.html"><a href="polygon-maps.html"><i class="fa fa-check"></i><b>7.1</b> Polygon Maps</a></li>
+<li class="chapter" data-level="7.2" data-path="simple-features-maps.html"><a href="simple-features-maps.html"><i class="fa fa-check"></i><b>7.2</b> Simple Features Maps</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="simple-features-maps.html"><a href="simple-features-maps.html#layered-maps"><i class="fa fa-check"></i><b>7.2.1</b> Layered Maps</a></li>
+<li class="chapter" data-level="7.2.2" data-path="simple-features-maps.html"><a href="simple-features-maps.html#labelled-maps"><i class="fa fa-check"></i><b>7.2.2</b> Labelled Maps</a></li>
+<li class="chapter" data-level="7.2.3" data-path="simple-features-maps.html"><a href="simple-features-maps.html#adding-other-geoms"><i class="fa fa-check"></i><b>7.2.3</b> Adding Other Geoms</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="map-projections.html"><a href="map-projections.html"><i class="fa fa-check"></i><b>7.3</b> Map Projections</a></li>
+<li class="chapter" data-level="7.4" data-path="working-with-sf-data.html"><a href="working-with-sf-data.html"><i class="fa fa-check"></i><b>7.4</b> Working with <code>sf</code> Data</a></li>
+<li class="chapter" data-level="7.5" data-path="raster-maps.html"><a href="raster-maps.html"><i class="fa fa-check"></i><b>7.5</b> Raster Maps</a></li>
+<li class="chapter" data-level="7.6" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>7.6</b> Data Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="networks.html"><a href="networks.html"><i class="fa fa-check"></i><b>8</b> Networks</a><ul>
+<li class="chapter" data-level="8.1" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="what-is-network-data.html"><a href="what-is-network-data.html"><i class="fa fa-check"></i><b>8.2</b> What is network data?</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="what-is-network-data.html"><a href="what-is-network-data.html#a-tidy-network-manipulation-api"><i class="fa fa-check"></i><b>8.2.1</b> A tidy network manipulation API</a></li>
+<li class="chapter" data-level="8.2.2" data-path="what-is-network-data.html"><a href="what-is-network-data.html#conversion"><i class="fa fa-check"></i><b>8.2.2</b> Conversion</a></li>
+<li class="chapter" data-level="8.2.3" data-path="what-is-network-data.html"><a href="what-is-network-data.html#algorithms"><i class="fa fa-check"></i><b>8.2.3</b> Algorithms</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="visualizing-networks.html"><a href="visualizing-networks.html"><i class="fa fa-check"></i><b>8.3</b> Visualizing networks</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="visualizing-networks.html"><a href="visualizing-networks.html#setting-up-the-visualization"><i class="fa fa-check"></i><b>8.3.1</b> Setting up the visualization</a></li>
+<li class="chapter" data-level="8.3.2" data-path="visualizing-networks.html"><a href="visualizing-networks.html#drawing-nodes"><i class="fa fa-check"></i><b>8.3.2</b> Drawing nodes</a></li>
+<li class="chapter" data-level="8.3.3" data-path="visualizing-networks.html"><a href="visualizing-networks.html#drawing-edges"><i class="fa fa-check"></i><b>8.3.3</b> Drawing edges</a></li>
+<li class="chapter" data-level="8.3.4" data-path="visualizing-networks.html"><a href="visualizing-networks.html#faceting-1"><i class="fa fa-check"></i><b>8.3.4</b> Faceting</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="conclusions.html"><a href="conclusions.html"><i class="fa fa-check"></i><b>8.4</b> Conclusions</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="conclusions.html"><a href="conclusions.html#resources"><i class="fa fa-check"></i><b>8.4.1</b> Resources:</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ggplot2 Book Club</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="visualizing-networks" class="section level2">
+<h2><span class="header-section-number">8.3</span> Visualizing networks</h2>
+<p>To visualize the <strong>Network data</strong> we use <strong>{ggraph}</strong>.</p>
+<p>It builds on top of {tidygraph} and {ggplot2} to allow a complete and familiar grammar of graphics for network data.</p>
+<div id="setting-up-the-visualization" class="section level3">
+<h3><span class="header-section-number">8.3.1</span> Setting up the visualization</h3>
+<p>Syntax of <strong>{ggraph}</strong>:</p>
+<pre><code>ggraph() %&gt;%
+   ggraph::geom_&lt;functions&gt;</code></pre>
+<p>it will choose an appropriate layout based on the type of graph you provide.</p>
+<p><a href="https://ggraph.data-imaginist.com/articles/Layouts.html">Getting Started guide to layouts</a></p>
+<div id="specifying-a-layout" class="section level4">
+<h4><span class="header-section-number">8.3.1.1</span> Specifying a layout</h4>
+<p>What is the base requirenment?</p>
+<p>The data frame need to be with at least an x and y column and with the same number of rows as there are nodes in the input graph.</p>
+<p>As an <strong>example</strong> we take the <code>data(highschool, package = "ggraph")</code> and make a <strong>visualization</strong> of the graph:</p>
+<pre><code>  hs_graph &lt;- tidygraph::as_tbl_graph(highschool, 
+                                      directed = FALSE)</code></pre>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="visualizing-networks.html#cb165-1"></a><span class="kw">library</span>(ggraph)</span>
+<span id="cb165-2"><a href="visualizing-networks.html#cb165-2"></a><span class="kw">ggraph</span>(hs_graph) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb165-3"><a href="visualizing-networks.html#cb165-3"></a><span class="st">  </span><span class="kw">geom_edge_link</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb165-4"><a href="visualizing-networks.html#cb165-4"></a><span class="st">  </span><span class="kw">geom_node_point</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/07-02-1.png" width="672" /></p>
+<p>A second <strong>example</strong> is with more features:</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="visualizing-networks.html#cb166-1"></a>hs_graph &lt;-<span class="st"> </span>hs_graph <span class="op">%&gt;%</span></span>
+<span id="cb166-2"><a href="visualizing-networks.html#cb166-2"></a><span class="st">  </span>tidygraph<span class="op">::</span><span class="kw">activate</span>(edges) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb166-3"><a href="visualizing-networks.html#cb166-3"></a><span class="st">             </span><span class="kw">mutate</span>(<span class="dt">edge_weights =</span> <span class="kw">runif</span>(<span class="kw">n</span>()))</span>
+<span id="cb166-4"><a href="visualizing-networks.html#cb166-4"></a></span>
+<span id="cb166-5"><a href="visualizing-networks.html#cb166-5"></a></span>
+<span id="cb166-6"><a href="visualizing-networks.html#cb166-6"></a><span class="kw">ggraph</span>(hs_graph, <span class="dt">layout =</span> <span class="st">&quot;stress&quot;</span>, <span class="dt">weights =</span> edge_weights) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb166-7"><a href="visualizing-networks.html#cb166-7"></a><span class="st">  </span><span class="kw">geom_edge_link</span>(<span class="kw">aes</span>(<span class="dt">alpha =</span> edge_weights)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb166-8"><a href="visualizing-networks.html#cb166-8"></a><span class="st">  </span><span class="kw">geom_node_point</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb166-9"><a href="visualizing-networks.html#cb166-9"></a><span class="st">  </span><span class="kw">scale_edge_alpha_identity</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/07-03-1.png" width="672" /></p>
+<p>In the following <strong>examples</strong> we see different <a href="https://www.data-imaginist.com/2017/ggraph-introduction-layouts/">layouts</a>.</p>
+<p>Information about “drl” type of layout: DRL force-directed graph layout, an be found in the <a href="https://igraph.org/r/doc/layout_with_drl.html">igraph</a> package.</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="visualizing-networks.html#cb167-1"></a>layout &lt;-<span class="st"> </span>ggraph<span class="op">::</span><span class="kw">create_layout</span>(hs_graph, <span class="dt">layout =</span> <span class="st">&#39;drl&#39;</span>)</span>
+<span id="cb167-2"><a href="visualizing-networks.html#cb167-2"></a></span>
+<span id="cb167-3"><a href="visualizing-networks.html#cb167-3"></a><span class="kw">ggraph</span>(layout) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb167-4"><a href="visualizing-networks.html#cb167-4"></a><span class="st">  </span><span class="kw">geom_edge_link</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb167-5"><a href="visualizing-networks.html#cb167-5"></a><span class="st">  </span><span class="kw">geom_node_point</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Instead of {tidygraph} we use {igraph}, with layout = “kk”: layout.kamada.kawai</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="visualizing-networks.html#cb168-1"></a><span class="kw">require</span>(ggraph)</span>
+<span id="cb168-2"><a href="visualizing-networks.html#cb168-2"></a><span class="kw">require</span>(igraph)</span>
+<span id="cb168-3"><a href="visualizing-networks.html#cb168-3"></a></span>
+<span id="cb168-4"><a href="visualizing-networks.html#cb168-4"></a>hs_graph2 &lt;-<span class="st"> </span>igraph<span class="op">::</span><span class="kw">graph_from_data_frame</span>(highschool)</span>
+<span id="cb168-5"><a href="visualizing-networks.html#cb168-5"></a></span>
+<span id="cb168-6"><a href="visualizing-networks.html#cb168-6"></a>layout &lt;-<span class="st"> </span><span class="kw">create_layout</span>(hs_graph2, <span class="dt">layout =</span> <span class="st">&quot;kk&quot;</span>)</span>
+<span id="cb168-7"><a href="visualizing-networks.html#cb168-7"></a></span>
+<span id="cb168-8"><a href="visualizing-networks.html#cb168-8"></a><span class="kw">ggraph</span>(layout) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb168-9"><a href="visualizing-networks.html#cb168-9"></a><span class="st">    </span><span class="kw">geom_edge_link</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> <span class="kw">factor</span>(year))) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb168-10"><a href="visualizing-networks.html#cb168-10"></a><span class="st">    </span><span class="kw">geom_node_point</span>() </span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/07-04-1.png" width="672" /></p>
+<p>A very simple example to understand how to make a graph network is from this tutorial: <a href="https://kateto.net/netscix2016.html">Networks in igraph</a></p>
+<p>To understand a bit more about the graph structure we can use these functions:</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="visualizing-networks.html#cb169-1"></a>g1 &lt;-<span class="st"> </span>igraph<span class="op">::</span><span class="kw">graph</span>( <span class="dt">edges=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>, <span class="dv">2</span>,<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>), <span class="dt">n=</span><span class="dv">3</span>, <span class="dt">directed=</span>F ) </span>
+<span id="cb169-2"><a href="visualizing-networks.html#cb169-2"></a></span>
+<span id="cb169-3"><a href="visualizing-networks.html#cb169-3"></a></span>
+<span id="cb169-4"><a href="visualizing-networks.html#cb169-4"></a><span class="kw">E</span>(g1); <span class="co"># access to the edges</span></span></code></pre></div>
+<pre><code>## + 3/3 edges from e870972:
+## [1] 1--2 2--3 1--3</code></pre>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="visualizing-networks.html#cb171-1"></a><span class="kw">V</span>(g1); <span class="co"># the vertics</span></span></code></pre></div>
+<pre><code>## + 3/3 vertices, from e870972:
+## [1] 1 2 3</code></pre>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="visualizing-networks.html#cb173-1"></a>g1[] <span class="co"># access to the matrix</span></span></code></pre></div>
+<pre><code>## 3 x 3 sparse Matrix of class &quot;dgCMatrix&quot;
+##           
+## [1,] . 1 1
+## [2,] 1 . 1
+## [3,] 1 1 .</code></pre>
+</div>
+<div id="circularity" class="section level4">
+<h4><span class="header-section-number">8.3.1.2</span> Circularity</h4>
+<p>Layouts can be <strong>linear</strong> and <strong>circular</strong>.</p>
+<pre><code> coord_polar()   changes the coordinate system and not affect the edges</code></pre>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="visualizing-networks.html#cb176-1"></a><span class="kw">ggraph</span>(luv_graph, <span class="dt">layout =</span> <span class="st">&#39;dendrogram&#39;</span>, <span class="dt">circular =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb176-2"><a href="visualizing-networks.html#cb176-2"></a><span class="st">  </span><span class="kw">geom_edge_link</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb176-3"><a href="visualizing-networks.html#cb176-3"></a><span class="st">  </span><span class="kw">coord_fixed</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="visualizing-networks.html#cb177-1"></a><span class="kw">ggraph</span>(luv_graph, <span class="dt">layout =</span> <span class="st">&#39;dendrogram&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb177-2"><a href="visualizing-networks.html#cb177-2"></a><span class="st">  </span><span class="kw">geom_edge_link</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb177-3"><a href="visualizing-networks.html#cb177-3"></a><span class="st">  </span><span class="kw">coord_polar</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb177-4"><a href="visualizing-networks.html#cb177-4"></a><span class="st">  </span><span class="kw">scale_y_reverse</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+</div>
+<div id="drawing-nodes" class="section level3">
+<h3><span class="header-section-number">8.3.2</span> Drawing nodes</h3>
+<ul>
+<li><p>points</p></li>
+<li><p>more specialized geoms: tiles</p>
+<pre><code>geom_node_&lt;functions&gt;
+geom_node_point()
+geom_node_tile() </code></pre></li>
+</ul>
+<p><a href="https://ggraph.data-imaginist.com/articles/Nodes.html">Getting Started guide to nodes</a></p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="visualizing-networks.html#cb179-1"></a><span class="kw">ggraph</span>(luv_graph, <span class="dt">layout =</span> <span class="st">&quot;stress&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb179-2"><a href="visualizing-networks.html#cb179-2"></a><span class="st">  </span><span class="kw">geom_edge_link</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb179-3"><a href="visualizing-networks.html#cb179-3"></a><span class="st">  </span><span class="kw">geom_node_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span><span class="kw">factor</span>(members)),</span>
+<span id="cb179-4"><a href="visualizing-networks.html#cb179-4"></a>                  <span class="dt">show.legend =</span> F)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/luv_graph_tree-1.png" width="672" /></p>
+<p>More features could be added to calculate node and edge centrality, such as:</p>
+<ul>
+<li>centrality_power()<br />
+</li>
+<li>centrality_degree()</li>
+</ul>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="visualizing-networks.html#cb180-1"></a><span class="kw">ggraph</span>(luv_graph, <span class="dt">layout =</span> <span class="st">&quot;stress&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb180-2"><a href="visualizing-networks.html#cb180-2"></a><span class="st">  </span><span class="kw">geom_edge_link</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb180-3"><a href="visualizing-networks.html#cb180-3"></a><span class="st">  </span><span class="kw">geom_node_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span><span class="kw">centrality_power</span>()))</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/07-05-1.png" width="672" /></p>
+<p>Or making tiles:</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="visualizing-networks.html#cb181-1"></a><span class="kw">ggraph</span>(luv_graph, <span class="dt">layout =</span> <span class="st">&quot;treemap&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb181-2"><a href="visualizing-networks.html#cb181-2"></a><span class="st">  </span><span class="kw">geom_node_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> depth))</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/07-06-1.png" width="672" /></p>
+</div>
+<div id="drawing-edges" class="section level3">
+<h3><span class="header-section-number">8.3.3</span> Drawing edges</h3>
+<p><code>geom_edge_link()</code> draws a straight line between the connected nodes, actually what it does is: it will split up the line in a bunch of small fragments.</p>
+<ul>
+<li>geom_edge_link()</li>
+<li>geom_edge_link2()</li>
+<li>geom_edge_fan()</li>
+<li>geom_edge_parallel()</li>
+<li>geom_edge_elbow()
+<ul>
+<li>geom_edge_bend()</li>
+<li>geom_edge_diagonal()</li>
+</ul></li>
+</ul>
+<p><a href="https://ggraph.data-imaginist.com/articles/Edges.html">Getting Started guide to edges</a></p>
+<p>The <code>after_stat(index)</code>:</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="visualizing-networks.html#cb182-1"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb182-2"><a href="visualizing-networks.html#cb182-2"></a><span class="kw">ggraph</span>(hs_graph, <span class="dt">layout =</span> <span class="st">&quot;stress&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb182-3"><a href="visualizing-networks.html#cb182-3"></a><span class="st">  </span><span class="kw">geom_edge_link</span>(<span class="kw">aes</span>(<span class="dt">alpha =</span> <span class="kw">after_stat</span>(index)))</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Here is an example about how to use <code>node.class variable</code>, the graph is the first that we have seen and it is artificially made with:</p>
+<pre><code>    tidygraph::play_erdos_renyi()</code></pre>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="visualizing-networks.html#cb184-1"></a>graph &lt;-<span class="st"> </span>tidygraph<span class="op">::</span><span class="kw">play_erdos_renyi</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">p =</span> <span class="fl">0.2</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb184-2"><a href="visualizing-networks.html#cb184-2"></a><span class="st">                    </span><span class="kw">activate</span>(nodes) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb184-3"><a href="visualizing-networks.html#cb184-3"></a><span class="st">                    </span><span class="kw">mutate</span>(<span class="dt">class =</span> <span class="kw">sample</span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], </span>
+<span id="cb184-4"><a href="visualizing-networks.html#cb184-4"></a>                                          <span class="kw">n</span>(), <span class="dt">replace =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb184-5"><a href="visualizing-networks.html#cb184-5"></a><span class="st">                    </span><span class="kw">activate</span>(edges) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb184-6"><a href="visualizing-networks.html#cb184-6"></a><span class="st">                    </span><span class="kw">arrange</span>(<span class="kw">.N</span>()<span class="op">$</span>class[from])</span>
+<span id="cb184-7"><a href="visualizing-networks.html#cb184-7"></a></span>
+<span id="cb184-8"><a href="visualizing-networks.html#cb184-8"></a></span>
+<span id="cb184-9"><a href="visualizing-networks.html#cb184-9"></a><span class="kw">ggraph</span>(graph, <span class="dt">layout =</span> <span class="st">&quot;stress&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb184-10"><a href="visualizing-networks.html#cb184-10"></a><span class="st">  </span><span class="kw">geom_edge_link2</span>(</span>
+<span id="cb184-11"><a href="visualizing-networks.html#cb184-11"></a>    <span class="kw">aes</span>(<span class="dt">colour =</span> node.class), </span>
+<span id="cb184-12"><a href="visualizing-networks.html#cb184-12"></a>    <span class="dt">width =</span> <span class="dv">3</span>,</span>
+<span id="cb184-13"><a href="visualizing-networks.html#cb184-13"></a>    <span class="dt">lineend =</span> <span class="st">&quot;round&quot;</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="visualizing-networks.html#cb185-1"></a><span class="kw">ggraph</span>(hs_graph, <span class="dt">layout =</span> <span class="st">&quot;stress&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb185-2"><a href="visualizing-networks.html#cb185-2"></a><span class="st">  </span><span class="kw">geom_edge_parallel</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>Trees and specifically <strong>dendrograms</strong>:</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="visualizing-networks.html#cb186-1"></a><span class="kw">ggraph</span>(luv_graph, <span class="dt">layout =</span> <span class="st">&quot;dendrogram&quot;</span>, <span class="dt">height =</span> height) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb186-2"><a href="visualizing-networks.html#cb186-2"></a><span class="st">  </span><span class="kw">geom_edge_elbow</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div id="clipping-edges-around-the-nodes" class="section level4">
+<h4><span class="header-section-number">8.3.3.1</span> Clipping edges around the nodes</h4>
+<p>Example: using arrows to show directionality of edges</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="visualizing-networks.html#cb187-1"></a><span class="kw">set.seed</span>(<span class="dv">1011</span>)</span>
+<span id="cb187-2"><a href="visualizing-networks.html#cb187-2"></a><span class="kw">ggraph</span>(graph, <span class="dt">layout =</span> <span class="st">&quot;stress&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb187-3"><a href="visualizing-networks.html#cb187-3"></a><span class="st">  </span><span class="kw">geom_edge_link</span>(</span>
+<span id="cb187-4"><a href="visualizing-networks.html#cb187-4"></a>    <span class="dt">arrow =</span> <span class="kw">arrow</span>(), </span>
+<span id="cb187-5"><a href="visualizing-networks.html#cb187-5"></a>    <span class="dt">start_cap =</span> <span class="kw">circle</span>(<span class="dv">5</span>, <span class="st">&quot;mm&quot;</span>),</span>
+<span id="cb187-6"><a href="visualizing-networks.html#cb187-6"></a>    <span class="dt">end_cap =</span> <span class="kw">circle</span>(<span class="dv">5</span>, <span class="st">&quot;mm&quot;</span>)</span>
+<span id="cb187-7"><a href="visualizing-networks.html#cb187-7"></a>  ) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb187-8"><a href="visualizing-networks.html#cb187-8"></a><span class="st">  </span><span class="kw">geom_node_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> class), <span class="dt">size =</span> <span class="dv">8</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+<div id="an-edge-is-not-always-a-line" class="section level4">
+<h4><span class="header-section-number">8.3.3.2</span> An edge is not always a line</h4>
+<p>Nodes and edges are abstract concepts and can be visualized in a multitude of ways.</p>
+<ul>
+<li>geom_edge_point()</li>
+</ul>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="visualizing-networks.html#cb188-1"></a><span class="kw">ggraph</span>(hs_graph, <span class="dt">layout =</span> <span class="st">&quot;matrix&quot;</span>, <span class="dt">sort.by =</span> <span class="kw">node_rank_traveller</span>()) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb188-2"><a href="visualizing-networks.html#cb188-2"></a><span class="st">  </span><span class="kw">geom_edge_point</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+</div>
+<div id="faceting-1" class="section level3">
+<h3><span class="header-section-number">8.3.4</span> Faceting</h3>
+<ul>
+<li>facet_nodes()</li>
+<li>facet_edges()</li>
+<li>facet_graph()</li>
+</ul>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="visualizing-networks.html#cb189-1"></a><span class="kw">ggraph</span>(hs_graph, <span class="dt">layout =</span> <span class="st">&quot;stress&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb189-2"><a href="visualizing-networks.html#cb189-2"></a><span class="st">  </span><span class="kw">geom_edge_link</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb189-3"><a href="visualizing-networks.html#cb189-3"></a><span class="st">  </span><span class="kw">geom_node_point</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb189-4"><a href="visualizing-networks.html#cb189-4"></a><span class="st">  </span><span class="kw">facet_edges</span>(<span class="op">~</span>year)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="what-is-network-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="conclusions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/r4ds/bookclub-ggplot2/edit/main/07-Networks.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
