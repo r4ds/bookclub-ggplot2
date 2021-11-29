@@ -1,0 +1,231 @@
+# Arranging Plots
+
+
+**Learning Objectives**
+
+- Produce several subplots part of the same main visualization
+- A range of packages for providing different approaches to arranging separate plots
+
+
+
+## Introduction
+
+This chapter focuses on making more than one plot in one visualization, using the following packages:
+
+1. patchwork
+2. cowplot
+3. gridExtra
+4. ggpubr
+
+
+## Arranging plots side by side with no overlap
+
+```{r library, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+library(tidyverse)
+```
+
+
+```{r dataplots, include=FALSE}
+p1 <- ggplot(mpg) + 
+  geom_point(aes(x = displ, y = hwy))
+
+p2 <- ggplot(mpg) + 
+  geom_bar(aes(x = as.character(year), fill = drv), position = "dodge") + 
+  labs(x = "year")
+
+p3 <- ggplot(mpg) + 
+  geom_density(aes(x = hwy, fill = drv), colour = NA) + 
+  facet_grid(rows = vars(drv))
+
+p4 <- ggplot(mpg) + 
+  stat_summary(aes(x = drv, y = hwy, fill = drv), geom = "col", fun.data = mean_se) +
+  stat_summary(aes(x = drv, y = hwy), geom = "errorbar", fun.data = mean_se, width = 0.5)
+```
+
+
+```{r plot1}
+library(patchwork)
+
+p1 + p2 # same as p3 | p4
+```
+
+```{r plot2}
+p1 + p2 + p3 + p4
+```
+
+
+### Taking control of the layout
+
+```{r plot3}
+p1 + p2 + p3 + plot_layout(ncol = 2)
+```
+
+```{r plot4}
+p1 / p2
+```
+
+More compositions:
+```{r plot5}
+p3 | (p2 / (p1 | p4))
+```
+
+### More about layouts
+
+```{r plot6}
+layout <- "
+AAB
+C#B
+CDD
+"
+
+p1 + p2 + p3 + p4 + plot_layout(design = layout)
+```
+
+```{r plot7}
+p1 + p2 + p3 + guide_area() + plot_layout(ncol = 2, guides = "collect")
+```
+
+
+This way is possible a custom modification of the theme for one plot or for both.
+```{r plot8}
+p12 <- p1 + p2
+p12[[1]] <- p12[[1]] + theme_light()
+p12
+```
+
+```{r plot9}
+p1 + p4 & 
+  scale_y_continuous(limits = c(0, 45)) & 
+  theme_minimal()
+```
+
+### Plot annotations
+```{r plot10}
+p34 <- p3 + p4 + 
+  plot_annotation(
+  title = "A closer look at the effect of drive train in cars",
+  caption = "Source: mpg dataset in ggplot2",
+  tag_levels = "I") &
+  theme_gray(base_family = "mono")
+
+p34
+```
+
+```{r plot11}
+p34[[2]] <- p34[[2]] + plot_layout(tag_level = "new")
+p34 + plot_annotation(tag_levels = c("I", "a"))
+```
+
+
+## Arranging plots on top of each other
+
+It is possible to arrange plots in a way that they are nested to each other, as well as setting the position inside the main plot.
+
+General options are left, right, top, and bottom locations, but more specific locations can be set, such as using: `grid::unit()` (default uses npc units which goes from 0 to 1)
+
+In addition, the location is by default set to the **panel area**, but can be align_to` **plot area**. 
+
+An inset can be placed exactly 15 mm from the top right corner.
+
+```{r plot12}
+p1 + 
+  inset_element(
+    p2, 
+    left = 0.4, 
+    bottom = 0.4, 
+    right = unit(1, "npc") - unit(15, "mm"), 
+    top = unit(1, "npc") - unit(15, "mm"),
+    align_to = "full"
+  )
+```
+
+```{r plot13}
+p24 <- p2 / p4 + plot_layout(guides = "collect")
+
+p1 + 
+  inset_element(p24, left = 0.5, bottom = 0.05, right = 0.95, top = 0.9)  +
+  plot_annotation(tag_levels = 'A') & 
+  theme_bw()
+```
+
+
+
+## Extra
+
+**grid and gridExtra packages**
+```{r plot14, message=FALSE, warning=FALSE, paged.print=FALSE}
+library(gridExtra)
+library(grid)
+
+grid.arrange(p1, p2, p3, p4, ncol=2)
+```
+
+
+**cowplot package**
+```{r plot15, message=FALSE, warning=FALSE, paged.print=FALSE}
+library(cowplot)
+
+plot_grid(p1, p2, 
+          labels = c('A', 'B'),
+          align = "h",
+          label_size = 12,
+          label_fontfamily = "serif",
+          label_fontface = "plain",
+          label_colour = "blue",
+          rel_widths = c(1, 2))
+```
+
+
+```{r plot16, message=FALSE, warning=FALSE, paged.print=FALSE}
+ggsave("images/p1.png", p1)
+
+ggdraw()+
+  draw_plot(p3)+
+  draw_image("images/p1.png",x=0.4,y=0.4,scale=0.5)+
+  draw_label("This is some text",x=0.5,y=0.9)
+```
+
+
+
+To add a common title we use `ggdraw()
+```{r plot17}
+plot_row <- plot_grid(p1, p2)
+
+# now add the title
+title <- ggdraw() + 
+  draw_label("Common title", 
+             fontface = 'bold', x = 0, hjust = 0) +
+  theme(plot.margin = margin(0, 0, 0, 7))
+
+plot_grid(title, plot_row,
+          ncol = 1,
+          rel_heights = c(0.1, 1))
+```
+
+```{r plot18}
+ggdraw()+
+  draw_plot(p1,x=0.1,y=0,scale=0.5)+
+  draw_plot(p2,x=-0.2,y=0,scale=0.5)+
+  draw_label("This plot is made with cowplot",
+             x=0.5,y=0.95,
+             color="pink",
+             fontface="bold",size=20)
+```
+
+**ggpubr package**
+```{r plot19, message=FALSE, warning=FALSE, paged.print=FALSE}
+library(ggpubr)
+ggarrange(p1, p2, p3, ncol = 2, nrow = 2,common.legend = TRUE)
+```
+
+
+## Conclusions
+
+
+[Patchwork - imaginist](https://patchwork.data-imaginist.com/) is one of the packages mentioned in the book, also some other packages provide same results with different approaches. 
+
+### Extra resources:
+
+- [grid and gridExtra](https://cran.r-project.org/web/packages/gridExtra/vignettes/arrangeGrob.html)
+- [cowplot](https://wilkelab.org/cowplot/articles/plot_grid.html)
+- [ggpubr](https://rpkgs.datanovia.com/ggpubr/reference/ggarrange.html)
