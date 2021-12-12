@@ -23,8 +23,8 @@ If you would like to present, please add your name next to a chapter using the [
 - 2021-11-08 & 2012-11-15: Chapter 7: Networks: Federica Gazzelloni
 - 2021-11-22: Chapter 8: Annotations: Michael Haugen
 - 2021-11-29: Chapter 9:Arranging plots: Federica Gazzelloni
-- 2021-12-06: TBC: June Choe
-- 2021-12-13: Chapter 10: Position scales and axes: TBC
+- 2021-12-06: (detour) ggplot2 internals intro: June Choe
+- 2021-12-13: Chapter 10: Position scales and axes: June Choe
 - 2021-12-20: Chapter 11: Color scales and legends: Lydia Gibson
 - 2021-12-27: Christmas/New Year/ End of the Year break
 - 2022-01-03: Chapter 12: Other Aesthetics: Lydia Gibson
