@@ -9,14 +9,19 @@ Depends:
     R (>= 3.1.0)
 Imports: 
     bookdown,
+    cowplot,
     details,
     emo,
     ggraph,
+    ggpubr,
     ggrepel,
+    grid,
+    gridExtra,
     hexbin,
     igraph,
     maps,
     ourworldindata,
+    patchwork,
     seriation,
     tidyverse,
     tidygraph
