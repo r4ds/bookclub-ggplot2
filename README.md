@@ -18,7 +18,16 @@ If you would like to present, please add your name next to a chapter using the [
 - 2021-09-27: Chapter 4: Collective geoms: Ryan S
 - 2021-10-04: Chapter 5: Statistical summaries: Ryan Metcalf
 - 2021-10-11: Break (Indigenous Peoples' Day)
-- 2021-10-18: Chapter 6: Maps: Ryan Metcalf
+- 2021-10-18 & 2021-10-25: Chapter 6: Maps: Ryan Metcalf
+- 2021-11-01: Fall Break
+- 2021-11-08 & 2012-11-15: Chapter 7: Networks: Federica Gazzelloni
+- 2021-11-22: Chapter 8: Annotations: Michael Haugen
+- 2021-11-29: Chapter 9:Arranging plots: Federica Gazzelloni
+- 2021-12-06: TBC: June Choe
+- 2021-12-13: Chapter 10: Position scales and axes: TBC
+- 2021-12-20: Chapter 11: Color scales and legends: Lydia Gibson
+- 2021-12-27: Christmas/New Year/ End of the Year break
+- 2022-01-03: Chapter 12: Other Aesthetics: Lydia Gibson
 
 ## How to Present
 
