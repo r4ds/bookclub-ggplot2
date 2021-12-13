@@ -72,3 +72,13 @@ an-edge-is-not-always-a-line
 faceting-1
 conclusions
 resources
+arranging-plots
+introduction-2
+arranging-plots-side-by-side-with-no-overlap
+taking-control-of-the-layout
+more-about-layouts
+plot-annotations
+arranging-plots-on-top-of-each-other
+extra
+conclusions-1
+extra-resources
