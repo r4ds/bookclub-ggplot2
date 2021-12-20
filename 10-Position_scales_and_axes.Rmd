@@ -377,9 +377,149 @@ layer_data(trans_plot + coord_trans(y = "log10")) %>%
 ```
 
 
-### 10.2 Date-time
+### ASIDE - A little more on transformations
 
-### 10.3 Discrete
+`transform()` method of the [Scales ggproto](https://ggplot2.tidyverse.org/reference/ggplot2-ggproto.html#scales):
+
+> `transform()` Transforms a vector of values using self$trans. This occurs before the Stat is calculated.
+
+Transformation changes the layer data
+
+```{r}
+toy # from Ch 10.1.5
+ggplot(toy, aes(big, txt)) +
+  geom_point()
+
+reversed_plot <- ggplot(toy, aes(big, txt)) +
+  geom_point() +
+  scale_x_reverse()
+reversed_plot
+layer_data(reversed_plot)
+
+rev_trans <- scales::reverse_trans()
+scales::reverse_trans
+str(rev_trans)
+rev_trans$transform(toy$big)
+rev_trans$inverse(rev_trans$transform(toy$big))
+rev_trans$format(rev_trans$breaks(range(toy$big)))
+```
+
+Most useful for positioning purposes (ex: [`time_trans()`](https://scales.r-lib.org/reference/time_trans.html))
+
+```{r}
+hours <- seq(ISOdate(2000,3,20, tz = ""), by = "hour", length.out = 10)
+t <- scales::time_trans()
+t$transform(hours)
+t$inverse(t$transform(hours))
+t$format(t$breaks(range(hours)))
+```
+
+```{r}
+date_trans_plot <- ggplot(tibble(hours = hours), aes(x = hours, y = 0)) +
+  geom_point()
+layer_data(date_trans_plot)
+```
+
+
+## 10.2 Date-time
+
+### 10.2.1 Breaks
+
+Book example:
+
+```{r}
+date_base <- ggplot(economics, aes(date, psavert)) + 
+  geom_line(na.rm = TRUE) +
+  labs(x = NULL, y = NULL)
+
+date_base 
+date_base + scale_x_date(date_breaks = "25 years")
+```
+
+Making it explicit:
+
+```{r}
+date_base + scale_x_date(breaks = scales::breaks_width("25 years"))
+```
+
+Book example:
+
+```{r}
+century20 <- as.Date(c("1900-01-01", "1999-12-31"))
+breaks <- scales::breaks_width("25 years")
+breaks(century20)
+```
+
+Using `offset` argument (unit = days):
+
+```{r}
+breaks2 <- scales::breaks_width("25 years", offset = 31) # offsets to Feb
+breaks2(century20)
+```
+
+Calculating the offset:
+
+```{r}
+diff.Date(c(as.Date("1900-01-01"), as.Date("1900-02-01"))) # as.integer() to get value
+```
+
+### 10.2.2 Minor breaks
+
+Book examples:
+
+```{r}
+date_base + scale_x_date(
+  limits = as.Date(c("2003-01-01", "2003-04-01")),
+  date_breaks = "1 month"
+)
+
+date_base + scale_x_date(
+  limits = as.Date(c("2003-01-01", "2003-04-01")),
+  date_breaks = "1 month",
+  date_minor_breaks = "1 week"
+)
+```
+
+> In the second plot, the major and minor beaks follow slightly different patterns: the minor breaks are always spaced 7 days apart but the major breaks are 1 month apart. Because the months vary in length, this leads to slightly uneven spacing.
+
+Explicit:
+
+```{r}
+date_base + scale_x_date(
+  limits = as.Date(c("2003-01-01", "2003-04-01")),
+  breaks = scales::breaks_width("1 month")
+)
+date_base + scale_x_date(
+  limits = as.Date(c("2003-01-01", "2003-04-01")),
+  breaks = scales::breaks_width("1 month"),
+  minor_breaks = scales::breaks_width("1 week")
+)
+```
+
+
+### 10.2.3 Labels
+
+Book examples:
+
+```{r}
+base <- ggplot(economics, aes(date, psavert)) + 
+  geom_line(na.rm = TRUE) +
+  labs(x = NULL, y = NULL)
+
+base + scale_x_date(date_breaks = "5 years")
+base + scale_x_date(date_breaks = "5 years", date_labels = "%y")
+```
+
+```{r}
+base + scale_x_date(labels = scales::label_date_short())
+lim <- as.Date(c("2004-01-01", "2005-01-01"))
+base + scale_x_date(limits = lim, labels = scales::label_date_short())
+```
+
+
+
+
+## 10.3 Discrete
 
 Book examples:
 
@@ -513,6 +653,168 @@ ggplot(mtcars, aes(hp)) +
   scale_x_binned(breaks = scales::breaks_width(width = 20))
 ```
 
-## 10.5 Limits
+## ASIDE - `geom_sf()` + limits
 
+### Example from Twitter:
+
+[https://twitter.com/Josh_Ebner/status/1470818469801299970?s=20](https://twitter.com/Josh_Ebner/status/1470818469801299970?s=20)
+
+### Reprexes from Ryan S:
+
+```{r}
+library(sf)
+plygn_1 <- tibble(x_coord = c(1, 1, 2, 3, 6, 1),
+                  y_coord = c(1, 2, 1, 2, 5, 1))
+plygn_1
+```
+
+Full range polygon
+
+```{r}
+plygn_1 %>% 
+  ggplot() +
+  geom_polygon(aes(x_coord, y_coord))
+```
+
+Polygon with limits
+
+```{r}
+poly_plygn_1 <- plygn_1 %>%
+  ggplot() +
+  geom_polygon(aes(x_coord, y_coord)) +
+  scale_x_continuous(limits = c(1, 4))
+poly_plygn_1
+```
+
+Path with limits
+
+```{r}
+path_plygn_1 <- plygn_1 %>%
+  ggplot() +
+  geom_path(aes(x_coord, y_coord)) +
+  scale_x_continuous(limits = c(1, 4))
+path_plygn_1
+```
+
+`geom_sf()` without limits
+
+```{r}
+sf_plygn_1 <- plygn_1 %>%                 # tibble of coords
+  as.matrix() %>%                         # make into a matrix
+  list() %>%                              # make into a list
+  st_polygon() %>%                        # make into sf object
+  ggplot() +                              # call ggplot
+  geom_sf()                             # use geom_sf for plotting sf objects
+
+sf_plygn_1
+```
+
+`geom_sf()` with limits
+
+```{r}
+sf_plygn_1_wlims <- sf_plygn_1 +
+  scale_x_continuous(limits = c(1, 4))    # add limits
+
+sf_plygn_1_wlims
+```
+
+### Further exploration
+
+Using `geom_sf()` adds `CoordSF` by default
+
+```{r}
+class(sf_plygn_1$coordinates)
+class(sf_plygn_1_wlims$coordinates)
+```
+
+In fact, `geom_sf()` must be used with `coord_sf()`
+
+```{r, error = TRUE}
+# Same thing as without limits `sf_plygn_1`
+sf_plygn_1 +
+  coord_sf()
+
+# Same thing as with limits `sf_plygn_1_wlims`
+sf_plygn_1 +
+  coord_sf(xlim = c(1, 4))
+
+# Doesn't work
+sf_plygn_1 +
+  coord_cartesian()
+```
+
+The underlying geometry is untouched (indicating that limits are not removing data)
+
+```{r}
+layer_data(sf_plygn_1)
+layer_data(sf_plygn_1_wlims)
+
+identical(
+  layer_data(sf_plygn_1_wlims)$geometry,
+  layer_data(sf_plygn_1)$geometry
+)
+```
+
+OOB handling inside `scale_x|y_continuous()` cannot override the behavior
+
+```{r}
+sf_plygn_1 +
+  scale_x_continuous(limits = c(1, 4), oob = scales::oob_censor)
+```
+
+Instead, `coord_sf(lims_method = )` offers other spatial-specific methods. Censor doesn't seem to be one but an option like `"geometry_bbox"` automatically sets limits to the smallest bounding box that contain all geometries.
+
+```{r}
+sf_plygn_1 +
+  coord_sf(lims_method = "geometry_bbox")
+sf_plygn_1_wlims +
+  coord_sf(lims_method = "geometry_bbox")
+```
+
+Interesting note from the [docs](https://ggplot2.tidyverse.org/reference/ggsf.html#arguments):
+
+> ... specifying limits via position scales or xlim()/ylim() is strongly discouraged, as it can result in data points being dropped from the plot even though they would be visible in the final plot region.
+
+
+### Internals
+
+```{r}
+library(ggtrace) # v.0.4.5
+```
+
+Scale censor for `geom_polygon()`
+
+```{r, eval = FALSE}
+ggbody(ggplot2:::ggplot_build.ggplot)[[17]]
+ggtrace(
+  method = ggplot2:::ggplot_build.ggplot,
+  trace_steps = 17,
+  trace_exprs = quote(browser()),
+  verbose = FALSE
+)
+path_plygn_1
+```
+
+Scale censor for `geom_sf()`
+
+```{r, eval = FALSE}
+ggtrace(
+  method = ggplot2:::ggplot_build.ggplot,
+  trace_steps = 17, # and 26 `layout$map_position`
+  trace_exprs = quote(browser()),
+  verbose = FALSE
+)
+sf_plygn_1_wlims
+```
+
+Inspecting the rendered geom with `layer_grob()`
+
+```{r}
+patchwork::wrap_elements(layer_grob(poly_plygn_1)[[1]])
+patchwork::wrap_elements(layer_grob(sf_plygn_1)[[1]])
+patchwork::wrap_elements(layer_grob(sf_plygn_1_wlims)[[1]])
+
+dplyr::bind_cols(layer_grob(sf_plygn_1)[[1]][c("x", "y")])
+dplyr::bind_cols(layer_grob(sf_plygn_1_wlims)[[1]][c("x", "y")]) # x for fifth row is >1npc
+```
 
