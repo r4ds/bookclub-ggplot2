@@ -1,0 +1,491 @@
+---
+title: "11-Colour_scales_and_legends"
+author: "Lydia Gibson"
+date: "12/19/2021"
+output: pdf_document
+---
+
+
+# Colour Scales and Legends
+
+```{r library, include=FALSE}
+
+library(ggplot2)
+
+```
+
+
+**Learning Objectives**
+
+-Learn how to map values to colours in ggplot2
+
+-Learn about colour theory (a more detailed exposition is available online at http://tinyurl.com/clrdtls)
+
+
+
+
+## A little colour theory
+
+There have been many attempts to come up with colours spaces that are more perceptually uniform. We’ll use a modern attempt called the HCL colour space, which has three components of hue, chroma and luminance:
+
+-**Hue** ranges from 0 to 360 (an angle) and gives the “colour” of the colour (blue, red, orange, etc).
+
+-**Chroma** is the “purity” of a colour, ranging from 0 (grey) to a maximum that varies with luminance.
+
+-**Luminance** is the lightness of the colour, ranging from 0 (black) to 1 (white).
+
+An additional complication is that many people (~10% of men) do not possess the normal complement of colour receptors and so can distinguish fewer colours than usual. In brief, it’s best to avoid red-green contrasts, and to check your plots with systems that simulate colour blindness. Visicheck (https://www.vischeck.com/vischeck/) is one online solution. Another alternative is the dichromat package34 which provides tools for simulating colour blindness, and a set of colour schemes known to work well for colour-blind people. You can also help people with colour blindness in the same way that you can help people with black-and-white printers: by providing redundant mappings to other aesthetics like size, line type or shape.
+
+## Continuous colour scales
+
+```{r continuous color scales 01}
+erupt <- ggplot(faithfuld, aes(waiting, eruptions, fill = density)) +
+  geom_raster() +
+  scale_x_continuous(NULL, expand = c(0, 0)) + 
+  scale_y_continuous(NULL, expand = c(0, 0)) + 
+  theme(legend.position = "none")
+```
+
+
+### Particular pallettes
+
+
+```{r particular pallettes 01}
+erupt
+erupt + scale_fill_viridis_c()
+erupt + scale_fill_viridis_c(option = "magma")
+```
+
+
+```{r particular pallette 02}
+erupt + scale_fill_distiller()
+erupt + scale_fill_distiller(palette = "RdPu")
+erupt + scale_fill_distiller(palette = "YlOrBr")
+
+```
+
+
+
+
+```{r particular pallettes 03}
+erupt + scico::scale_fill_scico(palette = "bilbao") # the default
+erupt + scico::scale_fill_scico(palette = "vik")
+erupt + scico::scale_fill_scico(palette = "lajolla")
+```
+
+
+```{r particular pallettes 04}
+erupt + paletteer::scale_fill_paletteer_c("viridis::plasma")
+erupt + paletteer::scale_fill_paletteer_c("scico::tokyo")
+erupt + paletteer::scale_fill_paletteer_c("gameofthrones::targaryen")
+```
+
+
+
+
+### Robust recipes
+
+
+
+```{r robust recipes 01}
+erupt + paletteer::scale_fill_paletteer_c("viridis::plasma")
+erupt + paletteer::scale_fill_paletteer_c("scico::tokyo")
+erupt + paletteer::scale_fill_paletteer_c("gameofthrones::targaryen")
+```
+
+
+
+
+```{r robust recipes 02}
+erupt + paletteer::scale_fill_paletteer_c("viridis::plasma")
+erupt + paletteer::scale_fill_paletteer_c("scico::tokyo")
+erupt + paletteer::scale_fill_paletteer_c("gameofthrones::targaryen")
+```
+
+
+
+```{r robust recipes 03}
+munsell::hue_slice("5P") +  # generate a ggplot with hue_slice()
+  annotate(                 # add arrows for annotation 
+    geom = "segment", 
+    x = c(7, 7), 
+    y = c(1, 10), 
+    xend = c(7, 7), 
+    yend = c(2, 9), 
+    arrow = arrow(length = unit(2, "mm"))
+  ) 
+#> Warning: Removed 31 rows containing missing values (geom_text).
+
+# construct scale
+erupt + scale_fill_gradient(
+  low = munsell::mnsl("5P 2/12"), 
+  high = munsell::mnsl("5P 7/12")
+)
+```
+
+
+
+```{r robust recipes 04}
+# munsell example
+erupt + scale_fill_gradient2(
+  low = munsell::mnsl("5B 7/8"),
+  high = munsell::mnsl("5Y 7/8"),
+  mid = munsell::mnsl("N 7/0"),
+  midpoint = .02
+) 
+
+# colorspace examples
+erupt + scale_fill_gradientn(colours = colorspace::heat_hcl(7))
+erupt + scale_fill_gradientn(colours = colorspace::diverge_hcl(7))
+```
+
+
+### Missing values
+
+
+
+```{r missing values 01}
+# munsell example
+erupt + scale_fill_gradient2(
+  low = munsell::mnsl("5B 7/8"),
+  high = munsell::mnsl("5Y 7/8"),
+  mid = munsell::mnsl("N 7/0"),
+  midpoint = .02
+) 
+
+# colorspace examples
+erupt + scale_fill_gradientn(colours = colorspace::heat_hcl(7))
+erupt + scale_fill_gradientn(colours = colorspace::diverge_hcl(7))
+```
+
+
+
+
+### Limits, breaks and labels 
+
+
+```{r limits break and labels 01}
+# munsell example
+erupt + scale_fill_gradient2(
+  low = munsell::mnsl("5B 7/8"),
+  high = munsell::mnsl("5Y 7/8"),
+  mid = munsell::mnsl("N 7/0"),
+  midpoint = .02
+) 
+
+# colorspace examples
+erupt + scale_fill_gradientn(colours = colorspace::heat_hcl(7))
+erupt + scale_fill_gradientn(colours = colorspace::diverge_hcl(7))
+```
+
+
+## Discrete colour scales
+
+```{r discrete colour scales 01, include=FALSE}
+df <- data.frame(x = c("a", "b", "c", "d"), y = c(3, 4, 1, 2))
+bars <- ggplot(df, aes(x, y, fill = x)) + 
+  geom_bar(stat = "identity") + 
+  labs(x = NULL, y = NULL) +
+  theme(legend.position = "none")
+```
+
+```{r discrete colour scales 02}
+bars
+bars + scale_fill_discrete()
+bars + scale_fill_hue()
+```
+
+
+
+
+### Brewer scales
+
+
+```{r brewer scales 01}
+RColorBrewer::display.brewer.all()
+```
+
+
+```{r brewer scales 02}
+bars + scale_fill_brewer(palette = "Set1")
+bars + scale_fill_brewer(palette = "Set2")
+bars + scale_fill_brewer(palette = "Accent")
+```
+
+```{r brewer scales 03}
+# scatter plot
+df <- data.frame(x = 1:3 + runif(30), y = runif(30), z = c("a", "b", "c"))
+point <- ggplot(df, aes(x, y)) +
+  geom_point(aes(colour = z))  + 
+  theme(legend.position = "none") +
+  labs(x = NULL, y = NULL)
+
+# three palettes
+point + scale_colour_brewer(palette = "Set1")
+point + scale_colour_brewer(palette = "Set2")  
+point + scale_colour_brewer(palette = "Pastel1")
+```
+
+
+```{r brewer scales 04}
+# bar plot
+df <- data.frame(x = 1:3, y = 3:1, z = c("a", "b", "c"))
+area <- ggplot(df, aes(x, y)) + 
+  geom_bar(aes(fill = z), stat = "identity") + 
+  theme(legend.position = "none") +
+  labs(x = NULL, y = NULL)
+
+# three palettes
+area + scale_fill_brewer(palette = "Set1")
+area + scale_fill_brewer(palette = "Set2")
+area + scale_fill_brewer(palette = "Pastel1")
+```
+
+
+
+### Hue and grey scales
+
+
+```{r hue and gey scales 01}
+bars
+bars + scale_fill_hue(c = 40)
+bars + scale_fill_hue(h = c(180, 300))
+```
+
+
+```{r hue and grey scales 02}
+bars + scale_fill_grey()
+bars + scale_fill_grey(start = 0.5, end = 1)
+bars + scale_fill_grey(start = 0, end = 0.5)
+```
+
+
+### Manual scales
+
+
+```{r manual scales 01}
+bars + scale_fill_manual(values = c("sienna1", "sienna4", "hotpink1", "hotpink4"))
+bars + scale_fill_manual(values = c("tomato1", "tomato2", "tomato3", "tomato4"))
+bars + scale_fill_manual(values = c("grey", "black", "grey", "grey"))
+```
+
+
+```{r manual scales 02}
+bars + scale_fill_manual(values = c(
+  "d" = "grey",
+  "c" = "grey",
+  "b" = "black",
+  "a" = "grey"
+))
+```
+
+
+## Binned colour scales
+
+```{r binned colour scales 01}
+erupt + scale_fill_binned()
+```
+
+
+```{r binned colour scales 02}
+erupt + scale_fill_steps()
+```
+
+```{r binned colour scales 03}
+erupt + scale_fill_steps(n.breaks = 8)
+```
+
+
+```{r binned colour scales 04}
+erupt + scale_fill_steps(low = "grey", high = "brown")
+```
+
+```{r binned colour scales 05}
+erupt + scale_fill_steps2(low = "grey", mid = "white", high = "brown", midpoint = .02)
+```
+
+
+```{r binned colour scales 06}
+erupt + scale_fill_stepsn(n.breaks = 12, colours = terrain.colors(12))
+```
+
+
+
+```{r binned colour scales 07}
+erupt + scale_fill_fermenter(n.breaks = 9)
+```
+
+
+```{r binned colour scales 08}
+erupt + scale_fill_fermenter(n.breaks = 9, palette = "Oranges")
+```
+
+
+```{r binned colour scales 09}
+erupt + scale_fill_fermenter(n.breaks = 9, palette = "PuOr")
+```
+
+
+## Alpha scales
+
+
+Alpha scales map the transparency of a shade to a value in the data. They are not often useful, but can be a convenient way to visually down-weight less important observations. scale_alpha() is an alias for scale_alpha_continuous() since that is the most common use of alpha, and it saves a bit of typing.
+
+
+
+
+
+## Legends
+
+### Positioning
+
+```{r positioning 01, include=FALSE}
+toy <- data.frame(
+  const = 1, 
+  up = 1:4,
+  txt = letters[1:4], 
+  big = (1:4)*1000,
+  log = c(2, 5, 10, 2000)
+)
+toy
+#>   const up txt  big  log
+#> 1     1  1   a 1000    2
+#> 2     1  2   b 2000    5
+#> 3     1  3   c 3000   10
+#> 4     1  4   d 4000 2000
+axs <- ggplot(toy, aes(big, const)) + 
+  geom_point() + 
+  labs(x = NULL, y = NULL)
+axs
+axs + scale_x_continuous(breaks = scales::breaks_extended())
+axs + scale_x_continuous(breaks = scales::breaks_extended(n = 2))
+```
+
+
+
+```{r positioning 02}
+base <- ggplot(toy, aes(up, up)) + 
+  geom_point(aes(colour = txt), size = 3) + 
+  xlab(NULL) + 
+  ylab(NULL)
+
+base + theme(legend.position = "left")
+base + theme(legend.position = "right") # the default 
+base + theme(legend.position = "bottom")
+base + theme(legend.position = "none")
+```
+
+
+```{r positioning 03}
+base <- ggplot(toy, aes(up, up)) + 
+  geom_point(aes(colour = txt), size = 3)
+
+base + theme(legend.position = c(0, 1), legend.justification = c(0, 1))
+base + theme(legend.position = c(0.5, 0.5), legend.justification = c(0.5, 0.5))
+base + theme(legend.position = c(1, 0), legend.justification = c(1, 0))
+```
+
+
+
+
+## Legend key glyphs
+
+
+
+```{r legend key glyphs 01}
+base <- ggplot(economics, aes(date, psavert, color = "savings"))
+
+base + geom_line()
+base + geom_line(key_glyph = "timeseries")
+```
+
+
+### guide_legend()
+
+```{r guide legend 01}
+base <- ggplot(mpg, aes(drv, fill = factor(cyl))) + geom_bar() 
+
+base
+base + guides(fill = guide_legend(ncol = 2))
+base + guides(fill = guide_legend(ncol = 2, byrow = TRUE))
+```
+
+```{r guide legend 02}
+base
+base + guides(fill = guide_legend(reverse = TRUE))
+```
+
+
+
+```{r guide legend 03}
+base <- ggplot(mpg, aes(displ, hwy, colour = drv)) +
+  geom_point(size = 4, alpha = .2, stroke = 0)
+
+base + guides(colour = guide_legend())
+base + guides(colour = guide_legend(override.aes = list(alpha = 1)))
+```
+
+
+### guide_bins()
+
+
+```{r  guide bins 01, include=FALSE}
+base <- ggplot(mpg, aes(displ, manufacturer, size = hwy)) +
+  geom_point(alpha = .2) +
+  scale_size_binned()
+```
+
+
+```{r guide bin 02}
+base
+base + guides(size = guide_bins(axis = FALSE))
+```
+
+
+```{r guide bins 03}
+base + guides(size = guide_bins(direction = "vertical"))
+base + guides(size = guide_bins(direction = "horizontal"))
+```
+
+
+
+```{r guide bins 04}
+base + guides(size = guide_bins(show.limits = TRUE))
+base + guides(
+  size = guide_bins(
+    axis.colour = "red",
+    axis.arrow = arrow(
+      length = unit(.1, "inches"), 
+      ends = "first", 
+      type = "closed"
+    )
+  )
+)
+```
+
+
+### guide_colourbar()/guide_colorbar()
+
+
+```{r guide colorbar 01}
+base <- ggplot(mpg, aes(cyl, displ, colour = hwy)) +
+  geom_point(size = 2)
+
+base
+base + guides(colour = guide_colourbar(reverse = TRUE))
+base + guides(colour = guide_colourbar(barheight = unit(2, "cm")))
+```
+
+
+### 11.7.4 guidecoloursteps()/guidecolorsteps()
+
+```{r guide colorstep 01}
+base <- ggplot(mpg, aes(displ, hwy, colour = cyl)) + 
+  geom_point() + 
+  scale_color_binned()
+
+base + guides(colour = guide_coloursteps(show.limits = TRUE))
+base + guides(colour = guide_coloursteps(show.limits = FALSE))
+```
+
+
