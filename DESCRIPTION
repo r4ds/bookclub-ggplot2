@@ -12,9 +12,11 @@ Imports:
     cowplot,
     details,
     emo,
+    ggh4x,
     ggraph,
     ggpubr,
     ggrepel,
+    ggtrace,
     grid,
     gridExtra,
     hexbin,
@@ -27,4 +29,5 @@ Imports:
     tidygraph
 Remotes: 
     hadley/emo,
-    drsimonj/ourworldindata
+    drsimonj/ourworldindata,
+    yjunechoe/ggtrace
