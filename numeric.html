@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>11.2 10.1 Numeric | ggplot2 Book Club</title>
+  <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="11.2 10.1 Numeric | ggplot2 Book Club" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
+  <meta name="github-repo" content="r4ds/bookclub-ggplot2" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="11.2 10.1 Numeric | ggplot2 Book Club" />
+  
+  <meta name="twitter:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
+  
+
+<meta name="author" content="The R4DS Online Learning Community" />
+
+
+<meta name="date" content="2022-01-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction-preliminaries-asides.html"/>
+<link rel="next" href="date-time.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">ggplot2 with R Book Club</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
+<li class="chapter" data-level="" data-path="book-club-meetings.html"><a href="book-club-meetings.html"><i class="fa fa-check"></i>Book club meetings</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="slide-1-title.html"><a href="slide-1-title.html"><i class="fa fa-check"></i><b>1.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="1.2" data-path="meeting-videos.html"><a href="meeting-videos.html"><i class="fa fa-check"></i><b>1.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="meeting-videos.html"><a href="meeting-videos.html#cohort-1"><i class="fa fa-check"></i><b>1.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="first-steps.html"><a href="first-steps.html"><i class="fa fa-check"></i><b>2</b> First Steps</a><ul>
+<li class="chapter" data-level="2.1" data-path="general-housekeeping-items.html"><a href="general-housekeeping-items.html"><i class="fa fa-check"></i><b>2.1</b> General Housekeeping Items</a></li>
+<li class="chapter" data-level="2.2" data-path="learning-objectives.html"><a href="learning-objectives.html"><i class="fa fa-check"></i><b>2.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="2.3" data-path="main-data-set.html"><a href="main-data-set.html"><i class="fa fa-check"></i><b>2.3</b> Main data set</a></li>
+<li class="chapter" data-level="2.4" data-path="components-of-every-plot.html"><a href="components-of-every-plot.html"><i class="fa fa-check"></i><b>2.4</b> Components of every plot</a></li>
+<li class="chapter" data-level="2.5" data-path="a-few-exercises.html"><a href="a-few-exercises.html"><i class="fa fa-check"></i><b>2.5</b> A few exercises</a></li>
+<li class="chapter" data-level="2.6" data-path="other-aesthetic-attributes.html"><a href="other-aesthetic-attributes.html"><i class="fa fa-check"></i><b>2.6</b> Other aesthetic attributes</a></li>
+<li class="chapter" data-level="2.7" data-path="faceting.html"><a href="faceting.html"><i class="fa fa-check"></i><b>2.7</b> Faceting</a></li>
+<li class="chapter" data-level="2.8" data-path="geoms.html"><a href="geoms.html"><i class="fa fa-check"></i><b>2.8</b> Geoms</a></li>
+<li class="chapter" data-level="2.9" data-path="modifying-the-axes.html"><a href="modifying-the-axes.html"><i class="fa fa-check"></i><b>2.9</b> Modifying the Axes</a></li>
+<li class="chapter" data-level="2.10" data-path="output.html"><a href="output.html"><i class="fa fa-check"></i><b>2.10</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="layers.html"><a href="layers.html"><i class="fa fa-check"></i><b>3</b> Layers</a><ul>
+<li class="chapter" data-level="3.1" data-path="layers-chapters.html"><a href="layers-chapters.html"><i class="fa fa-check"></i><b>3.1</b> Layers: Chapters</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="individual-geoms.html"><a href="individual-geoms.html"><i class="fa fa-check"></i><b>4</b> Individual Geoms</a><ul>
+<li class="chapter" data-level="4.1" data-path="scatterplot.html"><a href="scatterplot.html"><i class="fa fa-check"></i><b>4.1</b> Scatterplot:</a></li>
+<li class="chapter" data-level="4.2" data-path="line-plot.html"><a href="line-plot.html"><i class="fa fa-check"></i><b>4.2</b> Line plot:</a></li>
+<li class="chapter" data-level="4.3" data-path="histogram.html"><a href="histogram.html"><i class="fa fa-check"></i><b>4.3</b> Histogram:</a></li>
+<li class="chapter" data-level="4.4" data-path="bar-chart.html"><a href="bar-chart.html"><i class="fa fa-check"></i><b>4.4</b> Bar chart</a></li>
+<li class="chapter" data-level="4.5" data-path="geom_polygon-draws-polygons-which-are-filled-paths..html"><a href="geom_polygon-draws-polygons-which-are-filled-paths..html"><i class="fa fa-check"></i><b>4.5</b> geom_polygon() draws polygons which are filled paths.</a></li>
+<li class="chapter" data-level="4.6" data-path="geom_line-connects-points-from-left-to-right..html"><a href="geom_line-connects-points-from-left-to-right..html"><i class="fa fa-check"></i><b>4.6</b> geom_line() connects points from left to right.</a></li>
+<li class="chapter" data-level="4.7" data-path="what-low-level-geoms-are-used-to-draw-geom_smooth.html"><a href="what-low-level-geoms-are-used-to-draw-geom_smooth.html"><i class="fa fa-check"></i><b>4.7</b> What low-level geoms are used to draw geom_smooth()?</a></li>
+<li class="chapter" data-level="4.8" data-path="what-low-level-geoms-are-used-to-draw-geom_boxplot.html"><a href="what-low-level-geoms-are-used-to-draw-geom_boxplot.html"><i class="fa fa-check"></i><b>4.8</b> What low-level geoms are used to draw geom_boxplot()?</a></li>
+<li class="chapter" data-level="4.9" data-path="what-low-level-geoms-are-used-to-draw-geom_violin.html"><a href="what-low-level-geoms-are-used-to-draw-geom_violin.html"><i class="fa fa-check"></i><b>4.9</b> What low-level geoms are used to draw geom_violin()?</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="collective-geoms.html"><a href="collective-geoms.html"><i class="fa fa-check"></i><b>5</b> Collective Geoms</a><ul>
+<li class="chapter" data-level="5.1" data-path="general-housekeeping-items-1.html"><a href="general-housekeeping-items-1.html"><i class="fa fa-check"></i><b>5.1</b> General Housekeeping Items</a></li>
+<li class="chapter" data-level="5.2" data-path="learning-objectives-1.html"><a href="learning-objectives-1.html"><i class="fa fa-check"></i><b>5.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="5.3" data-path="quick-intuition-on-collective-geoms.html"><a href="quick-intuition-on-collective-geoms.html"><i class="fa fa-check"></i><b>5.3</b> Quick Intuition on Collective Geoms</a></li>
+<li class="chapter" data-level="5.4" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html"><i class="fa fa-check"></i><b>5.4</b> From the ggplot2 book</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html#multiple-groups-one-aesthetic"><i class="fa fa-check"></i><b>5.4.1</b> Multiple Groups, One Aesthetic</a></li>
+<li class="chapter" data-level="5.4.2" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html#different-groups-on-different-layers"><i class="fa fa-check"></i><b>5.4.2</b> Different Groups on Different Layers</a></li>
+<li class="chapter" data-level="5.4.3" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html#overriding-the-default-grouping"><i class="fa fa-check"></i><b>5.4.3</b> Overriding the Default Grouping</a></li>
+<li class="chapter" data-level="5.4.4" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html#a-couple-of-exercises"><i class="fa fa-check"></i><b>5.4.4</b> A couple of exercises</a></li>
+<li class="chapter" data-level="5.4.5" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html#matching-aesthetics-to-graphic-objects"><i class="fa fa-check"></i><b>5.4.5</b> Matching Aesthetics to Graphic Objects</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="statistical-summaries.html"><a href="statistical-summaries.html"><i class="fa fa-check"></i><b>6</b> Statistical Summaries</a><ul>
+<li class="chapter" data-level="6.1" data-path="defintions-in-this-chapter.html"><a href="defintions-in-this-chapter.html"><i class="fa fa-check"></i><b>6.1</b> Defintions (in this Chapter)</a></li>
+<li class="chapter" data-level="6.2" data-path="revealing-uncertainty.html"><a href="revealing-uncertainty.html"><i class="fa fa-check"></i><b>6.2</b> Revealing Uncertainty</a></li>
+<li class="chapter" data-level="6.3" data-path="weighted-data.html"><a href="weighted-data.html"><i class="fa fa-check"></i><b>6.3</b> Weighted Data</a></li>
+<li class="chapter" data-level="6.4" data-path="displaying-distributions.html"><a href="displaying-distributions.html"><i class="fa fa-check"></i><b>6.4</b> Displaying distributions</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="displaying-distributions.html"><a href="displaying-distributions.html#exercise"><i class="fa fa-check"></i><b>6.4.1</b> Exercise:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="dealing-with-overplotting.html"><a href="dealing-with-overplotting.html"><i class="fa fa-check"></i><b>6.5</b> Dealing with overplotting</a></li>
+<li class="chapter" data-level="6.6" data-path="statistical-summaries-1.html"><a href="statistical-summaries-1.html"><i class="fa fa-check"></i><b>6.6</b> Statistical Summaries</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>7</b> Maps</a><ul>
+<li class="chapter" data-level="7.1" data-path="polygon-maps.html"><a href="polygon-maps.html"><i class="fa fa-check"></i><b>7.1</b> Polygon Maps</a></li>
+<li class="chapter" data-level="7.2" data-path="simple-features-maps.html"><a href="simple-features-maps.html"><i class="fa fa-check"></i><b>7.2</b> Simple Features Maps</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="simple-features-maps.html"><a href="simple-features-maps.html#layered-maps"><i class="fa fa-check"></i><b>7.2.1</b> Layered Maps</a></li>
+<li class="chapter" data-level="7.2.2" data-path="simple-features-maps.html"><a href="simple-features-maps.html#labelled-maps"><i class="fa fa-check"></i><b>7.2.2</b> Labelled Maps</a></li>
+<li class="chapter" data-level="7.2.3" data-path="simple-features-maps.html"><a href="simple-features-maps.html#adding-other-geoms"><i class="fa fa-check"></i><b>7.2.3</b> Adding Other Geoms</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="map-projections.html"><a href="map-projections.html"><i class="fa fa-check"></i><b>7.3</b> Map Projections</a></li>
+<li class="chapter" data-level="7.4" data-path="working-with-sf-data.html"><a href="working-with-sf-data.html"><i class="fa fa-check"></i><b>7.4</b> Working with <code>sf</code> Data</a></li>
+<li class="chapter" data-level="7.5" data-path="raster-maps.html"><a href="raster-maps.html"><i class="fa fa-check"></i><b>7.5</b> Raster Maps</a></li>
+<li class="chapter" data-level="7.6" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>7.6</b> Data Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="networks.html"><a href="networks.html"><i class="fa fa-check"></i><b>8</b> Networks</a><ul>
+<li class="chapter" data-level="8.1" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="what-is-network-data.html"><a href="what-is-network-data.html"><i class="fa fa-check"></i><b>8.2</b> What is network data?</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="what-is-network-data.html"><a href="what-is-network-data.html#a-tidy-network-manipulation-api"><i class="fa fa-check"></i><b>8.2.1</b> A tidy network manipulation API</a></li>
+<li class="chapter" data-level="8.2.2" data-path="what-is-network-data.html"><a href="what-is-network-data.html#conversion"><i class="fa fa-check"></i><b>8.2.2</b> Conversion</a></li>
+<li class="chapter" data-level="8.2.3" data-path="what-is-network-data.html"><a href="what-is-network-data.html#algorithms"><i class="fa fa-check"></i><b>8.2.3</b> Algorithms</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="visualizing-networks.html"><a href="visualizing-networks.html"><i class="fa fa-check"></i><b>8.3</b> Visualizing networks</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="visualizing-networks.html"><a href="visualizing-networks.html#setting-up-the-visualization"><i class="fa fa-check"></i><b>8.3.1</b> Setting up the visualization</a></li>
+<li class="chapter" data-level="8.3.2" data-path="visualizing-networks.html"><a href="visualizing-networks.html#drawing-nodes"><i class="fa fa-check"></i><b>8.3.2</b> Drawing nodes</a></li>
+<li class="chapter" data-level="8.3.3" data-path="visualizing-networks.html"><a href="visualizing-networks.html#drawing-edges"><i class="fa fa-check"></i><b>8.3.3</b> Drawing edges</a></li>
+<li class="chapter" data-level="8.3.4" data-path="visualizing-networks.html"><a href="visualizing-networks.html#faceting-1"><i class="fa fa-check"></i><b>8.3.4</b> Faceting</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="conclusions.html"><a href="conclusions.html"><i class="fa fa-check"></i><b>8.4</b> Conclusions</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="conclusions.html"><a href="conclusions.html#resources"><i class="fa fa-check"></i><b>8.4.1</b> Resources:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>9</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="9.1" data-path="slide-1-title-1.html"><a href="slide-1-title-1.html"><i class="fa fa-check"></i><b>9.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="9.2" data-path="meeting-videos-1.html"><a href="meeting-videos-1.html"><i class="fa fa-check"></i><b>9.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="meeting-videos-1.html"><a href="meeting-videos-1.html#cohort-1-1"><i class="fa fa-check"></i><b>9.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="arranging-plots.html"><a href="arranging-plots.html"><i class="fa fa-check"></i><b>10</b> Arranging Plots</a><ul>
+<li class="chapter" data-level="10.1" data-path="introduction-2.html"><a href="introduction-2.html"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="arranging-plots-side-by-side-with-no-overlap.html"><a href="arranging-plots-side-by-side-with-no-overlap.html"><i class="fa fa-check"></i><b>10.2</b> Arranging plots side by side with no overlap</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="arranging-plots-side-by-side-with-no-overlap.html"><a href="arranging-plots-side-by-side-with-no-overlap.html#taking-control-of-the-layout"><i class="fa fa-check"></i><b>10.2.1</b> Taking control of the layout</a></li>
+<li class="chapter" data-level="10.2.2" data-path="arranging-plots-side-by-side-with-no-overlap.html"><a href="arranging-plots-side-by-side-with-no-overlap.html#more-about-layouts"><i class="fa fa-check"></i><b>10.2.2</b> More about layouts</a></li>
+<li class="chapter" data-level="10.2.3" data-path="arranging-plots-side-by-side-with-no-overlap.html"><a href="arranging-plots-side-by-side-with-no-overlap.html#plot-annotations"><i class="fa fa-check"></i><b>10.2.3</b> Plot annotations</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="arranging-plots-on-top-of-each-other.html"><a href="arranging-plots-on-top-of-each-other.html"><i class="fa fa-check"></i><b>10.3</b> Arranging plots on top of each other</a></li>
+<li class="chapter" data-level="10.4" data-path="extra.html"><a href="extra.html"><i class="fa fa-check"></i><b>10.4</b> Extra</a></li>
+<li class="chapter" data-level="10.5" data-path="conclusions-1.html"><a href="conclusions-1.html"><i class="fa fa-check"></i><b>10.5</b> Conclusions</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="conclusions-1.html"><a href="conclusions-1.html#extra-resources"><i class="fa fa-check"></i><b>10.5.1</b> Extra resources:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="position-scales-and-axes.html"><a href="position-scales-and-axes.html"><i class="fa fa-check"></i><b>11</b> Position scales and axes</a><ul>
+<li class="chapter" data-level="11.1" data-path="introduction-preliminaries-asides.html"><a href="introduction-preliminaries-asides.html"><i class="fa fa-check"></i><b>11.1</b> Introduction / preliminaries / asides</a></li>
+<li class="chapter" data-level="11.2" data-path="numeric.html"><a href="numeric.html"><i class="fa fa-check"></i><b>11.2</b> 10.1 Numeric</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="numeric.html"><a href="numeric.html#limits"><i class="fa fa-check"></i><b>11.2.1</b> 10.1.1 Limits</a></li>
+<li class="chapter" data-level="11.2.2" data-path="numeric.html"><a href="numeric.html#out-of-bounds-values"><i class="fa fa-check"></i><b>11.2.2</b> 10.1.2 Out of bounds values</a></li>
+<li class="chapter" data-level="11.2.3" data-path="numeric.html"><a href="numeric.html#visual-range-expansion"><i class="fa fa-check"></i><b>11.2.3</b> 10.1.3 Visual range expansion</a></li>
+<li class="chapter" data-level="11.2.4" data-path="numeric.html"><a href="numeric.html#exercises"><i class="fa fa-check"></i><b>11.2.4</b> 10.1.4 Exercises</a></li>
+<li class="chapter" data-level="11.2.5" data-path="numeric.html"><a href="numeric.html#breaks"><i class="fa fa-check"></i><b>11.2.5</b> 10.1.5 Breaks</a></li>
+<li class="chapter" data-level="11.2.6" data-path="numeric.html"><a href="numeric.html#minor-breaks"><i class="fa fa-check"></i><b>11.2.6</b> 10.1.6 Minor breaks</a></li>
+<li class="chapter" data-level="11.2.7" data-path="numeric.html"><a href="numeric.html#labels"><i class="fa fa-check"></i><b>11.2.7</b> 10.1.7 Labels</a></li>
+<li class="chapter" data-level="11.2.8" data-path="numeric.html"><a href="numeric.html#exercises-1"><i class="fa fa-check"></i><b>11.2.8</b> 10.1.8 Exercises</a></li>
+<li class="chapter" data-level="11.2.9" data-path="numeric.html"><a href="numeric.html#transformations"><i class="fa fa-check"></i><b>11.2.9</b> 10.1.9 Transformations</a></li>
+<li class="chapter" data-level="11.2.10" data-path="numeric.html"><a href="numeric.html#aside---a-little-more-on-transformations"><i class="fa fa-check"></i><b>11.2.10</b> ASIDE - A little more on transformations</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="date-time.html"><a href="date-time.html"><i class="fa fa-check"></i><b>11.3</b> 10.2 Date-time</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="date-time.html"><a href="date-time.html#breaks-1"><i class="fa fa-check"></i><b>11.3.1</b> 10.2.1 Breaks</a></li>
+<li class="chapter" data-level="11.3.2" data-path="date-time.html"><a href="date-time.html#minor-breaks-1"><i class="fa fa-check"></i><b>11.3.2</b> 10.2.2 Minor breaks</a></li>
+<li class="chapter" data-level="11.3.3" data-path="date-time.html"><a href="date-time.html#labels-1"><i class="fa fa-check"></i><b>11.3.3</b> 10.2.3 Labels</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="discrete.html"><a href="discrete.html"><i class="fa fa-check"></i><b>11.4</b> 10.3 Discrete</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="discrete.html"><a href="discrete.html#limits-1"><i class="fa fa-check"></i><b>11.4.1</b> 10.3.1 Limits</a></li>
+<li class="chapter" data-level="11.4.2" data-path="discrete.html"><a href="discrete.html#scale-labels"><i class="fa fa-check"></i><b>11.4.2</b> 10.3.2 Scale labels</a></li>
+<li class="chapter" data-level="11.4.3" data-path="discrete.html"><a href="discrete.html#scale-labels-1"><i class="fa fa-check"></i><b>11.4.3</b> 10.3.2 Scale labels</a></li>
+<li class="chapter" data-level="11.4.4" data-path="discrete.html"><a href="discrete.html#guide_axis"><i class="fa fa-check"></i><b>11.4.4</b> 10.3.3 <code>guide_axis()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="binned.html"><a href="binned.html"><i class="fa fa-check"></i><b>11.5</b> 10.4 Binned</a></li>
+<li class="chapter" data-level="11.6" data-path="aside---geom_sf-limits.html"><a href="aside---geom_sf-limits.html"><i class="fa fa-check"></i><b>11.6</b> ASIDE - <code>geom_sf()</code> + limits</a><ul>
+<li class="chapter" data-level="11.6.1" data-path="aside---geom_sf-limits.html"><a href="aside---geom_sf-limits.html#example-from-twitter"><i class="fa fa-check"></i><b>11.6.1</b> Example from Twitter:</a></li>
+<li class="chapter" data-level="11.6.2" data-path="aside---geom_sf-limits.html"><a href="aside---geom_sf-limits.html#reprexes-from-ryan-s"><i class="fa fa-check"></i><b>11.6.2</b> Reprexes from Ryan S:</a></li>
+<li class="chapter" data-level="11.6.3" data-path="aside---geom_sf-limits.html"><a href="aside---geom_sf-limits.html#further-exploration"><i class="fa fa-check"></i><b>11.6.3</b> Further exploration</a></li>
+<li class="chapter" data-level="11.6.4" data-path="aside---geom_sf-limits.html"><a href="aside---geom_sf-limits.html#internals"><i class="fa fa-check"></i><b>11.6.4</b> Internals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="placeholder-1.html"><a href="placeholder-1.html"><i class="fa fa-check"></i><b>12</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="12.1" data-path="slide-1-title-2.html"><a href="slide-1-title-2.html"><i class="fa fa-check"></i><b>12.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="12.2" data-path="meeting-videos-2.html"><a href="meeting-videos-2.html"><i class="fa fa-check"></i><b>12.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="meeting-videos-2.html"><a href="meeting-videos-2.html#cohort-1-2"><i class="fa fa-check"></i><b>12.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="placeholder-2.html"><a href="placeholder-2.html"><i class="fa fa-check"></i><b>13</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="13.1" data-path="slide-1-title-3.html"><a href="slide-1-title-3.html"><i class="fa fa-check"></i><b>13.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="13.2" data-path="meeting-videos-3.html"><a href="meeting-videos-3.html"><i class="fa fa-check"></i><b>13.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="meeting-videos-3.html"><a href="meeting-videos-3.html#cohort-1-3"><i class="fa fa-check"></i><b>13.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="placeholder-3.html"><a href="placeholder-3.html"><i class="fa fa-check"></i><b>14</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="14.1" data-path="slide-1-title-4.html"><a href="slide-1-title-4.html"><i class="fa fa-check"></i><b>14.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="14.2" data-path="meeting-videos-4.html"><a href="meeting-videos-4.html"><i class="fa fa-check"></i><b>14.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="meeting-videos-4.html"><a href="meeting-videos-4.html#cohort-1-4"><i class="fa fa-check"></i><b>14.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="placeholder-4.html"><a href="placeholder-4.html"><i class="fa fa-check"></i><b>15</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="15.1" data-path="slide-1-title-5.html"><a href="slide-1-title-5.html"><i class="fa fa-check"></i><b>15.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="15.2" data-path="meeting-videos-5.html"><a href="meeting-videos-5.html"><i class="fa fa-check"></i><b>15.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="meeting-videos-5.html"><a href="meeting-videos-5.html#cohort-1-5"><i class="fa fa-check"></i><b>15.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="placeholder-5.html"><a href="placeholder-5.html"><i class="fa fa-check"></i><b>16</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="16.1" data-path="slide-1-title-6.html"><a href="slide-1-title-6.html"><i class="fa fa-check"></i><b>16.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="16.2" data-path="meeting-videos-6.html"><a href="meeting-videos-6.html"><i class="fa fa-check"></i><b>16.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="16.2.1" data-path="meeting-videos-6.html"><a href="meeting-videos-6.html#cohort-1-6"><i class="fa fa-check"></i><b>16.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="placeholder-6.html"><a href="placeholder-6.html"><i class="fa fa-check"></i><b>17</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="17.1" data-path="slide-1-title-7.html"><a href="slide-1-title-7.html"><i class="fa fa-check"></i><b>17.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="17.2" data-path="meeting-videos-7.html"><a href="meeting-videos-7.html"><i class="fa fa-check"></i><b>17.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="meeting-videos-7.html"><a href="meeting-videos-7.html#cohort-1-7"><i class="fa fa-check"></i><b>17.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="placeholder-7.html"><a href="placeholder-7.html"><i class="fa fa-check"></i><b>18</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="18.1" data-path="slide-1-title-8.html"><a href="slide-1-title-8.html"><i class="fa fa-check"></i><b>18.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="18.2" data-path="meeting-videos-8.html"><a href="meeting-videos-8.html"><i class="fa fa-check"></i><b>18.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="meeting-videos-8.html"><a href="meeting-videos-8.html#cohort-1-8"><i class="fa fa-check"></i><b>18.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="placeholder-8.html"><a href="placeholder-8.html"><i class="fa fa-check"></i><b>19</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="19.1" data-path="slide-1-title-9.html"><a href="slide-1-title-9.html"><i class="fa fa-check"></i><b>19.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="19.2" data-path="meeting-videos-9.html"><a href="meeting-videos-9.html"><i class="fa fa-check"></i><b>19.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="19.2.1" data-path="meeting-videos-9.html"><a href="meeting-videos-9.html#cohort-1-9"><i class="fa fa-check"></i><b>19.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="placeholder-9.html"><a href="placeholder-9.html"><i class="fa fa-check"></i><b>20</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="20.1" data-path="slide-1-title-10.html"><a href="slide-1-title-10.html"><i class="fa fa-check"></i><b>20.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="20.2" data-path="meeting-videos-10.html"><a href="meeting-videos-10.html"><i class="fa fa-check"></i><b>20.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="20.2.1" data-path="meeting-videos-10.html"><a href="meeting-videos-10.html#cohort-1-10"><i class="fa fa-check"></i><b>20.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="placeholder-10.html"><a href="placeholder-10.html"><i class="fa fa-check"></i><b>21</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="21.1" data-path="slide-1-title-11.html"><a href="slide-1-title-11.html"><i class="fa fa-check"></i><b>21.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="21.2" data-path="meeting-videos-11.html"><a href="meeting-videos-11.html"><i class="fa fa-check"></i><b>21.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="21.2.1" data-path="meeting-videos-11.html"><a href="meeting-videos-11.html#cohort-1-11"><i class="fa fa-check"></i><b>21.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="placeholder-11.html"><a href="placeholder-11.html"><i class="fa fa-check"></i><b>22</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="22.1" data-path="slide-1-title-12.html"><a href="slide-1-title-12.html"><i class="fa fa-check"></i><b>22.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="22.2" data-path="meeting-videos-12.html"><a href="meeting-videos-12.html"><i class="fa fa-check"></i><b>22.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="22.2.1" data-path="meeting-videos-12.html"><a href="meeting-videos-12.html#cohort-1-12"><i class="fa fa-check"></i><b>22.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="placeholder-12.html"><a href="placeholder-12.html"><i class="fa fa-check"></i><b>23</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="23.1" data-path="slide-1-title-13.html"><a href="slide-1-title-13.html"><i class="fa fa-check"></i><b>23.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="23.2" data-path="meeting-videos-13.html"><a href="meeting-videos-13.html"><i class="fa fa-check"></i><b>23.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="23.2.1" data-path="meeting-videos-13.html"><a href="meeting-videos-13.html#cohort-1-13"><i class="fa fa-check"></i><b>23.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ggplot2 Book Club</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="numeric" class="section level2">
+<h2><span class="header-section-number">11.2</span> 10.1 Numeric</h2>
+<div id="limits" class="section level3">
+<h3><span class="header-section-number">11.2.1</span> 10.1.1 Limits</h3>
+<p>The book doesn’t have content for this section (??)</p>
+<p>But we know that you can set limits with <code>xlim()</code>/<code>ylim()</code> or <code>scale_x|y_*(limits = )</code></p>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="numeric.html#cb222-1"></a>lim_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> hp, <span class="dt">y =</span> disp)) <span class="op">+</span></span>
+<span id="cb222-2"><a href="numeric.html#cb222-2"></a><span class="st">  </span><span class="kw">geom_point</span>()</span>
+<span id="cb222-3"><a href="numeric.html#cb222-3"></a></span>
+<span id="cb222-4"><a href="numeric.html#cb222-4"></a>lim_plot</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-04-1.png" width="672" /></p>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="numeric.html#cb223-1"></a>lim_plot <span class="op">+</span></span>
+<span id="cb223-2"><a href="numeric.html#cb223-2"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>, <span class="dv">500</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-04-2.png" width="672" /></p>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="numeric.html#cb224-1"></a><span class="co"># NA to use range of data</span></span>
+<span id="cb224-2"><a href="numeric.html#cb224-2"></a>lim_plot <span class="op">+</span></span>
+<span id="cb224-3"><a href="numeric.html#cb224-3"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>, <span class="ot">NA</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-04-3.png" width="672" /></p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="numeric.html#cb225-1"></a><span class="co"># Same thing</span></span>
+<span id="cb225-2"><a href="numeric.html#cb225-2"></a>lim_plot <span class="op">+</span></span>
+<span id="cb225-3"><a href="numeric.html#cb225-3"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="ot">NA</span>))</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-04-4.png" width="672" /></p>
+</div>
+<div id="out-of-bounds-values" class="section level3">
+<h3><span class="header-section-number">11.2.2</span> 10.1.2 Out of bounds values</h3>
+<p>NOTE: A big theme of the <code>{scales}</code> package as of v1.1.1 (May 2020) is that they have very transparent function names. For example, the family of functions for Out Of Bounds (oob) handling are all named <code>oob_*()</code>. This is an intentional (re-)design of the package to work nicely with autocomplete.</p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="numeric.html#cb226-1"></a><span class="kw">str_subset</span>(<span class="kw">ls</span>(<span class="dt">envir =</span> <span class="kw">asNamespace</span>(<span class="st">&quot;scales&quot;</span>)), <span class="st">&quot;^oob_&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;oob_censor&quot;          &quot;oob_censor_any&quot;      &quot;oob_discard&quot;        
+## [4] &quot;oob_keep&quot;            &quot;oob_squish&quot;          &quot;oob_squish_any&quot;     
+## [7] &quot;oob_squish_infinite&quot;</code></pre>
+<p>By default, data outside scales are set to <code>NA</code>. This is because the <code>oob</code> argument is set to <code>oob_censor()</code>/<code>censor()</code>. Note that oob only applies to continuous scales, since values of a discrete scale form a fixed set.</p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="numeric.html#cb228-1"></a><span class="kw">body</span>(scale_x_continuous)</span></code></pre></div>
+<pre><code>## {
+##     sc &lt;- continuous_scale(ggplot_global$x_aes, &quot;position_c&quot;, 
+##         identity, name = name, breaks = breaks, n.breaks = n.breaks, 
+##         minor_breaks = minor_breaks, labels = labels, limits = limits, 
+##         expand = expand, oob = oob, na.value = na.value, trans = trans, 
+##         guide = guide, position = position, super = ScaleContinuousPosition)
+##     set_sec_axis(sec.axis, sc)
+## }</code></pre>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="numeric.html#cb230-1"></a><span class="kw">formals</span>(continuous_scale)<span class="op">$</span>oob</span></code></pre></div>
+<pre><code>## censor</code></pre>
+<p>Book’s examples:</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="numeric.html#cb232-1"></a>base &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(drv, hwy)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb232-2"><a href="numeric.html#cb232-2"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">28</span>, <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb232-3"><a href="numeric.html#cb232-3"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">alpha =</span> <span class="fl">.2</span>) <span class="co"># I set alpha here for a later demo</span></span>
+<span id="cb232-4"><a href="numeric.html#cb232-4"></a></span>
+<span id="cb232-5"><a href="numeric.html#cb232-5"></a>base</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-07-1.png" width="672" /></p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="numeric.html#cb233-1"></a>base <span class="op">+</span><span class="st"> </span><span class="kw">coord_cartesian</span>(<span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">35</span>))</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-07-2.png" width="672" /></p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="numeric.html#cb234-1"></a>base <span class="op">+</span><span class="st"> </span><span class="kw">ylim</span>(<span class="dv">10</span>, <span class="dv">35</span>)</span></code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-07-3.png" width="672" /></p>
+<p>Equivalent solutions with <code>oob_*()</code></p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="numeric.html#cb236-1"></a><span class="co"># zoom only (keeps out of bounds values for the stat computation)</span></span>
+<span id="cb236-2"><a href="numeric.html#cb236-2"></a>base <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">35</span>), <span class="dt">oob =</span> scales<span class="op">::</span>oob_keep)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-08-1.png" width="672" /></p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="numeric.html#cb237-1"></a><span class="co"># default that removes out of bounds values</span></span>
+<span id="cb237-2"><a href="numeric.html#cb237-2"></a>base <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">35</span>), <span class="dt">oob =</span> scales<span class="op">::</span>oob_censor)</span></code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-08-2.png" width="672" /></p>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="numeric.html#cb239-1"></a><span class="co"># squish option (plots outliers at the uper limit of y = 35)</span></span>
+<span id="cb239-2"><a href="numeric.html#cb239-2"></a>base <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">35</span>), <span class="dt">oob =</span> scales<span class="op">::</span>oob_squish)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-08-3.png" width="672" /></p>
+<p>You can use oob functions for non-positional scales</p>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="numeric.html#cb240-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">y =</span> <span class="dv">8</span><span class="op">:</span><span class="dv">13</span>)</span>
+<span id="cb240-2"><a href="numeric.html#cb240-2"></a>base &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(x, y)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb240-3"><a href="numeric.html#cb240-3"></a><span class="st">  </span><span class="kw">geom_col</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> x)) <span class="op">+</span><span class="st">                    </span><span class="co"># bar chart</span></span>
+<span id="cb240-4"><a href="numeric.html#cb240-4"></a><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="fl">3.5</span>, <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="co"># for visual clarity only</span></span>
+<span id="cb240-5"><a href="numeric.html#cb240-5"></a></span>
+<span id="cb240-6"><a href="numeric.html#cb240-6"></a>base</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-09-1.png" width="672" /></p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="numeric.html#cb241-1"></a>base <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_gradient</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)) <span class="co"># oob = scales::oob_censor</span></span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-09-2.png" width="672" /></p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="numeric.html#cb242-1"></a>base <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_gradient</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="dt">oob =</span> scales<span class="op">::</span>squish) <span class="co"># scales::oob_squish</span></span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-09-3.png" width="672" /></p>
+</div>
+<div id="visual-range-expansion" class="section level3">
+<h3><span class="header-section-number">11.2.3</span> 10.1.3 Visual range expansion</h3>
+<p>Book examples:</p>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="numeric.html#cb243-1"></a>f_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(faithfuld, <span class="kw">aes</span>(waiting, eruptions)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb243-2"><a href="numeric.html#cb243-2"></a><span class="st">  </span><span class="kw">geom_raster</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> density)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb243-3"><a href="numeric.html#cb243-3"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb243-4"><a href="numeric.html#cb243-4"></a>f_plot</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="numeric.html#cb244-1"></a>f_plot <span class="op">+</span><span class="st"> </span></span>
+<span id="cb244-2"><a href="numeric.html#cb244-2"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>)) <span class="op">+</span><span class="st">  </span><span class="co"># expand = 0</span></span>
+<span id="cb244-3"><a href="numeric.html#cb244-3"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))  <span class="co"># expand = 0</span></span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-10-2.png" width="672" /></p>
+<p>With <code>expansion()</code> from v3.3.0 (Dec 2020)</p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="numeric.html#cb245-1"></a><span class="kw">formals</span>(expansion)</span></code></pre></div>
+<pre><code>## $mult
+## [1] 0
+## 
+## $add
+## [1] 0</code></pre>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="numeric.html#cb247-1"></a>f_plot <span class="op">+</span></span>
+<span id="cb247-2"><a href="numeric.html#cb247-2"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">expansion</span>(<span class="dt">mult =</span> <span class="dv">0</span>)) <span class="co"># mult = c(0, 0)</span></span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-12-1.png" width="672" /></p>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="numeric.html#cb248-1"></a>f_plot <span class="op">+</span></span>
+<span id="cb248-2"><a href="numeric.html#cb248-2"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">expansion</span>(<span class="dt">mult =</span> <span class="dv">1</span>))</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-12-2.png" width="672" /></p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="numeric.html#cb249-1"></a>f_plot <span class="op">+</span></span>
+<span id="cb249-2"><a href="numeric.html#cb249-2"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">expansion</span>(<span class="dt">mult =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)))</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-12-3.png" width="672" /></p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="numeric.html#cb250-1"></a>f_plot <span class="op">+</span></span>
+<span id="cb250-2"><a href="numeric.html#cb250-2"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">expansion</span>(<span class="dt">mult =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))) <span class="op">+</span></span>
+<span id="cb250-3"><a href="numeric.html#cb250-3"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">expansion</span>(<span class="dt">add =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10</span>)))</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-12-4.png" width="672" /></p>
+</div>
+<div id="exercises" class="section level3">
+<h3><span class="header-section-number">11.2.4</span> 10.1.4 Exercises</h3>
+</div>
+<div id="breaks" class="section level3">
+<h3><span class="header-section-number">11.2.5</span> 10.1.5 Breaks</h3>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="numeric.html#cb251-1"></a><span class="kw">str_subset</span>(<span class="kw">ls</span>(<span class="dt">envir =</span> <span class="kw">asNamespace</span>(<span class="st">&quot;scales&quot;</span>)), <span class="st">&quot;^breaks_&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;breaks_extended&quot; &quot;breaks_log&quot;      &quot;breaks_pretty&quot;   &quot;breaks_width&quot;</code></pre>
+<p>Book example:</p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="numeric.html#cb253-1"></a>toy &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb253-2"><a href="numeric.html#cb253-2"></a>  <span class="dt">const =</span> <span class="dv">1</span>, </span>
+<span id="cb253-3"><a href="numeric.html#cb253-3"></a>  <span class="dt">up =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>,</span>
+<span id="cb253-4"><a href="numeric.html#cb253-4"></a>  <span class="dt">txt =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], </span>
+<span id="cb253-5"><a href="numeric.html#cb253-5"></a>  <span class="dt">big =</span> (<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)<span class="op">*</span><span class="dv">1000</span>,</span>
+<span id="cb253-6"><a href="numeric.html#cb253-6"></a>  <span class="dt">log =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">2000</span>)</span>
+<span id="cb253-7"><a href="numeric.html#cb253-7"></a>)</span>
+<span id="cb253-8"><a href="numeric.html#cb253-8"></a>toy</span></code></pre></div>
+<pre><code>##   const up txt  big  log
+## 1     1  1   a 1000    2
+## 2     1  2   b 2000    5
+## 3     1  3   c 3000   10
+## 4     1  4   d 4000 2000</code></pre>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="numeric.html#cb255-1"></a><span class="co">#&gt;   const up txt  big  log</span></span>
+<span id="cb255-2"><a href="numeric.html#cb255-2"></a><span class="co">#&gt; 1     1  1   a 1000    2</span></span>
+<span id="cb255-3"><a href="numeric.html#cb255-3"></a><span class="co">#&gt; 2     1  2   b 2000    5</span></span>
+<span id="cb255-4"><a href="numeric.html#cb255-4"></a><span class="co">#&gt; 3     1  3   c 3000   10</span></span>
+<span id="cb255-5"><a href="numeric.html#cb255-5"></a><span class="co">#&gt; 4     1  4   d 4000 2000</span></span>
+<span id="cb255-6"><a href="numeric.html#cb255-6"></a>axs &lt;-<span class="st"> </span><span class="kw">ggplot</span>(toy, <span class="kw">aes</span>(big, const)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb255-7"><a href="numeric.html#cb255-7"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb255-8"><a href="numeric.html#cb255-8"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="ot">NULL</span>, <span class="dt">y =</span> <span class="ot">NULL</span>)</span>
+<span id="cb255-9"><a href="numeric.html#cb255-9"></a>axs</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="numeric.html#cb256-1"></a>axs <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">breaks_extended</span>())</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-14-2.png" width="672" /></p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="numeric.html#cb257-1"></a>axs <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">breaks_extended</span>(<span class="dt">n =</span> <span class="dv">2</span>))</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-14-3.png" width="672" /></p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="numeric.html#cb258-1"></a>axs <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="ot">NULL</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-14-4.png" width="672" /></p>
+<p>Demo from <code>{scales}</code>:</p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="numeric.html#cb259-1"></a>scales<span class="op">::</span><span class="kw">demo_continuous</span>(<span class="kw">c</span>(<span class="dv">1000</span>, <span class="dv">4000</span>), <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">breaks_extended</span>())</span></code></pre></div>
+<pre><code>## scale_x_continuous(breaks = scales::breaks_extended())</code></pre>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-15-1.png" width="672" /></p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="numeric.html#cb261-1"></a>scales<span class="op">::</span><span class="kw">demo_continuous</span>(<span class="kw">c</span>(<span class="dv">1000</span>, <span class="dv">4000</span>), <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">breaks_extended</span>(<span class="dt">n =</span> <span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## scale_x_continuous(breaks = scales::breaks_extended(n = 2))</code></pre>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-15-2.png" width="672" /></p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="numeric.html#cb263-1"></a>scales<span class="op">::</span><span class="kw">demo_continuous</span>(<span class="kw">c</span>(<span class="dv">1000</span>, <span class="dv">4000</span>), <span class="ot">NULL</span>)</span></code></pre></div>
+<pre><code>## scale_x_continuous(NULL)</code></pre>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-15-3.png" width="672" /></p>
+<p>At the vector level:</p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="numeric.html#cb265-1"></a>scales<span class="op">::</span><span class="kw">breaks_extended</span>()(<span class="kw">c</span>(<span class="dv">1000</span>, <span class="dv">4000</span>))</span></code></pre></div>
+<pre><code>## [1] 1000 2000 3000 4000</code></pre>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="numeric.html#cb267-1"></a>scales<span class="op">::</span><span class="kw">breaks_extended</span>(<span class="dt">n =</span> <span class="dv">2</span>)(<span class="kw">c</span>(<span class="dv">1000</span>, <span class="dv">4000</span>))</span></code></pre></div>
+<pre><code>## [1] 1000 4000</code></pre>
+<p>Other breaks:</p>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="numeric.html#cb269-1"></a>my_range &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">101</span>)</span>
+<span id="cb269-2"><a href="numeric.html#cb269-2"></a>scales<span class="op">::</span><span class="kw">breaks_extended</span>()(my_range)</span></code></pre></div>
+<pre><code>## [1]   0  25  50  75 100</code></pre>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="numeric.html#cb271-1"></a>scales<span class="op">::</span><span class="kw">breaks_width</span>(<span class="dt">width =</span> <span class="dv">10</span>)(my_range)</span></code></pre></div>
+<pre><code>##  [1]   0  10  20  30  40  50  60  70  80  90 100 110</code></pre>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="numeric.html#cb273-1"></a>scales<span class="op">::</span><span class="kw">breaks_pretty</span>(<span class="dt">width =</span> <span class="dv">10</span>)(my_range) <span class="co"># pretty(1:101)</span></span></code></pre></div>
+<pre><code>## [1]   0  20  40  60  80 100 120</code></pre>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="numeric.html#cb275-1"></a>scales<span class="op">::</span><span class="kw">breaks_log</span>()(my_range)</span></code></pre></div>
+<pre><code>## [1]    1   10  100 1000</code></pre>
+<p>Debugging arguments in <code>scale_*()</code> that take function factories</p>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="numeric.html#cb277-1"></a>browserer &lt;-<span class="st"> </span><span class="cf">function</span>(...) {</span>
+<span id="cb277-2"><a href="numeric.html#cb277-2"></a>  params &lt;-<span class="st"> </span><span class="kw">list</span>(...)</span>
+<span id="cb277-3"><a href="numeric.html#cb277-3"></a>  <span class="kw">browser</span>()</span>
+<span id="cb277-4"><a href="numeric.html#cb277-4"></a>  <span class="cf">if</span> (<span class="kw">exists</span>(<span class="st">&quot;result&quot;</span>)) {</span>
+<span id="cb277-5"><a href="numeric.html#cb277-5"></a>    <span class="kw">return</span>(result)</span>
+<span id="cb277-6"><a href="numeric.html#cb277-6"></a>  }</span>
+<span id="cb277-7"><a href="numeric.html#cb277-7"></a>}</span>
+<span id="cb277-8"><a href="numeric.html#cb277-8"></a>axs <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> browserer)</span></code></pre></div>
+</div>
+<div id="minor-breaks" class="section level3">
+<h3><span class="header-section-number">11.2.6</span> 10.1.6 Minor breaks</h3>
+<p>Book example:</p>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="numeric.html#cb278-1"></a>mb &lt;-<span class="st"> </span><span class="kw">unique</span>(<span class="kw">as.numeric</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span> <span class="op">%o%</span><span class="st"> </span><span class="dv">10</span> <span class="op">^</span><span class="st"> </span>(<span class="dv">0</span><span class="op">:</span><span class="dv">3</span>)))</span>
+<span id="cb278-2"><a href="numeric.html#cb278-2"></a>mb</span></code></pre></div>
+<pre><code>##  [1]     1     2     3     4     5     6     7     8     9    10    20    30
+## [13]    40    50    60    70    80    90   100   200   300   400   500   600
+## [25]   700   800   900  1000  2000  3000  4000  5000  6000  7000  8000  9000
+## [37] 10000</code></pre>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="numeric.html#cb280-1"></a>log_base &lt;-<span class="st"> </span><span class="kw">ggplot</span>(toy, <span class="kw">aes</span>(log, const)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span>
+<span id="cb280-2"><a href="numeric.html#cb280-2"></a></span>
+<span id="cb280-3"><a href="numeric.html#cb280-3"></a>log_base <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_log10</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-19-1.png" width="672" /></p>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="numeric.html#cb281-1"></a>log_base <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_log10</span>(<span class="dt">minor_breaks =</span> mb)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-19-2.png" width="672" /></p>
+<p>There are also minor break functions:</p>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="numeric.html#cb282-1"></a><span class="kw">str_subset</span>(<span class="kw">ls</span>(<span class="dt">envir =</span> <span class="kw">asNamespace</span>(<span class="st">&quot;scales&quot;</span>)), <span class="st">&quot;^minor_breaks_&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;minor_breaks_n&quot;     &quot;minor_breaks_width&quot;</code></pre>
+</div>
+<div id="labels" class="section level3">
+<h3><span class="header-section-number">11.2.7</span> 10.1.7 Labels</h3>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="numeric.html#cb284-1"></a><span class="kw">str_subset</span>(<span class="kw">ls</span>(<span class="dt">envir =</span> <span class="kw">asNamespace</span>(<span class="st">&quot;scales&quot;</span>)), <span class="st">&quot;^label_&quot;</span>)</span></code></pre></div>
+<pre><code>##  [1] &quot;label_bytes&quot;       &quot;label_comma&quot;       &quot;label_date&quot;       
+##  [4] &quot;label_date_short&quot;  &quot;label_dollar&quot;      &quot;label_math&quot;       
+##  [7] &quot;label_number&quot;      &quot;label_number_auto&quot; &quot;label_number_si&quot;  
+## [10] &quot;label_ordinal&quot;     &quot;label_parse&quot;       &quot;label_percent&quot;    
+## [13] &quot;label_pvalue&quot;      &quot;label_scientific&quot;  &quot;label_time&quot;       
+## [16] &quot;label_wrap&quot;</code></pre>
+<p>Book examples:</p>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="numeric.html#cb286-1"></a>axs <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> scales<span class="op">::</span><span class="kw">label_percent</span>())</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-22-1.png" width="672" /></p>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="numeric.html#cb287-1"></a>axs <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> scales<span class="op">::</span><span class="kw">label_dollar</span>(<span class="dt">prefix =</span> <span class="st">&quot;&quot;</span>, <span class="dt">suffix =</span> <span class="st">&quot;€&quot;</span>))</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-22-2.png" width="672" /></p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="numeric.html#cb288-1"></a><span class="kw">tibble</span>(</span>
+<span id="cb288-2"><a href="numeric.html#cb288-2"></a>  <span class="dt">x =</span> <span class="kw">c</span>(<span class="st">&quot;cat1&quot;</span>, <span class="st">&quot;cat2 with a really really realy long name&quot;</span>, <span class="st">&quot;cat3&quot;</span>),</span>
+<span id="cb288-3"><a href="numeric.html#cb288-3"></a>  <span class="dt">y =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span></span>
+<span id="cb288-4"><a href="numeric.html#cb288-4"></a>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb288-5"><a href="numeric.html#cb288-5"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, y)) <span class="op">+</span></span>
+<span id="cb288-6"><a href="numeric.html#cb288-6"></a><span class="st">  </span><span class="kw">geom_col</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-23-1.png" width="672" /></p>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="numeric.html#cb289-1"></a><span class="kw">tibble</span>(</span>
+<span id="cb289-2"><a href="numeric.html#cb289-2"></a>  <span class="dt">x =</span> <span class="kw">c</span>(<span class="st">&quot;cat1&quot;</span>, <span class="st">&quot;cat2 with a really really realy long name&quot;</span>, <span class="st">&quot;cat3&quot;</span>),</span>
+<span id="cb289-3"><a href="numeric.html#cb289-3"></a>  <span class="dt">y =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span></span>
+<span id="cb289-4"><a href="numeric.html#cb289-4"></a>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb289-5"><a href="numeric.html#cb289-5"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, y)) <span class="op">+</span></span>
+<span id="cb289-6"><a href="numeric.html#cb289-6"></a><span class="st">  </span><span class="kw">geom_col</span>() <span class="op">+</span></span>
+<span id="cb289-7"><a href="numeric.html#cb289-7"></a><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">labels =</span> scales<span class="op">::</span><span class="kw">label_wrap</span>(<span class="dt">width =</span> <span class="dv">30</span>))</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-24-1.png" width="672" /></p>
+</div>
+<div id="exercises-1" class="section level3">
+<h3><span class="header-section-number">11.2.8</span> 10.1.8 Exercises</h3>
+</div>
+<div id="transformations" class="section level3">
+<h3><span class="header-section-number">11.2.9</span> 10.1.9 Transformations</h3>
+<p>Book example:</p>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="numeric.html#cb290-1"></a><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(price, carat)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb290-2"><a href="numeric.html#cb290-2"></a><span class="st">  </span><span class="kw">geom_bin2d</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-25-1.png" width="672" /></p>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="numeric.html#cb291-1"></a><span class="co"># log transform x and y axes</span></span>
+<span id="cb291-2"><a href="numeric.html#cb291-2"></a><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(price, carat)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb291-3"><a href="numeric.html#cb291-3"></a><span class="st">  </span><span class="kw">geom_bin2d</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb291-4"><a href="numeric.html#cb291-4"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">trans =</span> <span class="st">&quot;log10&quot;</span>) <span class="op">+</span></span>
+<span id="cb291-5"><a href="numeric.html#cb291-5"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">trans =</span> <span class="st">&quot;log10&quot;</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-25-2.png" width="672" /></p>
+<blockquote>
+<p>The transformation is carried out by a “transformer”, which describes the transformation, its inverse, and how to draw the labels. You can construct your own transformer using <code>scales::trans_new()</code></p>
+</blockquote>
+<p>Case study: make reversed log x-axis</p>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="numeric.html#cb292-1"></a><span class="kw">ggplot</span>(starwars, <span class="kw">aes</span>(<span class="dt">x =</span> mass)) <span class="op">+</span></span>
+<span id="cb292-2"><a href="numeric.html#cb292-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>()</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 28 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-26-1.png" width="672" /></p>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="numeric.html#cb295-1"></a><span class="kw">ggplot</span>(starwars, <span class="kw">aes</span>(<span class="dt">x =</span> mass)) <span class="op">+</span></span>
+<span id="cb295-2"><a href="numeric.html#cb295-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span></span>
+<span id="cb295-3"><a href="numeric.html#cb295-3"></a><span class="st">  </span><span class="kw">scale_x_log10</span>()</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 28 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-26-2.png" width="672" /></p>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="numeric.html#cb298-1"></a><span class="kw">ggplot</span>(starwars, <span class="kw">aes</span>(<span class="dt">x =</span> mass)) <span class="op">+</span></span>
+<span id="cb298-2"><a href="numeric.html#cb298-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span></span>
+<span id="cb298-3"><a href="numeric.html#cb298-3"></a><span class="st">  </span><span class="kw">scale_x_reverse</span>()</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 28 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-26-3.png" width="672" /></p>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="numeric.html#cb301-1"></a><span class="kw">scale_x_log10</span>()<span class="op">$</span>trans    <span class="co"># scales::log10_trans()</span></span></code></pre></div>
+<pre><code>## Transformer:  log-10</code></pre>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="numeric.html#cb303-1"></a><span class="kw">scale_x_reverse</span>()<span class="op">$</span>trans  <span class="co"># scales::reverse_trans()</span></span></code></pre></div>
+<pre><code>## Transformer:  reverse</code></pre>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="numeric.html#cb305-1"></a><span class="kw">formals</span>(scales<span class="op">::</span>trans_new)</span></code></pre></div>
+<pre><code>## $name
+## 
+## 
+## $transform
+## 
+## 
+## $inverse
+## 
+## 
+## $breaks
+## extended_breaks()
+## 
+## $minor_breaks
+## regular_minor_breaks()
+## 
+## $format
+## format_format()
+## 
+## $domain
+## c(-Inf, Inf)</code></pre>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="numeric.html#cb307-1"></a>log10_reverse &lt;-<span class="st"> </span>scales<span class="op">::</span><span class="kw">trans_new</span>(</span>
+<span id="cb307-2"><a href="numeric.html#cb307-2"></a>  <span class="dt">name =</span> <span class="st">&quot;log-10-reverse&quot;</span>,</span>
+<span id="cb307-3"><a href="numeric.html#cb307-3"></a>  <span class="dt">transform =</span> <span class="cf">function</span>(x) <span class="op">-</span><span class="kw">log</span>(x, <span class="dv">10</span>),</span>
+<span id="cb307-4"><a href="numeric.html#cb307-4"></a>  <span class="dt">inverse =</span> <span class="cf">function</span>(x) <span class="dv">10</span><span class="op">^</span>(<span class="op">-</span>x),</span>
+<span id="cb307-5"><a href="numeric.html#cb307-5"></a>  <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log10_trans</span>()<span class="op">$</span>breaks,</span>
+<span id="cb307-6"><a href="numeric.html#cb307-6"></a>  <span class="dt">minor_breaks =</span> scales<span class="op">::</span><span class="kw">log10_trans</span>()<span class="op">$</span>minor_breaks,</span>
+<span id="cb307-7"><a href="numeric.html#cb307-7"></a>  <span class="dt">domain =</span> scales<span class="op">::</span><span class="kw">log10_trans</span>()<span class="op">$</span>domain</span>
+<span id="cb307-8"><a href="numeric.html#cb307-8"></a>)</span>
+<span id="cb307-9"><a href="numeric.html#cb307-9"></a><span class="kw">ggplot</span>(starwars, <span class="kw">aes</span>(<span class="dt">x =</span> mass)) <span class="op">+</span></span>
+<span id="cb307-10"><a href="numeric.html#cb307-10"></a><span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span></span>
+<span id="cb307-11"><a href="numeric.html#cb307-11"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">trans =</span> log10_reverse)</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 28 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-28-1.png" width="672" /></p>
+<blockquote>
+<p>Regardless of which method you use, the transformation occurs before any statistical summaries. To transform after statistical computation use <code>coord_trans()</code></p>
+</blockquote>
+<p>From the docs:</p>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="numeric.html#cb310-1"></a><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(carat, price)) <span class="op">+</span></span>
+<span id="cb310-2"><a href="numeric.html#cb310-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb310-3"><a href="numeric.html#cb310-3"></a><span class="st">  </span><span class="kw">scale_x_log10</span>() <span class="op">+</span></span>
+<span id="cb310-4"><a href="numeric.html#cb310-4"></a><span class="st">  </span><span class="kw">scale_y_log10</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-29-1.png" width="672" /></p>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="numeric.html#cb311-1"></a><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(carat, price)) <span class="op">+</span></span>
+<span id="cb311-2"><a href="numeric.html#cb311-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb311-3"><a href="numeric.html#cb311-3"></a><span class="st">  </span><span class="kw">coord_trans</span>(<span class="dt">x =</span> <span class="st">&quot;log10&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;log10&quot;</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-29-2.png" width="672" /></p>
+<p>Example where stat transformation matters:</p>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="numeric.html#cb312-1"></a>trans_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(drv, hwy)) <span class="op">+</span></span>
+<span id="cb312-2"><a href="numeric.html#cb312-2"></a><span class="st">  </span><span class="kw">geom_boxplot</span>()</span>
+<span id="cb312-3"><a href="numeric.html#cb312-3"></a>trans_plot <span class="op">+</span></span>
+<span id="cb312-4"><a href="numeric.html#cb312-4"></a><span class="st">  </span><span class="kw">scale_y_log10</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-30-1.png" width="672" /></p>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="numeric.html#cb313-1"></a>trans_plot <span class="op">+</span></span>
+<span id="cb313-2"><a href="numeric.html#cb313-2"></a><span class="st">  </span><span class="kw">coord_trans</span>(<span class="dt">y =</span> <span class="st">&quot;log10&quot;</span>) <span class="co"># scales::log10_trans()</span></span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-30-2.png" width="672" /></p>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="numeric.html#cb314-1"></a><span class="kw">layer_data</span>(trans_plot) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb314-2"><a href="numeric.html#cb314-2"></a><span class="st">  </span><span class="kw">select</span>(x, <span class="kw">starts_with</span>(<span class="st">&quot;y&quot;</span>))</span></code></pre></div>
+<pre><code>##   x ymin ymax ymin_final ymax_final
+## 1 1   12   28         12         28
+## 2 2   22   33         17         44
+## 3 3   15   26         15         26</code></pre>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="numeric.html#cb316-1"></a><span class="kw">layer_data</span>(trans_plot <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_log10</span>()) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb316-2"><a href="numeric.html#cb316-2"></a><span class="st">  </span><span class="kw">select</span>(x, <span class="kw">starts_with</span>(<span class="st">&quot;y&quot;</span>))</span></code></pre></div>
+<pre><code>##   x     ymin     ymax ymin_final ymax_final
+## 1 1 1.079181 1.447158   1.079181   1.447158
+## 2 2 1.361728 1.531479   1.230449   1.643453
+## 3 3 1.176091 1.414973   1.176091   1.414973</code></pre>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="numeric.html#cb318-1"></a><span class="kw">layer_data</span>(trans_plot <span class="op">+</span><span class="st"> </span><span class="kw">coord_trans</span>(<span class="dt">y =</span> <span class="st">&quot;log10&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb318-2"><a href="numeric.html#cb318-2"></a><span class="st">  </span><span class="kw">select</span>(x, <span class="kw">starts_with</span>(<span class="st">&quot;y&quot;</span>))</span></code></pre></div>
+<pre><code>##   x ymin ymax ymin_final ymax_final
+## 1 1   12   28         12         28
+## 2 2   22   33         17         44
+## 3 3   15   26         15         26</code></pre>
+</div>
+<div id="aside---a-little-more-on-transformations" class="section level3">
+<h3><span class="header-section-number">11.2.10</span> ASIDE - A little more on transformations</h3>
+<p><code>transform()</code> method of the <a href="https://ggplot2.tidyverse.org/reference/ggplot2-ggproto.html#scales">Scales ggproto</a>:</p>
+<blockquote>
+<p><code>transform()</code> Transforms a vector of values using self$trans. This occurs before the Stat is calculated.</p>
+</blockquote>
+<p>Transformation changes the layer data</p>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="numeric.html#cb320-1"></a>toy <span class="co"># from Ch 10.1.5</span></span></code></pre></div>
+<pre><code>##   const up txt  big  log
+## 1     1  1   a 1000    2
+## 2     1  2   b 2000    5
+## 3     1  3   c 3000   10
+## 4     1  4   d 4000 2000</code></pre>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="numeric.html#cb322-1"></a><span class="kw">ggplot</span>(toy, <span class="kw">aes</span>(big, txt)) <span class="op">+</span></span>
+<span id="cb322-2"><a href="numeric.html#cb322-2"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-32-1.png" width="672" /></p>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="numeric.html#cb323-1"></a>reversed_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(toy, <span class="kw">aes</span>(big, txt)) <span class="op">+</span></span>
+<span id="cb323-2"><a href="numeric.html#cb323-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb323-3"><a href="numeric.html#cb323-3"></a><span class="st">  </span><span class="kw">scale_x_reverse</span>()</span>
+<span id="cb323-4"><a href="numeric.html#cb323-4"></a>reversed_plot</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-32-2.png" width="672" /></p>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="numeric.html#cb324-1"></a><span class="kw">layer_data</span>(reversed_plot)</span></code></pre></div>
+<pre><code>##       x y PANEL group shape colour size fill alpha stroke
+## 1 -1000 1     1     1    19  black  1.5   NA    NA    0.5
+## 2 -2000 2     1     2    19  black  1.5   NA    NA    0.5
+## 3 -3000 3     1     3    19  black  1.5   NA    NA    0.5
+## 4 -4000 4     1     4    19  black  1.5   NA    NA    0.5</code></pre>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="numeric.html#cb326-1"></a>rev_trans &lt;-<span class="st"> </span>scales<span class="op">::</span><span class="kw">reverse_trans</span>()</span>
+<span id="cb326-2"><a href="numeric.html#cb326-2"></a>scales<span class="op">::</span>reverse_trans</span></code></pre></div>
+<pre><code>## function () 
+## {
+##     trans_new(&quot;reverse&quot;, function(x) -x, function(x) -x, minor_breaks = regular_minor_breaks(reverse = TRUE))
+## }
+## &lt;bytecode: 0x7fb2a24c6a20&gt;
+## &lt;environment: namespace:scales&gt;</code></pre>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="numeric.html#cb328-1"></a><span class="kw">str</span>(rev_trans)</span></code></pre></div>
+<pre><code>## List of 7
+##  $ name        : chr &quot;reverse&quot;
+##  $ transform   :function (x)  
+##  $ inverse     :function (x)  
+##  $ breaks      :function (x, n = n_default)  
+##  $ minor_breaks:function (b, limits, n)  
+##  $ format      :function (x)  
+##  $ domain      : num [1:2] -Inf Inf
+##  - attr(*, &quot;class&quot;)= chr &quot;trans&quot;</code></pre>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="numeric.html#cb330-1"></a>rev_trans<span class="op">$</span><span class="kw">transform</span>(toy<span class="op">$</span>big)</span></code></pre></div>
+<pre><code>## [1] -1000 -2000 -3000 -4000</code></pre>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="numeric.html#cb332-1"></a>rev_trans<span class="op">$</span><span class="kw">inverse</span>(rev_trans<span class="op">$</span><span class="kw">transform</span>(toy<span class="op">$</span>big))</span></code></pre></div>
+<pre><code>## [1] 1000 2000 3000 4000</code></pre>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="numeric.html#cb334-1"></a>rev_trans<span class="op">$</span><span class="kw">format</span>(rev_trans<span class="op">$</span><span class="kw">breaks</span>(<span class="kw">range</span>(toy<span class="op">$</span>big)))</span></code></pre></div>
+<pre><code>## [1] &quot;1000&quot; &quot;2000&quot; &quot;3000&quot; &quot;4000&quot;</code></pre>
+<p>Most useful for positioning purposes (ex: <a href="https://scales.r-lib.org/reference/time_trans.html"><code>time_trans()</code></a>)</p>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="numeric.html#cb336-1"></a>hours &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">ISOdate</span>(<span class="dv">2000</span>,<span class="dv">3</span>,<span class="dv">20</span>, <span class="dt">tz =</span> <span class="st">&quot;&quot;</span>), <span class="dt">by =</span> <span class="st">&quot;hour&quot;</span>, <span class="dt">length.out =</span> <span class="dv">10</span>)</span>
+<span id="cb336-2"><a href="numeric.html#cb336-2"></a>t &lt;-<span class="st"> </span>scales<span class="op">::</span><span class="kw">time_trans</span>()</span>
+<span id="cb336-3"><a href="numeric.html#cb336-3"></a>t<span class="op">$</span><span class="kw">transform</span>(hours)</span></code></pre></div>
+<pre><code>##  [1] 953553600 953557200 953560800 953564400 953568000 953571600 953575200
+##  [8] 953578800 953582400 953586000</code></pre>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="numeric.html#cb338-1"></a>t<span class="op">$</span><span class="kw">inverse</span>(t<span class="op">$</span><span class="kw">transform</span>(hours))</span></code></pre></div>
+<pre><code>##  [1] &quot;2000-03-20 12:00:00 UTC&quot; &quot;2000-03-20 13:00:00 UTC&quot;
+##  [3] &quot;2000-03-20 14:00:00 UTC&quot; &quot;2000-03-20 15:00:00 UTC&quot;
+##  [5] &quot;2000-03-20 16:00:00 UTC&quot; &quot;2000-03-20 17:00:00 UTC&quot;
+##  [7] &quot;2000-03-20 18:00:00 UTC&quot; &quot;2000-03-20 19:00:00 UTC&quot;
+##  [9] &quot;2000-03-20 20:00:00 UTC&quot; &quot;2000-03-20 21:00:00 UTC&quot;</code></pre>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="numeric.html#cb340-1"></a>t<span class="op">$</span><span class="kw">format</span>(t<span class="op">$</span><span class="kw">breaks</span>(<span class="kw">range</span>(hours)))</span></code></pre></div>
+<pre><code>## [1] &quot;12:00&quot; &quot;15:00&quot; &quot;18:00&quot; &quot;21:00&quot;</code></pre>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="numeric.html#cb342-1"></a>date_trans_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">tibble</span>(<span class="dt">hours =</span> hours), <span class="kw">aes</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></span>
+<span id="cb342-2"><a href="numeric.html#cb342-2"></a><span class="st">  </span><span class="kw">geom_point</span>()</span>
+<span id="cb342-3"><a href="numeric.html#cb342-3"></a><span class="kw">layer_data</span>(date_trans_plot)</span></code></pre></div>
+<pre><code>##            x y PANEL group shape colour size fill alpha stroke
+## 1  953553600 0     1    -1    19  black  1.5   NA    NA    0.5
+## 2  953557200 0     1    -1    19  black  1.5   NA    NA    0.5
+## 3  953560800 0     1    -1    19  black  1.5   NA    NA    0.5
+## 4  953564400 0     1    -1    19  black  1.5   NA    NA    0.5
+## 5  953568000 0     1    -1    19  black  1.5   NA    NA    0.5
+## 6  953571600 0     1    -1    19  black  1.5   NA    NA    0.5
+## 7  953575200 0     1    -1    19  black  1.5   NA    NA    0.5
+## 8  953578800 0     1    -1    19  black  1.5   NA    NA    0.5
+## 9  953582400 0     1    -1    19  black  1.5   NA    NA    0.5
+## 10 953586000 0     1    -1    19  black  1.5   NA    NA    0.5</code></pre>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction-preliminaries-asides.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="date-time.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/r4ds/bookclub-ggplot2/edit/main/10-Position_scales_and_axes.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

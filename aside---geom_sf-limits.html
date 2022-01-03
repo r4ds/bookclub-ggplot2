@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>11.6 ASIDE - geom_sf() + limits | ggplot2 Book Club</title>
+  <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="11.6 ASIDE - geom_sf() + limits | ggplot2 Book Club" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
+  <meta name="github-repo" content="r4ds/bookclub-ggplot2" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="11.6 ASIDE - geom_sf() + limits | ggplot2 Book Club" />
+  
+  <meta name="twitter:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
+  
+
+<meta name="author" content="The R4DS Online Learning Community" />
+
+
+<meta name="date" content="2022-01-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="binned.html"/>
+<link rel="next" href="placeholder-1.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">ggplot2 with R Book Club</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
+<li class="chapter" data-level="" data-path="book-club-meetings.html"><a href="book-club-meetings.html"><i class="fa fa-check"></i>Book club meetings</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="slide-1-title.html"><a href="slide-1-title.html"><i class="fa fa-check"></i><b>1.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="1.2" data-path="meeting-videos.html"><a href="meeting-videos.html"><i class="fa fa-check"></i><b>1.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="meeting-videos.html"><a href="meeting-videos.html#cohort-1"><i class="fa fa-check"></i><b>1.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="first-steps.html"><a href="first-steps.html"><i class="fa fa-check"></i><b>2</b> First Steps</a><ul>
+<li class="chapter" data-level="2.1" data-path="general-housekeeping-items.html"><a href="general-housekeeping-items.html"><i class="fa fa-check"></i><b>2.1</b> General Housekeeping Items</a></li>
+<li class="chapter" data-level="2.2" data-path="learning-objectives.html"><a href="learning-objectives.html"><i class="fa fa-check"></i><b>2.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="2.3" data-path="main-data-set.html"><a href="main-data-set.html"><i class="fa fa-check"></i><b>2.3</b> Main data set</a></li>
+<li class="chapter" data-level="2.4" data-path="components-of-every-plot.html"><a href="components-of-every-plot.html"><i class="fa fa-check"></i><b>2.4</b> Components of every plot</a></li>
+<li class="chapter" data-level="2.5" data-path="a-few-exercises.html"><a href="a-few-exercises.html"><i class="fa fa-check"></i><b>2.5</b> A few exercises</a></li>
+<li class="chapter" data-level="2.6" data-path="other-aesthetic-attributes.html"><a href="other-aesthetic-attributes.html"><i class="fa fa-check"></i><b>2.6</b> Other aesthetic attributes</a></li>
+<li class="chapter" data-level="2.7" data-path="faceting.html"><a href="faceting.html"><i class="fa fa-check"></i><b>2.7</b> Faceting</a></li>
+<li class="chapter" data-level="2.8" data-path="geoms.html"><a href="geoms.html"><i class="fa fa-check"></i><b>2.8</b> Geoms</a></li>
+<li class="chapter" data-level="2.9" data-path="modifying-the-axes.html"><a href="modifying-the-axes.html"><i class="fa fa-check"></i><b>2.9</b> Modifying the Axes</a></li>
+<li class="chapter" data-level="2.10" data-path="output.html"><a href="output.html"><i class="fa fa-check"></i><b>2.10</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="layers.html"><a href="layers.html"><i class="fa fa-check"></i><b>3</b> Layers</a><ul>
+<li class="chapter" data-level="3.1" data-path="layers-chapters.html"><a href="layers-chapters.html"><i class="fa fa-check"></i><b>3.1</b> Layers: Chapters</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="individual-geoms.html"><a href="individual-geoms.html"><i class="fa fa-check"></i><b>4</b> Individual Geoms</a><ul>
+<li class="chapter" data-level="4.1" data-path="scatterplot.html"><a href="scatterplot.html"><i class="fa fa-check"></i><b>4.1</b> Scatterplot:</a></li>
+<li class="chapter" data-level="4.2" data-path="line-plot.html"><a href="line-plot.html"><i class="fa fa-check"></i><b>4.2</b> Line plot:</a></li>
+<li class="chapter" data-level="4.3" data-path="histogram.html"><a href="histogram.html"><i class="fa fa-check"></i><b>4.3</b> Histogram:</a></li>
+<li class="chapter" data-level="4.4" data-path="bar-chart.html"><a href="bar-chart.html"><i class="fa fa-check"></i><b>4.4</b> Bar chart</a></li>
+<li class="chapter" data-level="4.5" data-path="geom_polygon-draws-polygons-which-are-filled-paths..html"><a href="geom_polygon-draws-polygons-which-are-filled-paths..html"><i class="fa fa-check"></i><b>4.5</b> geom_polygon() draws polygons which are filled paths.</a></li>
+<li class="chapter" data-level="4.6" data-path="geom_line-connects-points-from-left-to-right..html"><a href="geom_line-connects-points-from-left-to-right..html"><i class="fa fa-check"></i><b>4.6</b> geom_line() connects points from left to right.</a></li>
+<li class="chapter" data-level="4.7" data-path="what-low-level-geoms-are-used-to-draw-geom_smooth.html"><a href="what-low-level-geoms-are-used-to-draw-geom_smooth.html"><i class="fa fa-check"></i><b>4.7</b> What low-level geoms are used to draw geom_smooth()?</a></li>
+<li class="chapter" data-level="4.8" data-path="what-low-level-geoms-are-used-to-draw-geom_boxplot.html"><a href="what-low-level-geoms-are-used-to-draw-geom_boxplot.html"><i class="fa fa-check"></i><b>4.8</b> What low-level geoms are used to draw geom_boxplot()?</a></li>
+<li class="chapter" data-level="4.9" data-path="what-low-level-geoms-are-used-to-draw-geom_violin.html"><a href="what-low-level-geoms-are-used-to-draw-geom_violin.html"><i class="fa fa-check"></i><b>4.9</b> What low-level geoms are used to draw geom_violin()?</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="collective-geoms.html"><a href="collective-geoms.html"><i class="fa fa-check"></i><b>5</b> Collective Geoms</a><ul>
+<li class="chapter" data-level="5.1" data-path="general-housekeeping-items-1.html"><a href="general-housekeeping-items-1.html"><i class="fa fa-check"></i><b>5.1</b> General Housekeeping Items</a></li>
+<li class="chapter" data-level="5.2" data-path="learning-objectives-1.html"><a href="learning-objectives-1.html"><i class="fa fa-check"></i><b>5.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="5.3" data-path="quick-intuition-on-collective-geoms.html"><a href="quick-intuition-on-collective-geoms.html"><i class="fa fa-check"></i><b>5.3</b> Quick Intuition on Collective Geoms</a></li>
+<li class="chapter" data-level="5.4" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html"><i class="fa fa-check"></i><b>5.4</b> From the ggplot2 book</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html#multiple-groups-one-aesthetic"><i class="fa fa-check"></i><b>5.4.1</b> Multiple Groups, One Aesthetic</a></li>
+<li class="chapter" data-level="5.4.2" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html#different-groups-on-different-layers"><i class="fa fa-check"></i><b>5.4.2</b> Different Groups on Different Layers</a></li>
+<li class="chapter" data-level="5.4.3" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html#overriding-the-default-grouping"><i class="fa fa-check"></i><b>5.4.3</b> Overriding the Default Grouping</a></li>
+<li class="chapter" data-level="5.4.4" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html#a-couple-of-exercises"><i class="fa fa-check"></i><b>5.4.4</b> A couple of exercises</a></li>
+<li class="chapter" data-level="5.4.5" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html#matching-aesthetics-to-graphic-objects"><i class="fa fa-check"></i><b>5.4.5</b> Matching Aesthetics to Graphic Objects</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="statistical-summaries.html"><a href="statistical-summaries.html"><i class="fa fa-check"></i><b>6</b> Statistical Summaries</a><ul>
+<li class="chapter" data-level="6.1" data-path="defintions-in-this-chapter.html"><a href="defintions-in-this-chapter.html"><i class="fa fa-check"></i><b>6.1</b> Defintions (in this Chapter)</a></li>
+<li class="chapter" data-level="6.2" data-path="revealing-uncertainty.html"><a href="revealing-uncertainty.html"><i class="fa fa-check"></i><b>6.2</b> Revealing Uncertainty</a></li>
+<li class="chapter" data-level="6.3" data-path="weighted-data.html"><a href="weighted-data.html"><i class="fa fa-check"></i><b>6.3</b> Weighted Data</a></li>
+<li class="chapter" data-level="6.4" data-path="displaying-distributions.html"><a href="displaying-distributions.html"><i class="fa fa-check"></i><b>6.4</b> Displaying distributions</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="displaying-distributions.html"><a href="displaying-distributions.html#exercise"><i class="fa fa-check"></i><b>6.4.1</b> Exercise:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="dealing-with-overplotting.html"><a href="dealing-with-overplotting.html"><i class="fa fa-check"></i><b>6.5</b> Dealing with overplotting</a></li>
+<li class="chapter" data-level="6.6" data-path="statistical-summaries-1.html"><a href="statistical-summaries-1.html"><i class="fa fa-check"></i><b>6.6</b> Statistical Summaries</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>7</b> Maps</a><ul>
+<li class="chapter" data-level="7.1" data-path="polygon-maps.html"><a href="polygon-maps.html"><i class="fa fa-check"></i><b>7.1</b> Polygon Maps</a></li>
+<li class="chapter" data-level="7.2" data-path="simple-features-maps.html"><a href="simple-features-maps.html"><i class="fa fa-check"></i><b>7.2</b> Simple Features Maps</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="simple-features-maps.html"><a href="simple-features-maps.html#layered-maps"><i class="fa fa-check"></i><b>7.2.1</b> Layered Maps</a></li>
+<li class="chapter" data-level="7.2.2" data-path="simple-features-maps.html"><a href="simple-features-maps.html#labelled-maps"><i class="fa fa-check"></i><b>7.2.2</b> Labelled Maps</a></li>
+<li class="chapter" data-level="7.2.3" data-path="simple-features-maps.html"><a href="simple-features-maps.html#adding-other-geoms"><i class="fa fa-check"></i><b>7.2.3</b> Adding Other Geoms</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="map-projections.html"><a href="map-projections.html"><i class="fa fa-check"></i><b>7.3</b> Map Projections</a></li>
+<li class="chapter" data-level="7.4" data-path="working-with-sf-data.html"><a href="working-with-sf-data.html"><i class="fa fa-check"></i><b>7.4</b> Working with <code>sf</code> Data</a></li>
+<li class="chapter" data-level="7.5" data-path="raster-maps.html"><a href="raster-maps.html"><i class="fa fa-check"></i><b>7.5</b> Raster Maps</a></li>
+<li class="chapter" data-level="7.6" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>7.6</b> Data Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="networks.html"><a href="networks.html"><i class="fa fa-check"></i><b>8</b> Networks</a><ul>
+<li class="chapter" data-level="8.1" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="what-is-network-data.html"><a href="what-is-network-data.html"><i class="fa fa-check"></i><b>8.2</b> What is network data?</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="what-is-network-data.html"><a href="what-is-network-data.html#a-tidy-network-manipulation-api"><i class="fa fa-check"></i><b>8.2.1</b> A tidy network manipulation API</a></li>
+<li class="chapter" data-level="8.2.2" data-path="what-is-network-data.html"><a href="what-is-network-data.html#conversion"><i class="fa fa-check"></i><b>8.2.2</b> Conversion</a></li>
+<li class="chapter" data-level="8.2.3" data-path="what-is-network-data.html"><a href="what-is-network-data.html#algorithms"><i class="fa fa-check"></i><b>8.2.3</b> Algorithms</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="visualizing-networks.html"><a href="visualizing-networks.html"><i class="fa fa-check"></i><b>8.3</b> Visualizing networks</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="visualizing-networks.html"><a href="visualizing-networks.html#setting-up-the-visualization"><i class="fa fa-check"></i><b>8.3.1</b> Setting up the visualization</a></li>
+<li class="chapter" data-level="8.3.2" data-path="visualizing-networks.html"><a href="visualizing-networks.html#drawing-nodes"><i class="fa fa-check"></i><b>8.3.2</b> Drawing nodes</a></li>
+<li class="chapter" data-level="8.3.3" data-path="visualizing-networks.html"><a href="visualizing-networks.html#drawing-edges"><i class="fa fa-check"></i><b>8.3.3</b> Drawing edges</a></li>
+<li class="chapter" data-level="8.3.4" data-path="visualizing-networks.html"><a href="visualizing-networks.html#faceting-1"><i class="fa fa-check"></i><b>8.3.4</b> Faceting</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="conclusions.html"><a href="conclusions.html"><i class="fa fa-check"></i><b>8.4</b> Conclusions</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="conclusions.html"><a href="conclusions.html#resources"><i class="fa fa-check"></i><b>8.4.1</b> Resources:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>9</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="9.1" data-path="slide-1-title-1.html"><a href="slide-1-title-1.html"><i class="fa fa-check"></i><b>9.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="9.2" data-path="meeting-videos-1.html"><a href="meeting-videos-1.html"><i class="fa fa-check"></i><b>9.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="meeting-videos-1.html"><a href="meeting-videos-1.html#cohort-1-1"><i class="fa fa-check"></i><b>9.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="arranging-plots.html"><a href="arranging-plots.html"><i class="fa fa-check"></i><b>10</b> Arranging Plots</a><ul>
+<li class="chapter" data-level="10.1" data-path="introduction-2.html"><a href="introduction-2.html"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="arranging-plots-side-by-side-with-no-overlap.html"><a href="arranging-plots-side-by-side-with-no-overlap.html"><i class="fa fa-check"></i><b>10.2</b> Arranging plots side by side with no overlap</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="arranging-plots-side-by-side-with-no-overlap.html"><a href="arranging-plots-side-by-side-with-no-overlap.html#taking-control-of-the-layout"><i class="fa fa-check"></i><b>10.2.1</b> Taking control of the layout</a></li>
+<li class="chapter" data-level="10.2.2" data-path="arranging-plots-side-by-side-with-no-overlap.html"><a href="arranging-plots-side-by-side-with-no-overlap.html#more-about-layouts"><i class="fa fa-check"></i><b>10.2.2</b> More about layouts</a></li>
+<li class="chapter" data-level="10.2.3" data-path="arranging-plots-side-by-side-with-no-overlap.html"><a href="arranging-plots-side-by-side-with-no-overlap.html#plot-annotations"><i class="fa fa-check"></i><b>10.2.3</b> Plot annotations</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="arranging-plots-on-top-of-each-other.html"><a href="arranging-plots-on-top-of-each-other.html"><i class="fa fa-check"></i><b>10.3</b> Arranging plots on top of each other</a></li>
+<li class="chapter" data-level="10.4" data-path="extra.html"><a href="extra.html"><i class="fa fa-check"></i><b>10.4</b> Extra</a></li>
+<li class="chapter" data-level="10.5" data-path="conclusions-1.html"><a href="conclusions-1.html"><i class="fa fa-check"></i><b>10.5</b> Conclusions</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="conclusions-1.html"><a href="conclusions-1.html#extra-resources"><i class="fa fa-check"></i><b>10.5.1</b> Extra resources:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="position-scales-and-axes.html"><a href="position-scales-and-axes.html"><i class="fa fa-check"></i><b>11</b> Position scales and axes</a><ul>
+<li class="chapter" data-level="11.1" data-path="introduction-preliminaries-asides.html"><a href="introduction-preliminaries-asides.html"><i class="fa fa-check"></i><b>11.1</b> Introduction / preliminaries / asides</a></li>
+<li class="chapter" data-level="11.2" data-path="numeric.html"><a href="numeric.html"><i class="fa fa-check"></i><b>11.2</b> 10.1 Numeric</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="numeric.html"><a href="numeric.html#limits"><i class="fa fa-check"></i><b>11.2.1</b> 10.1.1 Limits</a></li>
+<li class="chapter" data-level="11.2.2" data-path="numeric.html"><a href="numeric.html#out-of-bounds-values"><i class="fa fa-check"></i><b>11.2.2</b> 10.1.2 Out of bounds values</a></li>
+<li class="chapter" data-level="11.2.3" data-path="numeric.html"><a href="numeric.html#visual-range-expansion"><i class="fa fa-check"></i><b>11.2.3</b> 10.1.3 Visual range expansion</a></li>
+<li class="chapter" data-level="11.2.4" data-path="numeric.html"><a href="numeric.html#exercises"><i class="fa fa-check"></i><b>11.2.4</b> 10.1.4 Exercises</a></li>
+<li class="chapter" data-level="11.2.5" data-path="numeric.html"><a href="numeric.html#breaks"><i class="fa fa-check"></i><b>11.2.5</b> 10.1.5 Breaks</a></li>
+<li class="chapter" data-level="11.2.6" data-path="numeric.html"><a href="numeric.html#minor-breaks"><i class="fa fa-check"></i><b>11.2.6</b> 10.1.6 Minor breaks</a></li>
+<li class="chapter" data-level="11.2.7" data-path="numeric.html"><a href="numeric.html#labels"><i class="fa fa-check"></i><b>11.2.7</b> 10.1.7 Labels</a></li>
+<li class="chapter" data-level="11.2.8" data-path="numeric.html"><a href="numeric.html#exercises-1"><i class="fa fa-check"></i><b>11.2.8</b> 10.1.8 Exercises</a></li>
+<li class="chapter" data-level="11.2.9" data-path="numeric.html"><a href="numeric.html#transformations"><i class="fa fa-check"></i><b>11.2.9</b> 10.1.9 Transformations</a></li>
+<li class="chapter" data-level="11.2.10" data-path="numeric.html"><a href="numeric.html#aside---a-little-more-on-transformations"><i class="fa fa-check"></i><b>11.2.10</b> ASIDE - A little more on transformations</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="date-time.html"><a href="date-time.html"><i class="fa fa-check"></i><b>11.3</b> 10.2 Date-time</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="date-time.html"><a href="date-time.html#breaks-1"><i class="fa fa-check"></i><b>11.3.1</b> 10.2.1 Breaks</a></li>
+<li class="chapter" data-level="11.3.2" data-path="date-time.html"><a href="date-time.html#minor-breaks-1"><i class="fa fa-check"></i><b>11.3.2</b> 10.2.2 Minor breaks</a></li>
+<li class="chapter" data-level="11.3.3" data-path="date-time.html"><a href="date-time.html#labels-1"><i class="fa fa-check"></i><b>11.3.3</b> 10.2.3 Labels</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="discrete.html"><a href="discrete.html"><i class="fa fa-check"></i><b>11.4</b> 10.3 Discrete</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="discrete.html"><a href="discrete.html#limits-1"><i class="fa fa-check"></i><b>11.4.1</b> 10.3.1 Limits</a></li>
+<li class="chapter" data-level="11.4.2" data-path="discrete.html"><a href="discrete.html#scale-labels"><i class="fa fa-check"></i><b>11.4.2</b> 10.3.2 Scale labels</a></li>
+<li class="chapter" data-level="11.4.3" data-path="discrete.html"><a href="discrete.html#scale-labels-1"><i class="fa fa-check"></i><b>11.4.3</b> 10.3.2 Scale labels</a></li>
+<li class="chapter" data-level="11.4.4" data-path="discrete.html"><a href="discrete.html#guide_axis"><i class="fa fa-check"></i><b>11.4.4</b> 10.3.3 <code>guide_axis()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="binned.html"><a href="binned.html"><i class="fa fa-check"></i><b>11.5</b> 10.4 Binned</a></li>
+<li class="chapter" data-level="11.6" data-path="aside---geom_sf-limits.html"><a href="aside---geom_sf-limits.html"><i class="fa fa-check"></i><b>11.6</b> ASIDE - <code>geom_sf()</code> + limits</a><ul>
+<li class="chapter" data-level="11.6.1" data-path="aside---geom_sf-limits.html"><a href="aside---geom_sf-limits.html#example-from-twitter"><i class="fa fa-check"></i><b>11.6.1</b> Example from Twitter:</a></li>
+<li class="chapter" data-level="11.6.2" data-path="aside---geom_sf-limits.html"><a href="aside---geom_sf-limits.html#reprexes-from-ryan-s"><i class="fa fa-check"></i><b>11.6.2</b> Reprexes from Ryan S:</a></li>
+<li class="chapter" data-level="11.6.3" data-path="aside---geom_sf-limits.html"><a href="aside---geom_sf-limits.html#further-exploration"><i class="fa fa-check"></i><b>11.6.3</b> Further exploration</a></li>
+<li class="chapter" data-level="11.6.4" data-path="aside---geom_sf-limits.html"><a href="aside---geom_sf-limits.html#internals"><i class="fa fa-check"></i><b>11.6.4</b> Internals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="placeholder-1.html"><a href="placeholder-1.html"><i class="fa fa-check"></i><b>12</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="12.1" data-path="slide-1-title-2.html"><a href="slide-1-title-2.html"><i class="fa fa-check"></i><b>12.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="12.2" data-path="meeting-videos-2.html"><a href="meeting-videos-2.html"><i class="fa fa-check"></i><b>12.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="meeting-videos-2.html"><a href="meeting-videos-2.html#cohort-1-2"><i class="fa fa-check"></i><b>12.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="placeholder-2.html"><a href="placeholder-2.html"><i class="fa fa-check"></i><b>13</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="13.1" data-path="slide-1-title-3.html"><a href="slide-1-title-3.html"><i class="fa fa-check"></i><b>13.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="13.2" data-path="meeting-videos-3.html"><a href="meeting-videos-3.html"><i class="fa fa-check"></i><b>13.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="meeting-videos-3.html"><a href="meeting-videos-3.html#cohort-1-3"><i class="fa fa-check"></i><b>13.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="placeholder-3.html"><a href="placeholder-3.html"><i class="fa fa-check"></i><b>14</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="14.1" data-path="slide-1-title-4.html"><a href="slide-1-title-4.html"><i class="fa fa-check"></i><b>14.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="14.2" data-path="meeting-videos-4.html"><a href="meeting-videos-4.html"><i class="fa fa-check"></i><b>14.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="meeting-videos-4.html"><a href="meeting-videos-4.html#cohort-1-4"><i class="fa fa-check"></i><b>14.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="placeholder-4.html"><a href="placeholder-4.html"><i class="fa fa-check"></i><b>15</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="15.1" data-path="slide-1-title-5.html"><a href="slide-1-title-5.html"><i class="fa fa-check"></i><b>15.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="15.2" data-path="meeting-videos-5.html"><a href="meeting-videos-5.html"><i class="fa fa-check"></i><b>15.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="meeting-videos-5.html"><a href="meeting-videos-5.html#cohort-1-5"><i class="fa fa-check"></i><b>15.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="placeholder-5.html"><a href="placeholder-5.html"><i class="fa fa-check"></i><b>16</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="16.1" data-path="slide-1-title-6.html"><a href="slide-1-title-6.html"><i class="fa fa-check"></i><b>16.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="16.2" data-path="meeting-videos-6.html"><a href="meeting-videos-6.html"><i class="fa fa-check"></i><b>16.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="16.2.1" data-path="meeting-videos-6.html"><a href="meeting-videos-6.html#cohort-1-6"><i class="fa fa-check"></i><b>16.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="placeholder-6.html"><a href="placeholder-6.html"><i class="fa fa-check"></i><b>17</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="17.1" data-path="slide-1-title-7.html"><a href="slide-1-title-7.html"><i class="fa fa-check"></i><b>17.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="17.2" data-path="meeting-videos-7.html"><a href="meeting-videos-7.html"><i class="fa fa-check"></i><b>17.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="meeting-videos-7.html"><a href="meeting-videos-7.html#cohort-1-7"><i class="fa fa-check"></i><b>17.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="placeholder-7.html"><a href="placeholder-7.html"><i class="fa fa-check"></i><b>18</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="18.1" data-path="slide-1-title-8.html"><a href="slide-1-title-8.html"><i class="fa fa-check"></i><b>18.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="18.2" data-path="meeting-videos-8.html"><a href="meeting-videos-8.html"><i class="fa fa-check"></i><b>18.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="meeting-videos-8.html"><a href="meeting-videos-8.html#cohort-1-8"><i class="fa fa-check"></i><b>18.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="placeholder-8.html"><a href="placeholder-8.html"><i class="fa fa-check"></i><b>19</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="19.1" data-path="slide-1-title-9.html"><a href="slide-1-title-9.html"><i class="fa fa-check"></i><b>19.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="19.2" data-path="meeting-videos-9.html"><a href="meeting-videos-9.html"><i class="fa fa-check"></i><b>19.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="19.2.1" data-path="meeting-videos-9.html"><a href="meeting-videos-9.html#cohort-1-9"><i class="fa fa-check"></i><b>19.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="placeholder-9.html"><a href="placeholder-9.html"><i class="fa fa-check"></i><b>20</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="20.1" data-path="slide-1-title-10.html"><a href="slide-1-title-10.html"><i class="fa fa-check"></i><b>20.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="20.2" data-path="meeting-videos-10.html"><a href="meeting-videos-10.html"><i class="fa fa-check"></i><b>20.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="20.2.1" data-path="meeting-videos-10.html"><a href="meeting-videos-10.html#cohort-1-10"><i class="fa fa-check"></i><b>20.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="placeholder-10.html"><a href="placeholder-10.html"><i class="fa fa-check"></i><b>21</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="21.1" data-path="slide-1-title-11.html"><a href="slide-1-title-11.html"><i class="fa fa-check"></i><b>21.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="21.2" data-path="meeting-videos-11.html"><a href="meeting-videos-11.html"><i class="fa fa-check"></i><b>21.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="21.2.1" data-path="meeting-videos-11.html"><a href="meeting-videos-11.html#cohort-1-11"><i class="fa fa-check"></i><b>21.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="placeholder-11.html"><a href="placeholder-11.html"><i class="fa fa-check"></i><b>22</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="22.1" data-path="slide-1-title-12.html"><a href="slide-1-title-12.html"><i class="fa fa-check"></i><b>22.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="22.2" data-path="meeting-videos-12.html"><a href="meeting-videos-12.html"><i class="fa fa-check"></i><b>22.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="22.2.1" data-path="meeting-videos-12.html"><a href="meeting-videos-12.html#cohort-1-12"><i class="fa fa-check"></i><b>22.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="placeholder-12.html"><a href="placeholder-12.html"><i class="fa fa-check"></i><b>23</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="23.1" data-path="slide-1-title-13.html"><a href="slide-1-title-13.html"><i class="fa fa-check"></i><b>23.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="23.2" data-path="meeting-videos-13.html"><a href="meeting-videos-13.html"><i class="fa fa-check"></i><b>23.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="23.2.1" data-path="meeting-videos-13.html"><a href="meeting-videos-13.html#cohort-1-13"><i class="fa fa-check"></i><b>23.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ggplot2 Book Club</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="aside---geom_sf-limits" class="section level2">
+<h2><span class="header-section-number">11.6</span> ASIDE - <code>geom_sf()</code> + limits</h2>
+<div id="example-from-twitter" class="section level3">
+<h3><span class="header-section-number">11.6.1</span> Example from Twitter:</h3>
+<p><a href="https://twitter.com/Josh_Ebner/status/1470818469801299970?s=20">https://twitter.com/Josh_Ebner/status/1470818469801299970?s=20</a></p>
+</div>
+<div id="reprexes-from-ryan-s" class="section level3">
+<h3><span class="header-section-number">11.6.2</span> Reprexes from Ryan S:</h3>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="aside---geom_sf-limits.html#cb382-1"></a><span class="kw">library</span>(sf)</span></code></pre></div>
+<pre><code>## Registered S3 methods overwritten by &#39;proxy&#39;:
+##   method               from    
+##   print.registry_field registry
+##   print.registry_entry registry</code></pre>
+<pre><code>## Linking to GEOS 3.8.1, GDAL 3.2.1, PROJ 7.2.1; sf_use_s2() is TRUE</code></pre>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="aside---geom_sf-limits.html#cb385-1"></a>plygn_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">x_coord =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">1</span>),</span>
+<span id="cb385-2"><a href="aside---geom_sf-limits.html#cb385-2"></a>                  <span class="dt">y_coord =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">1</span>))</span>
+<span id="cb385-3"><a href="aside---geom_sf-limits.html#cb385-3"></a>plygn_<span class="dv">1</span></span></code></pre></div>
+<pre><code>## # A tibble: 6 × 2
+##   x_coord y_coord
+##     &lt;dbl&gt;   &lt;dbl&gt;
+## 1       1       1
+## 2       1       2
+## 3       2       1
+## 4       3       2
+## 5       6       5
+## 6       1       1</code></pre>
+<p>Full range polygon</p>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="aside---geom_sf-limits.html#cb387-1"></a>plygn_<span class="dv">1</span> <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb387-2"><a href="aside---geom_sf-limits.html#cb387-2"></a><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb387-3"><a href="aside---geom_sf-limits.html#cb387-3"></a><span class="st">  </span><span class="kw">geom_polygon</span>(<span class="kw">aes</span>(x_coord, y_coord))</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-58-1.png" width="672" /></p>
+<p>Polygon with limits</p>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="aside---geom_sf-limits.html#cb388-1"></a>poly_plygn_<span class="dv">1</span> &lt;-<span class="st"> </span>plygn_<span class="dv">1</span> <span class="op">%&gt;%</span></span>
+<span id="cb388-2"><a href="aside---geom_sf-limits.html#cb388-2"></a><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb388-3"><a href="aside---geom_sf-limits.html#cb388-3"></a><span class="st">  </span><span class="kw">geom_polygon</span>(<span class="kw">aes</span>(x_coord, y_coord)) <span class="op">+</span></span>
+<span id="cb388-4"><a href="aside---geom_sf-limits.html#cb388-4"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>))</span>
+<span id="cb388-5"><a href="aside---geom_sf-limits.html#cb388-5"></a>poly_plygn_<span class="dv">1</span></span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-59-1.png" width="672" /></p>
+<p>Path with limits</p>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="aside---geom_sf-limits.html#cb389-1"></a>path_plygn_<span class="dv">1</span> &lt;-<span class="st"> </span>plygn_<span class="dv">1</span> <span class="op">%&gt;%</span></span>
+<span id="cb389-2"><a href="aside---geom_sf-limits.html#cb389-2"></a><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb389-3"><a href="aside---geom_sf-limits.html#cb389-3"></a><span class="st">  </span><span class="kw">geom_path</span>(<span class="kw">aes</span>(x_coord, y_coord)) <span class="op">+</span></span>
+<span id="cb389-4"><a href="aside---geom_sf-limits.html#cb389-4"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>))</span>
+<span id="cb389-5"><a href="aside---geom_sf-limits.html#cb389-5"></a>path_plygn_<span class="dv">1</span></span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-60-1.png" width="672" /></p>
+<p><code>geom_sf()</code> without limits</p>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="aside---geom_sf-limits.html#cb390-1"></a>sf_plygn_<span class="dv">1</span> &lt;-<span class="st"> </span>plygn_<span class="dv">1</span> <span class="op">%&gt;%</span><span class="st">                 </span><span class="co"># tibble of coords</span></span>
+<span id="cb390-2"><a href="aside---geom_sf-limits.html#cb390-2"></a><span class="st">  </span><span class="kw">as.matrix</span>() <span class="op">%&gt;%</span><span class="st">                         </span><span class="co"># make into a matrix</span></span>
+<span id="cb390-3"><a href="aside---geom_sf-limits.html#cb390-3"></a><span class="st">  </span><span class="kw">list</span>() <span class="op">%&gt;%</span><span class="st">                              </span><span class="co"># make into a list</span></span>
+<span id="cb390-4"><a href="aside---geom_sf-limits.html#cb390-4"></a><span class="st">  </span><span class="kw">st_polygon</span>() <span class="op">%&gt;%</span><span class="st">                        </span><span class="co"># make into sf object</span></span>
+<span id="cb390-5"><a href="aside---geom_sf-limits.html#cb390-5"></a><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st">                              </span><span class="co"># call ggplot</span></span>
+<span id="cb390-6"><a href="aside---geom_sf-limits.html#cb390-6"></a><span class="st">  </span><span class="kw">geom_sf</span>()                             <span class="co"># use geom_sf for plotting sf objects</span></span>
+<span id="cb390-7"><a href="aside---geom_sf-limits.html#cb390-7"></a></span>
+<span id="cb390-8"><a href="aside---geom_sf-limits.html#cb390-8"></a>sf_plygn_<span class="dv">1</span></span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-61-1.png" width="672" /></p>
+<p><code>geom_sf()</code> with limits</p>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="aside---geom_sf-limits.html#cb391-1"></a>sf_plygn_<span class="dv">1</span>_wlims &lt;-<span class="st"> </span>sf_plygn_<span class="dv">1</span> <span class="op">+</span></span>
+<span id="cb391-2"><a href="aside---geom_sf-limits.html#cb391-2"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>))    <span class="co"># add limits</span></span>
+<span id="cb391-3"><a href="aside---geom_sf-limits.html#cb391-3"></a></span>
+<span id="cb391-4"><a href="aside---geom_sf-limits.html#cb391-4"></a>sf_plygn_<span class="dv">1</span>_wlims</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-62-1.png" width="672" /></p>
+</div>
+<div id="further-exploration" class="section level3">
+<h3><span class="header-section-number">11.6.3</span> Further exploration</h3>
+<p>Using <code>geom_sf()</code> adds <code>CoordSF</code> by default</p>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="aside---geom_sf-limits.html#cb392-1"></a><span class="kw">class</span>(sf_plygn_<span class="dv">1</span><span class="op">$</span>coordinates)</span></code></pre></div>
+<pre><code>## [1] &quot;CoordSf&quot;        &quot;CoordCartesian&quot; &quot;Coord&quot;          &quot;ggproto&quot;       
+## [5] &quot;gg&quot;</code></pre>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="aside---geom_sf-limits.html#cb394-1"></a><span class="kw">class</span>(sf_plygn_<span class="dv">1</span>_wlims<span class="op">$</span>coordinates)</span></code></pre></div>
+<pre><code>## [1] &quot;CoordSf&quot;        &quot;CoordCartesian&quot; &quot;Coord&quot;          &quot;ggproto&quot;       
+## [5] &quot;gg&quot;</code></pre>
+<p>In fact, <code>geom_sf()</code> must be used with <code>coord_sf()</code></p>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="aside---geom_sf-limits.html#cb396-1"></a><span class="co"># Same thing as without limits `sf_plygn_1`</span></span>
+<span id="cb396-2"><a href="aside---geom_sf-limits.html#cb396-2"></a>sf_plygn_<span class="dv">1</span> <span class="op">+</span></span>
+<span id="cb396-3"><a href="aside---geom_sf-limits.html#cb396-3"></a><span class="st">  </span><span class="kw">coord_sf</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-64-1.png" width="672" /></p>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="aside---geom_sf-limits.html#cb397-1"></a><span class="co"># Same thing as with limits `sf_plygn_1_wlims`</span></span>
+<span id="cb397-2"><a href="aside---geom_sf-limits.html#cb397-2"></a>sf_plygn_<span class="dv">1</span> <span class="op">+</span></span>
+<span id="cb397-3"><a href="aside---geom_sf-limits.html#cb397-3"></a><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>))</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-64-2.png" width="672" /></p>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="aside---geom_sf-limits.html#cb398-1"></a><span class="co"># Doesn&#39;t work</span></span>
+<span id="cb398-2"><a href="aside---geom_sf-limits.html#cb398-2"></a>sf_plygn_<span class="dv">1</span> <span class="op">+</span></span>
+<span id="cb398-3"><a href="aside---geom_sf-limits.html#cb398-3"></a><span class="st">  </span><span class="kw">coord_cartesian</span>()</span></code></pre></div>
+<pre><code>## Error: geom_sf() must be used with coord_sf()</code></pre>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-64-3.png" width="672" /></p>
+<p>The underlying geometry is untouched (indicating that limits are not removing data)</p>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="aside---geom_sf-limits.html#cb400-1"></a><span class="kw">layer_data</span>(sf_plygn_<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>##                         geometry PANEL group xmin xmax ymin ymax linetype alpha
+## 1 POLYGON ((1 1, 1 2, 2 1, 3 ...     1    -1    1    6    1    5        1    NA
+##   stroke
+## 1    0.5</code></pre>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="aside---geom_sf-limits.html#cb402-1"></a><span class="kw">layer_data</span>(sf_plygn_<span class="dv">1</span>_wlims)</span></code></pre></div>
+<pre><code>##                         geometry PANEL group xmin xmax ymin ymax linetype alpha
+## 1 POLYGON ((1 1, 1 2, 2 1, 3 ...     1    -1    1   NA    1    5        1    NA
+##   stroke
+## 1    0.5</code></pre>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="aside---geom_sf-limits.html#cb404-1"></a><span class="kw">identical</span>(</span>
+<span id="cb404-2"><a href="aside---geom_sf-limits.html#cb404-2"></a>  <span class="kw">layer_data</span>(sf_plygn_<span class="dv">1</span>_wlims)<span class="op">$</span>geometry,</span>
+<span id="cb404-3"><a href="aside---geom_sf-limits.html#cb404-3"></a>  <span class="kw">layer_data</span>(sf_plygn_<span class="dv">1</span>)<span class="op">$</span>geometry</span>
+<span id="cb404-4"><a href="aside---geom_sf-limits.html#cb404-4"></a>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>OOB handling inside <code>scale_x|y_continuous()</code> cannot override the behavior</p>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="aside---geom_sf-limits.html#cb406-1"></a>sf_plygn_<span class="dv">1</span> <span class="op">+</span></span>
+<span id="cb406-2"><a href="aside---geom_sf-limits.html#cb406-2"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>), <span class="dt">oob =</span> scales<span class="op">::</span>oob_censor)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-66-1.png" width="672" /></p>
+<p>Instead, <code>coord_sf(lims_method = )</code> offers other spatial-specific methods. Censor doesn’t seem to be one but an option like <code>"geometry_bbox"</code> automatically sets limits to the smallest bounding box that contain all geometries.</p>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="aside---geom_sf-limits.html#cb407-1"></a>sf_plygn_<span class="dv">1</span> <span class="op">+</span></span>
+<span id="cb407-2"><a href="aside---geom_sf-limits.html#cb407-2"></a><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">lims_method =</span> <span class="st">&quot;geometry_bbox&quot;</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-67-1.png" width="672" /></p>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="aside---geom_sf-limits.html#cb408-1"></a>sf_plygn_<span class="dv">1</span>_wlims <span class="op">+</span></span>
+<span id="cb408-2"><a href="aside---geom_sf-limits.html#cb408-2"></a><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">lims_method =</span> <span class="st">&quot;geometry_bbox&quot;</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-67-2.png" width="672" /></p>
+<p>Interesting note from the <a href="https://ggplot2.tidyverse.org/reference/ggsf.html#arguments">docs</a>:</p>
+<blockquote>
+<p>… specifying limits via position scales or xlim()/ylim() is strongly discouraged, as it can result in data points being dropped from the plot even though they would be visible in the final plot region.</p>
+</blockquote>
+</div>
+<div id="internals" class="section level3">
+<h3><span class="header-section-number">11.6.4</span> Internals</h3>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="aside---geom_sf-limits.html#cb409-1"></a><span class="kw">library</span>(ggtrace) <span class="co"># v.0.4.5</span></span></code></pre></div>
+<p>Scale censor for <code>geom_polygon()</code></p>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="aside---geom_sf-limits.html#cb410-1"></a><span class="kw">ggbody</span>(ggplot2<span class="op">:::</span>ggplot_build.ggplot)[[<span class="dv">17</span>]]</span>
+<span id="cb410-2"><a href="aside---geom_sf-limits.html#cb410-2"></a><span class="kw">ggtrace</span>(</span>
+<span id="cb410-3"><a href="aside---geom_sf-limits.html#cb410-3"></a>  <span class="dt">method =</span> ggplot2<span class="op">:::</span>ggplot_build.ggplot,</span>
+<span id="cb410-4"><a href="aside---geom_sf-limits.html#cb410-4"></a>  <span class="dt">trace_steps =</span> <span class="dv">17</span>,</span>
+<span id="cb410-5"><a href="aside---geom_sf-limits.html#cb410-5"></a>  <span class="dt">trace_exprs =</span> <span class="kw">quote</span>(<span class="kw">browser</span>()),</span>
+<span id="cb410-6"><a href="aside---geom_sf-limits.html#cb410-6"></a>  <span class="dt">verbose =</span> <span class="ot">FALSE</span></span>
+<span id="cb410-7"><a href="aside---geom_sf-limits.html#cb410-7"></a>)</span>
+<span id="cb410-8"><a href="aside---geom_sf-limits.html#cb410-8"></a>path_plygn_<span class="dv">1</span></span></code></pre></div>
+<p>Scale censor for <code>geom_sf()</code></p>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="aside---geom_sf-limits.html#cb411-1"></a><span class="kw">ggtrace</span>(</span>
+<span id="cb411-2"><a href="aside---geom_sf-limits.html#cb411-2"></a>  <span class="dt">method =</span> ggplot2<span class="op">:::</span>ggplot_build.ggplot,</span>
+<span id="cb411-3"><a href="aside---geom_sf-limits.html#cb411-3"></a>  <span class="dt">trace_steps =</span> <span class="dv">17</span>, <span class="co"># and 26 `layout$map_position`</span></span>
+<span id="cb411-4"><a href="aside---geom_sf-limits.html#cb411-4"></a>  <span class="dt">trace_exprs =</span> <span class="kw">quote</span>(<span class="kw">browser</span>()),</span>
+<span id="cb411-5"><a href="aside---geom_sf-limits.html#cb411-5"></a>  <span class="dt">verbose =</span> <span class="ot">FALSE</span></span>
+<span id="cb411-6"><a href="aside---geom_sf-limits.html#cb411-6"></a>)</span>
+<span id="cb411-7"><a href="aside---geom_sf-limits.html#cb411-7"></a>sf_plygn_<span class="dv">1</span>_wlims</span></code></pre></div>
+<p>Inspecting the rendered geom with <code>layer_grob()</code></p>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="aside---geom_sf-limits.html#cb412-1"></a>patchwork<span class="op">::</span><span class="kw">wrap_elements</span>(<span class="kw">layer_grob</span>(poly_plygn_<span class="dv">1</span>)[[<span class="dv">1</span>]])</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-71-1.png" width="672" /></p>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="aside---geom_sf-limits.html#cb413-1"></a>patchwork<span class="op">::</span><span class="kw">wrap_elements</span>(<span class="kw">layer_grob</span>(sf_plygn_<span class="dv">1</span>)[[<span class="dv">1</span>]])</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-71-2.png" width="672" /></p>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="aside---geom_sf-limits.html#cb414-1"></a>patchwork<span class="op">::</span><span class="kw">wrap_elements</span>(<span class="kw">layer_grob</span>(sf_plygn_<span class="dv">1</span>_wlims)[[<span class="dv">1</span>]])</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/10-71-3.png" width="672" /></p>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="aside---geom_sf-limits.html#cb415-1"></a>dplyr<span class="op">::</span><span class="kw">bind_cols</span>(<span class="kw">layer_grob</span>(sf_plygn_<span class="dv">1</span>)[[<span class="dv">1</span>]][<span class="kw">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>)])</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 2
+##   x                y               
+##   &lt;simplUnt&gt;       &lt;simplUnt&gt;      
+## 1 0.04545455native 0.04545455native
+## 2 0.04545455native 0.2727273native 
+## 3 0.2272727native  0.04545455native
+## 4 0.4090909native  0.2727273native 
+## 5 0.9545455native  0.9545455native 
+## 6 0.04545455native 0.04545455native</code></pre>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="aside---geom_sf-limits.html#cb417-1"></a>dplyr<span class="op">::</span><span class="kw">bind_cols</span>(<span class="kw">layer_grob</span>(sf_plygn_<span class="dv">1</span>_wlims)[[<span class="dv">1</span>]][<span class="kw">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>)]) <span class="co"># x for fifth row is &gt;1npc</span></span></code></pre></div>
+<pre><code>## # A tibble: 6 × 2
+##   x                y               
+##   &lt;simplUnt&gt;       &lt;simplUnt&gt;      
+## 1 0.04545455native 0.04545455native
+## 2 0.04545455native 0.2727273native 
+## 3 0.3484848native  0.04545455native
+## 4 0.6515152native  0.2727273native 
+## 5 1.560606native   0.9545455native 
+## 6 0.04545455native 0.04545455native</code></pre>
+
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="binned.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="placeholder-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/r4ds/bookclub-ggplot2/edit/main/10-Position_scales_and_axes.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
