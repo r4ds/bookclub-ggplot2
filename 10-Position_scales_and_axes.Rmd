@@ -1,0 +1,819 @@
+# Position scales and axes
+
+**Learning Objectives**
+
+- What are the defining components of a scale?
+- When/why does the data need to be transformed for a visualization?
+- What are the defining components of an axis?
+- What is the relationship between scale and axis?
+
+```{r 10-01}
+library(ggplot2)
+library(dplyr)
+library(stringr) # for demo of labels and some other stuff
+```
+
+
+## Introduction / preliminaries / asides
+
+This chapter introduces position scales and axes. It may also be helpful to understand position scales and axes as position scales and _guides_, because axes they share the same API as guides for non-positional scales like color legends. The parallel will be clearer in the next chapter.
+
+It's worthwhile to read documentations of the `{scales}` package to learn more about scales, since that handles a lot of the (re-)scaling and transformation under the hood. It may be good to start with the [rstudio::conf2020 talk on scales](https://www.rstudio.com/resources/rstudioconf-2020/the-little-package-that-could-taking-visualizations-to-the-next-level-with-the-scales-package/).
+
+```{r 10-02}
+knitr::include_url("https://www.rstudio.com/resources/rstudioconf-2020/the-little-package-that-could-taking-visualizations-to-the-next-level-with-the-scales-package/")
+```
+
+It should also be noted that there's some discussion about revamping the `scales_*` API. See [issue #4269](https://github.com/tidyverse/ggplot2/issues/4269) and [PR #4271](https://github.com/tidyverse/ggplot2/pull/4271)
+
+Lastly, a small aside on the book's `after_stat()` example  it he intro, continuing nicely from our discussion on ggplot internals last week.
+
+```{r 10-03}
+# Grab the layer object created by `geom_histogram()`
+histogram_layer <- geom_histogram()
+# Check what stat ggproto it uses
+class(histogram_layer$stat)[1]
+# Confirm that the stat has `after_stat(count)` as the default aes
+StatBin$default_aes # or, `histogram_layer$stat$default_aes`
+# The stat takes an x or y aesthetic, so it does implicitly maps
+# `after_stat(count)` to the unspecified aes
+StatBin$required_aes
+geom_histogram(aes(x = displ))$mapping
+# 'orientation' argument allows horizontal bars without `coord_flip()`
+# as of v.3.3.0 (Dec 2020)
+ggplot(mpg, aes(y = displ)) +
+  geom_histogram(orientation = "y")
+```
+
+## 10.1 Numeric
+
+### 10.1.1 Limits
+
+The book doesn't have content for this section (??)
+
+But we know that you can set limits with `xlim()`/`ylim()` or `scale_x|y_*(limits = )`
+
+```{r 10-04}
+lim_plot <- ggplot(mtcars, aes(x = hp, y = disp)) +
+  geom_point()
+
+lim_plot
+
+lim_plot +
+  xlim(0, 500)
+
+# NA to use range of data
+lim_plot +
+  xlim(0, NA)
+
+# Same thing
+lim_plot +
+  scale_x_continuous(limits = c(0, NA))
+```
+
+
+### 10.1.2 Out of bounds values
+
+NOTE: A big theme of the `{scales}` package as of v1.1.1 (May 2020) is that they have very transparent function names. For example, the family of functions for Out Of Bounds (oob) handling are all named `oob_*()`. This is an intentional (re-)design of the package to work nicely with autocomplete.
+
+```{r 10-05}
+str_subset(ls(envir = asNamespace("scales")), "^oob_")
+```
+
+By default, data outside scales are set to `NA`. This is because the `oob` argument is set to `oob_censor()`/`censor()`. Note that oob only applies to continuous scales, since values of a discrete scale form a fixed set.
+
+```{r 10-06}
+body(scale_x_continuous)
+formals(continuous_scale)$oob
+```
+
+Book's examples:
+
+```{r 10-07}
+base <- ggplot(mpg, aes(drv, hwy)) + 
+  geom_hline(yintercept = 28, colour = "red") + 
+  geom_boxplot(alpha = .2) # I set alpha here for a later demo
+
+base
+base + coord_cartesian(ylim = c(10, 35))
+base + ylim(10, 35)
+```
+
+Equivalent solutions with `oob_*()`
+
+```{r 10-08}
+# zoom only (keeps out of bounds values for the stat computation)
+base + scale_y_continuous(limits = c(10, 35), oob = scales::oob_keep)
+# default that removes out of bounds values
+base + scale_y_continuous(limits = c(10, 35), oob = scales::oob_censor)
+# squish option (plots outliers at the uper limit of y = 35)
+base + scale_y_continuous(limits = c(10, 35), oob = scales::oob_squish)
+```
+
+You can use oob functions for non-positional scales 
+
+```{r 10-09}
+df <- data.frame(x = 1:6, y = 8:13)
+base <- ggplot(df, aes(x, y)) + 
+  geom_col(aes(fill = x)) +                    # bar chart
+  geom_vline(xintercept = 3.5, colour = "red") # for visual clarity only
+
+base
+base + scale_fill_gradient(limits = c(1, 3)) # oob = scales::oob_censor
+base + scale_fill_gradient(limits = c(1, 3), oob = scales::squish) # scales::oob_squish
+```
+
+
+### 10.1.3 Visual range expansion
+
+Book examples:
+
+```{r 10-10}
+f_plot <- ggplot(faithfuld, aes(waiting, eruptions)) + 
+  geom_raster(aes(fill = density)) + 
+  theme(legend.position = "none")
+f_plot
+
+f_plot + 
+  scale_x_continuous(expand = c(0,0)) +  # expand = 0
+  scale_y_continuous(expand = c(0,0))  # expand = 0
+```
+
+With `expansion()` from v3.3.0 (Dec 2020)
+
+```{r 10-11}
+formals(expansion)
+```
+
+```{r 10-12}
+f_plot +
+  scale_y_continuous(expand = expansion(mult = 0)) # mult = c(0, 0)
+f_plot +
+  scale_y_continuous(expand = expansion(mult = 1))
+f_plot +
+  scale_y_continuous(expand = expansion(mult = c(0, 1)))
+f_plot +
+  scale_y_continuous(expand = expansion(mult = c(0, 1))) +
+  scale_x_continuous(expand = expansion(add = c(0, 10)))
+```
+
+
+### 10.1.4 Exercises
+
+
+### 10.1.5 Breaks
+
+```{r 10-13}
+str_subset(ls(envir = asNamespace("scales")), "^breaks_")
+```
+
+Book example:
+
+```{r 10-14}
+toy <- data.frame(
+  const = 1, 
+  up = 1:4,
+  txt = letters[1:4], 
+  big = (1:4)*1000,
+  log = c(2, 5, 10, 2000)
+)
+toy
+#>   const up txt  big  log
+#> 1     1  1   a 1000    2
+#> 2     1  2   b 2000    5
+#> 3     1  3   c 3000   10
+#> 4     1  4   d 4000 2000
+axs <- ggplot(toy, aes(big, const)) + 
+  geom_point() + 
+  labs(x = NULL, y = NULL)
+axs
+axs + scale_x_continuous(breaks = scales::breaks_extended())
+axs + scale_x_continuous(breaks = scales::breaks_extended(n = 2))
+axs + scale_x_continuous(breaks = NULL)
+```
+
+Demo from `{scales}`:
+
+```{r 10-15}
+scales::demo_continuous(c(1000, 4000), breaks = scales::breaks_extended())
+scales::demo_continuous(c(1000, 4000), breaks = scales::breaks_extended(n = 2))
+scales::demo_continuous(c(1000, 4000), NULL)
+```
+
+At the vector level:
+
+```{r 10-16}
+scales::breaks_extended()(c(1000, 4000))
+scales::breaks_extended(n = 2)(c(1000, 4000))
+```
+
+Other breaks:
+
+```{r 10-17}
+my_range <- c(1, 101)
+scales::breaks_extended()(my_range)
+scales::breaks_width(width = 10)(my_range)
+scales::breaks_pretty(width = 10)(my_range) # pretty(1:101)
+scales::breaks_log()(my_range)
+```
+
+Debugging arguments in `scale_*()` that take function factories
+
+```{r 10-18, eval = FALSE}
+browserer <- function(...) {
+  params <- list(...)
+  browser()
+  if (exists("result")) {
+    return(result)
+  }
+}
+axs + scale_x_continuous(breaks = browserer)
+```
+
+
+### 10.1.6 Minor breaks
+
+Book example:
+
+```{r 10-19}
+mb <- unique(as.numeric(1:10 %o% 10 ^ (0:3)))
+mb
+
+log_base <- ggplot(toy, aes(log, const)) + geom_point()
+
+log_base + scale_x_log10()
+log_base + scale_x_log10(minor_breaks = mb)
+```
+
+There are also minor break functions:
+
+```{r 10-20}
+str_subset(ls(envir = asNamespace("scales")), "^minor_breaks_")
+```
+
+
+### 10.1.7 Labels
+
+```{r 10-21}
+str_subset(ls(envir = asNamespace("scales")), "^label_")
+```
+
+Book examples:
+
+```{r 10-22}
+axs + scale_y_continuous(labels = scales::label_percent())
+axs + scale_y_continuous(labels = scales::label_dollar(prefix = "", suffix = "€"))
+```
+
+```{r 10-23}
+tibble(
+  x = c("cat1", "cat2 with a really really realy long name", "cat3"),
+  y = 1:3
+) %>% 
+  ggplot(aes(x, y)) +
+  geom_col()
+```
+
+```{r 10-24}
+tibble(
+  x = c("cat1", "cat2 with a really really realy long name", "cat3"),
+  y = 1:3
+) %>% 
+  ggplot(aes(x, y)) +
+  geom_col() +
+  scale_x_discrete(labels = scales::label_wrap(width = 30))
+```
+
+
+### 10.1.8 Exercises
+
+
+### 10.1.9 Transformations
+
+Book example:
+
+```{r 10-25}
+ggplot(diamonds, aes(price, carat)) + 
+  geom_bin2d()
+# log transform x and y axes
+ggplot(diamonds, aes(price, carat)) + 
+  geom_bin2d() + 
+  scale_x_continuous(trans = "log10") +
+  scale_y_continuous(trans = "log10")
+```
+
+
+> The transformation is carried out by a “transformer”, which describes the transformation, its inverse, and how to draw the labels. You can construct your own transformer using `scales::trans_new()`
+
+Case study: make reversed log x-axis
+
+```{r 10-26}
+ggplot(starwars, aes(x = mass)) +
+  geom_histogram()
+
+ggplot(starwars, aes(x = mass)) +
+  geom_histogram() +
+  scale_x_log10()
+
+ggplot(starwars, aes(x = mass)) +
+  geom_histogram() +
+  scale_x_reverse()
+```
+
+```{r 10-27}
+scale_x_log10()$trans    # scales::log10_trans()
+scale_x_reverse()$trans  # scales::reverse_trans()
+```
+
+```{r 10-28}
+formals(scales::trans_new)
+log10_reverse <- scales::trans_new(
+  name = "log-10-reverse",
+  transform = function(x) -log(x, 10),
+  inverse = function(x) 10^(-x),
+  breaks = scales::log10_trans()$breaks,
+  minor_breaks = scales::log10_trans()$minor_breaks,
+  domain = scales::log10_trans()$domain
+)
+ggplot(starwars, aes(x = mass)) +
+  geom_histogram() +
+  scale_x_continuous(trans = log10_reverse)
+```
+
+> Regardless of which method you use, the transformation occurs before any statistical summaries. To transform after statistical computation use `coord_trans()`
+
+From the docs:
+
+```{r 10-29}
+ggplot(diamonds, aes(carat, price)) +
+  geom_point() +
+  scale_x_log10() +
+  scale_y_log10()
+
+ggplot(diamonds, aes(carat, price)) +
+  geom_point() +
+  coord_trans(x = "log10", y = "log10")
+```
+
+Example where stat transformation matters:
+
+```{r 10-30}
+trans_plot <- ggplot(mpg, aes(drv, hwy)) +
+  geom_boxplot()
+trans_plot +
+  scale_y_log10()
+trans_plot +
+  coord_trans(y = "log10") # scales::log10_trans()
+```
+
+
+```{r 10-31}
+layer_data(trans_plot) %>% 
+  select(x, starts_with("y"))
+layer_data(trans_plot + scale_y_log10()) %>% 
+  select(x, starts_with("y"))
+layer_data(trans_plot + coord_trans(y = "log10")) %>% 
+  select(x, starts_with("y"))
+```
+
+
+### ASIDE - A little more on transformations
+
+`transform()` method of the [Scales ggproto](https://ggplot2.tidyverse.org/reference/ggplot2-ggproto.html#scales):
+
+> `transform()` Transforms a vector of values using self$trans. This occurs before the Stat is calculated.
+
+Transformation changes the layer data
+
+```{r 10-32}
+toy # from Ch 10.1.5
+ggplot(toy, aes(big, txt)) +
+  geom_point()
+
+reversed_plot <- ggplot(toy, aes(big, txt)) +
+  geom_point() +
+  scale_x_reverse()
+reversed_plot
+layer_data(reversed_plot)
+
+rev_trans <- scales::reverse_trans()
+scales::reverse_trans
+str(rev_trans)
+rev_trans$transform(toy$big)
+rev_trans$inverse(rev_trans$transform(toy$big))
+rev_trans$format(rev_trans$breaks(range(toy$big)))
+```
+
+Most useful for positioning purposes (ex: [`time_trans()`](https://scales.r-lib.org/reference/time_trans.html))
+
+```{r 10-33}
+hours <- seq(ISOdate(2000,3,20, tz = ""), by = "hour", length.out = 10)
+t <- scales::time_trans()
+t$transform(hours)
+t$inverse(t$transform(hours))
+t$format(t$breaks(range(hours)))
+```
+
+```{r 10-34}
+date_trans_plot <- ggplot(tibble(hours = hours), aes(x = hours, y = 0)) +
+  geom_point()
+layer_data(date_trans_plot)
+```
+
+
+## 10.2 Date-time
+
+### 10.2.1 Breaks
+
+Book example:
+
+```{r 10-35}
+date_base <- ggplot(economics, aes(date, psavert)) + 
+  geom_line(na.rm = TRUE) +
+  labs(x = NULL, y = NULL)
+
+date_base 
+date_base + scale_x_date(date_breaks = "25 years")
+```
+
+Making it explicit:
+
+```{r 10-36}
+date_base + scale_x_date(breaks = scales::breaks_width("25 years"))
+```
+
+Book example:
+
+```{r 10-37}
+century20 <- as.Date(c("1900-01-01", "1999-12-31"))
+breaks <- scales::breaks_width("25 years")
+breaks(century20)
+```
+
+Using `offset` argument (unit = days):
+
+```{r 10-38}
+breaks2 <- scales::breaks_width("25 years", offset = 31) # offsets to Feb
+breaks2(century20)
+```
+
+Calculating the offset:
+
+```{r 10-39}
+diff.Date(c(as.Date("1900-01-01"), as.Date("1900-02-01"))) # as.integer() to get value
+```
+
+### 10.2.2 Minor breaks
+
+Book examples:
+
+```{r 10-40}
+date_base + scale_x_date(
+  limits = as.Date(c("2003-01-01", "2003-04-01")),
+  date_breaks = "1 month"
+)
+
+date_base + scale_x_date(
+  limits = as.Date(c("2003-01-01", "2003-04-01")),
+  date_breaks = "1 month",
+  date_minor_breaks = "1 week"
+)
+```
+
+> In the second plot, the major and minor beaks follow slightly different patterns: the minor breaks are always spaced 7 days apart but the major breaks are 1 month apart. Because the months vary in length, this leads to slightly uneven spacing.
+
+Explicit:
+
+```{r 10-41}
+date_base + scale_x_date(
+  limits = as.Date(c("2003-01-01", "2003-04-01")),
+  breaks = scales::breaks_width("1 month")
+)
+date_base + scale_x_date(
+  limits = as.Date(c("2003-01-01", "2003-04-01")),
+  breaks = scales::breaks_width("1 month"),
+  minor_breaks = scales::breaks_width("1 week")
+)
+```
+
+
+### 10.2.3 Labels
+
+Book examples:
+
+```{r 10-42}
+base <- ggplot(economics, aes(date, psavert)) + 
+  geom_line(na.rm = TRUE) +
+  labs(x = NULL, y = NULL)
+
+base + scale_x_date(date_breaks = "5 years")
+base + scale_x_date(date_breaks = "5 years", date_labels = "%y")
+```
+
+```{r 10-43}
+base + scale_x_date(labels = scales::label_date_short())
+lim <- as.Date(c("2004-01-01", "2005-01-01"))
+base + scale_x_date(limits = lim, labels = scales::label_date_short())
+```
+
+
+
+
+## 10.3 Discrete
+
+Book examples:
+
+```{r 10-44}
+ggplot(mpg, aes(x = hwy, y = class)) + 
+  geom_point()
+
+ggplot(mpg, aes(x = hwy, y = class)) + 
+  geom_point() + 
+  scale_x_continuous() +
+  scale_y_discrete()
+
+ggplot(mpg, aes(x = hwy, y = class)) + 
+  geom_point() +
+  annotate("text", x = 5, y = 1:7, label = 1:7)
+```
+
+### 10.3.1 Limits
+
+> For discrete scales, limits should be a character vector that enumerates all possible values.
+
+Censors missing categories in the set:
+
+```{r 10-45}
+ggplot(mpg, aes(x = hwy, y = class)) + 
+  geom_point() +
+  scale_y_discrete(limits = unique(mpg$class)[-1])
+```
+
+Adds new categories without value:
+
+```{r 10-46}
+ggplot(mpg, aes(x = hwy, y = class)) + 
+  geom_point() +
+  scale_y_discrete(limits = c("A", unique(mpg$class)))
+```
+
+Same effect with `drop = FALSE` with unused factor levels
+
+```{r 10-47}
+ggplot(mpg, aes(x = hwy, y = factor(class, levels = c("A", unique(class))))) +
+  geom_point() +
+  scale_y_discrete(drop = FALSE)
+```
+
+It drops unused factor levels by default, though
+
+```{r 10-48}
+ggplot(mpg, aes(x = hwy, y = factor(class, levels = c("A", unique(class))))) +
+  geom_point() # + scale_y_discrete(drop = TRUE) 
+```
+
+
+### 10.3.2 Scale labels
+
+```{r 10-49}
+layer_data(last_plot()) %>% 
+  ggplot(aes(x = x, y = y, group = group)) +
+  geom_point()
+```
+
+### 10.3.2 Scale labels
+
+Book example:
+
+```{r 10-50}
+base <- ggplot(toy, aes(const, txt)) + 
+  geom_point() +
+  labs(x = NULL, y = NULL)
+
+base
+base + scale_y_discrete(labels = c(c = "carrot", b = "banana"))
+```
+
+```{r 10-51}
+base + scale_y_discrete(labels = str_to_title)
+```
+
+Debugging strategy
+
+```{r 10-52, eval = FALSE}
+browserer <- function(...) {
+  params <- list(...)
+  browser()
+}
+base + scale_y_discrete(labels = browserer)
+```
+
+### 10.3.3 `guide_axis()`
+
+Book examples:
+
+```{r 10-53}
+base <- ggplot(mpg, aes(manufacturer, hwy)) + geom_boxplot() 
+
+base + guides(x = guide_axis(n.dodge = 3))
+base + guides(x = guide_axis(angle = 90))
+```
+
+More guides in `{ggh4x}` - [https://teunbrand.github.io/ggh4x/](https://teunbrand.github.io/ggh4x/index.html)
+
+```{r 10-54}
+library(ggh4x)
+tibble(
+  item = c("Coffee", "Tea", "Apple", "Pear", "Car"),
+  type = c("Drink", "Drink", "Fruit", "Fruit", ""),
+  amount = c(5, 1, 2, 3, 1)
+) %>% 
+  ggplot(aes(interaction(item, type), amount)) +
+  geom_col() +
+  scale_x_discrete(guide = guide_axis_nested()) # guides(x = "axis_nested")
+```
+
+## 10.4 Binned
+
+Book example:
+
+```{r 10-55}
+base <- ggplot(mpg, aes(hwy, class)) + geom_count()
+
+base 
+base + scale_x_binned(n.breaks = 10)
+```
+
+```{r 10-56}
+ggplot(mtcars, aes(hp)) +
+  geom_histogram(binwidth = 20)
+
+ggplot(mtcars, aes(hp)) +
+  geom_bar() +
+  scale_x_binned(breaks = scales::breaks_width(width = 20))
+```
+
+## ASIDE - `geom_sf()` + limits
+
+### Example from Twitter:
+
+[https://twitter.com/Josh_Ebner/status/1470818469801299970?s=20](https://twitter.com/Josh_Ebner/status/1470818469801299970?s=20)
+
+### Reprexes from Ryan S:
+
+```{r 10-57}
+library(sf)
+plygn_1 <- tibble(x_coord = c(1, 1, 2, 3, 6, 1),
+                  y_coord = c(1, 2, 1, 2, 5, 1))
+plygn_1
+```
+
+Full range polygon
+
+```{r 10-58}
+plygn_1 %>% 
+  ggplot() +
+  geom_polygon(aes(x_coord, y_coord))
+```
+
+Polygon with limits
+
+```{r 10-59}
+poly_plygn_1 <- plygn_1 %>%
+  ggplot() +
+  geom_polygon(aes(x_coord, y_coord)) +
+  scale_x_continuous(limits = c(1, 4))
+poly_plygn_1
+```
+
+Path with limits
+
+```{r 10-60}
+path_plygn_1 <- plygn_1 %>%
+  ggplot() +
+  geom_path(aes(x_coord, y_coord)) +
+  scale_x_continuous(limits = c(1, 4))
+path_plygn_1
+```
+
+`geom_sf()` without limits
+
+```{r 10-61}
+sf_plygn_1 <- plygn_1 %>%                 # tibble of coords
+  as.matrix() %>%                         # make into a matrix
+  list() %>%                              # make into a list
+  st_polygon() %>%                        # make into sf object
+  ggplot() +                              # call ggplot
+  geom_sf()                             # use geom_sf for plotting sf objects
+
+sf_plygn_1
+```
+
+`geom_sf()` with limits
+
+```{r 10-62}
+sf_plygn_1_wlims <- sf_plygn_1 +
+  scale_x_continuous(limits = c(1, 4))    # add limits
+
+sf_plygn_1_wlims
+```
+
+### Further exploration
+
+Using `geom_sf()` adds `CoordSF` by default
+
+```{r 10-63}
+class(sf_plygn_1$coordinates)
+class(sf_plygn_1_wlims$coordinates)
+```
+
+In fact, `geom_sf()` must be used with `coord_sf()`
+
+```{r 10-64, error = TRUE}
+# Same thing as without limits `sf_plygn_1`
+sf_plygn_1 +
+  coord_sf()
+
+# Same thing as with limits `sf_plygn_1_wlims`
+sf_plygn_1 +
+  coord_sf(xlim = c(1, 4))
+
+# Doesn't work
+sf_plygn_1 +
+  coord_cartesian()
+```
+
+The underlying geometry is untouched (indicating that limits are not removing data)
+
+```{r 10-65}
+layer_data(sf_plygn_1)
+layer_data(sf_plygn_1_wlims)
+
+identical(
+  layer_data(sf_plygn_1_wlims)$geometry,
+  layer_data(sf_plygn_1)$geometry
+)
+```
+
+OOB handling inside `scale_x|y_continuous()` cannot override the behavior
+
+```{r 10-66}
+sf_plygn_1 +
+  scale_x_continuous(limits = c(1, 4), oob = scales::oob_censor)
+```
+
+Instead, `coord_sf(lims_method = )` offers other spatial-specific methods. Censor doesn't seem to be one but an option like `"geometry_bbox"` automatically sets limits to the smallest bounding box that contain all geometries.
+
+```{r 10-67}
+sf_plygn_1 +
+  coord_sf(lims_method = "geometry_bbox")
+sf_plygn_1_wlims +
+  coord_sf(lims_method = "geometry_bbox")
+```
+
+Interesting note from the [docs](https://ggplot2.tidyverse.org/reference/ggsf.html#arguments):
+
+> ... specifying limits via position scales or xlim()/ylim() is strongly discouraged, as it can result in data points being dropped from the plot even though they would be visible in the final plot region.
+
+
+### Internals
+
+```{r 10-68}
+library(ggtrace) # v.0.4.5
+```
+
+Scale censor for `geom_polygon()`
+
+```{r 10-69, eval = FALSE}
+ggbody(ggplot2:::ggplot_build.ggplot)[[17]]
+ggtrace(
+  method = ggplot2:::ggplot_build.ggplot,
+  trace_steps = 17,
+  trace_exprs = quote(browser()),
+  verbose = FALSE
+)
+path_plygn_1
+```
+
+Scale censor for `geom_sf()`
+
+```{r 10-70, eval = FALSE}
+ggtrace(
+  method = ggplot2:::ggplot_build.ggplot,
+  trace_steps = 17, # and 26 `layout$map_position`
+  trace_exprs = quote(browser()),
+  verbose = FALSE
+)
+sf_plygn_1_wlims
+```
+
+Inspecting the rendered geom with `layer_grob()`
+
+```{r 10-71}
+patchwork::wrap_elements(layer_grob(poly_plygn_1)[[1]])
+patchwork::wrap_elements(layer_grob(sf_plygn_1)[[1]])
+patchwork::wrap_elements(layer_grob(sf_plygn_1_wlims)[[1]])
+
+dplyr::bind_cols(layer_grob(sf_plygn_1)[[1]][c("x", "y")])
+dplyr::bind_cols(layer_grob(sf_plygn_1_wlims)[[1]][c("x", "y")]) # x for fifth row is >1npc
+```

@@ -1,0 +1,22 @@
+# PLACEHOLDER
+
+**Learning objectives:**
+
+- {These are nice to have, but take some extra work. It's ok to skip these if necessary.}
+
+## {Slide 1 title}
+
+- {Create slides as sections marked with `##`, but keep them short like a slide.}
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/URL")`
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+```
+</details>
