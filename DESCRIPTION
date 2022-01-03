@@ -25,6 +25,7 @@ Imports:
     ourworldindata,
     patchwork,
     seriation,
+    sf,
     tidyverse,
     tidygraph
 Remotes: 
