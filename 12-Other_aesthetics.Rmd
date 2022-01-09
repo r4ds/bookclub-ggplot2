@@ -1,0 +1,215 @@
+# 12 Other Aesthetics
+
+
+```{r library 01, include=FALSE}
+
+library(ggplot2)
+
+```
+
+
+## 12.1 Size
+
+
+```{r size 01}
+base <- ggplot(mpg, aes(displ, hwy, size = cyl)) + 
+  geom_point()
+
+base
+base + scale_size(range = c(1, 2))
+
+```
+### 12.1.1 Radius size scales
+
+```{r radius size scales 01, echo=FALSE }
+planets <- data.frame(
+  name = c("Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"),
+  type = c(rep("Inner", 4), rep("Outer", 4)),
+  position = 1:8,
+  radius = c(2440, 6052, 6378, 3390, 71400, 60330, 25559, 24764),
+  orbit = c(57900000, 108200000, 149600000, 227900000, 778300000, 1427000000, 2871000000, 4497100000)
+#  mass = c(3.3022e+23, 4.8685e+24, 5.9736e+24, 6.4185e+23, 1.8986e+27, 5.6846e+26, 8.681e+25, 1.0243e+26)
+)
+planets$name <- with(planets, factor(name, name)); planets
+```
+
+
+
+```{r radius size scale 02}
+base <- ggplot(planets, aes(1, name, size = radius)) + 
+  geom_point() + 
+  scale_x_continuous(breaks = NULL) + 
+  labs(x = NULL, y = NULL, size = NULL)
+  
+base + ggtitle("not to scale")
+base + 
+  scale_radius(limits = c(0, NA), range = c(0, 10)) + 
+  ggtitle("to scale")
+```
+
+
+### 12.1.2 Binned size scales
+
+```{r binned size scales 01}
+
+base <- ggplot(mpg, aes(displ, manufacturer, size = hwy)) +
+  geom_point(alpha = .2) +
+  scale_size_binned()
+
+base
+
+```
+
+```{r binned size scales 02}
+
+base + guides(size = guide_bins(axis = FALSE))
+
+```
+
+
+
+
+```{r binned size scales 03}
+base + guides(size = guide_bins(direction = "horizontal"))
+```
+
+
+
+```{r binned size scales 04}
+base + guides(size = guide_bins(show.limits = TRUE))
+```
+
+
+```{r binned size scales 05}
+base + guides(
+  size = guide_bins(
+    axis.colour = "red",
+    axis.arrow = arrow(
+      length = unit(.1, "inches"), 
+      ends = "first", 
+      type = "closed"
+    )
+  )
+)
+```
+
+
+
+## 12.2 Shape
+
+
+```{r shape 01}
+
+base <- ggplot(mpg, aes(displ, hwy, shape = factor(cyl))) + 
+  geom_point()
+
+base
+base + scale_shape(solid = FALSE)
+
+```
+
+
+```{r shape 02}
+base + 
+  scale_shape_manual(
+    values = c("4" = 16, "5" = 17, "6" = 1 , "8" = 2)
+  )
+```
+
+
+## 12.3 Line type
+
+
+```{r line type 01}
+
+ggplot(economics_long, aes(date, value01, linetype = variable)) +
+  geom_line()
+
+```
+
+
+```{r line types 02}
+df <- data.frame(value = letters[1:13])
+base <- ggplot(df, aes(linetype = value)) +
+  geom_segment(
+    mapping = aes(x = 0, xend = 1, y = value, yend = value),
+    show.legend = FALSE
+  ) +
+  theme(panel.grid = element_blank()) +
+  scale_x_continuous(NULL, NULL) 
+
+base
+```
+
+
+```{r line types 03}
+linetypes <- function(n) {
+  types <- c("55",  "75", "95", "1115", "111115", "11111115",
+             "5158", "9198", "c1c8")
+  return(types[seq_len(n)])
+}
+
+base + scale_linetype(palette = linetypes)
+```
+
+
+
+```{r line types 04}
+base + scale_linetype(palette = linetypes, na.value = "dotted")
+```
+
+
+
+## 12.4 Manual scales
+
+
+```{r manual scales 01}
+huron <- data.frame(year = 1875:1972, level = as.numeric(LakeHuron))
+ggplot(huron, aes(year)) +
+  geom_line(aes(y = level + 5), colour = "red") +
+  geom_line(aes(y = level - 5), colour = "blue")
+```
+
+
+```{r manual scales 02}
+ggplot(huron, aes(year)) +
+  geom_line(aes(y = level + 5, colour = "above")) +
+  geom_line(aes(y = level - 5, colour = "below"))
+
+
+```
+
+
+```{r manual sclaes 03}
+
+ggplot(huron, aes(year)) +
+  geom_line(aes(y = level + 5, colour = "above")) +
+  geom_line(aes(y = level - 5, colour = "below")) +
+  scale_colour_manual("Direction",
+    values = c("above" = "red", "below" = "blue")
+  )
+
+```
+
+
+## 12.5 Identity Scales
+
+
+```{r identity scales 01}
+head(luv_colours)
+#>      L         u    v           col
+#> 1 9342 -3.37e-12    0         white
+#> 2 9101 -4.75e+02 -635     aliceblue
+#> 3 8810  1.01e+03 1668  antiquewhite
+#> 4 8935  1.07e+03 1675 antiquewhite1
+#> 5 8452  1.01e+03 1610 antiquewhite2
+#> 6 7498  9.03e+02 1402 antiquewhite3
+
+ggplot(luv_colours, aes(u, v)) + 
+geom_point(aes(colour = col), size = 3) + 
+scale_color_identity() + 
+coord_equal()
+```
+
+
+
