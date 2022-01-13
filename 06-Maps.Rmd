@@ -15,7 +15,7 @@ Plotting geospacial data is a common visualization task. The process may require
 ## Polygon Maps
 The simplest approach to mapping is using geom_polygon(). This forms bounderies around regions.
 
-```{r mi-countries, include=TRUE}
+```{r 06-mi-countries, include=TRUE}
 library(ggplot2)
 mi_counties <- map_data("county", "michigan") %>% 
   select(lon = long, lat, group, id = subregion)
@@ -28,7 +28,7 @@ In this data set we have four variables:
  - `id`: name of the region
  - `group`: unique identifier for contiguous areas within a region
  
-```{r coord_quickmap(), include=TRUE}
+```{r 06-coord_quickmap(), include=TRUE}
 ggplot(mi_counties, aes(lon, lat)) + 
   geom_point(size = .25, show.legend = FALSE) +
   coord_quickmap()

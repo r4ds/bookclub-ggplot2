@@ -13,9 +13,11 @@ Imports:
     details,
     emo,
     gameofthrones,
+    ggh4x,
     ggraph,
     ggpubr,
     ggrepel,
+    ggtrace,
     grid,
     gridExtra,
     hexbin,
@@ -26,8 +28,10 @@ Imports:
     patchwork,
     scico,
     seriation,
+    sf,
     tidyverse,
     tidygraph
 Remotes: 
     hadley/emo,
-    drsimonj/ourworldindata
+    drsimonj/ourworldindata,
+    yjunechoe/ggtrace
