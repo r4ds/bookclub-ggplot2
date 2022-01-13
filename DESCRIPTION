@@ -22,6 +22,7 @@ Imports:
     maps,
     ourworldindata,
     patchwork,
+    scico,
     seriation,
     tidyverse,
     tidygraph
