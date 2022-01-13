@@ -6,9 +6,9 @@ output: pdf_document
 ---
 
 
-# 11 Colour Scales and Legends
+# Colour Scales and Legends
 
-```{r library, include=FALSE}
+```{r 11-library, include=FALSE}
 
 library(ggplot2)
 library(dplyr)
@@ -25,7 +25,7 @@ library(dplyr)
 
 
 
-## 11.1 A little colour theory
+## A little colour theory
 
 There have been many attempts to come up with colours spaces that are more perceptually uniform. We’ll use a modern attempt called the HCL colour space, which has three components of hue, chroma and luminance:
 
@@ -37,11 +37,11 @@ There have been many attempts to come up with colours spaces that are more perce
 
 An additional complication is that many people (~10% of men) do not possess the normal complement of colour receptors and so can distinguish fewer colours than usual. In brief, it’s best to avoid red-green contrasts, and to check your plots with systems that simulate colour blindness. Visicheck (https://www.vischeck.com/vischeck/) is one online solution. Another alternative is the dichromat package34 which provides tools for simulating colour blindness, and a set of colour schemes known to work well for colour-blind people. You can also help people with colour blindness in the same way that you can help people with black-and-white printers: by providing redundant mappings to other aesthetics like size, line type or shape.
 
-### 11.1.1 Colour blindness
+### Colour blindness
 
 
 
-## 11.2 Continuous colour scales
+## Continuous colour scales
 
 Colour gradients are often used to show the height of a 2d surface. The plots in this section use the surface of a 2d density estimate of the faithful dataset which records the waiting time between eruptions and during each eruption for the Old Faithful geyser in Yellowstone Park. 
 
@@ -58,7 +58,7 @@ erupt <- ggplot(faithfuld, aes(waiting, eruptions, fill = density)) +
 ```
 
 
-### 11.2.1 Particular pallettes
+### Particular pallettes
 
 There are multiple ways to specify continuous colour scales. You can use to construct your own palette, but it  is unnecessary because there are many “hand picked” palettes available. 
 
@@ -103,7 +103,7 @@ erupt + paletteer::scale_fill_paletteer_c("gameofthrones::targaryen")
 
 
 
-### 11.2.2 Robust recipes
+### Robust recipes
 
 The default scale for continuous fill scales is scale_fill_continuous() which in turn defaults to scale_fill_gradient(). As a consequence, these three commands produce the same plot using a gradient scale.
 
@@ -177,7 +177,7 @@ erupt + scale_fill_gradientn(colours = colorspace::diverge_hcl(7))
 
 
 
-### 11.2.3 Missing values
+### Missing values
 
 All continuous colour scales have an na.value parameter that controls what colour is used for missing values (including values outside the range of the scale limits). By default it is set to grey, which will stand out when you use a colourful scale. If you use a black and white scale, you might want to set it to something else to make it more obvious. You can set na.value = NA to make missing values invisible, or choose a specific colour if you prefer:
 
@@ -196,7 +196,7 @@ base + scale_fill_gradient(na.value = "yellow")
 
 
 
-### 11.2.4 Limits, breaks and labels 
+### Limits, breaks and labels 
 
 You can suppress the breaks entirely by setting them to NULL. For axes, this removes the tick marks, grid lines, and labels; and for legends this removes the keys and labels.
 
@@ -216,7 +216,7 @@ leg + scale_fill_continuous(breaks = NULL)
 ```
 
 
-### 11.2.5 Legends
+### Legends
 
 ```{r  continuous legends 01 }
 
@@ -240,7 +240,7 @@ base + scale_colour_continuous(guide = guide_colourbar(reverse = TRUE))
 
 
 
-## 11.3 Discrete colour scales
+## Discrete colour scales
 
 Discrete colour and fill scales occur in many situations. A typical example is a barchart that encodes both position and fill to the same variable. 
 
@@ -265,7 +265,7 @@ bars + scale_fill_hue()
 
 
 
-### 11.3.1 Brewer scales
+### Brewer scales
 
 scale_colour_brewer() is a discrete colour scale that—along with the continuous analog scale_colour_distiller() and binned analog scale_colour_fermenter()—uses handpicked “ColorBrewer” colours taken from http://colorbrewer2.org/. These colours have been designed to work well in a wide variety of situations, although the focus is on maps and so the colours tend to work better when displayed in large areas. There are many different options:
 
@@ -322,7 +322,7 @@ area + scale_fill_brewer(palette = "Pastel1")
 
 
 
-### 11.3.2 Hue and grey scales
+### Hue and grey scales
 
 The default colour scheme picks evenly spaced hues around the HCL colour wheel. This works well for up to about eight colours, but after that it becomes hard to tell the different colours apart. You can control the default chroma and luminance, and the range of hues, with the h, c and l arguments:
 
@@ -347,9 +347,9 @@ bars + scale_fill_grey(start = 0, end = 0.5)
 
 
 
-### 11.3.3 Paleteer Scales
+### Paleteer Scales
 
-### 11.3.4 Manual scales
+### Manual scales
 
 
 If none of the hand-picked palettes is suitable, or if you have your own preferred colours, you can use scale_fill_manual() to set the colours manually. This can be useful if you wish to choose colours that highlight a secondary grouping structure or draw attention to different comparisons:
@@ -375,7 +375,7 @@ bars + scale_fill_manual(values = c(
 ```
 
 
-### 11.3.5 Limits, breaks and labels
+### Limits, breaks and labels
 
 ```{r discrete limits 01}
 
@@ -441,7 +441,7 @@ base_08 +
 
 
 
-### 11.3.6 Legends
+### Legends
 
 
 ```{r discrete legends 01}
@@ -471,7 +471,7 @@ base + guides(colour = guide_legend(override.aes = list(alpha = 1)))
 ```
 
 
-## 11.4 Binned colour scales
+## Binned colour scales
 
 Color scales also come in binned versions. The default scale is scale_fill_binned() which in turn defaults to scale_fill_steps(). These scales have an n.breaks argument that controls the number of discrete colour categories created by the scale. Counterintuitively—because the human visual system is very good at detecting edges—this can sometimes make a continuous colour gradient easier to perceive:
 
@@ -524,11 +524,11 @@ erupt + scale_fill_fermenter(n.breaks = 9, palette = "PuOr")
 Note that like the discrete scale_fill_brewer()—and unlike the continuous scale_fill_distiller()—the binned function scale_fill_fermenter() does not interpolate between the brewer colours, and if you set n.breaks larger than the number of colours in the palette a warning message will appear and some colours will not be displayed.
 
 
-### 11.4.1 Limits, breaks and labels
+### Limits, breaks and labels
 
 
 
-### 11.4.2 Legends
+### Legends
 
 
 ```{r binned legends 01}
@@ -544,7 +544,7 @@ base + guides(colour = guide_coloursteps(show.limits = TRUE))
 
 
 
-## 11.5 Date Time Colour Scales
+## Date Time Colour Scales
 
 When a colour aesthetic is mapped to a date/time type, ggplot2 uses *scale_colour_date()* or *scale_colour_datetime()* to specify the scale. These are designed to handle date data, analogous to the date scales discussed in Section 10.2. These scales have *date_breaks* and *date_labels* arguments that make it a little easier to work with these data, as the slightly contrived example below illustrates:
 
@@ -562,7 +562,7 @@ base +
 ```
 
 
-## 11.6 Alpha scales
+## Alpha scales
 
 
 Alpha scales map the transparency of a shade to a value in the data and can be a convenient way to visually down-weight less important observations. *scale_alpha()* is an alias for *scale_alpha_continuous()* since that is the most common use of alpha, and it saves a bit of typing.
@@ -577,7 +577,7 @@ ggplot(faithfuld, aes(waiting, eruptions, alpha = density)) +
 
 
 
-## 11.7 Legend position
+## Legend position
 
 A number of settings that affect the overall display of the legends are controlled through the theme system. You’ll learn more about that in Section 18.2, but for now, all you need to know is that you modify theme settings with the *theme()* function.
 
