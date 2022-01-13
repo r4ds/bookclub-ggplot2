@@ -355,7 +355,7 @@ bars + scale_fill_grey(start = 0, end = 0.5)
 If none of the hand-picked palettes is suitable, or if you have your own preferred colours, you can use scale_fill_manual() to set the colours manually. This can be useful if you wish to choose colours that highlight a secondary grouping structure or draw attention to different comparisons:
 
 
-```{r manual scales 01}
+```{r discrete manual scales 01}
 bars + scale_fill_manual(values = c("sienna1", "sienna4", "hotpink1", "hotpink4"))
 bars + scale_fill_manual(values = c("tomato1", "tomato2", "tomato3", "tomato4"))
 bars + scale_fill_manual(values = c("grey", "black", "grey", "grey"))
@@ -365,7 +365,7 @@ bars + scale_fill_manual(values = c("grey", "black", "grey", "grey"))
 You can also use a named vector to specify colors to be assigned to each level which allows you to specify the levels in any order you like:
 
 
-```{r manual scales 02}
+```{r discrete manual scales 02}
 bars + scale_fill_manual(values = c(
   "d" = "grey",
   "c" = "grey",

@@ -270,7 +270,7 @@ ggplot(huron, aes(year)) +
 
 
 
-```{r manual sclaes 03}
+```{r manual scales 03}
 
 ggplot(huron, aes(year)) +
   geom_line(aes(y = level + 5, colour = "above")) +
