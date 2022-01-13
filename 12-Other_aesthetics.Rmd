@@ -40,7 +40,7 @@ base + scale_size(range = c(1, 2))
 
 There are several size scales:
 
-- *scale_size_area()* and *scale_size_binned_area()* are versions of scale_size() and *scale_size_binned()* that ensure that a value of 0 maps to an area of 0.
+- *scale_size_area()* and *scale_size_binned_area()* are versions of *scale_size()* and *scale_size_binned()* that ensure that a value of 0 maps to an area of 0.
 
 - *scale_radius()* maps the data value to the radius rather than to the area (Section 12.1.1).
 
@@ -136,7 +136,7 @@ base + guides(
 )
 ```
 
-- **keywidth, **keyheight**, **reverse** and **override.aes** have the same behaviour for *guide_bins()* as they do for *guide_legend()* (see Section 11.3.6)
+- **keywidth**, **keyheight**, **reverse** and **override.aes** have the same behavior for *guide_bins()* as they do for *guide_legend()* (see Section 11.3.6)
 
 ## 12.2 Shape
 
