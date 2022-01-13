@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>11.2 Continuous colour scales | ggplot2 Book Club</title>
+  <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="11.2 Continuous colour scales | ggplot2 Book Club" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
+  <meta name="github-repo" content="r4ds/bookclub-ggplot2" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="11.2 Continuous colour scales | ggplot2 Book Club" />
+  
+  <meta name="twitter:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
+  
+
+<meta name="author" content="The R4DS Online Learning Community" />
+
+
+<meta name="date" content="2022-01-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="a-little-colour-theory.html"/>
+<link rel="next" href="discrete-colour-scales.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">ggplot2 with R Book Club</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
+<li class="chapter" data-level="" data-path="book-club-meetings.html"><a href="book-club-meetings.html"><i class="fa fa-check"></i>Book club meetings</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="slide-1-title.html"><a href="slide-1-title.html"><i class="fa fa-check"></i><b>1.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="1.2" data-path="meeting-videos.html"><a href="meeting-videos.html"><i class="fa fa-check"></i><b>1.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="meeting-videos.html"><a href="meeting-videos.html#cohort-1"><i class="fa fa-check"></i><b>1.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="first-steps.html"><a href="first-steps.html"><i class="fa fa-check"></i><b>2</b> First Steps</a><ul>
+<li class="chapter" data-level="2.1" data-path="general-housekeeping-items.html"><a href="general-housekeeping-items.html"><i class="fa fa-check"></i><b>2.1</b> General Housekeeping Items</a></li>
+<li class="chapter" data-level="2.2" data-path="learning-objectives.html"><a href="learning-objectives.html"><i class="fa fa-check"></i><b>2.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="2.3" data-path="main-data-set.html"><a href="main-data-set.html"><i class="fa fa-check"></i><b>2.3</b> Main data set</a></li>
+<li class="chapter" data-level="2.4" data-path="components-of-every-plot.html"><a href="components-of-every-plot.html"><i class="fa fa-check"></i><b>2.4</b> Components of every plot</a></li>
+<li class="chapter" data-level="2.5" data-path="a-few-exercises.html"><a href="a-few-exercises.html"><i class="fa fa-check"></i><b>2.5</b> A few exercises</a></li>
+<li class="chapter" data-level="2.6" data-path="other-aesthetic-attributes.html"><a href="other-aesthetic-attributes.html"><i class="fa fa-check"></i><b>2.6</b> Other aesthetic attributes</a></li>
+<li class="chapter" data-level="2.7" data-path="faceting.html"><a href="faceting.html"><i class="fa fa-check"></i><b>2.7</b> Faceting</a></li>
+<li class="chapter" data-level="2.8" data-path="geoms.html"><a href="geoms.html"><i class="fa fa-check"></i><b>2.8</b> Geoms</a></li>
+<li class="chapter" data-level="2.9" data-path="modifying-the-axes.html"><a href="modifying-the-axes.html"><i class="fa fa-check"></i><b>2.9</b> Modifying the Axes</a></li>
+<li class="chapter" data-level="2.10" data-path="output.html"><a href="output.html"><i class="fa fa-check"></i><b>2.10</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="layers.html"><a href="layers.html"><i class="fa fa-check"></i>Layers</a><ul>
+<li class="chapter" data-level="2.11" data-path="layers-chapters.html"><a href="layers-chapters.html"><i class="fa fa-check"></i><b>2.11</b> Layers: Chapters</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="individual-geoms.html"><a href="individual-geoms.html"><i class="fa fa-check"></i><b>3</b> Individual Geoms</a><ul>
+<li class="chapter" data-level="3.1" data-path="scatterplot.html"><a href="scatterplot.html"><i class="fa fa-check"></i><b>3.1</b> Scatterplot:</a></li>
+<li class="chapter" data-level="3.2" data-path="line-plot.html"><a href="line-plot.html"><i class="fa fa-check"></i><b>3.2</b> Line plot:</a></li>
+<li class="chapter" data-level="3.3" data-path="histogram.html"><a href="histogram.html"><i class="fa fa-check"></i><b>3.3</b> Histogram:</a></li>
+<li class="chapter" data-level="3.4" data-path="bar-chart.html"><a href="bar-chart.html"><i class="fa fa-check"></i><b>3.4</b> Bar chart</a></li>
+<li class="chapter" data-level="3.5" data-path="geom_polygon-draws-polygons-which-are-filled-paths..html"><a href="geom_polygon-draws-polygons-which-are-filled-paths..html"><i class="fa fa-check"></i><b>3.5</b> geom_polygon() draws polygons which are filled paths.</a></li>
+<li class="chapter" data-level="3.6" data-path="geom_line-connects-points-from-left-to-right..html"><a href="geom_line-connects-points-from-left-to-right..html"><i class="fa fa-check"></i><b>3.6</b> geom_line() connects points from left to right.</a></li>
+<li class="chapter" data-level="3.7" data-path="what-low-level-geoms-are-used-to-draw-geom_smooth.html"><a href="what-low-level-geoms-are-used-to-draw-geom_smooth.html"><i class="fa fa-check"></i><b>3.7</b> What low-level geoms are used to draw geom_smooth()?</a></li>
+<li class="chapter" data-level="3.8" data-path="what-low-level-geoms-are-used-to-draw-geom_boxplot.html"><a href="what-low-level-geoms-are-used-to-draw-geom_boxplot.html"><i class="fa fa-check"></i><b>3.8</b> What low-level geoms are used to draw geom_boxplot()?</a></li>
+<li class="chapter" data-level="3.9" data-path="what-low-level-geoms-are-used-to-draw-geom_violin.html"><a href="what-low-level-geoms-are-used-to-draw-geom_violin.html"><i class="fa fa-check"></i><b>3.9</b> What low-level geoms are used to draw geom_violin()?</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="collective-geoms.html"><a href="collective-geoms.html"><i class="fa fa-check"></i><b>4</b> Collective Geoms</a><ul>
+<li class="chapter" data-level="4.1" data-path="general-housekeeping-items-1.html"><a href="general-housekeeping-items-1.html"><i class="fa fa-check"></i><b>4.1</b> General Housekeeping Items</a></li>
+<li class="chapter" data-level="4.2" data-path="learning-objectives-1.html"><a href="learning-objectives-1.html"><i class="fa fa-check"></i><b>4.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="4.3" data-path="quick-intuition-on-collective-geoms.html"><a href="quick-intuition-on-collective-geoms.html"><i class="fa fa-check"></i><b>4.3</b> Quick Intuition on Collective Geoms</a></li>
+<li class="chapter" data-level="4.4" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html"><i class="fa fa-check"></i><b>4.4</b> From the ggplot2 book</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html#multiple-groups-one-aesthetic"><i class="fa fa-check"></i><b>4.4.1</b> Multiple Groups, One Aesthetic</a></li>
+<li class="chapter" data-level="4.4.2" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html#different-groups-on-different-layers"><i class="fa fa-check"></i><b>4.4.2</b> Different Groups on Different Layers</a></li>
+<li class="chapter" data-level="4.4.3" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html#overriding-the-default-grouping"><i class="fa fa-check"></i><b>4.4.3</b> Overriding the Default Grouping</a></li>
+<li class="chapter" data-level="4.4.4" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html#a-couple-of-exercises"><i class="fa fa-check"></i><b>4.4.4</b> A couple of exercises</a></li>
+<li class="chapter" data-level="4.4.5" data-path="from-the-ggplot2-book.html"><a href="from-the-ggplot2-book.html#matching-aesthetics-to-graphic-objects"><i class="fa fa-check"></i><b>4.4.5</b> Matching Aesthetics to Graphic Objects</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="statistical-summaries.html"><a href="statistical-summaries.html"><i class="fa fa-check"></i><b>5</b> Statistical Summaries</a><ul>
+<li class="chapter" data-level="5.1" data-path="defintions-in-this-chapter.html"><a href="defintions-in-this-chapter.html"><i class="fa fa-check"></i><b>5.1</b> Defintions (in this Chapter)</a></li>
+<li class="chapter" data-level="5.2" data-path="revealing-uncertainty.html"><a href="revealing-uncertainty.html"><i class="fa fa-check"></i><b>5.2</b> Revealing Uncertainty</a></li>
+<li class="chapter" data-level="5.3" data-path="weighted-data.html"><a href="weighted-data.html"><i class="fa fa-check"></i><b>5.3</b> Weighted Data</a></li>
+<li class="chapter" data-level="5.4" data-path="displaying-distributions.html"><a href="displaying-distributions.html"><i class="fa fa-check"></i><b>5.4</b> Displaying distributions</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="displaying-distributions.html"><a href="displaying-distributions.html#exercise"><i class="fa fa-check"></i><b>5.4.1</b> Exercise:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="dealing-with-overplotting.html"><a href="dealing-with-overplotting.html"><i class="fa fa-check"></i><b>5.5</b> Dealing with overplotting</a></li>
+<li class="chapter" data-level="5.6" data-path="statistical-summaries-1.html"><a href="statistical-summaries-1.html"><i class="fa fa-check"></i><b>5.6</b> Statistical Summaries</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>6</b> Maps</a><ul>
+<li class="chapter" data-level="6.1" data-path="polygon-maps.html"><a href="polygon-maps.html"><i class="fa fa-check"></i><b>6.1</b> Polygon Maps</a></li>
+<li class="chapter" data-level="6.2" data-path="simple-features-maps.html"><a href="simple-features-maps.html"><i class="fa fa-check"></i><b>6.2</b> Simple Features Maps</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="simple-features-maps.html"><a href="simple-features-maps.html#layered-maps"><i class="fa fa-check"></i><b>6.2.1</b> Layered Maps</a></li>
+<li class="chapter" data-level="6.2.2" data-path="simple-features-maps.html"><a href="simple-features-maps.html#labelled-maps"><i class="fa fa-check"></i><b>6.2.2</b> Labelled Maps</a></li>
+<li class="chapter" data-level="6.2.3" data-path="simple-features-maps.html"><a href="simple-features-maps.html#adding-other-geoms"><i class="fa fa-check"></i><b>6.2.3</b> Adding Other Geoms</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="map-projections.html"><a href="map-projections.html"><i class="fa fa-check"></i><b>6.3</b> Map Projections</a></li>
+<li class="chapter" data-level="6.4" data-path="working-with-sf-data.html"><a href="working-with-sf-data.html"><i class="fa fa-check"></i><b>6.4</b> Working with <code>sf</code> Data</a></li>
+<li class="chapter" data-level="6.5" data-path="raster-maps.html"><a href="raster-maps.html"><i class="fa fa-check"></i><b>6.5</b> Raster Maps</a></li>
+<li class="chapter" data-level="6.6" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>6.6</b> Data Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="networks.html"><a href="networks.html"><i class="fa fa-check"></i><b>7</b> Networks</a><ul>
+<li class="chapter" data-level="7.1" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="what-is-network-data.html"><a href="what-is-network-data.html"><i class="fa fa-check"></i><b>7.2</b> What is network data?</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="what-is-network-data.html"><a href="what-is-network-data.html#a-tidy-network-manipulation-api"><i class="fa fa-check"></i><b>7.2.1</b> A tidy network manipulation API</a></li>
+<li class="chapter" data-level="7.2.2" data-path="what-is-network-data.html"><a href="what-is-network-data.html#conversion"><i class="fa fa-check"></i><b>7.2.2</b> Conversion</a></li>
+<li class="chapter" data-level="7.2.3" data-path="what-is-network-data.html"><a href="what-is-network-data.html#algorithms"><i class="fa fa-check"></i><b>7.2.3</b> Algorithms</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="visualizing-networks.html"><a href="visualizing-networks.html"><i class="fa fa-check"></i><b>7.3</b> Visualizing networks</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="visualizing-networks.html"><a href="visualizing-networks.html#setting-up-the-visualization"><i class="fa fa-check"></i><b>7.3.1</b> Setting up the visualization</a></li>
+<li class="chapter" data-level="7.3.2" data-path="visualizing-networks.html"><a href="visualizing-networks.html#drawing-nodes"><i class="fa fa-check"></i><b>7.3.2</b> Drawing nodes</a></li>
+<li class="chapter" data-level="7.3.3" data-path="visualizing-networks.html"><a href="visualizing-networks.html#drawing-edges"><i class="fa fa-check"></i><b>7.3.3</b> Drawing edges</a></li>
+<li class="chapter" data-level="7.3.4" data-path="visualizing-networks.html"><a href="visualizing-networks.html#faceting-1"><i class="fa fa-check"></i><b>7.3.4</b> Faceting</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="conclusions.html"><a href="conclusions.html"><i class="fa fa-check"></i><b>7.4</b> Conclusions</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="conclusions.html"><a href="conclusions.html#resources"><i class="fa fa-check"></i><b>7.4.1</b> Resources:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>8</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="8.1" data-path="slide-1-title-1.html"><a href="slide-1-title-1.html"><i class="fa fa-check"></i><b>8.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="8.2" data-path="meeting-videos-1.html"><a href="meeting-videos-1.html"><i class="fa fa-check"></i><b>8.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="meeting-videos-1.html"><a href="meeting-videos-1.html#cohort-1-1"><i class="fa fa-check"></i><b>8.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="arranging-plots.html"><a href="arranging-plots.html"><i class="fa fa-check"></i><b>9</b> Arranging Plots</a><ul>
+<li class="chapter" data-level="9.1" data-path="introduction-2.html"><a href="introduction-2.html"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="arranging-plots-side-by-side-with-no-overlap.html"><a href="arranging-plots-side-by-side-with-no-overlap.html"><i class="fa fa-check"></i><b>9.2</b> Arranging plots side by side with no overlap</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="arranging-plots-side-by-side-with-no-overlap.html"><a href="arranging-plots-side-by-side-with-no-overlap.html#taking-control-of-the-layout"><i class="fa fa-check"></i><b>9.2.1</b> Taking control of the layout</a></li>
+<li class="chapter" data-level="9.2.2" data-path="arranging-plots-side-by-side-with-no-overlap.html"><a href="arranging-plots-side-by-side-with-no-overlap.html#more-about-layouts"><i class="fa fa-check"></i><b>9.2.2</b> More about layouts</a></li>
+<li class="chapter" data-level="9.2.3" data-path="arranging-plots-side-by-side-with-no-overlap.html"><a href="arranging-plots-side-by-side-with-no-overlap.html#plot-annotations"><i class="fa fa-check"></i><b>9.2.3</b> Plot annotations</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="arranging-plots-on-top-of-each-other.html"><a href="arranging-plots-on-top-of-each-other.html"><i class="fa fa-check"></i><b>9.3</b> Arranging plots on top of each other</a></li>
+<li class="chapter" data-level="9.4" data-path="extra.html"><a href="extra.html"><i class="fa fa-check"></i><b>9.4</b> Extra</a></li>
+<li class="chapter" data-level="9.5" data-path="conclusions-1.html"><a href="conclusions-1.html"><i class="fa fa-check"></i><b>9.5</b> Conclusions</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="conclusions-1.html"><a href="conclusions-1.html#extra-resources"><i class="fa fa-check"></i><b>9.5.1</b> Extra resources:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="position-scales-and-axes.html"><a href="position-scales-and-axes.html"><i class="fa fa-check"></i><b>10</b> Position scales and axes</a><ul>
+<li class="chapter" data-level="10.1" data-path="introduction-preliminaries-asides.html"><a href="introduction-preliminaries-asides.html"><i class="fa fa-check"></i><b>10.1</b> Introduction / preliminaries / asides</a></li>
+<li class="chapter" data-level="10.2" data-path="numeric.html"><a href="numeric.html"><i class="fa fa-check"></i><b>10.2</b> 10.1 Numeric</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="numeric.html"><a href="numeric.html#limits"><i class="fa fa-check"></i><b>10.2.1</b> 10.1.1 Limits</a></li>
+<li class="chapter" data-level="10.2.2" data-path="numeric.html"><a href="numeric.html#out-of-bounds-values"><i class="fa fa-check"></i><b>10.2.2</b> 10.1.2 Out of bounds values</a></li>
+<li class="chapter" data-level="10.2.3" data-path="numeric.html"><a href="numeric.html#visual-range-expansion"><i class="fa fa-check"></i><b>10.2.3</b> 10.1.3 Visual range expansion</a></li>
+<li class="chapter" data-level="10.2.4" data-path="numeric.html"><a href="numeric.html#exercises"><i class="fa fa-check"></i><b>10.2.4</b> 10.1.4 Exercises</a></li>
+<li class="chapter" data-level="10.2.5" data-path="numeric.html"><a href="numeric.html#breaks"><i class="fa fa-check"></i><b>10.2.5</b> 10.1.5 Breaks</a></li>
+<li class="chapter" data-level="10.2.6" data-path="numeric.html"><a href="numeric.html#minor-breaks"><i class="fa fa-check"></i><b>10.2.6</b> 10.1.6 Minor breaks</a></li>
+<li class="chapter" data-level="10.2.7" data-path="numeric.html"><a href="numeric.html#labels"><i class="fa fa-check"></i><b>10.2.7</b> 10.1.7 Labels</a></li>
+<li class="chapter" data-level="10.2.8" data-path="numeric.html"><a href="numeric.html#exercises-1"><i class="fa fa-check"></i><b>10.2.8</b> 10.1.8 Exercises</a></li>
+<li class="chapter" data-level="10.2.9" data-path="numeric.html"><a href="numeric.html#transformations"><i class="fa fa-check"></i><b>10.2.9</b> 10.1.9 Transformations</a></li>
+<li class="chapter" data-level="10.2.10" data-path="numeric.html"><a href="numeric.html#aside---a-little-more-on-transformations"><i class="fa fa-check"></i><b>10.2.10</b> ASIDE - A little more on transformations</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="date-time.html"><a href="date-time.html"><i class="fa fa-check"></i><b>10.3</b> 10.2 Date-time</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="date-time.html"><a href="date-time.html#breaks-1"><i class="fa fa-check"></i><b>10.3.1</b> 10.2.1 Breaks</a></li>
+<li class="chapter" data-level="10.3.2" data-path="date-time.html"><a href="date-time.html#minor-breaks-1"><i class="fa fa-check"></i><b>10.3.2</b> 10.2.2 Minor breaks</a></li>
+<li class="chapter" data-level="10.3.3" data-path="date-time.html"><a href="date-time.html#labels-1"><i class="fa fa-check"></i><b>10.3.3</b> 10.2.3 Labels</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="discrete.html"><a href="discrete.html"><i class="fa fa-check"></i><b>10.4</b> 10.3 Discrete</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="discrete.html"><a href="discrete.html#limits-1"><i class="fa fa-check"></i><b>10.4.1</b> 10.3.1 Limits</a></li>
+<li class="chapter" data-level="10.4.2" data-path="discrete.html"><a href="discrete.html#scale-labels"><i class="fa fa-check"></i><b>10.4.2</b> 10.3.2 Scale labels</a></li>
+<li class="chapter" data-level="10.4.3" data-path="discrete.html"><a href="discrete.html#scale-labels-1"><i class="fa fa-check"></i><b>10.4.3</b> 10.3.2 Scale labels</a></li>
+<li class="chapter" data-level="10.4.4" data-path="discrete.html"><a href="discrete.html#guide_axis"><i class="fa fa-check"></i><b>10.4.4</b> 10.3.3 <code>guide_axis()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="binned.html"><a href="binned.html"><i class="fa fa-check"></i><b>10.5</b> 10.4 Binned</a></li>
+<li class="chapter" data-level="10.6" data-path="aside---geom_sf-limits.html"><a href="aside---geom_sf-limits.html"><i class="fa fa-check"></i><b>10.6</b> ASIDE - <code>geom_sf()</code> + limits</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="aside---geom_sf-limits.html"><a href="aside---geom_sf-limits.html#example-from-twitter"><i class="fa fa-check"></i><b>10.6.1</b> Example from Twitter:</a></li>
+<li class="chapter" data-level="10.6.2" data-path="aside---geom_sf-limits.html"><a href="aside---geom_sf-limits.html#reprexes-from-ryan-s"><i class="fa fa-check"></i><b>10.6.2</b> Reprexes from Ryan S:</a></li>
+<li class="chapter" data-level="10.6.3" data-path="aside---geom_sf-limits.html"><a href="aside---geom_sf-limits.html#further-exploration"><i class="fa fa-check"></i><b>10.6.3</b> Further exploration</a></li>
+<li class="chapter" data-level="10.6.4" data-path="aside---geom_sf-limits.html"><a href="aside---geom_sf-limits.html#internals"><i class="fa fa-check"></i><b>10.6.4</b> Internals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="colour-scales-and-legends.html"><a href="colour-scales-and-legends.html"><i class="fa fa-check"></i><b>11</b> Colour Scales and Legends</a><ul>
+<li class="chapter" data-level="11.1" data-path="a-little-colour-theory.html"><a href="a-little-colour-theory.html"><i class="fa fa-check"></i><b>11.1</b> A little colour theory</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="a-little-colour-theory.html"><a href="a-little-colour-theory.html#colour-blindness"><i class="fa fa-check"></i><b>11.1.1</b> Colour blindness</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="continuous-colour-scales.html"><a href="continuous-colour-scales.html"><i class="fa fa-check"></i><b>11.2</b> Continuous colour scales</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="continuous-colour-scales.html"><a href="continuous-colour-scales.html#particular-pallettes"><i class="fa fa-check"></i><b>11.2.1</b> Particular pallettes</a></li>
+<li class="chapter" data-level="11.2.2" data-path="continuous-colour-scales.html"><a href="continuous-colour-scales.html#robust-recipes"><i class="fa fa-check"></i><b>11.2.2</b> Robust recipes</a></li>
+<li class="chapter" data-level="11.2.3" data-path="continuous-colour-scales.html"><a href="continuous-colour-scales.html#missing-values"><i class="fa fa-check"></i><b>11.2.3</b> Missing values</a></li>
+<li class="chapter" data-level="11.2.4" data-path="continuous-colour-scales.html"><a href="continuous-colour-scales.html#limits-breaks-and-labels"><i class="fa fa-check"></i><b>11.2.4</b> Limits, breaks and labels</a></li>
+<li class="chapter" data-level="11.2.5" data-path="continuous-colour-scales.html"><a href="continuous-colour-scales.html#legends"><i class="fa fa-check"></i><b>11.2.5</b> Legends</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="discrete-colour-scales.html"><a href="discrete-colour-scales.html"><i class="fa fa-check"></i><b>11.3</b> Discrete colour scales</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="discrete-colour-scales.html"><a href="discrete-colour-scales.html#brewer-scales"><i class="fa fa-check"></i><b>11.3.1</b> Brewer scales</a></li>
+<li class="chapter" data-level="11.3.2" data-path="discrete-colour-scales.html"><a href="discrete-colour-scales.html#hue-and-grey-scales"><i class="fa fa-check"></i><b>11.3.2</b> Hue and grey scales</a></li>
+<li class="chapter" data-level="11.3.3" data-path="discrete-colour-scales.html"><a href="discrete-colour-scales.html#paleteer-scales"><i class="fa fa-check"></i><b>11.3.3</b> Paleteer Scales</a></li>
+<li class="chapter" data-level="11.3.4" data-path="discrete-colour-scales.html"><a href="discrete-colour-scales.html#manual-scales"><i class="fa fa-check"></i><b>11.3.4</b> Manual scales</a></li>
+<li class="chapter" data-level="11.3.5" data-path="discrete-colour-scales.html"><a href="discrete-colour-scales.html#limits-breaks-and-labels-1"><i class="fa fa-check"></i><b>11.3.5</b> Limits, breaks and labels</a></li>
+<li class="chapter" data-level="11.3.6" data-path="discrete-colour-scales.html"><a href="discrete-colour-scales.html#legends-1"><i class="fa fa-check"></i><b>11.3.6</b> Legends</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="binned-colour-scales.html"><a href="binned-colour-scales.html"><i class="fa fa-check"></i><b>11.4</b> Binned colour scales</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="binned-colour-scales.html"><a href="binned-colour-scales.html#limits-breaks-and-labels-2"><i class="fa fa-check"></i><b>11.4.1</b> Limits, breaks and labels</a></li>
+<li class="chapter" data-level="11.4.2" data-path="binned-colour-scales.html"><a href="binned-colour-scales.html#legends-2"><i class="fa fa-check"></i><b>11.4.2</b> Legends</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="date-time-colour-scales.html"><a href="date-time-colour-scales.html"><i class="fa fa-check"></i><b>11.5</b> Date Time Colour Scales</a></li>
+<li class="chapter" data-level="11.6" data-path="alpha-scales.html"><a href="alpha-scales.html"><i class="fa fa-check"></i><b>11.6</b> Alpha scales</a></li>
+<li class="chapter" data-level="11.7" data-path="legend-position.html"><a href="legend-position.html"><i class="fa fa-check"></i><b>11.7</b> Legend position</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="other-aesthetics.html"><a href="other-aesthetics.html"><i class="fa fa-check"></i><b>12</b> Other Aesthetics</a><ul>
+<li class="chapter" data-level="12.1" data-path="size.html"><a href="size.html"><i class="fa fa-check"></i><b>12.1</b> Size</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="size.html"><a href="size.html#radius-size-scales"><i class="fa fa-check"></i><b>12.1.1</b> Radius size scales</a></li>
+<li class="chapter" data-level="12.1.2" data-path="size.html"><a href="size.html#binned-size-scales"><i class="fa fa-check"></i><b>12.1.2</b> Binned size scales</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="shape.html"><a href="shape.html"><i class="fa fa-check"></i><b>12.2</b> Shape</a></li>
+<li class="chapter" data-level="12.3" data-path="line-type.html"><a href="line-type.html"><i class="fa fa-check"></i><b>12.3</b> Line type</a></li>
+<li class="chapter" data-level="12.4" data-path="manual-scales-1.html"><a href="manual-scales-1.html"><i class="fa fa-check"></i><b>12.4</b> Manual scales</a></li>
+<li class="chapter" data-level="12.5" data-path="identity-scales.html"><a href="identity-scales.html"><i class="fa fa-check"></i><b>12.5</b> Identity Scales</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="placeholder-1.html"><a href="placeholder-1.html"><i class="fa fa-check"></i><b>13</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="13.1" data-path="slide-1-title-2.html"><a href="slide-1-title-2.html"><i class="fa fa-check"></i><b>13.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="13.2" data-path="meeting-videos-2.html"><a href="meeting-videos-2.html"><i class="fa fa-check"></i><b>13.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="meeting-videos-2.html"><a href="meeting-videos-2.html#cohort-1-2"><i class="fa fa-check"></i><b>13.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="placeholder-2.html"><a href="placeholder-2.html"><i class="fa fa-check"></i><b>14</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="14.1" data-path="slide-1-title-3.html"><a href="slide-1-title-3.html"><i class="fa fa-check"></i><b>14.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="14.2" data-path="meeting-videos-3.html"><a href="meeting-videos-3.html"><i class="fa fa-check"></i><b>14.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="meeting-videos-3.html"><a href="meeting-videos-3.html#cohort-1-3"><i class="fa fa-check"></i><b>14.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="placeholder-3.html"><a href="placeholder-3.html"><i class="fa fa-check"></i><b>15</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="15.1" data-path="slide-1-title-4.html"><a href="slide-1-title-4.html"><i class="fa fa-check"></i><b>15.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="15.2" data-path="meeting-videos-4.html"><a href="meeting-videos-4.html"><i class="fa fa-check"></i><b>15.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="meeting-videos-4.html"><a href="meeting-videos-4.html#cohort-1-4"><i class="fa fa-check"></i><b>15.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="placeholder-4.html"><a href="placeholder-4.html"><i class="fa fa-check"></i><b>16</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="16.1" data-path="slide-1-title-5.html"><a href="slide-1-title-5.html"><i class="fa fa-check"></i><b>16.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="16.2" data-path="meeting-videos-5.html"><a href="meeting-videos-5.html"><i class="fa fa-check"></i><b>16.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="16.2.1" data-path="meeting-videos-5.html"><a href="meeting-videos-5.html#cohort-1-5"><i class="fa fa-check"></i><b>16.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="placeholder-5.html"><a href="placeholder-5.html"><i class="fa fa-check"></i><b>17</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="17.1" data-path="slide-1-title-6.html"><a href="slide-1-title-6.html"><i class="fa fa-check"></i><b>17.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="17.2" data-path="meeting-videos-6.html"><a href="meeting-videos-6.html"><i class="fa fa-check"></i><b>17.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="meeting-videos-6.html"><a href="meeting-videos-6.html#cohort-1-6"><i class="fa fa-check"></i><b>17.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="placeholder-6.html"><a href="placeholder-6.html"><i class="fa fa-check"></i><b>18</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="18.1" data-path="slide-1-title-7.html"><a href="slide-1-title-7.html"><i class="fa fa-check"></i><b>18.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="18.2" data-path="meeting-videos-7.html"><a href="meeting-videos-7.html"><i class="fa fa-check"></i><b>18.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="meeting-videos-7.html"><a href="meeting-videos-7.html#cohort-1-7"><i class="fa fa-check"></i><b>18.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="placeholder-7.html"><a href="placeholder-7.html"><i class="fa fa-check"></i><b>19</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="19.1" data-path="slide-1-title-8.html"><a href="slide-1-title-8.html"><i class="fa fa-check"></i><b>19.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="19.2" data-path="meeting-videos-8.html"><a href="meeting-videos-8.html"><i class="fa fa-check"></i><b>19.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="19.2.1" data-path="meeting-videos-8.html"><a href="meeting-videos-8.html#cohort-1-8"><i class="fa fa-check"></i><b>19.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="placeholder-8.html"><a href="placeholder-8.html"><i class="fa fa-check"></i><b>20</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="20.1" data-path="slide-1-title-9.html"><a href="slide-1-title-9.html"><i class="fa fa-check"></i><b>20.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="20.2" data-path="meeting-videos-9.html"><a href="meeting-videos-9.html"><i class="fa fa-check"></i><b>20.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="20.2.1" data-path="meeting-videos-9.html"><a href="meeting-videos-9.html#cohort-1-9"><i class="fa fa-check"></i><b>20.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="placeholder-9.html"><a href="placeholder-9.html"><i class="fa fa-check"></i><b>21</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="21.1" data-path="slide-1-title-10.html"><a href="slide-1-title-10.html"><i class="fa fa-check"></i><b>21.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="21.2" data-path="meeting-videos-10.html"><a href="meeting-videos-10.html"><i class="fa fa-check"></i><b>21.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="21.2.1" data-path="meeting-videos-10.html"><a href="meeting-videos-10.html#cohort-1-10"><i class="fa fa-check"></i><b>21.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="placeholder-10.html"><a href="placeholder-10.html"><i class="fa fa-check"></i><b>22</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="22.1" data-path="slide-1-title-11.html"><a href="slide-1-title-11.html"><i class="fa fa-check"></i><b>22.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="22.2" data-path="meeting-videos-11.html"><a href="meeting-videos-11.html"><i class="fa fa-check"></i><b>22.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="22.2.1" data-path="meeting-videos-11.html"><a href="meeting-videos-11.html#cohort-1-11"><i class="fa fa-check"></i><b>22.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ggplot2 Book Club</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="continuous-colour-scales" class="section level2">
+<h2><span class="header-section-number">11.2</span> Continuous colour scales</h2>
+<p>Colour gradients are often used to show the height of a 2d surface. The plots in this section use the surface of a 2d density estimate of the faithful dataset which records the waiting time between eruptions and during each eruption for the Old Faithful geyser in Yellowstone Park.</p>
+<p>Any time I refer to scale_fill_<em>() in this section there is a corresponding scale_colour_</em>() for the colour aesthetic (or scale_color_*() if you prefer US spelling).</p>
+<div id="particular-pallettes" class="section level3">
+<h3><span class="header-section-number">11.2.1</span> Particular pallettes</h3>
+<p>There are multiple ways to specify continuous colour scales. You can use to construct your own palette, but it is unnecessary because there are many “hand picked” palettes available.</p>
+<p>Ggplot2 supplies two scale functions that bundle pre-specified palettes, scale_fill_viridis_c() and scale_fill_distiller(). The viridis scales are designed to be perceptually uniform in both colour and when reduced to black and white, and to be perceptible to people with various forms of colour blindness.</p>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="continuous-colour-scales.html#cb419-1"></a>erupt</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/particular%20pallettes%2001-1.png" width="672" /></p>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="continuous-colour-scales.html#cb420-1"></a>erupt <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_viridis_c</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/particular%20pallettes%2001-2.png" width="672" /></p>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="continuous-colour-scales.html#cb421-1"></a>erupt <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_viridis_c</span>(<span class="dt">option =</span> <span class="st">&quot;magma&quot;</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/particular%20pallettes%2001-3.png" width="672" /></p>
+<p>The second group of continuous colour scales built in to ggplot2 are derived from the ColorBrewer scales: scale_fill_brewer() provides these colours as discrete palettes, while scale_fill_distiller() and scale_fill_fermenter() are the continuous and binned analogs.</p>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="continuous-colour-scales.html#cb422-1"></a>erupt <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_distiller</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/particular%20pallette%2002-1.png" width="672" /></p>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="continuous-colour-scales.html#cb423-1"></a>erupt <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_distiller</span>(<span class="dt">palette =</span> <span class="st">&quot;RdPu&quot;</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/particular%20pallette%2002-2.png" width="672" /></p>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="continuous-colour-scales.html#cb424-1"></a>erupt <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_distiller</span>(<span class="dt">palette =</span> <span class="st">&quot;YlOrBr&quot;</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/particular%20pallette%2002-3.png" width="672" /></p>
+<p>scale_fill_scico() provides palettes that are perceptually uniform and suitable for scientific visualisation</p>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="continuous-colour-scales.html#cb425-1"></a>erupt <span class="op">+</span><span class="st"> </span>scico<span class="op">::</span><span class="kw">scale_fill_scico</span>(<span class="dt">palette =</span> <span class="st">&quot;bilbao&quot;</span>) <span class="co"># the default</span></span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/particular%20pallettes%2003-1.png" width="672" /></p>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="continuous-colour-scales.html#cb426-1"></a>erupt <span class="op">+</span><span class="st"> </span>scico<span class="op">::</span><span class="kw">scale_fill_scico</span>(<span class="dt">palette =</span> <span class="st">&quot;vik&quot;</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/particular%20pallettes%2003-2.png" width="672" /></p>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="continuous-colour-scales.html#cb427-1"></a>erupt <span class="op">+</span><span class="st"> </span>scico<span class="op">::</span><span class="kw">scale_fill_scico</span>(<span class="dt">palette =</span> <span class="st">&quot;lajolla&quot;</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/particular%20pallettes%2003-3.png" width="672" /></p>
+<p>A particularly useful package is paletteer which aims to provide a common interface.</p>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="continuous-colour-scales.html#cb428-1"></a>erupt <span class="op">+</span><span class="st"> </span>paletteer<span class="op">::</span><span class="kw">scale_fill_paletteer_c</span>(<span class="st">&quot;viridis::plasma&quot;</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/particular%20pallettes%2004-1.png" width="672" /></p>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="continuous-colour-scales.html#cb429-1"></a>erupt <span class="op">+</span><span class="st"> </span>paletteer<span class="op">::</span><span class="kw">scale_fill_paletteer_c</span>(<span class="st">&quot;scico::tokyo&quot;</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/particular%20pallettes%2004-2.png" width="672" /></p>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="continuous-colour-scales.html#cb430-1"></a>erupt <span class="op">+</span><span class="st"> </span>paletteer<span class="op">::</span><span class="kw">scale_fill_paletteer_c</span>(<span class="st">&quot;gameofthrones::targaryen&quot;</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/particular%20pallettes%2004-3.png" width="672" /></p>
+</div>
+<div id="robust-recipes" class="section level3">
+<h3><span class="header-section-number">11.2.2</span> Robust recipes</h3>
+<p>The default scale for continuous fill scales is scale_fill_continuous() which in turn defaults to scale_fill_gradient(). As a consequence, these three commands produce the same plot using a gradient scale.</p>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="continuous-colour-scales.html#cb431-1"></a>erupt</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/robust%20recipes%2001-1.png" width="672" /></p>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="continuous-colour-scales.html#cb432-1"></a>erupt <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_continuous</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/robust%20recipes%2001-2.png" width="672" /></p>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="continuous-colour-scales.html#cb433-1"></a>erupt <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_gradient</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/robust%20recipes%2001-3.png" width="672" /></p>
+<p>Gradient scales provide a robust method for creating any colour scheme you like. You just specify two or more reference colours, and ggplot2 will interpolate linearly between them. Three functions that you can use for this purpose are</p>
+<p>*scale_fill_gradient() produces a two-colour gradient</p>
+<p>*scale_fill_gradient2() produces a three-colour gradient with specified midpoint</p>
+<p>*scale_fill_gradientn() produces an n-colour gradient</p>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="continuous-colour-scales.html#cb434-1"></a>erupt <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_gradient</span>(<span class="dt">low =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;brown&quot;</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/robust%20recipes%2002-1.png" width="672" /></p>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="continuous-colour-scales.html#cb435-1"></a>erupt <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_gradient2</span>(<span class="dt">low =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">mid =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;brown&quot;</span>, <span class="dt">midpoint =</span> <span class="fl">.02</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/robust%20recipes%2002-2.png" width="672" /></p>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="continuous-colour-scales.html#cb436-1"></a>erupt <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_gradientn</span>(<span class="dt">colours =</span> <span class="kw">terrain.colors</span>(<span class="dv">7</span>))</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/robust%20recipes%2002-3.png" width="672" /></p>
+<p>The Munsell colour system provides an easy way of specifying colours based on their hue, chroma and luminance. The munsell package provides easy access to the Munsell colours, which can then be used to specify a gradient scale. For more information on the munsell package see <a href="https://github.com/cwickham/munsell/" class="uri">https://github.com/cwickham/munsell/</a>.</p>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="continuous-colour-scales.html#cb437-1"></a>munsell<span class="op">::</span><span class="kw">hue_slice</span>(<span class="st">&quot;5P&quot;</span>) <span class="op">+</span><span class="st">  </span><span class="co"># generate a ggplot with hue_slice()</span></span>
+<span id="cb437-2"><a href="continuous-colour-scales.html#cb437-2"></a><span class="st">  </span><span class="kw">annotate</span>(                 <span class="co"># add arrows for annotation </span></span>
+<span id="cb437-3"><a href="continuous-colour-scales.html#cb437-3"></a>    <span class="dt">geom =</span> <span class="st">&quot;segment&quot;</span>, </span>
+<span id="cb437-4"><a href="continuous-colour-scales.html#cb437-4"></a>    <span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">7</span>), </span>
+<span id="cb437-5"><a href="continuous-colour-scales.html#cb437-5"></a>    <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">10</span>), </span>
+<span id="cb437-6"><a href="continuous-colour-scales.html#cb437-6"></a>    <span class="dt">xend =</span> <span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">7</span>), </span>
+<span id="cb437-7"><a href="continuous-colour-scales.html#cb437-7"></a>    <span class="dt">yend =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">9</span>), </span>
+<span id="cb437-8"><a href="continuous-colour-scales.html#cb437-8"></a>    <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="dv">2</span>, <span class="st">&quot;mm&quot;</span>))</span>
+<span id="cb437-9"><a href="continuous-colour-scales.html#cb437-9"></a>  ) </span></code></pre></div>
+<pre><code>## Warning: Removed 31 rows containing missing values (geom_text).</code></pre>
+<p><img src="bookclub-ggplot2_01_files/figure-html/robust%20recipes%2003-1.png" width="672" /></p>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="continuous-colour-scales.html#cb439-1"></a><span class="co">#&gt; Warning: Removed 31 rows containing missing values (geom_text).</span></span>
+<span id="cb439-2"><a href="continuous-colour-scales.html#cb439-2"></a></span>
+<span id="cb439-3"><a href="continuous-colour-scales.html#cb439-3"></a><span class="co"># construct scale</span></span>
+<span id="cb439-4"><a href="continuous-colour-scales.html#cb439-4"></a>erupt <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_gradient</span>(</span>
+<span id="cb439-5"><a href="continuous-colour-scales.html#cb439-5"></a>  <span class="dt">low =</span> munsell<span class="op">::</span><span class="kw">mnsl</span>(<span class="st">&quot;5P 2/12&quot;</span>), </span>
+<span id="cb439-6"><a href="continuous-colour-scales.html#cb439-6"></a>  <span class="dt">high =</span> munsell<span class="op">::</span><span class="kw">mnsl</span>(<span class="st">&quot;5P 7/12&quot;</span>)</span>
+<span id="cb439-7"><a href="continuous-colour-scales.html#cb439-7"></a>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/robust%20recipes%2003-2.png" width="672" /></p>
+<p>Three-point gradient scales typically convey the perceptual impression that there is a natural midpoint (often a zero value) from which the other values diverge. The left plot below shows how to create a divergent “yellow/blue” scale.</p>
+<p>If you have colours that are meaningful for your data (e.g., black body colours or standard terrain colours), or you’d like to use a palette produced by another package, you may wish to use an n-point gradient. The middle and right plots below use the colorspace package. For more information on the colorspace package see <a href="https://colorspace.r-forge.r-project.org/" class="uri">https://colorspace.r-forge.r-project.org/</a>.</p>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="continuous-colour-scales.html#cb440-1"></a><span class="co"># munsell example</span></span>
+<span id="cb440-2"><a href="continuous-colour-scales.html#cb440-2"></a>erupt <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_gradient2</span>(</span>
+<span id="cb440-3"><a href="continuous-colour-scales.html#cb440-3"></a>  <span class="dt">low =</span> munsell<span class="op">::</span><span class="kw">mnsl</span>(<span class="st">&quot;5B 7/8&quot;</span>),</span>
+<span id="cb440-4"><a href="continuous-colour-scales.html#cb440-4"></a>  <span class="dt">high =</span> munsell<span class="op">::</span><span class="kw">mnsl</span>(<span class="st">&quot;5Y 7/8&quot;</span>),</span>
+<span id="cb440-5"><a href="continuous-colour-scales.html#cb440-5"></a>  <span class="dt">mid =</span> munsell<span class="op">::</span><span class="kw">mnsl</span>(<span class="st">&quot;N 7/0&quot;</span>),</span>
+<span id="cb440-6"><a href="continuous-colour-scales.html#cb440-6"></a>  <span class="dt">midpoint =</span> <span class="fl">.02</span></span>
+<span id="cb440-7"><a href="continuous-colour-scales.html#cb440-7"></a>) </span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/robust%20recipes%2004-1.png" width="672" /></p>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="continuous-colour-scales.html#cb441-1"></a><span class="co"># colorspace examples</span></span>
+<span id="cb441-2"><a href="continuous-colour-scales.html#cb441-2"></a>erupt <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_gradientn</span>(<span class="dt">colours =</span> colorspace<span class="op">::</span><span class="kw">heat_hcl</span>(<span class="dv">7</span>))</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/robust%20recipes%2004-2.png" width="672" /></p>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="continuous-colour-scales.html#cb442-1"></a>erupt <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_gradientn</span>(<span class="dt">colours =</span> colorspace<span class="op">::</span><span class="kw">diverge_hcl</span>(<span class="dv">7</span>))</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/robust%20recipes%2004-3.png" width="672" /></p>
+</div>
+<div id="missing-values" class="section level3">
+<h3><span class="header-section-number">11.2.3</span> Missing values</h3>
+<p>All continuous colour scales have an na.value parameter that controls what colour is used for missing values (including values outside the range of the scale limits). By default it is set to grey, which will stand out when you use a colourful scale. If you use a black and white scale, you might want to set it to something else to make it more obvious. You can set na.value = NA to make missing values invisible, or choose a specific colour if you prefer:</p>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="continuous-colour-scales.html#cb443-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">y =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">z =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="ot">NA</span>, <span class="dv">5</span>))</span>
+<span id="cb443-2"><a href="continuous-colour-scales.html#cb443-2"></a>base &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(x, y)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb443-3"><a href="continuous-colour-scales.html#cb443-3"></a><span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> z), <span class="dt">size =</span> <span class="dv">5</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb443-4"><a href="continuous-colour-scales.html#cb443-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="ot">NULL</span>, <span class="dt">y =</span> <span class="ot">NULL</span>)</span>
+<span id="cb443-5"><a href="continuous-colour-scales.html#cb443-5"></a></span>
+<span id="cb443-6"><a href="continuous-colour-scales.html#cb443-6"></a>base</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/missing%20values%2001-1.png" width="672" /></p>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="continuous-colour-scales.html#cb444-1"></a>base <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_gradient</span>(<span class="dt">na.value =</span> <span class="ot">NA</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/missing%20values%2001-2.png" width="672" /></p>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="continuous-colour-scales.html#cb445-1"></a>base <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_gradient</span>(<span class="dt">na.value =</span> <span class="st">&quot;yellow&quot;</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/missing%20values%2001-3.png" width="672" /></p>
+</div>
+<div id="limits-breaks-and-labels" class="section level3">
+<h3><span class="header-section-number">11.2.4</span> Limits, breaks and labels</h3>
+<p>You can suppress the breaks entirely by setting them to NULL. For axes, this removes the tick marks, grid lines, and labels; and for legends this removes the keys and labels.</p>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="continuous-colour-scales.html#cb446-1"></a>toy &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb446-2"><a href="continuous-colour-scales.html#cb446-2"></a>  <span class="dt">const =</span> <span class="dv">1</span>, </span>
+<span id="cb446-3"><a href="continuous-colour-scales.html#cb446-3"></a>  <span class="dt">up =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>,</span>
+<span id="cb446-4"><a href="continuous-colour-scales.html#cb446-4"></a>  <span class="dt">txt =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], </span>
+<span id="cb446-5"><a href="continuous-colour-scales.html#cb446-5"></a>  <span class="dt">big =</span> (<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)<span class="op">*</span><span class="dv">1000</span>,</span>
+<span id="cb446-6"><a href="continuous-colour-scales.html#cb446-6"></a>  <span class="dt">log =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">2000</span>)</span>
+<span id="cb446-7"><a href="continuous-colour-scales.html#cb446-7"></a>)</span>
+<span id="cb446-8"><a href="continuous-colour-scales.html#cb446-8"></a>leg &lt;-<span class="st"> </span><span class="kw">ggplot</span>(toy, <span class="kw">aes</span>(up, up, <span class="dt">fill =</span> big)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb446-9"><a href="continuous-colour-scales.html#cb446-9"></a><span class="st">  </span><span class="kw">geom_tile</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb446-10"><a href="continuous-colour-scales.html#cb446-10"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="ot">NULL</span>, <span class="dt">y =</span> <span class="ot">NULL</span>) </span>
+<span id="cb446-11"><a href="continuous-colour-scales.html#cb446-11"></a>leg <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_continuous</span>(<span class="dt">breaks =</span> <span class="ot">NULL</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/limits%20break%20and%20labels%2001-1.png" width="672" /></p>
+</div>
+<div id="legends" class="section level3">
+<h3><span class="header-section-number">11.2.5</span> Legends</h3>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="continuous-colour-scales.html#cb447-1"></a>base &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(cyl, displ, <span class="dt">colour =</span> hwy)) <span class="op">+</span></span>
+<span id="cb447-2"><a href="continuous-colour-scales.html#cb447-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">2</span>)</span>
+<span id="cb447-3"><a href="continuous-colour-scales.html#cb447-3"></a></span>
+<span id="cb447-4"><a href="continuous-colour-scales.html#cb447-4"></a>base</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/continuous%20legends%2001-1.png" width="672" /></p>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="continuous-colour-scales.html#cb448-1"></a>base <span class="op">+</span><span class="st"> </span><span class="kw">guides</span>(<span class="dt">colour =</span> <span class="kw">guide_colourbar</span>(<span class="dt">reverse =</span> <span class="ot">TRUE</span>))</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/continuous%20legends%2002-1.png" width="672" /></p>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="continuous-colour-scales.html#cb449-1"></a>base <span class="op">+</span><span class="st"> </span><span class="kw">guides</span>(<span class="dt">colour =</span> <span class="kw">guide_colourbar</span>(<span class="dt">barheight =</span> <span class="kw">unit</span>(<span class="dv">2</span>, <span class="st">&quot;cm&quot;</span>)))</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/continuous%20legends%2002-2.png" width="672" /></p>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="continuous-colour-scales.html#cb450-1"></a>base <span class="op">+</span><span class="st"> </span><span class="kw">guides</span>(<span class="dt">colour =</span> <span class="kw">guide_colourbar</span>(<span class="dt">direction =</span> <span class="st">&quot;horizontal&quot;</span>))</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/continuous%20legends%2002-3.png" width="672" /></p>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="continuous-colour-scales.html#cb451-1"></a>base <span class="op">+</span><span class="st"> </span><span class="kw">guides</span>(<span class="dt">colour =</span> <span class="kw">guide_colourbar</span>(<span class="dt">reverse =</span> <span class="ot">TRUE</span>))</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/continuous%20legends%2003-1.png" width="672" /></p>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="continuous-colour-scales.html#cb452-1"></a>base <span class="op">+</span><span class="st"> </span><span class="kw">scale_colour_continuous</span>(<span class="dt">guide =</span> <span class="kw">guide_colourbar</span>(<span class="dt">reverse =</span> <span class="ot">TRUE</span>))</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/continuous%20legends%2003-2.png" width="672" /></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="a-little-colour-theory.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="discrete-colour-scales.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/r4ds/bookclub-ggplot2/edit/main/11-Colour_scales_and_legends.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
