@@ -143,6 +143,12 @@ shape
 line-type
 manual-scales-1
 identity-scales
+mastering-the-grammar
+introduction-3
+building-a-scatterplot
+scaling
+adding-complexity-faceting-coordinates-hierarchy-of-defaults
+process-and-examples
 placeholder-1
 slide-1-title-2
 meeting-videos-2
@@ -179,7 +185,3 @@ placeholder-9
 slide-1-title-10
 meeting-videos-10
 cohort-1-10
-placeholder-10
-slide-1-title-11
-meeting-videos-11
-cohort-1-11
