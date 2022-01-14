@@ -17,8 +17,6 @@ library(palmerpenguins)
 library(patchwork)
 library(ggthemes)
 library(scales)
-library(ggthemes)
-library(scales)
 library(ggtext)
 
 
