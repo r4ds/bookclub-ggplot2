@@ -1,0 +1,552 @@
+# Annotations
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, 
+  message = FALSE, 
+  warning = FALSE, 
+  fig.showtext = TRUE
+)
+
+```
+
+
+```{r load packages, include=FALSE}
+library(tidyverse)
+library(palmerpenguins)
+library(patchwork)
+library(ggthemes)
+library(scales)
+library(ggthemes)
+library(scales)
+library(ggtext)
+
+
+nurses <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-05/nurses.csv') %>% janitor::clean_names()
+theme_set(theme_minimal())
+
+gd <- penguins %>% 
+        filter(!is.na(bill_length_mm)) %>% 
+                       filter(!is.na(bill_depth_mm)) %>%  
+        group_by(species) %>% 
+        summarise(bill_length_mm = mean(bill_length_mm),
+                  bill_depth_mm  = mean(bill_depth_mm))
+
+base <- ggplot(penguins, aes(bill_length_mm, bill_depth_mm, color = species, shape = species)) +
+  geom_point(alpha = .4) +
+    geom_point(data = gd, size = 4) +
+theme_bw() +
+  guides(color = guide_legend("species"),  shape = guide_legend("species")) +
+  labs(
+    title = "How does bill Size differ by species?",
+    subtitle = "Source: Palmer Station Antarctica LTER and K. Gorman, 2020",
+    x = "Length",
+    y = "Width",
+    caption = "ggplot 2 Book Club" 
+  ) +
+    theme(plot.title = element_text(hjust = .5, face = "bold")) +
+   theme(plot.subtitle = element_text(hjust = .5, size = 9)) +
+  theme_fivethirtyeight()
+
+astronauts <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-14/astronauts.csv")
+  
+```
+
+
+***Learning Objectives*** 
+
+- Plot and Axis Titles; Providing context for the visual, and changing the look of plot elements and overall appearance 
+
+- Text Labels; mapping text from data or having text appear on graphs as data
+
+- Building Custom Annotations; how to write summaries, context, arrows, and textual meta data to graphs 
+
+- Direct Labeling and Faceting; related packages for special issues such as higlighting, textboxes, html text
+
+
+```{r include=FALSE}
+
+g <- 
+nurses %>% 
+  group_by(year) %>% 
+  filter(state %in% c("Minnesota", "Wisconsin", "Iowa", "North Dakota", "Illinois", "Indiana", "Kansas", "Michigan", "Missouri", "Nebraska", "Ohio")) %>% 
+  ggplot(aes(year, annual_salary_median, color = state, )) +
+  geom_line() +
+  labs(
+    title = "Annual Median RN Salary by Midwestern State"
+  ) +
+   theme(legend.position = "none") +
+    geom_vline(xintercept = c(2007, 2009), size = 1.5,
+             color = "darkgoldenrod1", linetype = "dashed") +
+   gghighlight::gghighlight(state == c("Minnesota", "Wisconsin", "Iowa")) +
+  theme_economist() +
+  scale_color_economist(name = NULL) +
+  theme(axis.title = element_blank()) +
+  scale_y_continuous(labels = comma_format())
+
+curved_lines <- base +
+  annotate(
+    geom = "curve", x = 53, y = 20, xend = 49, yend = 18.5, curvature = .3, size = 1, arrow = arrow(length = unit(3, "mm"))
+  ) +
+   annotate(geom = "text", x = 53.1, y = 20, label = "Average Chinstrap", hjust = "left", size = 4, color = "darkcyan") +
+  annotate(
+   geom = "curve", x = 35, y = 20, xend = 38, yend = 18.5, curvature = .3, size = 1, arrow = arrow(length = unit(3, "mm"))
+  ) +
+  annotate(geom = "text", x = 32, y = 20.3, label = "Average Adelie", hjust = "left", size = 4, color = "darkcyan") +
+  annotate(
+   geom = "curve", x = 53, y = 15, xend = 48, yend = 15, curvature = .3, size = 1, arrow = arrow(length = unit(3, "mm"))
+  ) +
+  annotate(geom = "text", x = 53, y = 15.3, label = "Average Gentoo", hjust = "left", size = 4, color = "darkcyan") 
+
+lab_long <- "**The Great Recession** <br><b style='font-size:10pt;color:steelblue;'> Minnesota's RN Annual Salaries increased during the great receision and then completely flatted out before rising again after 2015"
+
+g_text_box <- g +
+  geom_textbox(aes(x = 2015, y = 40000, label = lab_long),
+               width = unit(15, "lines"), stat = "unique")
+
+weight <- base + 
+  geom_label(aes(label = body_mass_g))
+
+
+```
+
+## Introduction 
+
+```{r out.width = "80%", fig.asp=1}
+
+(curved_lines | weight) / g 
+```
+]
+
+---
+
+Packages
+- ggtext 
+- ggtheme
+- gghighlight
+- palmerpenguins 
+- ggrepel
+- grid
+
+Functions
+- geom_text
+- geom_label
+- theme(plot.title = element_text())
+- geom = "curve"
+- geom_vline 
+
+Resource 
+- [A ggplot Tutorial For Beautiful Plotting in R](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/#text) by Cedric Scherer August 5, 2019. 
+
+Annotation Definitions 
+
+
+- "Conceptually, an annotation supplies metadata for the plot: that is, it provides additional information about the data being displayed. From a practical standpoint, however, metadata is just another form of data. Because of this, the annotation tools in ggplot2 reuse the same geoms that are used to create other plots." 
+
+Wickham, H., Navarro, N., & Lin Pedersen, T. (2016). [Ggplot2: Elegant graphics for data analysis (Second ed.) Springer.](https://ggplot2-book.org/annotations.html)
+
+
+- "[Annotation] concerns judging the level of assistance an audience may require in order to understand the background, function and purpose of a project, as well as what guidance needs to be provided to help viewers perceive and interpret the data representations."
+
+Kirk, Andy. Data Visualisation (p. 231). SAGE Publications. Kindle Edition. 
+
+
+## Plot and Axis Titles
+
+```{r echo=TRUE, warning=FALSE, fig.align='center', fig.show='hide'}
+base <- ggplot(penguins, aes(bill_length_mm, bill_depth_mm, 
+                        color = species, shape = species)) +
+  geom_point(alpha = .4) +
+  geom_point(data = gd, size = 4) +
+theme_bw() +
+labs(
+title = "How does Bill Size Differ by species?",
+subtitle = "Source: Palmer Station Antarctica LTER and K. Gorman, 2020",
+x = "*Length*",
+y = "Width",
+caption = "ggplot 2 Book Club") +
+theme(plot.title = element_text(color = "midnightblue", 
+      hjust = .5, face = "bold")) +
+theme(plot.subtitle = element_text(hjust = .5, size = 9)) + 
+theme(axis.title.x = ggtext::element_markdown()) 
+    ```
+
+
+```{r echo=FALSE, warning =FALSE, out.width="70%", fig.align='center'}
+
+gd <- penguins %>% 
+        filter(!is.na(bill_length_mm)) %>% 
+                       filter(!is.na(bill_depth_mm)) %>%  
+        group_by(species) %>% 
+        summarise(bill_length_mm = mean(bill_length_mm),
+                  bill_depth_mm  = mean(bill_depth_mm))
+
+base <- ggplot(penguins, aes(bill_length_mm, bill_depth_mm, 
+              color = species, shape = species)) +
+  geom_point(alpha = .4) +
+    geom_point(data = gd, size = 4) +
+theme_bw() +
+  guides(color = guide_legend("species"),  shape = guide_legend("species")) +
+  labs(
+    title = "How does Bill Size Differ by species?",
+    subtitle = "Source: Palmer Station Antarctica LTER and K. Gorman, 2020",
+    x = "*Length*",
+    y = "Width",
+    caption = "ggplot 2 Book Club" 
+  ) +
+    theme(plot.title = element_text(color = "midnightblue", hjust = .5, face = "bold")) +
+   theme(plot.subtitle = element_text(hjust = .5, size = 9)) + 
+   theme(axis.title.x = ggtext::element_markdown()) 
+base
+```
+
+- line breaks \n
+- quote() for mathamatical expressions. ?plotmath
+- removing labels two ways: labs(x = "") and labs(x = NULL)
+
+
+## Text labels
+
+
+8.2 Text labels - geom_text() 
+- geom_text() adds label text to the x and y coorindates of a graph such as name instead of a circle in a scatter plot. 
+
+- Change the font with the family aesthetic
+
+- The packages showtext and extrafont can help with handling fonts across differnet devises
+
+- Change the fontface aesthetic for plain, bold, or italic "faces". 
+
+- Alignment: hjust (“left”, “center”, “right”, “inward”, “outward”) and vjust (“bottom”, “middle”, “top”, “inward”, “outward”) aesthetics.
+
+- vjust = "inward", hjust = "inward" ensures labels stay in the plot 
+
+- geom_text(aes(label = text), vjust = "inward", hjust = "inward")
+---
+
+```{r echo=TRUE, fig.align="center"}
+df <- data.frame(x = 1, y = 3:1, face = c("plain", "bold", "italic"))
+ggplot(df, aes(x, y)) + 
+  geom_text(aes(label = face, fontface = face, ), 
+  vjust = "inward", hjust = "inward", size = 20, angle = 10) 
+
+```
+
+```{r, echo=TRUE, fig.align="center", out.width="70%"}
+base + 
+  geom_text(aes(label = body_mass_g), check_overlap = TRUE)
+```
+
+```{r echo=TRUE, fig.align="center", out.width="70%"}
+base + 
+  geom_label(aes(label = body_mass_g))
+```
+
+
+```{r echo=TRUE, fig.align="center", out.width="70%"}
+ggplot(mpg, aes(displ, hwy)) + 
+  geom_text(aes(label = model)) + 
+  xlim(1, 8)
+```
+
+```{r echo=TRUE, fig.align="center", out.width="70%"}
+ggplot(mpg, aes(displ, hwy)) + 
+  geom_text(aes(label = model)) + 
+  xlim(1, 8)
+ggplot(mpg, aes(displ, hwy)) + 
+  geom_text(aes(label = model), check_overlap = TRUE) + 
+  xlim(1, 8)
+```
+
+```{r echo=TRUE, fig.align="center", out.width="70%"}
+library(ggrepel)
+ggplot(mpg, aes(displ, hwy)) + 
+  geom_text_repel(aes(label = model)) + 
+  xlim(1, 8)
+```
+
+
+
+```{r,echo = TRUE, fig.show = 'hide', fig.align="center", out.width="70%"}
+label <- data.frame(
+  waiting = c(55, 80), 
+  eruptions = c(2, 4.3), 
+  label = c("peak one", "peak two")
+)
+
+ggplot(faithfuld, aes(waiting, eruptions)) +
+  geom_tile(aes(fill = density)) + 
+  geom_label(data = label, aes(label = label))
+
+```
+
+```{r echo=FALSE, fig.align="center"}
+label <- data.frame(
+  waiting = c(55, 80), 
+  eruptions = c(2, 4.3), 
+  label = c("peak one", "peak two")
+)
+
+ggplot(faithfuld, aes(waiting, eruptions)) +
+  geom_tile(aes(fill = density)) + 
+  geom_label(data = label, aes(label = label))
+
+```
+
+
+
+geom_label
+```{r, fig.align="center"}
+base +
+  geom_label(aes(x = 42, y = 20, label = "The Adelie species is on all 3 islands"), stat = "unique", size = 5, color = "darkcyan")
+```
+
+## Annotations
+
+
+8.3 Annotations - ggplot2 annotation options 
+- geom_text and geom_label
+
+- geom_rect()
+
+- geom_line(), geom_path(), geom_segment(), arrow()
+
+- geom_vline(), geom_hline(), geom_abline()
+
+- annotate() which can be used in combination with arrow()
+
+
+
+```{r, fig.align="center", echo=TRUE}
+base + annotate(
+    geom = "text", x = 42, y = 20, label = "The Adelie species is on all 3 islands", size = 5, color = "darkcyan")
+```
+
+Arrows Code 
+```{r, echo = TRUE, fig.show = 'hide', fig.align="center"}
+base +
+  annotate(
+    geom = "curve", x = 53, y = 20, xend = 49, yend = 18.5, 
+      curvature = .3, size = 1, arrow = arrow(length = unit(3, "mm"))
+  ) +
+   annotate(geom = "text", x = 53.1, y = 20, 
+    label = "Average Chinstrap", hjust = "left", size = 4, color = "darkcyan") +
+  annotate(
+   geom = "curve", x = 35, y = 20, xend = 38, yend = 18.5, 
+    curvature = .3, size = 1, arrow = arrow(length = unit(3, "mm"))
+  ) +
+  annotate(geom = "text", x = 32, y = 20.3, 
+           label = "Average Adelie", hjust = "left", size = 4, color = "darkcyan") +
+  annotate(
+   geom = "curve", x = 53, y = 15, xend = 48, yend = 15, 
+    curvature = .3, size = 1, arrow = arrow(length = unit(3, "mm"))
+  ) +
+  annotate(geom = "text", x = 53, y = 15.3, 
+           label = "Average Gentoo", hjust = "left", size = 4, color = "darkcyan") 
+
+```
+
+Arrows Plot 
+
+```{r,echo=TRUE, fig.align='center'}
+base +
+  annotate(
+    geom = "curve", x = 53, y = 20, xend = 49, yend = 18.5, curvature = .3, size = 1, arrow = arrow(length = unit(3, "mm"))
+  ) +
+   annotate(geom = "text", x = 53.1, y = 20, label = "Average Chinstrap", hjust = "left", size = 4, color = "darkcyan") +
+  annotate(
+   geom = "curve", x = 35, y = 20, xend = 38, yend = 18.5, curvature = .3, size = 1, arrow = arrow(length = unit(3, "mm"))
+  ) +
+  annotate(geom = "text", x = 32, y = 20.3, label = "Average Adelie", hjust = "left", size = 4, color = "darkcyan") +
+  annotate(
+   geom = "curve", x = 53, y = 15, xend = 48, yend = 15, curvature = .3, size = 1, arrow = arrow(length = unit(3, "mm"))
+  ) +
+  annotate(geom = "text", x = 53, y = 15.3, label = "Average Gentoo", hjust = "left", size = 4, color = "darkcyan") +
+    theme(legend.position = "none")
+```
+
+
+```{r echo=TRUE, fig.align="center"}
+ astronauts %>% 
+  filter(nationality %in% c("U.S.","Australia", "U.K.", "U.S.S.R/Russia", "Japan")) %>% 
+  ggplot(aes(x = nationality, y = hours_mission, color = hours_mission)) +
+  coord_flip() +
+    geom_point(size = 4, alpha = 0.15) +
+    geom_boxplot(color = "gray60", outlier.alpha = 0) +
+    stat_summary(fun = mean, geom = "point", size = 5, color = "dodgerblue") +
+   annotate(
+   geom = "curve", x = 3.8, y = 2500, xend = 4, yend = 650,
+   curvature = .3, arrow = arrow(length = unit(2, "mm"))
+) +
+ annotate(
+    "text", x = 3.7, y = 2500,
+    label = "The U.S. Mean Hours Mission", size = 2.7) +
+   annotate(
+   geom = "curve", x = 4.7, y = 4200, xend = 5, yend = 2800,
+   curvature = .3, arrow = arrow(length = unit(2, "mm"))
+) +
+ annotate(
+    "text", x = 4.5, y = 3700,
+    label = "The interquartile range, between 25% and 75% of values", size = 2.8) +
+    annotate(
+   geom = "curve", x = 1, y = 3800, xend = 1, yend = 900,
+   curvature = .3, arrow = arrow(length = unit(2, "mm"))
+) +
+ annotate(
+    "text", x = .8, y = 3000,
+    label = "Australian Astronaut Andrew S. W. Thomas 
+    completed missions in 1983, 1998, 2001, 2005 and is now retired", size = 2.8) +
+  scale_color_viridis_c() +
+  scale_y_continuous(limits = c(0, 5000)) +
+  labs(title = "Length of Astronaut Missions in hours",
+       subtitle = "A Study was conducted on the effects of space on various individuals",
+       caption = "Source: TidyTuesday 2020 week 29 \n inspired by plots in The Evolution of a ggplot (ep1) by Cedric Scherer") +
+    theme_fivethirtyeight() +
+  theme(legend.position = "none") +
+  theme(plot.title = element_text(hjust = .5)) +
+    theme(plot.subtitle = element_text(hjust = .5)) 
+```
+
+## Directlabels Package 
+
+- Place labels closer to the data than legends
+
+- ggforce()
+
+- gghighlight()
+
+```{r}
+base +
+    directlabels::geom_dl(aes(label = species), method = "smart.grid") +
+   theme(legend.position = "none")
+```
+
+Base Code Nurse Salary
+```{r,echo=TRUE}
+library(ggthemes)
+library(scales)
+library(ggthemes)
+library(scales)
+g <- 
+nurses %>% 
+  group_by(year) %>% 
+  filter(state %in% c("Minnesota", "Wisconsin", "Iowa", "North Dakota", "Illinois", "Indiana", "Kansas", "Michigan", "Missouri", "Nebraska", "Ohio")) %>% 
+  ggplot(aes(year, annual_salary_median, color = state, )) +
+  geom_line() +
+  labs(
+    title = "Annual Median RN Salary by Midwestern State"
+  ) +
+   theme(legend.position = "none") +
+    geom_vline(xintercept = c(2007, 2009), size = 1.5,
+             color = "darkgoldenrod1", linetype = "dashed") +
+   gghighlight::gghighlight(state == c("Minnesota", "Wisconsin", "Iowa")) +
+  theme_economist() +
+  scale_color_economist(name = NULL) +
+  theme(axis.title = element_blank()) +
+  scale_y_continuous(labels = comma_format())
+```
+
+```{r, fig.align = 'center', out.width = "70%"}
+
+g 
+```
+
+gghighlight and facets
+
+```{r, echo = TRUE, fig.show='hide'}
+base + 
+  gghighlight::gghighlight() +
+  facet_wrap(~ species)
+```
+
+
+```{r echo=FALSE}
+base + 
+  gghighlight::gghighlight() +
+  facet_wrap(~ species)
+```
+
+examples in geom_richtext
+
+```{r echo=TRUE, fig.show='hide'}
+library(ggtext)
+
+lab_html <- "&#9733; geom_richtext can modify with hmtl"
+
+g +
+  geom_richtext(aes(x = 2010, y = 50000, label = lab_html),
+                stat = "unique", angle = 30, color = "white", fill = "steelblue")
+```
+
+```{r echo = FALSE}
+library(ggtext)
+
+lab_html <- "&#9733; geom_richtext can modify with hmtl"
+
+g +
+  geom_richtext(aes(x = 2010, y = 50000, label = lab_html),
+                stat = "unique", angle = 30, color = "white", fill = "steelblue")
+```
+
+
+geom_textbox
+```{r echo=TRUE, fig.align='center', fig.show='hide'}
+lab_long <- "**The Great Recession** <br><b style='font-size:10pt;color:steelblue;'> Minnesota's RN Annual Salaries increased during the great receision and then completely flatted out before rising again after 2015"
+
+g +
+  geom_textbox(aes(x = 2015, y = 40000, label = lab_long),
+               width = unit(15, "lines"), stat = "unique")
+```
+
+```{r echo=FALSE, fig.align='center'}
+lab_long <- "**The Great Recession** <br><b style='font-size:10pt;color:steelblue;'> Minnesota's RN Annual Salaries increased during the great receision and then completely flatted out before rising again after 2015"
+
+g +
+  geom_textbox(aes(x = 2015, y = 40000, label = lab_long),
+               width = unit(15, "lines"), stat = "unique")
+```
+
+## Faceting Annotations
+
+
+```{r echo=TRUE, fig.align='center'}
+g +
+    facet_wrap(~state, scales = "free_x")
+```
+
+
+Grid package scales coordinates between 0 and 1
+```{r, echo = TRUE, fig.show='hide', fig.align="center"}
+library(grid)
+my_grob <- grobTree(textGrob("Great Recession",
+                             x = .2, y = .9, hjust = 0,
+                             gp = gpar(col = "black",
+                                       fontsize = 10,
+                                       fontface = "bold")))
+
+g +
+    annotation_custom(my_grob) +
+    facet_wrap(~state, scales = "free_x") 
+```
+
+```{r, echo=FALSE, out.width = "70%", fig.align="center"}
+library(grid)
+my_grob <- grobTree(textGrob("Great Recession",
+                             x = .2, y = .9, hjust = 0,
+                             gp = gpar(col = "black",
+                                       fontsize = 10,
+                                       fontface = "bold")))
+
+g +
+    annotation_custom(my_grob) +
+    facet_wrap(~state, scales = "free_x") 
+```
+
+
+## Resources
+- [ggplot 2 book](https://ggplot2-book.org/annotations.html) chapter 8 annotations 
+- [A ggplot Tutorial For Beautiful Plotting in R](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/#text)  by Cedric Scherer August 5, 2019 
+- [The Evolution of a ggplot (EP.1)](https://www.cedricscherer.com/2019/05/17/the-evolution-of-a-ggplot-ep.-1/) by Cedric Scherer
+- [Introduction to gghighlight](https://cran.r-project.org/web/packages/gghighlight/vignettes/gghighlight.html) by Hiroaki Yutani 2021-06-05
+
+
