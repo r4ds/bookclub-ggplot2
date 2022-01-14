@@ -34,6 +34,7 @@ Imports:
     scico,
     seriation,
     sf,
+    showtext,
     tidyverse,
     tidygraph
 Remotes: 

@@ -11,7 +11,7 @@ knitr::opts_chunk$set(
 ```
 
 
-```{r load packages, include=FALSE}
+```{r 08-load packages, include=FALSE}
 library(tidyverse)
 library(palmerpenguins)
 library(patchwork)
@@ -167,7 +167,7 @@ theme(plot.title = element_text(color = "midnightblue",
       hjust = .5, face = "bold")) +
 theme(plot.subtitle = element_text(hjust = .5, size = 9)) + 
 theme(axis.title.x = ggtext::element_markdown()) 
-    ```
+```
 
 
 ```{r echo=FALSE, warning =FALSE, out.width="70%", fig.align='center'}
