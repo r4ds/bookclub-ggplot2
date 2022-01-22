@@ -51,3 +51,62 @@ You *can* use the above examples...but not real world pratical. Instead, most GI
 ## Working with `sf` Data
 ## Raster Maps
 ## Data Sources
+
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/8-_iLnAogss")`
+
+<details>
+  <summary> Meeting chat log </summary>
+```
+00:11:25	June Choe:	hello!
+00:15:21	SriRam:	Hi all, I am new here, I came to know about this from ISLR book club
+00:16:14	Stan Piotrowski:	Great have to have you here, SriRam!  Some of us are also in the ISLR book club and I think this is a nice complement to that material
+00:25:26	June Choe:	I'd like to see the error!
+00:26:54	June Choe:	I think you'd have to add a geom_labe() layer
+00:27:08	June Choe:	but as Stan said it'll render text at every point
+00:27:29	June Choe:	after polygon would draw it on top
+00:33:36	Michael Haugen:	Reminds me of a Flight of the Concords episode
+00:35:04	SriRam:	23.5
+00:40:09	SriRam:	It would be incorrect data to have multiple geometries on same record
+00:47:44	Lydia Gibson:	It’s spelled right… or at least that’s how it’s spelled in the book
+00:48:16	June Choe:	hm maybe the sf_label and sf_text layers also need to take the geometry aesthetic
+00:49:02	June Choe:	label.padding I think is from geom_label (the white space between text and bounding box)
+00:52:51	Federica Gazzelloni:	viridis
+00:53:30	Federica Gazzelloni:	scale_color_viridis()
+00:53:42	Federica Gazzelloni:	scale_fill_viridis()
+00:54:01	SriRam:	I think viridis is better for continuous values
+00:54:57	Federica Gazzelloni:	viridian package: https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html
+00:55:08	Federica Gazzelloni:	viridis package: https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html
+00:55:51	Federica Gazzelloni:	more: https://www.rdocumentation.org/packages/viridis/versions/0.5.1/topics/scale_color_viridis
+00:56:21	Michael Haugen:	David Robinson uses scale_fill_viridis_c() for a map in his most recent Tidy Tuesday Screen cast. See around 23minute mark: Tidy Tuesday live screencast: Analyzing registered nurses in R. https://www.youtube.com/watch?v=UVmxHb2Daeo&t=486s
+01:12:20	Lydia Gibson:	Thank you Ryan!!
+01:12:34	Federica Gazzelloni:	thanks Ryan
+01:12:54	Stan Piotrowski:	Thanks Ryan!
+```
+</details>
+
+`r knitr::include_url("https://www.youtube.com/embed/RiACZPhm53Y")`
+
+<details>
+  <summary> Meeting chat log </summary>
+```
+00:09:20	priyanka gagneja:	sorry everyone I just joined
+00:09:38	Federica Gazzelloni:	Hello!
+00:10:02	priyanka gagneja:	and will probably be a little in and out .. got a not so happy baby today at home
+00:18:11	Stan Piotrowski:	I need to take off for a conflict that just came up.  Catch up with you all on slack!
+00:20:46	SriRam:	It is the image product ID
+00:21:07	SriRam:	All the IDE’s
+00:21:50	Kent Johnson:	The IDE codes are defined here: https://ropensci.github.io/bomrang/reference/get_available_imagery.html
+00:27:32	SriRam:	The process is called geo-referencing
+00:27:58	SriRam:	And image is called a geo-referenced image
+00:31:33	SriRam:	Yes, it is a reference system
+00:31:38	SriRam:	A coordinate reference
+00:33:04	Federica Gazzelloni:	this is the bit that makes the reference: crs = st_crs(sat_vis)
+00:49:27	Jiwan Heo:	something just came up, and have to leave. See you all next week!
+00:59:58	priyanka gagneja:	I am signing off now , can someone please address and sign off on my behalf. I will send a msg later on slack
+```
+</details>

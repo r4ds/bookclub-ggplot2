@@ -635,14 +635,35 @@ base +
 
 
 
+## Meeting Videos
 
+### Cohort 1
 
+`r knitr::include_url("https://www.youtube.com/embed/LSkVSJasHPY")`
 
+<details>
+  <summary> Meeting chat log </summary>
+```
+00:59:06	June Choe:	There's also a nice animation from wikipedia (the cylinder is squished because of perceptual inequality between hues) - https://upload.wikimedia.org/wikipedia/commons/transcoded/8/8d/SRGB_gamut_within_CIELCHuv_color_space_mesh.webm/SRGB_gamut_within_CIELCHuv_color_space_mesh.webm.480p.vp9.webm
+```
+</details>
 
+`r knitr::include_url("https://www.youtube.com/embed/oQ-Jh9oHPbU")`
 
-
-
-
-
-
-
+<details>
+  <summary> Meeting chat log </summary>
+```
+00:12:21	June Choe:	BTW as of April 2021 v0.6.0 {viridis} got 3 more color palettes -- mako, rocket, and turbo --- https://sjmgarnier.github.io/viridis/articles/intro-to-viridis.html
+00:20:41	June Choe:	"for legends this removes the keys and labels" i guess?
+00:22:34	June Choe:	scale_fill_hue in turn uses scales::hue_pal(), if you want to use the default discrete color palette - https://scales.r-lib.org/reference/hue_pal.html
+00:30:43	Federica Gazzelloni:	really like this one: https://colorspace.r-forge.r-project.org/
+00:35:02	Michael Haugen:	https://github.com/rfordatascience/tidytuesday
+00:35:56	Michael Haugen:	When I have accessed data from TT I have usually read them in manually.
+00:36:04	Michael Haugen:	for example: 
+starbucks <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-12-21/starbucks.csv')
+00:46:06	Ryan Metcalf:	PodCast Page: https://www.tidytuesday.com/
+00:50:16	Michael Haugen:	Ryan Almost took down TidyTuesday
+00:50:46	Michael Haugen:	Make sure to commit to main
+00:50:52	Ryan S:	lol
+```
+</details>
