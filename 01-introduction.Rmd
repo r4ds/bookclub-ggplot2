@@ -13,11 +13,14 @@
 
 ### Cohort 1
 
-`r knitr::include_url("https://www.youtube.com/embed/jrBiEppKt_0")`
+`r knitr::include_url("https://www.youtube.com/embed/aY2LhsKM6TM")`
 
 <details>
   <summary> Meeting chat log </summary>
   
 ```
+00:23:18	Michael Haugen:	Could we do 12:30pm CST? I have a meeting until then.
+00:25:25	Michael Haugen:	Thanks!
+00:45:10	Kent Johnson:	GitHub repo:https://r4ds.github.io/bookclub-ggplot2/
 ```
 </details>

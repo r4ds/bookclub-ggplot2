@@ -231,3 +231,67 @@ ggarrange(p1, p2, p3, ncol = 2, nrow = 2,common.legend = TRUE)
 - [grid and gridExtra](https://cran.r-project.org/web/packages/gridExtra/vignettes/arrangeGrob.html)
 - [cowplot](https://wilkelab.org/cowplot/articles/plot_grid.html)
 - [ggpubr](https://rpkgs.datanovia.com/ggpubr/reference/ggarrange.html)
+
+
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/mGE639JpneE")`
+
+<details>
+  <summary> Meeting chat log </summary>
+```
+00:27:47	Lydia Gibson:	What are npc unts?
+00:27:56	Michael Haugen:	"npc" (Normalized Parent Coordinates)
+00:28:02	Michael Haugen:	0 to 1
+00:28:07	Lydia Gibson:	Oh okay. Thank you!
+00:28:16	Michael Haugen:	Same thing that was used for faceting annotations.
+00:28:43	Michael Haugen:	so .8 is l80 percent of the way up the y axis for example.
+00:28:47	Lydia Gibson:	I missed annotations last week. I’ll have to go back and watch the session.
+00:43:21	SriRam:	I use patch and cowplot
+00:50:00	Kent Johnson:	https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/
+00:50:09	Lydia Gibson:	Thank you!
+00:50:17	Michael Haugen:	The arrows are in chapter 8.3 with geom and curve for example, annotate(
+    geom = "curve", x = 4, y = 35, xend = 2.65, yend = 27, 
+    curvature = .3, arrow = arrow(length = unit(2, "mm"))
+  ) +
+00:51:16	Michael Haugen:	and arrows came up in the discussion as a discussion of the GROB and arrows and how to render your plot so the arrows are not distorted.
+00:51:16	Ryan Metcalf:	Perfect! “arrow” was the argument I was after!
+00:51:37	Michael Haugen:	And then we talked about ggsave as a part of that
+00:53:32	Michael Haugen:	we all will be at Cedric’s level by the end of this bookclub right?
+00:53:47	SriRam:	:D
+00:53:52	Lydia Gibson:	Hopefully lol
+00:54:20	Ryan S:	Thank you!
+00:54:29	SriRam:	Thank you
+```
+</details>
+
+`r knitr::include_url("https://www.youtube.com/embed/lxkk5MCWREQ")`
+
+<details>
+  <summary> Meeting chat log </summary>
+```
+00:04:54	June Choe:	https://yjunechoe.github.io/ggtrace-talk/
+00:12:16	Ryan S:	brilliant... didn't know this before but really simplifies the concept
+00:14:08	Michael Haugen:	Makes sense
+00:26:15	June Choe:	https://ggplot2.tidyverse.org/reference/aes_eval.html
+00:26:36	Ryan Metcalf:	I’m thinking in the context….I buy a car. The engineers have optimized it for longevity….but I want a hot rod….So I need to open the hood and change parts. Or, access the computer and start changing parameters.
+00:32:54	SriRam:	This is like scuba diving, more beautiful under the surface :)
+00:33:15	Stan Piotrowski:	Great analogy, SriRam!
+00:33:17	Ryan Metcalf:	Completely agree @SriRam!
+00:36:44	June Choe:	ggplot2:::ggplot_build.ggplot
+00:37:58	June Choe:	ggplot2:::print.ggplot
+00:50:22	Federica Gazzelloni:	thanks June!!!
+00:50:54	SriRam:	Out of curiosity, how much of this trickery (internal functions) can be learnt from "advanced R" or are these mentioned in the ggplot book ? I am just a regular user, I may not go this deep, but looks very interesting to explore/read during the Christmas break
+00:51:12	Stan Piotrowski:	I’m in the same boat as SriRam
+00:51:32	Stan Piotrowski:	Curious to know more about this but can definitely see myself getting lost in a rabbit hole
+00:54:23	Ryan S:	at some point -- maybe a different session -- can we dive deep into the different stat options ("identity", "count", etc.)
+00:54:47	Ryan S:	specifically, what do they do and when would you use them
+00:55:09	Ryan Metcalf:	June, this is amazing!
+00:57:27	SriRam:	Countdown starts...... 5 mins to come back to reality !!! :D
+01:02:21	Stan Piotrowski:	Great talk, June!
+01:02:34	Kent Johnson:	Thank you! See you next week!
+```
+</details>

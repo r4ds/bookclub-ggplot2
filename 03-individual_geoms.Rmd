@@ -83,3 +83,28 @@ Violin plots show a compact representation of the density of the distribution hi
 ggplot(mpg, aes(drv, hwy)) + geom_violin()
 ```
 
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/XcTYBH4XbHo")`
+
+<details>
+  <summary> Meeting chat log </summary>
+```
+00:13:39	priyanka gagneja:	I forgot to mention that since this is relatively smaller chapter Ryan has prepared some material introducing Chapter 4 for today and he will talking about the entire chapter next week.
+00:16:38	priyanka gagneja:	that's correct
+00:16:42	priyanka gagneja:	that's my understanding too
+00:18:38	priyanka gagneja:	what do you mean circles .. can you share a more detailed example
+00:21:59	Jiwan Heo:	tibble(id = 1:10) %>% mutate(x = cos(2*pi*id/10), y = sin(2*pi*id/10)) %>% ggplot(aes(x, y)) + geom_line() + coord_equal()
+00:22:05	Jiwan Heo:	vs tibble(id = 1:10) %>% mutate(x = cos(2*pi*id/10), y = sin(2*pi*id/10)) %>% ggplot(aes(x, y)) + geom_path() + coord_equal()
+00:35:42	priyanka gagneja:	Thank you Ryan !!
+00:38:16	priyanka gagneja:	need a min
+00:52:22	Michael Haugen:	“Side rail” no pun intended
+00:52:34	Ryan S:	lol
+00:52:34	Michael Haugen:	sounds great
+00:54:02	Ryan Metcalf:	I was going to use Derail…..no pun intended!
+00:54:05	Ryan Metcalf:	Thanks you everyone!
+```
+</details>

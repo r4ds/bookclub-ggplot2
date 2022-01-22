@@ -548,3 +548,50 @@ g +
 - [Introduction to gghighlight](https://cran.r-project.org/web/packages/gghighlight/vignettes/gghighlight.html) by Hiroaki Yutani 2021-06-05
 
 
+
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/iKvD5Mas8Ow")`
+
+<details>
+  <summary> Meeting chat log </summary>
+```
+00:10:14	Ed:	Hi everyone. My connection is shaky so if I drop off don’t take it personally. 😇
+00:10:32	Michael Haugen:	Thanks for joining us!
+00:10:42	Ryan Metcalf:	Great to see you. No worries at all.
+00:24:25	Ryan Metcalf:	To support Michael’s quote, I mentioned a Swedish Statician…Hans Rosling. The Gapminder project was his brain child. Great Ted Talks were delivered by the user: https://www.ted.com/speakers/hans_rosling
+00:32:42	June Choe:	re: text/font rendering - {ragg} + {systemfonts} is now recommended over {showtext}/{extrafont}!
+00:32:59	June Choe:	https://yjunechoe.github.io/posts/2021-06-24-setting-up-and-debugging-custom-fonts/
+00:33:39	Federica Gazzelloni:	@June thanks
+00:34:28	June Choe:	here's some quotes from Thomas Lin Pedersen (ggplot2 dev) on showtext/extrafont - https://twitter.com/thomasp85/status/1355083725156077571
+https://twitter.com/thomasp85/status/1261539815960518656
+00:39:31	Ed:	So is it necessary to hard code the locations for those arrows? It won't stop them where it makes sense to go?
+00:39:46	Ed:	What about different resolution screens, etc.
+00:41:36	Kent Johnson:	Yes, you have to hard-code the arrow start and end.
+00:42:09	Ed:	👍
+00:42:46	Kent Johnson:	My experience is, it's pretty fiddly to get something really nice. I don't know how plot size / screen resolution affect the arrows.
+00:43:42	Ryan Metcalf:	https://fivethirtyeight.com/
+00:46:42	June Choe:	linewidth and arrow size would be subject to resolution but not the stard/end points
+00:47:07	June Choe:	start/end points are converted to native coordinate units but size is absolute
+00:47:46	Ed:	👍
+00:48:03	June Choe:	(which is why you should never rely just on plot panel output and always use something like ggsave!)
+00:48:58	Ed:	Awesome tip. Could see myself getting frustrated but good to know going into it.
+00:49:35	June Choe:	since like an update or two ago, ggsave() started returning the path to the saved image invisibly, so if you
+00:50:07	June Choe:	if you're on windows, you can do something like  `system2("open", ggsave("img.png"))` and itll open up the plot after saving it
+00:50:27	June Choe:	(open it back up using your system's default photo viewing app)
+00:58:21	Ryan Metcalf:	Sheesh! This took me forever to find! I mentioned Arrows outside of a graphic. I was using it with D3 objects (similar to ggplot2). https://github.com/krispo/yarrow
+01:01:04	June Choe:	big fan - and you should check out {sinab} as well for a more powerful version of ggtext by the same dev (though this one's heavily experimental and requires Rust) - https://clauswilke.com/sinab/
+01:01:18	Michael Haugen:	thanks
+01:03:14	June Choe:	the 0-1 coord scale in grid here is called "npc" (Normalized Parent Coordinates)
+01:04:21	Ryan Metcalf:	June, you are a wealth of knowledge! 🙂I may ping you outside of Zoom (Slack) for further discussions on Graphical Objects.
+01:05:00	Ryan S:	Awesome job Michael!
+01:05:12	June Choe:	For sure @Ryan ! Always happy to talk about data viz
+01:05:15	June Choe:	and thanks for presenting Michael!
+01:05:50	June Choe:	xaringanExtra i think
+01:06:22	June Choe:	https://pkg.garrickadenbuie.com/xaringanExtra/#/extra-styles
+01:07:31	Federica Gazzelloni:	Thanks Michael
+```
+</details>

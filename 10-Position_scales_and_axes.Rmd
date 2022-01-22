@@ -817,3 +817,20 @@ patchwork::wrap_elements(layer_grob(sf_plygn_1_wlims)[[1]])
 dplyr::bind_cols(layer_grob(sf_plygn_1)[[1]][c("x", "y")])
 dplyr::bind_cols(layer_grob(sf_plygn_1_wlims)[[1]][c("x", "y")]) # x for fifth row is >1npc
 ```
+
+
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/EvKchS3X6cg")`
+
+`r knitr::include_url("https://www.youtube.com/embed/LSkVSJasHPY")`
+
+<details>
+  <summary> Meeting chat log </summary>
+```
+00:59:06	June Choe:	There's also a nice animation from wikipedia (the cylinder is squished because of perceptual inequality between hues) - https://upload.wikimedia.org/wikipedia/commons/transcoded/8/8d/SRGB_gamut_within_CIELCHuv_color_space_mesh.webm/SRGB_gamut_within_CIELCHuv_color_space_mesh.webm.480p.vp9.webm
+```
+</details>

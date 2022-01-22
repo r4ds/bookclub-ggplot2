@@ -304,4 +304,74 @@ coord_equal()
 ```
 
 
+## Meeting Videos
 
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/93G1FZu_k6k")`
+
+<details>
+  <summary> Meeting chat log </summary>
+```
+00:22:22	Federica Gazzelloni:	that’s very useful
+00:23:08	Michael Haugen:	Arrows!
+00:31:57	Ryan Metcalf:	https://ggplot2-book.org/scale-other.html#scale-manual
+00:39:42	Federica Gazzelloni:	where do you put the question mark?
+00:39:49	Ryan Metcalf:	It may only be me…I always forget how to pull installed datasets in R. If you run `data()` it will list all installed datasets.
+00:39:55	Federica Gazzelloni:	before the function'
+00:40:03	Federica Gazzelloni:	?..
+00:40:17	Federica Gazzelloni:	to have help information
+00:40:28	Ryan Metcalf:	I put it on the front: `?LakeHuron`
+00:42:21	June Choe:	BTW a tangent but something I just learned recently about the help syntax: `?` will exact match and `??` will regex match. So `?LakeHuron` and `??keHuro` also works (with the latter being a bit slower)
+00:43:00	Ryan S:	@June -- Whoa, that's cool
+00:43:43	Ryan S:	If anyone cares, here is the code that does the LakeHuron data WITH an automatic legend
+00:43:45	Ryan S:	data.frame(year = 1875:1972, level = as.numeric(LakeHuron)) %>% 
+  mutate(above = level + 5,
+         below = level -5) %>% 
+  pivot_longer(cols = c("above", "below"),
+               values_to = "new_level",
+               names_to = "level_set") %>% 
+  ggplot(aes(x = year, 
+             y = new_level,
+             groups = level_set,
+             color = level_set)) +
+  geom_line()
+00:44:09	Federica Gazzelloni:	cool
+00:44:12	Ryan Metcalf:	Awesome comment June! That would explain why I get “unexpected” behavior….I wasn’t sure of the differences. Thanks for clarifying!
+00:44:22	June Choe:	A more on-topic regex-y example of ?? would be like `??scale_.*_manual`
+00:44:25	Ryan S:	don't forget the groups = level_set….
+00:45:05	Federica Gazzelloni:	0.2 near the minimu
+00:45:21	Federica Gazzelloni:	scale alpha is 0 to 1
+00:46:15	Federica Gazzelloni:	thanks!
+00:46:34	Ryan S:	thanks, Lydia!
+00:46:36	Federica Gazzelloni:	they are all very useful features
+00:47:56	June Choe:	maybe we can do a week of tidytuesday session if many people of us are interested too!
+00:48:06	Michael Haugen:	^^
+00:48:13	priyanka gagneja:	sure
+00:48:30	Michael Haugen:	I like that; devote one week on a Tidy Tuesday and not a chapter.
+00:48:32	Federica Gazzelloni:	would love that @june
+00:49:54	June Choe:	I have an old (static) tidytuesday submission done in D3 if you want to peak at the code - https://observablehq.com/@yjunechoe/tidytuesday-2021-22
+00:50:16	June Choe:	(but agree with everything Ryan M's saying about how complex it is + pretty big learning curve)
+00:51:49	June Choe:	there's base svg renderer and also {svglite} which is developed by Rstudio https://svglite.r-lib.org/
+00:55:03	Michael Haugen:	D3PO
+00:55:12	June Choe:	I have an example of r2d3 rendered in Rmarkdown with D3 code edited in RStudio - https://gist.github.com/yjunechoe/074e0020841fec3009b239583f305adc
+00:55:40	June Choe:	(Rstudio has javascript syntax highlight support so writing D3 wasn't too weird)
+00:56:47	Michael Haugen:	Does Shiny replace the need for D3 or is that apples and organges?
+00:57:41	June Choe:	IMO shiny is bulkier because it requires an R server backend but D3/JS can entirely be server-side (all calculations happen inside the user's browser)
+00:57:52	June Choe:	oops client-side*
+00:57:58	Michael Haugen:	thanks June. Makes sense.
+00:58:19	Lydia Gibson:	Off topic: I believe they will be removing the examples from the Ggplot2 book in the third edition.
+00:59:08	Federica Gazzelloni:	of course you can use it for scraping tables
+00:59:21	Ryan S:	June -- if you design your application for client-side calculations, I assume you have to optimize it so that it doesn't clog up the user's computer?
+00:59:40	Ryan Metcalf:	R2D3 Package Link: https://rstudio.github.io/r2d3/
+00:59:52	Ryan S:	example -- you don't want to throw a million records at the client-side just because your server side can handle it?
+00:59:53	June Choe:	@Ryan S yaaa and i don't have much experience in that but thats a big topic
+01:00:02	June Choe:	Thank you!
+01:00:18	Ryan S:	I'll try it using Ryan M's client side.  :-)
+01:01:05	Federica Gazzelloni:	that would be great!
+01:01:10	Ryan Metcalf:	Slack channel for Data Visualization Society: Datavizsociety.slack.com
+01:01:16	Lydia Gibson:	Yes please!
+01:01:35	Ryan Metcalf:	Finally, Pandoc link: https://pandoc.org/
+01:01:55	June Choe:	didn't know about that slack - cool!
+```
+</details>

@@ -410,3 +410,68 @@ In addition, to do not forget that you can make a network of data using **{ggplo
 - [Getting Started guide to layouts](https://ggraph.data-imaginist.com/articles/Layouts.html)
 - [Getting Started guide to nodes](https://ggraph.data-imaginist.com/articles/Nodes.html)
 - [Getting Started guide to edges](https://ggraph.data-imaginist.com/articles/Edges.html)
+
+
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/RiACZPhm53Y")`
+
+<details>
+  <summary> Meeting chat log </summary>
+```
+00:09:20	priyanka gagneja:	sorry everyone I just joined
+00:09:38	Federica Gazzelloni:	Hello!
+00:10:02	priyanka gagneja:	and will probably be a little in and out .. got a not so happy baby today at home
+00:18:11	Stan Piotrowski:	I need to take off for a conflict that just came up.  Catch up with you all on slack!
+00:20:46	SriRam:	It is the image product ID
+00:21:07	SriRam:	All the IDE’s
+00:21:50	Kent Johnson:	The IDE codes are defined here: https://ropensci.github.io/bomrang/reference/get_available_imagery.html
+00:27:32	SriRam:	The process is called geo-referencing
+00:27:58	SriRam:	And image is called a geo-referenced image
+00:31:33	SriRam:	Yes, it is a reference system
+00:31:38	SriRam:	A coordinate reference
+00:33:04	Federica Gazzelloni:	this is the bit that makes the reference: crs = st_crs(sat_vis)
+00:49:27	Jiwan Heo:	something just came up, and have to leave. See you all next week!
+00:59:58	priyanka gagneja:	I am signing off now , can someone please address and sign off on my behalf. I will send a msg later on slack
+```
+</details>
+
+`r knitr::include_url("https://www.youtube.com/embed/SV-fN7qYPso")`
+
+<details>
+  <summary> Meeting chat log </summary>
+```
+00:15:36	Ryan S:	https://www.youtube.com/playlist?list=PLkrJrLs7xfbWjD2rp3pIV85lby-tR3Cnu
+00:15:48	Lydia Gibson:	Thanks Ryan!
+00:16:00	Ryan S:	link to a very good basic tutorial on simple features
+00:53:58	Lydia Gibson:	What is GPU?
+00:54:23	Ryan S:	GPU is the graphics processing unit (I think)
+00:54:31	Lydia Gibson:	Thank you
+00:54:32	Ryan S:	it's the part that "draws" on your screen
+00:54:43	Lydia Gibson:	Oh okay
+00:54:56	Ryan S:	versus the CPU that does calculations
+00:55:48	SriRam:	For 2D and non texture plots, I think it is more a RAM issue
+00:55:59	Ryan Metcalf:	Oh. I’m so sorry for using Acronyms! Ryan S. is correct. The balance I’m asking Federica is related….”Can I use a slow Laptop or do I have to use a super computer with massive Video card to render these types of graphical objects.
+00:56:23	Lydia Gibson:	I always thought CPU was synonymous with computer.
+00:57:22	Ryan S:	Ryan, just repurpose the GPUs you currently have that are mining crypto
+00:57:38	Ryan Metcalf:	:) Agreed!!!
+00:57:57	SriRam:	Lol
+00:59:14	SriRam:	If you have a spatial network, do not miss out on “sfnetworks” package
+01:00:07	Federica Gazzelloni:	https://kateto.net/netscix2016.html
+01:00:14	Federica Gazzelloni:	https://www.data-imaginist.com/2017/ggraph-introduction-layouts/
+01:00:24	Federica Gazzelloni:	https://www.hcbravo.org/networks-across-scales/misc/tidygraph.nb.html
+01:00:41	Federica Gazzelloni:	https://igraph.org/r/doc/layout_with_drl.html
+01:00:48	Federica Gazzelloni:	https://tidygraph.data-imaginist.com/reference/index.html#section-misc
+01:00:57	Federica Gazzelloni:	https://ggraph.data-imaginist.com/articles/Layouts.html
+01:01:52	Federica Gazzelloni:	https://web.stanford.edu/class/bios221/book/Chap-Graphs.html
+https://github.com/jtichon/ModernStatsModernBioJGT/tree/master/data
+https://simplemaps.com/data/world-cities
+01:07:00	SriRam:	Tidy is I think , Hadley definition, variable is a column, sample point is a row
+01:07:36	SriRam:	Sorry my microphone does not work since a few sessions now 🙁
+01:07:50	Ryan S:	borders on "marketing" to some degree.  :)
+01:08:08	SriRam:	Sfnetwork is not for graphs, it is more for spatial operations
+```
+</details>
