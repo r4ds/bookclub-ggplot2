@@ -24,7 +24,7 @@
 <meta name="author" content="The R4DS Online Learning Community" />
 
 
-<meta name="date" content="2022-01-22" />
+<meta name="date" content="2022-01-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -469,7 +469,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [5] &quot;gg&quot;</code></pre>
 <p>In fact, <code>geom_sf()</code> must be used with <code>coord_sf()</code></p>
 <p><img src="bookclub-ggplot2_01_files/figure-html/10-64-1.png" width="672" /><img src="bookclub-ggplot2_01_files/figure-html/10-64-2.png" width="672" /></p>
-<pre><code>## Error: geom_sf() must be used with coord_sf()</code></pre>
+<pre><code>## Error in `f()`:
+## ! geom_sf() must be used with coord_sf()</code></pre>
 <p><img src="bookclub-ggplot2_01_files/figure-html/10-64-3.png" width="672" /></p>
 <p>The underlying geometry is untouched (indicating that limits are not removing data)</p>
 <pre><code>##                         geometry PANEL group xmin xmax ymin ymax linetype alpha
