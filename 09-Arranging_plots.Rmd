@@ -233,7 +233,6 @@ ggarrange(p1, p2, p3, ncol = 2, nrow = 2,common.legend = TRUE)
 - [ggpubr](https://rpkgs.datanovia.com/ggpubr/reference/ggarrange.html)
 
 
-
 ## Meeting Videos
 
 ### Cohort 1

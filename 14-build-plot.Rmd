@@ -1,0 +1,459 @@
+# Build a plot layer by layer
+
+**Learning objectives:**
+
+- Understanding ggplot layers
+- How to control layers
+- Application to real data
+
+
+## Building a plot
+
+In this chapter we talk about the grammar of graphics plots and their construction layer by layer.
+
+We use data from the {SpatialEpi} package:
+```{r 14-load-libs, message=FALSE, warning=FALSE, paged.print=FALSE}
+library(tidyverse)
+library(SpatialEpi)
+library(patchwork)
+```
+
+Let's check what data is inside the package, we can use the *NYleukemia* which contains observations about `leukemia` cases in NY, as well as providing other information about `population` and spatials such as latidude and logitude where the cases were located. 
+
+```{r 14-load-data}
+data(NYleukemia)
+head(NYleukemia$data,3); head(NYleukemia$geo,3)
+```
+
+
+Let's now make a first layer visualization using `ggplot2`
+```{r 14-plot1}
+data <- NYleukemia$data
+geo <- NYleukemia$geo
+
+p <- data %>%
+  ggplot(aes(x=population, y=cases))
+p
+```
+
+The second layer of our plot would take consideration of the `geoms`
+
+```{r 14-geom1}
+p + geom_point()
+```
+
+
+In general when we make a ggplot, we build the plot without thinking about the layers, but what is happening inside the hood when we add a layer?
+
+The `layer()` function is called for combining **data**, **stat** and **geom**.
+
+Layers are created using `geom_* or stat_*` calls or directly using the function:
+
+      layer(
+        geom = NULL,
+        stat = NULL,
+        data = NULL,
+        mapping = NULL,
+        position = NULL,
+        params = list(),
+        inherit.aes = TRUE,
+        check.aes = TRUE,
+        check.param = TRUE,
+        show.legend = NA,
+        key_glyph = NULL,
+        layer_class = Layer
+      )
+      
+      
+To obtain the same results:
+```{r 14-layer-function, include=FALSE}
+p + layer(
+  mapping = NULL, 
+  data = NULL,
+  geom = "point", 
+  stat = "identity",
+  position = "identity"
+)
+```
+
+`layer()` function components:
+
+- mapping
+- data
+- geom
+- stat
+- position
+- ...
+
+
+
+## Data
+
+The layers of your plot can be populated with different datasets.
+
+```{r 14-df}
+df <- data %>%
+  inner_join(geo, by = "censustract.FIPS")
+```
+
+Here we generate two new datasets from the **df** dataset.
+
+**What `geom_smooth()` does behind the scenes?**
+
+- fit a model, in this case a **loess** model
+- generate prediction, about the trend of the data
+
+
+In this example we create a `grid` of length of 50 to have an average trend to show in a secondary layer of the plot.
+```{r 14-loess-model}
+mod <- loess(cases ~ population, data = df)
+grid <- tibble(population = seq(min(df$population), max(df$population), length = 50))
+grid$cases <- predict(mod, newdata = grid)
+
+head(grid,3);dim(grid);dim(df)
+```
+
+Next step would be to isolate the **outliers** (observations far away from predicted values), with the help of the `resid()` function to extract model residuals
+```{r 14-resid, eval=FALSE, include=T}
+?resid()
+```
+
+```{r 14-summary}
+summary(mod)
+```
+
+And build the residuals std error vector:
+```{r 14-outliers}
+std_resid <- resid(mod) / mod$s
+outlier <- filter(df, abs(std_resid) > 2)
+
+head(outlier,3); dim(outlier)
+```
+
+Add a new layer with different data: **grid**
+```{r 14-plot2}
+ggplot(df, aes(population, cases)) + 
+  geom_point() + 
+  geom_line(data = grid, colour = "blue", size = 1.5)
+  
+# geom_text(data = outlier, aes(label = ... ))
+```
+
+```{r 14-smooth,message=FALSE, warning=FALSE, paged.print=FALSE}
+ggplot(df, aes(population, cases)) + 
+  geom_point() + 
+  geom_smooth(se=F)
+```
+
+
+### Exercises
+
+2.  Recreate the plot in the book
+```{r 14-ex1}
+class <- mpg %>% 
+  group_by(class) %>% 
+  summarise(n = n(), hwy = mean(hwy))
+```
+
+```{r 14-ex11}
+class <- class%>%
+  mutate(text_label=paste("n =",n))
+```
+
+
+```{r 14-ex12}
+ggplot(data=mpg,aes(x=class,y=hwy,group=class))+
+  geom_jitter()+
+  geom_point(data=class,aes(x=class,y=hwy,group=n),color="red",size=3)+
+  geom_text(data=class,aes(x=class,y=hwy,group=n,label=text_label),
+            size=3,
+            position = position_stack(vjust = 0))
+```
+
+
+## Aesthetic mappings
+
+The aesthetics: `aes()` allows for some omissions, under certain conditions.
+The complete syntax would be:
+
+    ggplot( data = ..., mapping = aes(x = ..., y = ..., ...))
+
+In general `x = ` and `y = ` inside the `aes(x = ..., y = ..., ...)` can be omitted.
+Sometimes R asks you about the missing **mapping**, and this is when more than one layer with different datasets is used. To solve the issue would be enough to add all the specifications inside the aesthetics.
+
+One more interesting thing to mention is:
+
+**What manipulation happens when complex tranformations are set inside the aes()?**
+
+As an example , if we apply the **log** transformation:
+(the example is from the `diamond` dataset)
+
+    aes(log(carat), log(price))
+    
+What happens behind the scenes is an explicit call to `dplyr::mutate()`
+
+(The symbol `$` is not allowed inside the `aes()`)
+
+
+### Specifying the aesthetics in the plot vs. in the layers
+
+All of these alternatives are allowed:
+
+```r
+ggplot(mpg, aes(displ, hwy, colour = class)) + 
+  geom_point()
+  
+ggplot(mpg, aes(displ, hwy)) + 
+  geom_point(aes(colour = class))
+  
+ggplot(mpg, aes(displ)) + 
+  geom_point(aes(y = hwy, colour = class))
+  
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy, colour = class))
+```
+
+But under some conditions, such as the use of a `geom_smooth()`, the position of secondary arguments need to be specified in the layer parameters, as it is important for releasing correct results.
+
+In the first case the smooth line doesn't show up.
+```{r 14-plot3}
+ggplot(df, aes(population, cases, colour = censustract.FIPS)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE) +
+  theme(legend.position = "none")
+#> `geom_smooth()` using formula 'y ~ x'
+
+ggplot(df, aes(population, cases)) + 
+  geom_point(aes(colour = censustract.FIPS)) + 
+  geom_smooth(method = "lm", se = FALSE) + 
+  theme(legend.position = "none")
+#> `geom_smooth()` using formula 'y ~ x'
+```
+
+
+### Setting vs. mapping
+
+**What is the difference between *mapping* and *setting* an aesthetic?**
+
+To **map** an aesthetic **to a variable** there are different options, you can put the **color** argument (or other secondary arguments) inside or outside the aesthetic with different results:
+      
+    geom_...(aes(colour = cut))
+    geom_...(colour="red")
+
+Or **set** an aesthetic **to a constant**, a specific color-value, in case of a color argument:
+
+    ...,colour = "red")
+    
+An alternative would be to use the function:
+
+    scale_colour_identity()
+
+```{r 14-plot4}
+ggplot(df, aes(population, cases)) + 
+   geom_point(colour = "darkblue") 
+   #geom_point(aes(colour = "darkblue")) +
+   #scale_colour_identity()
+```
+
+
+In case of more than one `geom_smooth()` being used in the plot, the different colors can be specified with `scale_color_...()` function.
+```{r 14-plot5}
+ggplot(df, aes(population, cases)) + 
+  geom_point(shape=1) +
+  geom_smooth(aes(colour = "loess"), method = "loess", se = FALSE) + 
+  geom_smooth(aes(colour = "lm"), method = "lm", se = FALSE) +
+  scale_color_viridis_d() +
+  labs(colour = "Method") +
+  theme_bw()
+#> `geom_smooth()` using formula 'y ~ x'
+#> `geom_smooth()` using formula 'y ~ x'
+```
+
+
+## Geoms
+
+**geoms** stands for **geometric objects** for short. Some geoms requires both `x` and `y` while others not, as well as other require more than simply x and y, such as xmax, ymax etc.
+
+If you do `geom_` and tab all the available geoms appear in a list for you to choose from.
+
+
+As an example here we use the `geom_quantile()` to represent a smoothed quantile regression and the `geom_rug()` for maginal rugs.
+```{r 14-quantile}
+ggplot(df, aes(population, cases)) + 
+  geom_quantile() +
+  geom_point() +
+  geom_rug()
+```
+
+
+### Exercises
+
+[Discussion](https://ggplot2-book.org/layers.html)
+
+- The book suggests to download the cheatsheets: [ggplot2 cheatsheet](https://www.rstudio.com/resources/cheatsheets/)
+
+- (Ex.5) Display how a variable has changed over time:
+[source](http://www.sthda.com/english/articles/32-r-graphics-essentials/128-plot-time-series-data-using-ggplot/)
+```{r 14-economics}
+data(economics)
+head(economics,3)
+
+ggplot(data = economics, aes(x = date, y = pop))+
+  geom_line(color = "#00AFBB", size = 2)
+```
+
+- Show the detailed distribution of a single variable
+The distribution can be described using a frequency table and histogram.
+```{r 14-plot6}
+economics%>%
+  ggplot(aes(x=uempmed)) +
+  geom_histogram(bins = 30,color="white")
+```
+
+- Focus attention on the overall trend in a large dataset
+
+[Interesting resource](https://okanbulut.github.io/bigdata/visualizing-big-data.html)
+
+```{r 14-plot7}
+economics%>%
+  ggplot(aes(x=date,y=unemploy))+
+  geom_line()+
+  geom_smooth()
+```
+
+- Draw a map
+```{r 14-plot8}
+map <- fortify(scotland$spatial.polygon)
+
+ggplot(data=scotland$data,
+                    aes(map_id = county.names)) +
+  geom_map(map = map,aes(fill=cases)) +
+  expand_limits(x = map$long, y = map$lat) +
+  labs(title="Scotland cases") +
+  ggthemes::theme_map()+
+  theme(legend.position = "bottom")
+```
+
+- Label outlying points
+```{r 14-plot9}
+sc_data <- scotland$data
+ggplot(data=sc_data,aes(x=cases,y=expected))+
+  geom_point()+
+  geom_text(data=sc_data%>%filter(cases>20|expected>50),
+            aes(x=cases,y=expected,label=expected),
+            vjust="bottom",hjust="left")
+```
+
+
+## Stats
+
+
+There are several `stat_...()` functions used to transform the data by summarizing information.
+
+For example the `stat_ecdf()` compute the empirical cumulative distribution plot
+```{r 14-plot10}
+ggplot(data=sc_data,aes(x=cases,y=expected)) +
+  #geom_hex() 
+  #stat_bin_hex()
+  stat_ecdf()
+```
+
+
+
+Here we use `stat_summary()` function for *categorical data**
+```{r 14-plot11}
+ggplot(diamonds, aes(cut,carat)) + 
+  geom_point(size=1,alpha=0.4) + 
+  stat_summary(geom = "point", fun = "median", colour = "red", size = 4) +
+  geom_point(stat = "summary", fun = "mean", colour = "blue", size = 2)
+```
+
+
+### Generated variables from the `stat_...()` functions
+
+`stat` takes a data frame as input and returns a data frame as output.
+
+Here we use the `diamonds` dataset, to see hoe the [`after_stat()`](https://ggplot2.tidyverse.org/reference/aes_eval.html) can be applied
+```{r 14-plot12}
+p1<- ggplot(diamonds, aes(price)) + 
+  geom_histogram(binwidth = 500,alpha=0.7,fill="red") 
+
+p2<- ggplot(diamonds, aes(price)) + 
+  geom_histogram(aes(y = after_stat(density)), binwidth = 500, 
+                 fill="red",alpha=0.7)
+
+# library(patchwork)
+p1+ p2 & theme_bw() 
+```
+
+### Exercises
+
+- What stats were used to create the Q-Q plot?
+```{r 14-plot13}
+n<- 10
+B<- 100
+mns<- apply(matrix(rnorm(n*B),B),1,mean)
+mns2<-data.frame(mns)
+ggplot(mns2)+
+  stat_qq_line(aes(sample=mns),color="red")+
+  stat_qq(aes(sample=mns),size=3,alpha=0.5)+
+  labs(title="Normal means Normal Q-Q plot",
+       x="Theoretical quantiles",
+       y="Sample quantiles")+
+  theme_bw()
+```
+
+- What stats were used to create the Normal density?
+```{r 14-plot14}
+colors<-c("Simulated distr."="red","Normal distr."="blue")
+ggplot(mns2,aes(mns))+
+   geom_histogram(aes(y=..density..),color="white",fill="grey55",
+                  bins = 30)+
+   geom_density(aes(color="Simulated distr."),key_glyph = "path")+
+   stat_function(aes(color="Normal distr."),
+                 fun = dnorm, key_glyph = "path",
+                 args = list(mean = mean(mns), sd = sd(mns)))+
+  labs(title="Histogram of the Normal mean distribution",color="")+
+  scale_color_manual(values = colors)+
+  theme_bw()+
+  theme(legend.background = element_blank(),
+        legend.box.background = element_blank(),
+        legend.position = c(0.8,0.7))
+```
+
+## Position adjustments
+
+The position is very important for some `geoms`:
+
+- position_nudge()
+- position_jitter()
+- position_jitterdodge()
+
+all of them can be used inside the geom:
+```{r 14-plot15}
+dplot <- ggplot(diamonds, aes(color, fill = cut)) + 
+  xlab(NULL) + ylab(NULL) + theme(legend.position = "none")
+# position stack is the default for bars, so `geom_bar()` 
+# is equivalent to `geom_bar(position = "stack")`.
+dplot + geom_bar()
+dplot + geom_bar(position = "fill")
+dplot + geom_bar(position = "dodge")
+ggplot(mpg, aes(displ, hwy)) + 
+  geom_point(position = position_jitter(width = 0.05, height = 0.5))
+```
+
+
+- `geom_count()`
+
+```{r 14-plot16}
+p3<-ggplot(mpg, aes(cty, hwy)) +
+  geom_jitter(alpha=0.4)
+
+p4<-ggplot(mpg, aes(cty, hwy)) +
+ geom_count(alpha=0.4) +
+ scale_size_area()
+
+p3+p4
+```
+
+
