@@ -177,8 +177,6 @@ plot_grid(p1, p2,
 
 
 ```{r plot16, message=FALSE, warning=FALSE, paged.print=FALSE}
-ggsave("images/p1.png", p1)
-
 ggdraw()+
   draw_plot(p3)+
   draw_image("images/p1.png",x=0.4,y=0.4,scale=0.5)+
