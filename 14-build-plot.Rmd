@@ -12,7 +12,7 @@
 In this chapter we talk about the grammar of graphics plots and their construction layer by layer.
 
 We use data from the {SpatialEpi} package:
-```{r load-libs, message=FALSE, warning=FALSE, paged.print=FALSE}
+```{r 14-load-libs, message=FALSE, warning=FALSE, paged.print=FALSE}
 library(tidyverse)
 library(SpatialEpi)
 library(patchwork)
@@ -20,14 +20,14 @@ library(patchwork)
 
 Let's check what data is inside the package, we can use the *NYleukemia* which contains observations about `leukemia` cases in NY, as well as providing other information about `population` and spatials such as latidude and logitude where the cases were located. 
 
-```{r load-data}
+```{r 14-load-data}
 data(NYleukemia)
 head(NYleukemia$data,3); head(NYleukemia$geo,3)
 ```
 
 
 Let's now make a first layer visualization using `ggplot2`
-```{r plot1}
+```{r 14-plot1}
 data <- NYleukemia$data
 geo <- NYleukemia$geo
 
@@ -38,7 +38,7 @@ p
 
 The second layer of our plot would take consideration of the `geoms`
 
-```{r geom1}
+```{r 14-geom1}
 p + geom_point()
 ```
 
@@ -66,7 +66,7 @@ Layers are created using `geom_* or stat_*` calls or directly using the function
       
       
 To obtain the same results:
-```{r layer-function, include=FALSE}
+```{r 14-layer-function, include=FALSE}
 p + layer(
   mapping = NULL, 
   data = NULL,
@@ -91,7 +91,7 @@ p + layer(
 
 The layers of your plot can be populated with different datasets.
 
-```{r df}
+```{r 14-df}
 df <- data %>%
   inner_join(geo, by = "censustract.FIPS")
 ```
@@ -105,7 +105,7 @@ Here we generate two new datasets from the **df** dataset.
 
 
 In this example we create a `grid` of length of 50 to have an average trend to show in a secondary layer of the plot.
-```{r loess-model}
+```{r 14-loess-model}
 mod <- loess(cases ~ population, data = df)
 grid <- tibble(population = seq(min(df$population), max(df$population), length = 50))
 grid$cases <- predict(mod, newdata = grid)
@@ -114,16 +114,16 @@ head(grid,3);dim(grid);dim(df)
 ```
 
 Next step would be to isolate the **outliers** (observations far away from predicted values), with the help of the `resid()` function to extract model residuals
-```{r resid, eval=FALSE, include=T}
+```{r 14-resid, eval=FALSE, include=T}
 ?resid()
 ```
 
-```{r summary}
+```{r 14-summary}
 summary(mod)
 ```
 
 And build the residuals std error vector:
-```{r outliers}
+```{r 14-outliers}
 std_resid <- resid(mod) / mod$s
 outlier <- filter(df, abs(std_resid) > 2)
 
@@ -131,7 +131,7 @@ head(outlier,3); dim(outlier)
 ```
 
 Add a new layer with different data: **grid**
-```{r plot2}
+```{r 14-plot2}
 ggplot(df, aes(population, cases)) + 
   geom_point() + 
   geom_line(data = grid, colour = "blue", size = 1.5)
@@ -139,7 +139,7 @@ ggplot(df, aes(population, cases)) +
 # geom_text(data = outlier, aes(label = ... ))
 ```
 
-```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+```{r 14-smooth,message=FALSE, warning=FALSE, paged.print=FALSE}
 ggplot(df, aes(population, cases)) + 
   geom_point() + 
   geom_smooth(se=F)
@@ -149,19 +149,19 @@ ggplot(df, aes(population, cases)) +
 ### Exercises
 
 2.  Recreate the plot in the book
-```{r ex1}
+```{r 14-ex1}
 class <- mpg %>% 
   group_by(class) %>% 
   summarise(n = n(), hwy = mean(hwy))
 ```
 
-```{r ex11}
+```{r 14-ex11}
 class <- class%>%
   mutate(text_label=paste("n =",n))
 ```
 
 
-```{r ex12}
+```{r 14-ex12}
 ggplot(data=mpg,aes(x=class,y=hwy,group=class))+
   geom_jitter()+
   geom_point(data=class,aes(x=class,y=hwy,group=n),color="red",size=3)+
@@ -216,7 +216,7 @@ ggplot(mpg) +
 But under some conditions, such as the use of a `geom_smooth()`, the position of secondary arguments need to be specified in the layer parameters, as it is important for releasing correct results.
 
 In the first case the smooth line doesn't show up.
-```{r plot3}
+```{r 14-plot3}
 ggplot(df, aes(population, cases, colour = censustract.FIPS)) + 
   geom_point() + 
   geom_smooth(method = "lm", se = FALSE) +
@@ -248,7 +248,7 @@ An alternative would be to use the function:
 
     scale_colour_identity()
 
-```{r plot4}
+```{r 14-plot4}
 ggplot(df, aes(population, cases)) + 
    geom_point(colour = "darkblue") 
    #geom_point(aes(colour = "darkblue")) +
@@ -257,7 +257,7 @@ ggplot(df, aes(population, cases)) +
 
 
 In case of more than one `geom_smooth()` being used in the plot, the different colors can be specified with `scale_color_...()` function.
-```{r plot5}
+```{r 14-plot5}
 ggplot(df, aes(population, cases)) + 
   geom_point(shape=1) +
   geom_smooth(aes(colour = "loess"), method = "loess", se = FALSE) + 
@@ -278,7 +278,7 @@ If you do `geom_` and tab all the available geoms appear in a list for you to ch
 
 
 As an example here we use the `geom_quantile()` to represent a smoothed quantile regression and the `geom_rug()` for maginal rugs.
-```{r}
+```{r 14-quantile}
 ggplot(df, aes(population, cases)) + 
   geom_quantile() +
   geom_point() +
@@ -294,7 +294,7 @@ ggplot(df, aes(population, cases)) +
 
 - (Ex.5) Display how a variable has changed over time:
 [source](http://www.sthda.com/english/articles/32-r-graphics-essentials/128-plot-time-series-data-using-ggplot/)
-```{r economics}
+```{r 14-economics}
 data(economics)
 head(economics,3)
 
@@ -304,7 +304,7 @@ ggplot(data = economics, aes(x = date, y = pop))+
 
 - Show the detailed distribution of a single variable
 The distribution can be described using a frequency table and histogram.
-```{r plot6}
+```{r 14-plot6}
 economics%>%
   ggplot(aes(x=uempmed)) +
   geom_histogram(bins = 30,color="white")
@@ -314,7 +314,7 @@ economics%>%
 
 [Interesting resource](https://okanbulut.github.io/bigdata/visualizing-big-data.html)
 
-```{r plot7}
+```{r 14-plot7}
 economics%>%
   ggplot(aes(x=date,y=unemploy))+
   geom_line()+
@@ -322,7 +322,7 @@ economics%>%
 ```
 
 - Draw a map
-```{r plot8}
+```{r 14-plot8}
 map <- fortify(scotland$spatial.polygon)
 
 ggplot(data=scotland$data,
@@ -335,7 +335,7 @@ ggplot(data=scotland$data,
 ```
 
 - Label outlying points
-```{r plot9}
+```{r 14-plot9}
 sc_data <- scotland$data
 ggplot(data=sc_data,aes(x=cases,y=expected))+
   geom_point()+
@@ -351,7 +351,7 @@ ggplot(data=sc_data,aes(x=cases,y=expected))+
 There are several `stat_...()` functions used to transform the data by summarizing information.
 
 For example the `stat_ecdf()` compute the empirical cumulative distribution plot
-```{r plot10}
+```{r 14-plot10}
 ggplot(data=sc_data,aes(x=cases,y=expected)) +
   #geom_hex() 
   #stat_bin_hex()
@@ -361,7 +361,7 @@ ggplot(data=sc_data,aes(x=cases,y=expected)) +
 
 
 Here we use `stat_summary()` function for *categorical data**
-```{r plot11}
+```{r 14-plot11}
 ggplot(diamonds, aes(cut,carat)) + 
   geom_point(size=1,alpha=0.4) + 
   stat_summary(geom = "point", fun = "median", colour = "red", size = 4) +
@@ -374,7 +374,7 @@ ggplot(diamonds, aes(cut,carat)) +
 `stat` takes a data frame as input and returns a data frame as output.
 
 Here we use the `diamonds` dataset, to see hoe the [`after_stat()`](https://ggplot2.tidyverse.org/reference/aes_eval.html) can be applied
-```{r plot12}
+```{r 14-plot12}
 p1<- ggplot(diamonds, aes(price)) + 
   geom_histogram(binwidth = 500,alpha=0.7,fill="red") 
 
@@ -389,7 +389,7 @@ p1+ p2 & theme_bw()
 ### Exercises
 
 - What stats were used to create the Q-Q plot?
-```{r plot13}
+```{r 14-plot13}
 n<- 10
 B<- 100
 mns<- apply(matrix(rnorm(n*B),B),1,mean)
@@ -404,7 +404,7 @@ ggplot(mns2)+
 ```
 
 - What stats were used to create the Normal density?
-```{r plot14}
+```{r 14-plot14}
 colors<-c("Simulated distr."="red","Normal distr."="blue")
 ggplot(mns2,aes(mns))+
    geom_histogram(aes(y=..density..),color="white",fill="grey55",
@@ -430,7 +430,7 @@ The position is very important for some `geoms`:
 - position_jitterdodge()
 
 all of them can be used inside the geom:
-```{r plot15}
+```{r 14-plot15}
 dplot <- ggplot(diamonds, aes(color, fill = cut)) + 
   xlab(NULL) + ylab(NULL) + theme(legend.position = "none")
 # position stack is the default for bars, so `geom_bar()` 
@@ -443,11 +443,9 @@ ggplot(mpg, aes(displ, hwy)) +
 ```
 
 
-
-
 - `geom_count()`
 
-```{r plot16}
+```{r 14-plot16}
 p3<-ggplot(mpg, aes(cty, hwy)) +
   geom_jitter(alpha=0.4)
 
@@ -457,8 +455,5 @@ p4<-ggplot(mpg, aes(cty, hwy)) +
 
 p3+p4
 ```
-
-
-
 
 
