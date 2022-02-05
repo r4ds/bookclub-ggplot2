@@ -1,0 +1,21 @@
+# Layers {-}
+
+*Introduction*
+
+- Based on the *Grammar of Graphics*, GGplot2 encourages you to build plots in a structured manner building upon on your plots with various layers. 
+- The purposes of the layers are: 
+- to display the **data**. 
+- to display a **statistical summary** of the data.
+- to add **metadata** such as context, annotations or references to your plot.
+
+## Layers: Chapters
+
+**The section on layers is broken up into the following chapters:**
+
+- Chapter 3. Individual Geoms
+- Chapter 4. Collective Geoms
+- Chapter 5. Statistical Summaries
+- Chapter 6. Maps
+- Chapter 7. Networks
+- Chapter 8. Annotations
+- Chapter 9. Arranging Plots

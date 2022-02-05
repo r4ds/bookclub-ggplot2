@@ -1,0 +1,316 @@
+# Mastering the Grammar
+
+```{r setup, include=FALSE}
+#library(knitr)
+#knitr::opts_chunk$set(cache=TRUE, cache.lazy= FALSE, warning = FALSE, 
+                      
+                   #   message= FALSE, echo = TRUE, dpi = 180, 
+                    #  fig.width = 8, fig.height = 5)
+library(tidyverse)
+
+```
+
+***Learning Objectives***
+
+- Review the elements and benefits of the grammar of graphics
+- Be able to break down simple graphics into its component parts 
+- Mapping Coordinates; define and itdentify layer and scaling as well as coordinate and faceting
+- Create a process for integrating the grammar into your visual design
+- Apply the grammar to the analysis of existing graphics. 
+
+References
+
+Wickham, H. (2010). [A layered grammar of graphics](http://vita.had.co.nz/papers/layered-grammar.pdf) . Journal of Computational and Graphical Statistics, Volume 19, Number 1, 3–28.
+
+## Introduction
+
+Definition of a grammar: “the fundamental principles or rules of an art or science” (OED Online 1989).
+
+"In order to unlock the full power of ggplot2, you’ll need to master the underlying grammar. By understanding the grammar, and how its components fit together, you can create a wider range of visualizations, combine multiple sources of data, and customise to your heart’s content."
+
+"The next chapters discuss the components in more detail, and provide more examples of how you can use them in practice."
+
+Grammar versus chart heuristics. Often we match data type to a standard chart type (for example: bar chart for categorical comparisions).
+
+**4 parts of a Layer**
+
+1. Data and aesthetic mapping. 
+"Along with the data, we need a specification of which variables are mapped to which
+aesthetics." (Wickham, 2010, p. 10)
+
+2. Stat. 
+"A statistical transformation, or stat, transforms the data, typically by summarizing them
+in some manner...A statistical transformation, or stat, transforms the data, typically by summarizing them
+in some manner."  (Wickham, 2010, p. 10)
+
+3. Geom. 
+"Geometric objects, or geoms for short, control the type of plot that you create. For
+example, using a point geom will create a scatterplot, whereas using a line geom will
+create a line plot. 
+
+We can classify geoms by their dimensionality:
+
+• 0d: point, text,
+• 1d: path, line (ordered path),
+• 2d: polygon, interval."  (Wickham, 2010, p. 11)
+
+4. Position adjustment 
+Examples include geom_jitter or how bar plots adjust so the lines do not overlap. 
+
+**Review of key terms**
+
+Geom: point, bar, boxplot, line
+
+Aesthetics: size, color, shape, position
+[Aesthetics finder](https://ggplot2tor.com/aesthetics/)
+
+
+
+**Benefits of using the Grammar**
+
+- Allows one to iterate in the creation and/or updating of a plot.
+- Gives a language for viewing, and learning from, existing data viz. 
+- Enables a better process by focusing the viz developer on the intended purpose of the visual/analysis (not just matching a chart to data). 
+- Expands data viz beyond just how to use this particular software syntax. 
+
+
+## Building a scatterplot
+
+```{r}
+ggplot(mpg, aes(displ, hwy, colour = factor(cyl))) +
+  geom_line() + 
+  theme(legend.position = "none")
+
+```
+
+```{r}
+ggplot(mpg, aes(displ, hwy, colour = factor(cyl))) +
+  geom_bar(stat = "identity", position = "identity", fill = NA) + 
+  theme(legend.position = "none")
+```
+
+
+```{r}
+ggplot(mpg, aes(displ, hwy, colour = factor(cyl))) + 
+  geom_point() + 
+  geom_smooth(method = "lm") + 
+  labs(title = "What type of graph would you call this?", subtitle = "Notice the defaults of ggplot2") +
+  theme(plot.title = element_text(size = 15, color = 
+                                    "firebrick", face = "bold", hjust = .5))   +
+  theme(plot.subtitle = element_text(hjust = .5))
+```
+
+## Scaling
+
+"The values in the previous table have no meaning to the computer. We need to convert them from data units (e.g., litres, miles per gallon and number of cylinders) to graphical units (e.g., pixels and colours) that the computer can display. This conversion process is called scaling and performed by scales."
+
+**what we see to what the computer reads**
+
+ - we see colours; computer reads hexadecimal string
+ - we see size; computer reads a number
+ - we see shapes; the computer reads an integer
+ 
+ Example in Page 4-6 of Wickham, H. (2010)
+ 
+"Scales typically map from a single variable to a single aesthetic, but there are exceptions.
+For example, we can map one variable to hue and another to saturation, to create a single
+aesthetic, color. We can also create redundant mappings, mapping the same variable to
+multiple aesthetics."  (Wickham, 2010, p. 13)
+
+ These aesthetic specifications that are meaningful to R are described in vignette("ggplot2-specs")
+
+**Shape**
+Shapes take five types of values:
+
+An integer in [0,25]:
+
+```{r}
+shapes <- data.frame(
+  shape = c(0:19, 22, 21, 24, 23, 20),
+  x = 0:24 %/% 5,
+  y = -(0:24 %% 5)
+)
+ggplot(shapes, aes(x, y)) + 
+  geom_point(aes(shape = shape), size = 5, fill = "red") +
+  geom_text(aes(label = shape), hjust = 0, nudge_x = 0.15) +
+  scale_shape_identity() +
+  expand_limits(x = 4.1) +
+  theme_void()
+```
+
+**Line type**
+Line types can be specified with:
+
+An integer or name: 0 = blank, 1 = solid, 2 = dashed, 3 = dotted, 4 = dotdash, 5 = longdash, 6 = twodash, as shown below:
+
+```{r}
+lty <- c("solid", "dashed", "dotted", "dotdash", "longdash", "twodash")
+linetypes <- data.frame(
+  y = seq_along(lty),
+  lty = lty
+) 
+ggplot(linetypes, aes(0, y)) + 
+  geom_segment(aes(xend = 5, yend = y, linetype = lty)) + 
+  scale_linetype_identity() + 
+  geom_text(aes(label = lty), hjust = 0, nudge_y = 0.2) +
+  scale_x_continuous(NULL, breaks = NULL) + 
+  scale_y_reverse(NULL, breaks = NULL)
+```
+
+**Font face**
+There are only three fonts that are guaranteed to work everywhere: “sans” (the default), “serif”, or “mono”:
+
+```{r}
+df <- data.frame(x = 1, y = 3:1, family = c("sans", "serif", "mono"))
+ggplot(df, aes(x, y)) + 
+  geom_text(aes(label = family, family = family))
+```
+
+**Colour and fill**
+Note that shapes 21-24 have both stroke colour and a fill. The size of the filled part is controlled by size, the size of the stroke is controlled by stroke. Each is measured in mm, and the total size of the point is the sum of the two. Note that the size is constant along the diagonal in the following figure.
+
+```{r}
+sizes <- expand.grid(size = (0:3) * 2, stroke = (0:3) * 2)
+ggplot(sizes, aes(size, stroke, size = size, stroke = stroke)) + 
+  geom_abline(slope = -1, intercept = 6, colour = "white", size = 6) + 
+  geom_point(shape = 21, fill = "red") +
+  scale_size_identity()
+```
+
+**Horizontal and vertical justification**
+have the same parameterisation, either a string (“top”, “middle”, “bottom”, “left”, “center”, “right”) or a number between 0 and 1:
+
+top = 1, middle = 0.5, bottom = 0
+left = 0, center = 0.5, right = 1
+```{r}
+just <- expand.grid(hjust = c(0, 0.5, 1), vjust = c(0, 0.5, 1))
+just$label <- paste0(just$hjust, ", ", just$vjust)
+
+ggplot(just, aes(hjust, vjust)) +
+  geom_point(colour = "grey70", size = 5) + 
+  geom_text(aes(label = label, hjust = hjust, vjust = vjust))
+```
+
+## Adding complexity; faceting, coordinates, hierarchy of defaults
+facets, multiple layers and statistics
+```{r}
+ggplot(mpg, aes(displ, hwy)) + 
+  geom_point() +
+  geom_smooth() + 
+  facet_wrap(~year)
+```
+
+"A coordinate system, coord for short, maps the position of objects onto the plane of
+the plot. Position is often specified by two coordinates (x, y), but could be any number
+of coordinates. The Cartesian coordinate system is the most common coordinate system
+for two dimensions, whereas polar coordinates and various map projections are used less
+frequently." 
+(Wickham, 2010, p. 13)
+
+"Coordinate systems affect all position variables simultaneously and differ from scales
+in that they also change the appearance of the geometric objects. For example, in polar
+coordinates, bar geoms look like segments of a circle. Additionally, scaling is performed
+before statistical transformation, whereas coordinate transformations occur afterward."
+(Wickham, 2010, p. 13)
+
+
+Coord_polar
+```{r}
+ggplot(mpg, aes(displ, hwy, colour = factor(cyl))) +
+  geom_bar(stat = "identity", position = "identity", fill = NA) + 
+  theme(legend.position = "none") +
+  coord_polar()
+```
+
+"The angle component is particularly useful for cyclical data because the starting and
+ending points of a single cycle are adjacent. Common cyclical variables are components of
+dates, like days of the year or hours of the day, and angles, like wind direction."
+(Wickham, 2010, p. 22)
+
+"In the grammar, a pie chart is a stacked bar geom drawn in a polar coordinate
+system."
+(Wickham, 2010, p. 22)
+
+```{r}
+ggplot(diamonds,aes(x = "", fill=clarity)) + geom_bar(width =
+1) + coord_polar (theta="y")
+```
+
+Figure 15 shows this, as well as a bullseye plot, which arises when we
+map the height to radius instead of angle.
+(Wickham, 2010, p. 22)
+
+```{r}
+ggplot(diamonds,aes(x = "", fill=clarity)) + geom_bar(width =
+1) + coord_polar (theta="x")
+```
+
+The Coxcomb plot is a bar chart in polar coordinates. Note that the categories abut in the Coxcomb, but are separated in the bar chart:
+this is an example of a graphical convention that differs in different coordinate systems.
+(Wickham, 2010, p. 23)
+
+```{r}
+library(patchwork)
+a <- ggplot(diamonds,aes(x = clarity, fill=clarity)) + geom_bar(width =
+1) +  theme(legend.position = "none")
+b <- ggplot(diamonds,aes(x = clarity, fill=clarity)) + geom_bar(width =
+1) + coord_polar (theta="y")  + theme(legend.position = "none")
+a + b
+```
+
+
+**Defaults**
+
+The full ggplot2 specification of the scatterplot of price versus weight is:
+```{r}
+ggplot() +
+layer(
+data = diamonds, mapping = aes(x = carat, y = price),
+geom = "point", stat = "identity", position = "identity"
+) +
+scale_y_continuous() +
+scale_x_continuous() +
+coord_cartesian()
+```
+
+
+## Process and Examples 
+
+**Process** 
+
+1.  Start with business or research question and purpose
+2.  Write out grammar 
+3.  Think through chart types, geom options 
+4.  Iterate 
+
+In the Jan 3, 2022 video, [Statistical Rethinking 2022 Lecture 01](https://www.youtube.com/watch?v=cclUd_HoRlo&t=1106s) Richard McElreath describes a research process (see 19 minute mark): 
+
+1.  Theoretical Estimand
+2.  The Scientific (causal) model(s)
+3.  Use 1 & 2 to build statistical model(s)
+4.  Simulate from 2 to validate 3 yields 1 
+5.  Analze real data 
+
+- Does this translate to a data viz process?
+
+**Apply the grammar to data viz examples**
+
+The chapter gives 7 examples inclinding “Napoleon’s march” by Charles John Minard which is also covered in the A Layered Grammar of Graphics article. 
+
+We will look at examples from here: 
+
+[Our 51 Best (And Weirdest) Charts Of 2021](https://fivethirtyeight.com/features/our-51-best-and-weirdest-charts-of-2021/) by FiveThirtyEight Staff (Published Dec. 20, 2021)
+
+**Resources**
+
+Wickham, H. (2010). [A layered grammar of graphics](http://vita.had.co.nz/papers/layered-grammar.pdf) . Journal of Computational and Graphical Statistics, Volume 19, Number 1, 3–28.
+
+Chapter 2 of [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/) by Claus O. Wilke gives an overview of Mapping data onto aesthetics and chapter 3 is on Coordinate systems and axes.
+
+
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/qo1fFRxbjbk")`

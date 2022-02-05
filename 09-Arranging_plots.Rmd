@@ -20,12 +20,12 @@ This chapter focuses on making more than one plot in one visualization, using th
 
 ## Arranging plots side by side with no overlap
 
-```{r library, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+```{r 09-library, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 library(tidyverse)
 ```
 
 
-```{r dataplots, include=FALSE}
+```{r 09-dataplots, include=FALSE}
 p1 <- ggplot(mpg) + 
   geom_point(aes(x = displ, y = hwy))
 
@@ -43,35 +43,35 @@ p4 <- ggplot(mpg) +
 ```
 
 
-```{r plot1}
+```{r 09-plot1}
 library(patchwork)
 
 p1 + p2 # same as p3 | p4
 ```
 
-```{r plot2}
+```{r 09-plot2}
 p1 + p2 + p3 + p4
 ```
 
 
 ### Taking control of the layout
 
-```{r plot3}
+```{r 09-plot3}
 p1 + p2 + p3 + plot_layout(ncol = 2)
 ```
 
-```{r plot4}
+```{r 09-plot4}
 p1 / p2
 ```
 
 More compositions:
-```{r plot5}
+```{r 09-plot5}
 p3 | (p2 / (p1 | p4))
 ```
 
 ### More about layouts
 
-```{r plot6}
+```{r 09-plot6}
 layout <- "
 AAB
 C#B
@@ -81,26 +81,26 @@ CDD
 p1 + p2 + p3 + p4 + plot_layout(design = layout)
 ```
 
-```{r plot7}
+```{r 09-plot7}
 p1 + p2 + p3 + guide_area() + plot_layout(ncol = 2, guides = "collect")
 ```
 
 
 This way is possible a custom modification of the theme for one plot or for both.
-```{r plot8}
+```{r 09-plot8}
 p12 <- p1 + p2
 p12[[1]] <- p12[[1]] + theme_light()
 p12
 ```
 
-```{r plot9}
+```{r 09-plot9}
 p1 + p4 & 
   scale_y_continuous(limits = c(0, 45)) & 
   theme_minimal()
 ```
 
 ### Plot annotations
-```{r plot10}
+```{r 09-plot10}
 p34 <- p3 + p4 + 
   plot_annotation(
   title = "A closer look at the effect of drive train in cars",
@@ -111,7 +111,7 @@ p34 <- p3 + p4 +
 p34
 ```
 
-```{r plot11}
+```{r 09-plot11}
 p34[[2]] <- p34[[2]] + plot_layout(tag_level = "new")
 p34 + plot_annotation(tag_levels = c("I", "a"))
 ```
@@ -127,7 +127,7 @@ In addition, the location is by default set to the **panel area**, but can be al
 
 An inset can be placed exactly 15 mm from the top right corner.
 
-```{r plot12}
+```{r 09-plot12}
 p1 + 
   inset_element(
     p2, 
@@ -139,7 +139,7 @@ p1 +
   )
 ```
 
-```{r plot13}
+```{r 09-plot13}
 p24 <- p2 / p4 + plot_layout(guides = "collect")
 
 p1 + 
@@ -153,7 +153,7 @@ p1 +
 ## Extra
 
 **grid and gridExtra packages**
-```{r plot14, message=FALSE, warning=FALSE, paged.print=FALSE}
+```{r 09-plot14, message=FALSE, warning=FALSE, paged.print=FALSE}
 library(gridExtra)
 library(grid)
 
@@ -162,7 +162,7 @@ grid.arrange(p1, p2, p3, p4, ncol=2)
 
 
 **cowplot package**
-```{r plot15, message=FALSE, warning=FALSE, paged.print=FALSE}
+```{r 09-plot15, message=FALSE, warning=FALSE, paged.print=FALSE}
 library(cowplot)
 
 plot_grid(p1, p2, 
@@ -176,7 +176,11 @@ plot_grid(p1, p2,
 ```
 
 
-```{r plot16, message=FALSE, warning=FALSE, paged.print=FALSE}
+```{r 09-plot16, message=FALSE, warning=FALSE, paged.print=FALSE}
+# We saved this to the images folder already.
+
+# ggsave("images/p1.png", p1)
+
 ggdraw()+
   draw_plot(p3)+
   draw_image("images/p1.png",x=0.4,y=0.4,scale=0.5)+
@@ -186,7 +190,7 @@ ggdraw()+
 
 
 To add a common title we use `ggdraw()
-```{r plot17}
+```{r 09-plot17}
 plot_row <- plot_grid(p1, p2)
 
 # now add the title
@@ -200,7 +204,7 @@ plot_grid(title, plot_row,
           rel_heights = c(0.1, 1))
 ```
 
-```{r plot18}
+```{r 09-plot18}
 ggdraw()+
   draw_plot(p1,x=0.1,y=0,scale=0.5)+
   draw_plot(p2,x=-0.2,y=0,scale=0.5)+
@@ -211,7 +215,7 @@ ggdraw()+
 ```
 
 **ggpubr package**
-```{r plot19, message=FALSE, warning=FALSE, paged.print=FALSE}
+```{r 09-plot19, message=FALSE, warning=FALSE, paged.print=FALSE}
 library(ggpubr)
 ggarrange(p1, p2, p3, ncol = 2, nrow = 2,common.legend = TRUE)
 ```
@@ -227,3 +231,66 @@ ggarrange(p1, p2, p3, ncol = 2, nrow = 2,common.legend = TRUE)
 - [grid and gridExtra](https://cran.r-project.org/web/packages/gridExtra/vignettes/arrangeGrob.html)
 - [cowplot](https://wilkelab.org/cowplot/articles/plot_grid.html)
 - [ggpubr](https://rpkgs.datanovia.com/ggpubr/reference/ggarrange.html)
+
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/mGE639JpneE")`
+
+<details>
+  <summary> Meeting chat log </summary>
+```
+00:27:47	Lydia Gibson:	What are npc unts?
+00:27:56	Michael Haugen:	"npc" (Normalized Parent Coordinates)
+00:28:02	Michael Haugen:	0 to 1
+00:28:07	Lydia Gibson:	Oh okay. Thank you!
+00:28:16	Michael Haugen:	Same thing that was used for faceting annotations.
+00:28:43	Michael Haugen:	so .8 is l80 percent of the way up the y axis for example.
+00:28:47	Lydia Gibson:	I missed annotations last week. I’ll have to go back and watch the session.
+00:43:21	SriRam:	I use patch and cowplot
+00:50:00	Kent Johnson:	https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/
+00:50:09	Lydia Gibson:	Thank you!
+00:50:17	Michael Haugen:	The arrows are in chapter 8.3 with geom and curve for example, annotate(
+    geom = "curve", x = 4, y = 35, xend = 2.65, yend = 27, 
+    curvature = .3, arrow = arrow(length = unit(2, "mm"))
+  ) +
+00:51:16	Michael Haugen:	and arrows came up in the discussion as a discussion of the GROB and arrows and how to render your plot so the arrows are not distorted.
+00:51:16	Ryan Metcalf:	Perfect! “arrow” was the argument I was after!
+00:51:37	Michael Haugen:	And then we talked about ggsave as a part of that
+00:53:32	Michael Haugen:	we all will be at Cedric’s level by the end of this bookclub right?
+00:53:47	SriRam:	:D
+00:53:52	Lydia Gibson:	Hopefully lol
+00:54:20	Ryan S:	Thank you!
+00:54:29	SriRam:	Thank you
+```
+</details>
+
+`r knitr::include_url("https://www.youtube.com/embed/lxkk5MCWREQ")`
+
+<details>
+  <summary> Meeting chat log </summary>
+```
+00:04:54	June Choe:	https://yjunechoe.github.io/ggtrace-talk/
+00:12:16	Ryan S:	brilliant... didn't know this before but really simplifies the concept
+00:14:08	Michael Haugen:	Makes sense
+00:26:15	June Choe:	https://ggplot2.tidyverse.org/reference/aes_eval.html
+00:26:36	Ryan Metcalf:	I’m thinking in the context….I buy a car. The engineers have optimized it for longevity….but I want a hot rod….So I need to open the hood and change parts. Or, access the computer and start changing parameters.
+00:32:54	SriRam:	This is like scuba diving, more beautiful under the surface :)
+00:33:15	Stan Piotrowski:	Great analogy, SriRam!
+00:33:17	Ryan Metcalf:	Completely agree @SriRam!
+00:36:44	June Choe:	ggplot2:::ggplot_build.ggplot
+00:37:58	June Choe:	ggplot2:::print.ggplot
+00:50:22	Federica Gazzelloni:	thanks June!!!
+00:50:54	SriRam:	Out of curiosity, how much of this trickery (internal functions) can be learnt from "advanced R" or are these mentioned in the ggplot book ? I am just a regular user, I may not go this deep, but looks very interesting to explore/read during the Christmas break
+00:51:12	Stan Piotrowski:	I’m in the same boat as SriRam
+00:51:32	Stan Piotrowski:	Curious to know more about this but can definitely see myself getting lost in a rabbit hole
+00:54:23	Ryan S:	at some point -- maybe a different session -- can we dive deep into the different stat options ("identity", "count", etc.)
+00:54:47	Ryan S:	specifically, what do they do and when would you use them
+00:55:09	Ryan Metcalf:	June, this is amazing!
+00:57:27	SriRam:	Countdown starts...... 5 mins to come back to reality !!! :D
+01:02:21	Stan Piotrowski:	Great talk, June!
+01:02:34	Kent Johnson:	Thank you! See you next week!
+```
+</details>

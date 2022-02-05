@@ -42,7 +42,7 @@ In this **example** we create a graph, assign a random label to the nodes, and s
 
 The function `play_erdos_renyi()` creates graphs directly through sampling of different attributes.
 
-```{r play_erdos_renyi, message=FALSE, warning=FALSE, paged.print=FALSE}
+```{r 07-play_erdos_renyi, message=FALSE, warning=FALSE, paged.print=FALSE}
 library(tidygraph)
 
 graph <- tidygraph::play_erdos_renyi(n = 10, p = 0.2) %>% 
@@ -59,14 +59,14 @@ graph
 
 Data can be converted with `as_tbl_graph()`, a data structure for tidy graph manipulation. It converts a data frame encoded as an edgelist, as well as converting the result of `hclust()`
 
-```{r highschool}
+```{r 07-highschool}
 data(highschool, package = "ggraph")
 head(highschool)
 ```
 
 With `as_tbl_graph()` we obtain:
 
-```{r hs_graph}
+```{r 07-hs_graph}
 hs_graph <- tidygraph::as_tbl_graph(highschool, directed = FALSE)
 hs_graph
 ```
@@ -77,7 +77,7 @@ hs_graph
 In this **example** the `luv_colours()` function allows for all built-in `colors()` translated into **Luv colour space**, a data frame with 657 observations and 4 variables:
 [luv_colours](https://github.com/tidyverse/ggplot2/blob/main/data-raw/luv_colours.R)
 
-```{r luv_colours}
+```{r 07-luv_colours}
 luv_colours <- as.data.frame(convertColor(t(col2rgb(colors())),
                                           "sRGB", "Luv"))
 luv_colours$col <- colors()
@@ -87,7 +87,7 @@ head(luv_colours)
 
 This visualization represent the content of the dataset, then we will see how it looks in a grapg representation. 
 
-```{r colors}
+```{r 07-colors}
 ggplot(luv_colours, aes(u, v)) + 
 geom_point(aes(colour = col), size = 3) + 
 scale_color_identity() + 
@@ -97,24 +97,24 @@ coord_equal() +
 
 
 For example, selecting the first 3 variables and plotting the data with the plot() function we can see that there are some connections within the elements of the dataset, as the colors are connected to each other.
-```{r palette}
+```{r 07-palette}
 ggplot2::luv_colours[, 1:3] %>% head
 plot(ggplot2::luv_colours[, 1:3])
 ```
 
 
-```{r hclust}
+```{r 07-hclust}
 luv_clust <- hclust(dist(ggplot2::luv_colours[, 1:3]))
 ```
 
-```{r class}
+```{r 07-class}
 class(luv_clust)
 ```
 
 
 With the `tidygraph::as_tbl_graph()` function we can transorm the dataset into classes "tbl_graph", "igraph" to make it ready to use for making a visualization of the network data.
 
-```{r luv_graph}
+```{r 07-luv_graph}
 luv_graph <- as_tbl_graph(luv_clust)
 luv_graph;class(luv_graph)
 ```
@@ -124,7 +124,7 @@ luv_graph;class(luv_graph)
 
 The real benefit of networks comes from the different operations that can be performed on them using the underlying structure.
 
-```{r}
+```{r 07-luv_graph2}
 luv_graph %>% 
   tidygraph::activate(nodes) %>% 
              mutate(centrality = centrality_pagerank()) %>% 
@@ -187,7 +187,7 @@ In the following **examples** we see different [layouts](https://www.data-imagin
 
 Information about "drl" type of layout: DRL force-directed graph layout, an be found in the [igraph](https://igraph.org/r/doc/layout_with_drl.html) package.
 
-```{r}
+```{r 07-03b}
 layout <- ggraph::create_layout(hs_graph, layout = 'drl')
 
 ggraph(layout) + 
@@ -217,7 +217,7 @@ A very simple example to understand how to make a graph network is from this tut
 
 To understand a bit more about the graph structure we can use these functions:
 
-```{r}
+```{r 07-04b}
 g1 <- igraph::graph( edges=c(1,2, 2,3, 3, 1), n=3, directed=F ) 
 
 
@@ -235,14 +235,14 @@ Layouts can be **linear** and **circular**.
      coord_polar()   changes the coordinate system and not affect the edges
 
 
-```{r}
+```{r 07-05}
 ggraph(luv_graph, layout = 'dendrogram', circular = TRUE) + 
   geom_edge_link() + 
   coord_fixed()
 ```
 
 
-```{r}
+```{r 07-06}
 ggraph(luv_graph, layout = 'dendrogram') + 
   geom_edge_link() + 
   coord_polar() + 
@@ -264,7 +264,7 @@ ggraph(luv_graph, layout = 'dendrogram') +
 
 
 
-```{r luv_graph_tree}
+```{r 07-luv_graph_tree}
 ggraph(luv_graph, layout = "stress") + 
   geom_edge_link() + 
   geom_node_point(aes(colour =factor(members)),
@@ -276,7 +276,7 @@ More features could be added to calculate node and edge centrality, such as:
 - centrality_power()   
 - centrality_degree()  
 
-```{r 07-05}
+```{r 07-07}
 ggraph(luv_graph, layout = "stress") + 
   geom_edge_link() + 
   geom_node_point(aes(colour =centrality_power()))
@@ -284,7 +284,7 @@ ggraph(luv_graph, layout = "stress") +
 
 Or making tiles:
 
-```{r 07-06, message=FALSE, warning=FALSE, paged.print=FALSE}
+```{r 07-08, message=FALSE, warning=FALSE, paged.print=FALSE}
 ggraph(luv_graph, layout = "treemap") + 
   geom_node_tile(aes(fill = depth))
 ```
@@ -309,7 +309,7 @@ ggraph(luv_graph, layout = "treemap") +
 
 The  `after_stat(index)`:
 
-```{r}
+```{r 07-09}
 set.seed(123)
 ggraph(hs_graph, layout = "stress") + 
   geom_edge_link(aes(alpha = after_stat(index)))
@@ -320,7 +320,7 @@ Here is an example about how to use `node.class variable`, the graph is the firs
 
         tidygraph::play_erdos_renyi()
 
-```{r}
+```{r 07-10}
 graph <- tidygraph::play_erdos_renyi(n = 10, p = 0.2) %>% 
                     activate(nodes) %>% 
                     mutate(class = sample(letters[1:4], 
@@ -337,16 +337,14 @@ ggraph(graph, layout = "stress") +
 ```
 
 
-
-
-```{r}
+```{r 07-11}
 ggraph(hs_graph, layout = "stress") + 
   geom_edge_parallel()
 ```
 
 Trees and specifically **dendrograms**:
 
-```{r}
+```{r 07-12}
 ggraph(luv_graph, layout = "dendrogram", height = height) + 
   geom_edge_elbow()
 ```
@@ -357,7 +355,7 @@ Example: using arrows to show directionality of edges
 
 
 
-```{r}
+```{r 07-13}
 set.seed(1011)
 ggraph(graph, layout = "stress") + 
   geom_edge_link(
@@ -376,7 +374,7 @@ Nodes and edges are abstract concepts and can be visualized in a multitude of wa
 -  geom_edge_point()
 
 
-```{r}
+```{r 07-14}
 ggraph(hs_graph, layout = "matrix", sort.by = node_rank_traveller()) + 
   geom_edge_point()
 ```
@@ -388,15 +386,12 @@ ggraph(hs_graph, layout = "matrix", sort.by = node_rank_traveller()) +
 - facet_graph()
 
 
-```{r}
+```{r 07-15}
 ggraph(hs_graph, layout = "stress") + 
   geom_edge_link() + 
   geom_node_point() + 
   facet_edges(~year)
 ```
-
-
-
 
 
 ## Conclusions
@@ -418,19 +413,65 @@ In addition, to do not forget that you can make a network of data using **{ggplo
 
 
 
+## Meeting Videos
 
+### Cohort 1
 
+`r knitr::include_url("https://www.youtube.com/embed/RiACZPhm53Y")`
 
+<details>
+  <summary> Meeting chat log </summary>
+```
+00:09:20	priyanka gagneja:	sorry everyone I just joined
+00:09:38	Federica Gazzelloni:	Hello!
+00:10:02	priyanka gagneja:	and will probably be a little in and out .. got a not so happy baby today at home
+00:18:11	Stan Piotrowski:	I need to take off for a conflict that just came up.  Catch up with you all on slack!
+00:20:46	SriRam:	It is the image product ID
+00:21:07	SriRam:	All the IDE’s
+00:21:50	Kent Johnson:	The IDE codes are defined here: https://ropensci.github.io/bomrang/reference/get_available_imagery.html
+00:27:32	SriRam:	The process is called geo-referencing
+00:27:58	SriRam:	And image is called a geo-referenced image
+00:31:33	SriRam:	Yes, it is a reference system
+00:31:38	SriRam:	A coordinate reference
+00:33:04	Federica Gazzelloni:	this is the bit that makes the reference: crs = st_crs(sat_vis)
+00:49:27	Jiwan Heo:	something just came up, and have to leave. See you all next week!
+00:59:58	priyanka gagneja:	I am signing off now , can someone please address and sign off on my behalf. I will send a msg later on slack
+```
+</details>
 
+`r knitr::include_url("https://www.youtube.com/embed/SV-fN7qYPso")`
 
-
-
-
-
-
-
-
-
-
-
-
+<details>
+  <summary> Meeting chat log </summary>
+```
+00:15:36	Ryan S:	https://www.youtube.com/playlist?list=PLkrJrLs7xfbWjD2rp3pIV85lby-tR3Cnu
+00:15:48	Lydia Gibson:	Thanks Ryan!
+00:16:00	Ryan S:	link to a very good basic tutorial on simple features
+00:53:58	Lydia Gibson:	What is GPU?
+00:54:23	Ryan S:	GPU is the graphics processing unit (I think)
+00:54:31	Lydia Gibson:	Thank you
+00:54:32	Ryan S:	it's the part that "draws" on your screen
+00:54:43	Lydia Gibson:	Oh okay
+00:54:56	Ryan S:	versus the CPU that does calculations
+00:55:48	SriRam:	For 2D and non texture plots, I think it is more a RAM issue
+00:55:59	Ryan Metcalf:	Oh. I’m so sorry for using Acronyms! Ryan S. is correct. The balance I’m asking Federica is related….”Can I use a slow Laptop or do I have to use a super computer with massive Video card to render these types of graphical objects.
+00:56:23	Lydia Gibson:	I always thought CPU was synonymous with computer.
+00:57:22	Ryan S:	Ryan, just repurpose the GPUs you currently have that are mining crypto
+00:57:38	Ryan Metcalf:	:) Agreed!!!
+00:57:57	SriRam:	Lol
+00:59:14	SriRam:	If you have a spatial network, do not miss out on “sfnetworks” package
+01:00:07	Federica Gazzelloni:	https://kateto.net/netscix2016.html
+01:00:14	Federica Gazzelloni:	https://www.data-imaginist.com/2017/ggraph-introduction-layouts/
+01:00:24	Federica Gazzelloni:	https://www.hcbravo.org/networks-across-scales/misc/tidygraph.nb.html
+01:00:41	Federica Gazzelloni:	https://igraph.org/r/doc/layout_with_drl.html
+01:00:48	Federica Gazzelloni:	https://tidygraph.data-imaginist.com/reference/index.html#section-misc
+01:00:57	Federica Gazzelloni:	https://ggraph.data-imaginist.com/articles/Layouts.html
+01:01:52	Federica Gazzelloni:	https://web.stanford.edu/class/bios221/book/Chap-Graphs.html
+https://github.com/jtichon/ModernStatsModernBioJGT/tree/master/data
+https://simplemaps.com/data/world-cities
+01:07:00	SriRam:	Tidy is I think , Hadley definition, variable is a column, sample point is a row
+01:07:36	SriRam:	Sorry my microphone does not work since a few sessions now 🙁
+01:07:50	Ryan S:	borders on "marketing" to some degree.  :)
+01:08:08	SriRam:	Sfnetwork is not for graphs, it is more for spatial operations
+```
+</details>

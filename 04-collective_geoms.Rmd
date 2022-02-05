@@ -279,3 +279,18 @@ ggplot(mpg, aes(x = ceiling(displ), cty, group = ceiling(displ))) +
 
 (Not covered in the preso)
 
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/1xOs5oZqzz4")`
+
+<details>
+  <summary> Meeting chat log </summary>
+```
+00:21:57	Michael Haugen:	only thing I can think of is if 1 equals the first column of the data frame.
+01:02:43	priyanka gagneja:	thanks Ryan and everyone else
+01:06:10	Jiwan Heo:	https://github.com/r4ds/bookclub-ps4ds
+```
+</details>

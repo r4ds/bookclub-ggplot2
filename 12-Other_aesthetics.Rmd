@@ -1,0 +1,377 @@
+# Other Aesthetics
+
+**Learning objectives:**
+
+To learn about several other aesthetics that ggplot2 can use to represent data, including:
+
+- size scales
+
+- shape scales
+
+- line type scales
+
+- manual scales
+
+- identity scales
+
+
+
+
+```{r 12-library 01, include=FALSE}
+
+library(ggplot2)
+
+```
+
+
+## Size
+
+The size aesthetic is typically used to scale points and text. The default scale for size aesthetics is *scale_size()* in which a linear increase in the variable is mapped onto a linear increase in the area (not the radius) of the geom.
+
+
+```{r size 01}
+base <- ggplot(mpg, aes(displ, hwy, size = cyl)) + 
+  geom_point()
+
+base
+base + scale_size(range = c(1, 2))
+
+```
+
+There are several size scales:
+
+- *scale_size_area()* and *scale_size_binned_area()* are versions of *scale_size()* and *scale_size_binned()* that ensure that a value of 0 maps to an area of 0.
+
+- *scale_radius()* maps the data value to the radius rather than to the area (Section 12.1.1).
+
+- *scale_size_binned()* is a size scale that behaves like *scale_size()* but maps continuous values onto discrete size categories, analogous to the binned position and colour scales discussed in Sections 10.4 and 11.4 respectively. Legends associated with this scale are discussed in Section 12.1.2.
+
+- *scale_size_date()* and *scale_size_datetime()* are designed to handle date data, analogous to the date scales discussed in Section 10.2.
+
+
+### Radius size scales
+
+There are situations where area scaling is undesirable, and for such situations *scale_radius()* may be more appropriate. For example,  consider a data set containing astronomical data that includes the radius of different planets:
+
+
+```{r radius size scales 01, echo=FALSE }
+planets <- data.frame(
+  name = c("Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"),
+  type = c(rep("Inner", 4), rep("Outer", 4)),
+  position = 1:8,
+  radius = c(2440, 6052, 6378, 3390, 71400, 60330, 25559, 24764),
+  orbit = c(57900000, 108200000, 149600000, 227900000, 778300000, 1427000000, 2871000000, 4497100000)
+#  mass = c(3.3022e+23, 4.8685e+24, 5.9736e+24, 6.4185e+23, 1.8986e+27, 5.6846e+26, 8.681e+25, 1.0243e+26)
+)
+planets$name <- with(planets, factor(name, name)); planets
+```
+
+
+
+```{r radius size scale 02}
+base <- ggplot(planets, aes(1, name, size = radius)) + 
+  geom_point() + 
+  scale_x_continuous(breaks = NULL) + 
+  labs(x = NULL, y = NULL, size = NULL)
+  
+base + ggtitle("not to scale")
+base + 
+  scale_radius(limits = c(0, NA), range = c(0, 10)) + 
+  ggtitle("to scale")
+```
+
+
+### Binned size scales
+
+Binned size scales work similarly to binned scales for colour and position aesthetics (Sections 11.4 and 10.4) with the exception of how legends are displayed. The default legend for a binned size scale, and all binned scales except position and colour aesthetics, is governed by *guide_bins()*. For instance, in the mpg data we could use scale_size_binned() to create a binned version of the continuous variable hwy:
+
+
+```{r binned size scales 01}
+
+base <- ggplot(mpg, aes(displ, manufacturer, size = hwy)) +
+  geom_point(alpha = .2) +
+  scale_size_binned()
+
+base
+
+```
+
+Unlike *guide_legend()*, the guide created for a binned scale by *guide_bins()* does not organize the individual keys into a table. Instead they are arranged in a column (or row) along a single vertical (or horizontal) axis, which by default is displayed with its own axis. The important arguments to guide_bins() are listed below:
+
+- **axis** indicates whether the axis should be drawn (default is TRUE)
+
+
+
+```{r binned size scales 02}
+
+base + guides(size = guide_bins(axis = FALSE))
+
+```
+
+- **direction** is a character string specifying the direction of the guide, either "vertical" (the default) or "horizontal"
+
+
+```{r binned size scales 03}
+base + guides(size = guide_bins(direction = "horizontal"))
+```
+
+- **show.limits** specifies whether tick marks are shown at the ends of the guide axis (default is FALSE)
+
+```{r binned size scales 04}
+base + guides(size = guide_bins(show.limits = TRUE))
+```
+
+- **axis.colour**, **axis.linewidth** and **axis.arrow** are used to control the guide axis that is displayed alongside the legend keys
+
+```{r binned size scales 05}
+base + guides(
+  size = guide_bins(
+    axis.colour = "red",
+    axis.arrow = arrow(
+      length = unit(.1, "inches"), 
+      ends = "first", 
+      type = "closed"
+    )
+  )
+)
+```
+
+- **keywidth**, **keyheight**, **reverse** and **override.aes** have the same behavior for *guide_bins()* as they do for *guide_legend()* (see Section 11.3.6)
+
+## Shape
+
+Values can be mapped to the shape aesthetic, most typically when you have a small number of discrete categories. 
+
+Note: if the data variable contains more than 6 values it becomes difficult to distinguish between shapes, and will produce a warning. Although any one plot is unlikely to be readable with more than a 6 distinct markers, there are 25 possible shapes to choose from.
+
+The default *scale_shape()* function contains a single argument: **set solid = TRUE** (the default) to use a “palette” consisting of three solid shapes and three hollow shapes, or **set solid = FALSE** to use six hollow shapes:
+
+
+
+```{r shape 01}
+
+base <- ggplot(mpg, aes(displ, hwy, shape = factor(cyl))) + 
+  geom_point()
+
+base
+base + scale_shape(solid = FALSE)
+
+```
+
+
+- You can specify the marker types for each data value manually using *scale_shape_manual()*. For more information about manual scales see Section 12.4.
+
+
+```{r shape 02}
+base + 
+  scale_shape_manual(
+    values = c("4" = 16, "5" = 17, "6" = 1 , "8" = 2)
+  )
+```
+
+
+## Line type
+
+It is possible to map a variable onto the linetype aesthetic, which works best for discrete variables with a small number of categories, where *scale_linetype()* is an alias for *scale_linetype_discrete()*. Continuous variables cannot be mapped to line types unless *scale_linetype_binned()* is used: although there is a *scale_linetype_continuous()* function, all it does is produce an error.
+
+
+```{r line type 01}
+
+ggplot(economics_long, aes(date, value01, linetype = variable)) +
+  geom_line()
+
+```
+
+With five categories the above plot is quite difficult to read. 
+
+The default “palette” for linetype is supplied by the *scales::linetype_pal()* function, and includes the 13 linetypes shown below:
+
+
+
+```{r line types 02}
+df <- data.frame(value = letters[1:13])
+base <- ggplot(df, aes(linetype = value)) +
+  geom_segment(
+    mapping = aes(x = 0, xend = 1, y = value, yend = value),
+    show.legend = FALSE
+  ) +
+  theme(panel.grid = element_blank()) +
+  scale_x_continuous(NULL, NULL) 
+
+base
+```
+
+You can control the line type by specifying a string with up to 8 hexadecimal values. 
+
+In this specification, 
+
+-the first value is the length of the first line segment, the second value is the length of the first space between segments, and so on. 
+
+This allows you to specify your own line types using *scale_linetype_manual()*, or alternatively, by passing a custom function to the palette argument.
+
+Note that the last four lines are blank, because the *linetypes()* function defined above returns NA when the number of categories exceeds 9. 
+
+```{r line types 03}
+linetypes <- function(n) {
+  types <- c("55",  "75", "95", "1115", "111115", "11111115",
+             "5158", "9198", "c1c8")
+  return(types[seq_len(n)])
+}
+
+base + scale_linetype(palette = linetypes)
+```
+
+
+
+The *scale_linetype()* function contains a na.value argument used to specify what kind of line is plotted for these values. By default this produces a blank line, but you can override this by setting *na.value = "dotted"*:
+
+
+
+```{r line types 04}
+base + scale_linetype(palette = linetypes, na.value = "dotted")
+```
+
+Valid line types can be set using a human readable character string: "blank", "solid", "dashed", "dotted", "dotdash", "longdash", and "twodash" are all understood.
+
+## Manual scales
+
+Manual scales are just a list of valid values that are mapped to the unique discrete values. If you want to customize these scales, you need to create your own new scale with the “manual” version of each: *scale_linetype_manual()*, *scale_shape_manual()*, *scale_colour_manual()*, etc. 
+
+The manual scale has one important argument, values, where you specify the values that the scale should produce if this vector is named, it will match the values of the output to the values of the input; otherwise it will match in order of the levels of the discrete variable. You will need some knowledge of the valid aesthetic values, which are described in vignette("ggplot2-specs").
+
+Manual scales have appeared earlier, in Sections 11.3.4 and 12.2. 
+
+
+In the following example, you’ll see a creative use of *scale_colour_manual()* to display multiple variables on the same plot and show a useful legend. 
+
+-In most plotting systems, you’d color the lines and then add a legend:
+
+
+
+```{r manual scales 01}
+huron <- data.frame(year = 1875:1972, level = as.numeric(LakeHuron))
+ggplot(huron, aes(year)) +
+  geom_line(aes(y = level + 5), colour = "red") +
+  geom_line(aes(y = level - 5), colour = "blue")
+```
+
+- That doesn’t work in ggplot because there’s no way to add a legend manually. Instead, give the lines informative labels:
+
+
+```{r manual scales 02}
+ggplot(huron, aes(year)) +
+  geom_line(aes(y = level + 5, colour = "above")) +
+  geom_line(aes(y = level - 5, colour = "below"))
+
+
+```
+
+- And then tell the scale how to map labels to colours:
+
+
+
+```{r manual scales 03}
+
+ggplot(huron, aes(year)) +
+  geom_line(aes(y = level + 5, colour = "above")) +
+  geom_line(aes(y = level - 5, colour = "below")) +
+  scale_colour_manual("Direction",
+    values = c("above" = "red", "below" = "blue")
+  )
+
+```
+
+
+## Identity Scales
+
+Identity scales — such as *scale_colour_identity()* and *scale_shape_identity()* — are used when your data is already scaled such that the data and aesthetic spaces are the same. The code below shows an example where the identity scale is useful. **luv_colours** contains the locations of all R’s built-in colours in the LUV colour space (the space that HCL is based on). 
+
+
+```{r identity scales 01}
+head(luv_colours)
+#>      L         u    v           col
+#> 1 9342 -3.37e-12    0         white
+#> 2 9101 -4.75e+02 -635     aliceblue
+#> 3 8810  1.01e+03 1668  antiquewhite
+#> 4 8935  1.07e+03 1675 antiquewhite1
+#> 5 8452  1.01e+03 1610 antiquewhite2
+#> 6 7498  9.03e+02 1402 antiquewhite3
+
+ggplot(luv_colours, aes(u, v)) + 
+geom_point(aes(colour = col), size = 3) + 
+scale_color_identity() + 
+coord_equal()
+```
+
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/93G1FZu_k6k")`
+
+<details>
+  <summary> Meeting chat log </summary>
+```
+00:22:22	Federica Gazzelloni:	that’s very useful
+00:23:08	Michael Haugen:	Arrows!
+00:31:57	Ryan Metcalf:	https://ggplot2-book.org/scale-other.html#scale-manual
+00:39:42	Federica Gazzelloni:	where do you put the question mark?
+00:39:49	Ryan Metcalf:	It may only be me…I always forget how to pull installed datasets in R. If you run `data()` it will list all installed datasets.
+00:39:55	Federica Gazzelloni:	before the function'
+00:40:03	Federica Gazzelloni:	?..
+00:40:17	Federica Gazzelloni:	to have help information
+00:40:28	Ryan Metcalf:	I put it on the front: `?LakeHuron`
+00:42:21	June Choe:	BTW a tangent but something I just learned recently about the help syntax: `?` will exact match and `??` will regex match. So `?LakeHuron` and `??keHuro` also works (with the latter being a bit slower)
+00:43:00	Ryan S:	@June -- Whoa, that's cool
+00:43:43	Ryan S:	If anyone cares, here is the code that does the LakeHuron data WITH an automatic legend
+00:43:45	Ryan S:	data.frame(year = 1875:1972, level = as.numeric(LakeHuron)) %>% 
+  mutate(above = level + 5,
+         below = level -5) %>% 
+  pivot_longer(cols = c("above", "below"),
+               values_to = "new_level",
+               names_to = "level_set") %>% 
+  ggplot(aes(x = year, 
+             y = new_level,
+             groups = level_set,
+             color = level_set)) +
+  geom_line()
+00:44:09	Federica Gazzelloni:	cool
+00:44:12	Ryan Metcalf:	Awesome comment June! That would explain why I get “unexpected” behavior….I wasn’t sure of the differences. Thanks for clarifying!
+00:44:22	June Choe:	A more on-topic regex-y example of ?? would be like `??scale_.*_manual`
+00:44:25	Ryan S:	don't forget the groups = level_set….
+00:45:05	Federica Gazzelloni:	0.2 near the minimu
+00:45:21	Federica Gazzelloni:	scale alpha is 0 to 1
+00:46:15	Federica Gazzelloni:	thanks!
+00:46:34	Ryan S:	thanks, Lydia!
+00:46:36	Federica Gazzelloni:	they are all very useful features
+00:47:56	June Choe:	maybe we can do a week of tidytuesday session if many people of us are interested too!
+00:48:06	Michael Haugen:	^^
+00:48:13	priyanka gagneja:	sure
+00:48:30	Michael Haugen:	I like that; devote one week on a Tidy Tuesday and not a chapter.
+00:48:32	Federica Gazzelloni:	would love that @june
+00:49:54	June Choe:	I have an old (static) tidytuesday submission done in D3 if you want to peak at the code - https://observablehq.com/@yjunechoe/tidytuesday-2021-22
+00:50:16	June Choe:	(but agree with everything Ryan M's saying about how complex it is + pretty big learning curve)
+00:51:49	June Choe:	there's base svg renderer and also {svglite} which is developed by Rstudio https://svglite.r-lib.org/
+00:55:03	Michael Haugen:	D3PO
+00:55:12	June Choe:	I have an example of r2d3 rendered in Rmarkdown with D3 code edited in RStudio - https://gist.github.com/yjunechoe/074e0020841fec3009b239583f305adc
+00:55:40	June Choe:	(Rstudio has javascript syntax highlight support so writing D3 wasn't too weird)
+00:56:47	Michael Haugen:	Does Shiny replace the need for D3 or is that apples and organges?
+00:57:41	June Choe:	IMO shiny is bulkier because it requires an R server backend but D3/JS can entirely be server-side (all calculations happen inside the user's browser)
+00:57:52	June Choe:	oops client-side*
+00:57:58	Michael Haugen:	thanks June. Makes sense.
+00:58:19	Lydia Gibson:	Off topic: I believe they will be removing the examples from the Ggplot2 book in the third edition.
+00:59:08	Federica Gazzelloni:	of course you can use it for scraping tables
+00:59:21	Ryan S:	June -- if you design your application for client-side calculations, I assume you have to optimize it so that it doesn't clog up the user's computer?
+00:59:40	Ryan Metcalf:	R2D3 Package Link: https://rstudio.github.io/r2d3/
+00:59:52	Ryan S:	example -- you don't want to throw a million records at the client-side just because your server side can handle it?
+00:59:53	June Choe:	@Ryan S yaaa and i don't have much experience in that but thats a big topic
+01:00:02	June Choe:	Thank you!
+01:00:18	Ryan S:	I'll try it using Ryan M's client side.  :-)
+01:01:05	Federica Gazzelloni:	that would be great!
+01:01:10	Ryan Metcalf:	Slack channel for Data Visualization Society: Datavizsociety.slack.com
+01:01:16	Lydia Gibson:	Yes please!
+01:01:35	Ryan Metcalf:	Finally, Pandoc link: https://pandoc.org/
+01:01:55	June Choe:	didn't know about that slack - cool!
+```
+</details>

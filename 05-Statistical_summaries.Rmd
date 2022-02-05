@@ -1,6 +1,6 @@
 # Statistical Summaries
 
-```{r, include = FALSE}
+```{r 05-01, include = FALSE}
 library(ggplot2)
 ```
 
@@ -26,7 +26,7 @@ Four primary types of geometric objects (geom) are used:
 3. Continuous x, range: `geom_ribbon()`
 4. Continuous x, range & center: `geom_smooth(stat = "identity")`
 
-```{r first group of plots, include=TRUE}
+```{r 05 first group of plots, include=TRUE}
 y <- c(18, 11, 16)
 df <- data.frame(x = 1:3, y = y, se = c(1.2, 0.5, 1.0))
 
@@ -38,7 +38,7 @@ base + geom_smooth(stat = "identity")
 df
 ```
 
-```{r lots of plots, include=TRUE}
+```{r 05 lots of plots, include=TRUE}
 base + geom_errorbar()
 base + geom_linerange()
 base + geom_ribbon()
@@ -47,7 +47,7 @@ base + geom_ribbon()
 ## Weighted Data
 If each row of your dataframe contains multiple observations, we can use a weight to visually give scale to observations
 
-```{r miss-basic, include=TRUE} 
+```{r 05 miss-basic, include=TRUE} 
 # Unweighted
 ggplot(midwest, aes(percwhite, percbelowpoverty)) + 
   geom_point()
@@ -57,7 +57,7 @@ ggplot(midwest, aes(percwhite, percbelowpoverty)) +
   scale_size_area("Population\n(millions)", breaks = c(0.5, 1, 2, 4))
 ```
 
-```{r weight-lm, include=TRUE} 
+```{r 05 weight-lm, include=TRUE} 
 # Unweighted
 ggplot(midwest, aes(percwhite, percbelowpoverty)) + 
   geom_point() + 
@@ -69,7 +69,7 @@ ggplot(midwest, aes(percwhite, percbelowpoverty)) +
   scale_size_area(guide = "none")
 ```
 
-```{r weight-hist, include=TRUE} 
+```{r 05 weight-hist, include=TRUE} 
 ggplot(midwest, aes(percbelowpoverty)) +
   geom_histogram(binwidth = 1) + 
   ylab("Counties")
@@ -80,13 +80,13 @@ ggplot(midwest, aes(percbelowpoverty)) +
 
 >Question for the group: Is the above `ylab` correct? Check out the next two figures, can you see the difference?
 
-```{r weight-hist-option-1, include=TRUE} 
+```{r 05 weight-hist-option-1, include=TRUE} 
 ggplot(midwest, aes(percbelowpoverty)) +
   geom_histogram(aes(weight = poptotal/1e3), binwidth = 1) +
   ylab("Population (1000s)")
 ```
 
-```{r weight-hist-option-2, include=TRUE} 
+```{r 05 weight-hist-option-2, include=TRUE} 
 ggplot(midwest, aes(percbelowpoverty)) +
   geom_histogram(aes(weight = poptotal/1e6), binwidth = 1) +
   ylab("Population (millions)")
@@ -95,13 +95,13 @@ ggplot(midwest, aes(percbelowpoverty)) +
 ## Displaying distributions
 Using built-in `diamonds` dataset
 
-```{r fig.cap="Diamond Dimensions", echo=FALSE}
+```{r 05-diamond-dimensions, fig.cap="Diamond Dimensions", echo=FALSE}
 knitr::include_graphics("images/diamond-dimensions.png", dpi = 300)
 ```
 
 For 1-Dimensional continuous data (1d), the histogram is arguably the most important geom
 
-```{r geom-1d-con, include=TRUE} 
+```{r 05 geom-1d-con, include=TRUE} 
 ggplot(diamonds, aes(depth)) + 
   geom_histogram()
 ggplot(diamonds, aes(depth)) + 
@@ -118,7 +118,7 @@ Three ways to compare distribution:
 - Use colour and a frequency polygon, `geom_freqpoly()`.
 - Use a “conditional density plot”, `geom_histogram(position = "fill")`.
 
-```{r compare-dist, include=TRUE} 
+```{r 05 compare-dist, include=TRUE} 
 ggplot(diamonds, aes(depth)) + 
   geom_freqpoly(aes(colour = cut), binwidth = 0.1, na.rm = TRUE) +
   xlim(58, 68) + 
@@ -132,7 +132,7 @@ ggplot(diamonds, aes(depth)) +
 
 You can also plot density using `geom_density()`. Use a density plot when you know that the underlying density is smooth, continuous and unbounded.
 
-```{r geom-density, include=TRUE} 
+```{r 05 geom-density, include=TRUE} 
 ggplot(diamonds, aes(depth)) +
   geom_density(na.rm = TRUE) + 
   xlim(58, 68) + 
@@ -147,7 +147,7 @@ It is often the case and advisable to sacrifice quality for quantity. The follow
 
 `geom_boxplot()`:
 
-```{r geom-boxplot, include=TRUE} 
+```{r 05 geom-boxplot, include=TRUE} 
     ggplot(diamonds, aes(clarity, depth)) + 
       geom_boxplot()
     ggplot(diamonds, aes(carat, depth)) + 
@@ -157,7 +157,7 @@ It is often the case and advisable to sacrifice quality for quantity. The follow
     
 `geom_violin()`:
 
-```{r geom_violin(), include=TRUE}
+```{r 05 geom_violin(), include=TRUE}
 ggplot(diamonds, aes(clarity, depth)) + 
   geom_violin()
 ggplot(diamonds, aes(carat, depth)) + 
@@ -175,7 +175,7 @@ ggplot(diamonds, aes(carat, depth)) +
     
 2.  Draw a histogram of `price`. What interesting patterns do you see?
 
-```{r Exercise #2, include=TRUE} 
+```{r 05 Exercise #2, include=TRUE} 
 ggplot(diamonds, aes(price)) + 
   geom_histogram(binwidth = 5)
 ```
@@ -184,7 +184,7 @@ ggplot(diamonds, aes(price)) +
 
 3.  How does the distribution of `price` vary with `clarity`?
 
-```{r Exercise #3, include=TRUE}
+```{r 05 Exercise #3, include=TRUE}
     ggplot(diamonds, aes(clarity, price)) + 
       geom_violin()
 
@@ -208,7 +208,7 @@ ggplot(diamonds, aes(price)) +
   
 To compensate for Over plotting, tweaking the aesthetic can help. Techniques like hollow glyphs can help.
 
-```{r overp-glyph, dev = "png", include=TRUE} 
+```{r 05 overp-glyph, dev = "png", include=TRUE} 
 df <- data.frame(x = rnorm(2000), y = rnorm(2000))
 norm <- ggplot(df, aes(x, y)) + xlab(NULL) + ylab(NULL)
 norm + geom_point()
@@ -218,7 +218,7 @@ norm + geom_point(shape = 96) # Pixel sized
 
 Alternative ways using large data sets, you can use alpha blending (transparency). If you specify `alpha` as a ratio, the denominator gives the number of points that must be over plotted to give a solid color.
 
-```{r overp-alpha, dev = "png", include=TRUE} 
+```{r 05 overp-alpha, dev = "png", include=TRUE} 
 norm + geom_point(alpha = 1 / 3)
 norm + geom_point(alpha = 1 / 5)
 norm + geom_point(alpha = 1 / 10)
@@ -231,7 +231,7 @@ Alternatively, we can think of overplotting as a 2d density estimation problem, 
 - Bin the points and count the number in each bin, then visualise that count (the 2d generalisation of the histogram), `geom_bin2d()`.
   - The code below compares square and hexagonal bins, using parameters `bins` and `binwidth` to control the number and size of the bins.
   
-```{r overp-bin, include=TRUE}
+```{r 05 overp-bin, include=TRUE}
 norm + geom_bin2d()
 norm + geom_bin2d(bins = 10)
 ```
@@ -248,14 +248,14 @@ Another approach to dealing with overplotting is to add data summaries to help g
 
 `geom_histogram()` and `geom_bin2d()` use a familiar geom, `geom_bar()` and `geom_raster()`, combined with a new statistical transformation, `stat_bin()` and `stat_bin2d()`. `stat_bin()` and `stat_bin2d()` combine the data into bins and count the number of observations in each bin. But what if we want a summary other than count? So far, we've just used the default statistical transformation associated with each geom. Now we're going to explore how to use  `stat_summary_bin()` to `stat_summary_2d()` to compute different summaries.
 
-```{r geom_bar(), include=TRUE}
+```{r 05 geom_bar(), include=TRUE}
 ggplot(diamonds, aes(color)) + 
   geom_bar()
 ggplot(diamonds, aes(color, price)) + 
   geom_bar(stat = "summary_bin", fun = mean)
 ```
 
-```{r geom_bin2d(), include=TRUE}
+```{r 05 geom_bin2d(), include=TRUE}
 ggplot(diamonds, aes(table, depth)) + 
   geom_bin2d(binwidth = 1, na.rm = TRUE) + 
   xlim(50, 70) + 
@@ -275,20 +275,55 @@ So far we've considered two classes of geoms:
 
 Although ggplot2 does not have direct 3d support, it does provide the ability to plot 2d images representing 3d data. These include: contours, colored tiles, and bubble plots.
 
-```{r geom_contour(), include=TRUE}
+```{r 05 geom_contour(), include=TRUE}
 ggplot(faithfuld, aes(eruptions, waiting)) + 
   geom_contour(aes(z = density, colour = ..level..))
 ```
 
-```{r geom_raster(), include = TRUE}
+```{r 05 geom_raster(), include = TRUE}
 ggplot(faithfuld, aes(eruptions, waiting)) + 
   geom_raster(aes(fill = density))
 ```
 
-```{r bubble plot, include=TRUE}
+```{r 05 bubble plot, include=TRUE}
 # Bubble plots work better with fewer observations
 small <- faithfuld[seq(1, nrow(faithfuld), by = 10), ]
 ggplot(small, aes(eruptions, waiting)) + 
   geom_point(aes(size = density), alpha = 1/3) + 
   scale_size_area()
 ```
+
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/zufpaidIkGU")`
+
+<details>
+  <summary> Meeting chat log </summary>
+```
+00:32:41	Michael Haugen:	geom_errorbar() otherwise known as tie fighter plot
+00:33:12	Gustavo R. Brito:	There's some good explanations about geom_smooth (and se too) in rdocumentation: https://rdocumentation.org/packages/ggplot2/versions/3.3.5/topics/geom_smooth
+00:46:10	priyanka gagneja:	the Grey area is the confidence interval
+00:48:32	Federica Gazzelloni:	The geom_smooth() function in ggplot2 can plot fitted lines from models with a simple structure. Supported model types include models fit with lm() , glm() , nls() , and mgcv::gam() . ... By default you will get confidence intervals plotted in geom_smooth() .
+00:49:53	Federica Gazzelloni:	This is a linear model fit, so I use method = "lm".
+00:50:21	Stan Piotrowski:	You can use “scale_y_continuous()” and some of the functions from the “scales” package to modify axes.
+00:50:27	June Choe:	the model gets fitted by StatSmooth$compute_group() here, if you're curious about the code! https://github.com/tidyverse/ggplot2/blob/759c63c2fd9e00ba3322c1b74b227f63c98d2e06/R/stat-smooth.r#L156-L173
+00:51:31	Federica Gazzelloni:	https://aosmith.rbind.io/2018/11/16/plot-fitted-lines/
+00:56:58	Federica Gazzelloni:	some formula from the documentation: Formula to use in smoothing function, eg. y ~ x, y ~ poly(x, 2), y ~ log(x). NULL by default, in which case method = NULL implies formula = y ~ x when there are fewer than 1,000 observations and formula = y ~ s(x, bs = "cs") otherwise.
+00:57:52	priyanka gagneja:	thats ok , keep going. we can pick up the rest next time we meet.
+00:58:21	Lydia Gibson:	I’m going to run to my appointment. See you all next week!
+00:58:41	Lydia Gibson:	Sorry, in two weeks.
+00:59:26	Ryan S:	as a side note -- it seemed like the topic of stats (i.e., stat = "identity")…. this topic seemed to get very light treatment in the text.  to me it seems like this idea of how stats work is a huge topic that requires a lot of understanding and practice.
+00:59:52	Stan Piotrowski:	I agree, Ryan.
+01:00:18	Ryan S:	suggest someone who understands this topic (and has the capacity to talk to it) may be willing to take 15 mins on it next time?
+01:01:13	June Choe:	I also agree (and would be happy to do this, just not this month!) I feel like we could use another week on stat before we're thrown into the Extending ggplot2 section - maybe around when we cover scales
+01:02:25	Michael Haugen:	Stat part 2 next week?
+01:02:33	Stan Piotrowski:	That sounds like a good idea to me!  That’ll give us some time to dig into the code and figure out what’s going on
+01:02:48	Ryan S:	I think we're two weeks away (US holiday next week)
+01:02:49	priyanka gagneja:	+1 Michael
+```
+</details>
+
+`r knitr::include_url("https://www.youtube.com/embed/GiXu9zCKQCc")`
