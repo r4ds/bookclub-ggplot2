@@ -1,22 +1,46 @@
-# PLACEHOLDER
+# Scales and Guides
 
 **Learning objectives:**
 
-- {These are nice to have, but take some extra work. It's ok to skip these if necessary.}
+* Show how concepts for position and scale apply elsewhere
 
-## {Slide 1 title}
+* Theory underpinnning scales and guides
 
-- {Create slides as sections marked with `##`, but keep them short like a slide.}
 
-## Meeting Videos
 
-### Cohort 1
+## Theory of scales and guides
 
-`r knitr::include_url("https://www.youtube.com/embed/URL")`
+|Argument name|Axis| Label|
+|-|-|-|
+| name|Label| Title |
+|breaks| Ticks & grid line|Key|
+|labels|Tick label|Key label|
 
-<details>
-  <summary> Meeting chat log </summary>
-  
-```
-```
-</details>
+### Scale specification
+
+### Namong scheme
+
+### Fundamental scale types
+
+
+## Scale Names
+
+## Scale Breaks
+
+## Scale Limits
+
+## Scale guides
+
+## Scale transformation
+
+
+## Legend merging and splitting
+
+### Merging legends
+
+### Splitting legends
+
+## Legend key glyphs
+
+
+
