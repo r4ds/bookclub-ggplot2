@@ -31,7 +31,7 @@ If you would like to present, please add your name next to a chapter using the [
 - 2022-01-17: MLK day holiday
 - 2022-01-24: Chapter 13: Mastering the grammar: Michael Haugen
 - 2022-01-31: Chapter 14: Build a plot layer by layer: Federica Gazzelloni
-- 2022-02-07: Chapter 15: Scales and guides: TBC
+- 2022-02-28: Chapter 15: Scales and guides: Lydia Gibson
 
 ## How to Present
 
