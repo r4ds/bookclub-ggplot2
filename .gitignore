@@ -5,3 +5,6 @@
 .DS_Store
 _book
 _bookdown_files
+ggplot2club.Rcheck/
+ggplot2club*.tar.gz
+ggplot2club*.tgz
