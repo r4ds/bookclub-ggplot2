@@ -5,7 +5,7 @@ output:
 ---
 # Scales and Guides
 
-```{r include=FALSE}
+```{r 15-01, include=FALSE}
 library(ggplot2)
 ```
 
@@ -30,7 +30,7 @@ Surprisingly, axes and legends are the same type of thing, but while they look v
 The commonalities between the two are illustrated below:
 
 
-|Argument name|Axis| Label|
+|Argument name|Axis| Legend|
 |-|-|-|
 | `name` |Label| Title |
 | `breaks` | Ticks & grid line|Key|
@@ -49,7 +49,7 @@ However, legends are more complicated than axes, and consequently there are a nu
 An important property of ggplot2 is the principle that every aesthetic in your plot is associated with exactly one scale. For instance, when you write this
 
 
-```{r echo=TRUE,eval=FALSE}
+```{r 15-02, echo=TRUE,eval=FALSE}
 ggplot(mpg, aes(displ, hwy)) + 
   geom_point(aes(colour = class))
 ```
@@ -57,7 +57,7 @@ ggplot(mpg, aes(displ, hwy)) +
 ggplot2 adds a default scale for each aesthetic used in the plot:
 
 
-```{r echo=TRUE,eval=FALSE}
+```{r 15-03, echo=TRUE,eval=FALSE}
 ggplot(mpg, aes(displ, hwy)) + 
   geom_point(aes(colour = class)) +
   scale_x_continuous() + 
@@ -69,7 +69,7 @@ ggplot(mpg, aes(displ, hwy)) +
 The choice of default scale depends on the aesthetic and the variable type. In this example `hwy` is a continuous variable mapped to the y aesthetic so the default scale is `scale_y_continuous()`; similarly `class` is discrete so when mapped to the colour aesthetic the default scale becomes `scale_colour_discrete()`. Specifying these defaults would be tedious so ggplot2 does it for you. But if you want to override the defaults, you’ll need to add the scale yourself, like this:
 
 
-```{r echo=TRUE,eval=FALSE}
+```{r 15-04, echo=TRUE,eval=FALSE}
 ggplot(mpg, aes(displ, hwy)) + 
   geom_point(aes(colour = class)) + 
   scale_x_continuous(name = "A really awesome x axis label") +
@@ -82,7 +82,7 @@ The use of `+` to “add” scales to a plot is a little misleading because if y
 
 
 
-```{r echo=TRUE,eval=FALSE}
+```{r 15-05, echo=TRUE,eval=FALSE}
 ggplot(mpg, aes(displ, hwy)) + 
   geom_point() + 
   scale_x_continuous(name = "Label 1") +
@@ -100,7 +100,7 @@ Note the message when you add multiple scales for the same aesthetic, which make
 If you’re making small tweaks to the scales, you might continue to use the default scales, supplying a few extra arguments. If you want to make more radical changes you will override the default scales with alternatives:
 
 
-```{r echo=TRUE,eval=FALSE}
+```{r 15-06, echo=TRUE,eval=FALSE}
 ggplot(mpg, aes(displ, hwy)) + 
   geom_point(aes(colour = class)) +
   scale_x_sqrt() + 
@@ -162,7 +162,7 @@ The toolbox chapters outline the common practical goals for specifying the limit
 
 The default behaviour in ggplot2 is to convert out of bounds values to NA, the logic for this begin that if a data value is not part of the mapped region, it should be treated as missing. This can occasionally lead to unexpected behaviour, as illustrated in Section 10.1.2. You can override this default by setting `oob` argument of the scale, a function that is applied to all observations outside the scale limits. The default is `scales::oob_censor()` which replaces any value outside the limits with `NA`. Another option is `scales::oob_squish()` which squishes all values into the range. An example using a fill scale is shown below:
 
-```{r}
+```{r 15-07}
 df <- data.frame(x = 1:6, y = 8:13)
 base <- ggplot(df, aes(x, y)) + 
   geom_col(aes(fill = x)) +                    # bar chart
@@ -220,7 +220,7 @@ The most common use for scale transformations is to adjust a continuous position
 
 An example of this for the Old Faithful density plot is shown below. The linearly mapped scale on the left makes it easy to see the peaks of the distribution, whereas the transformed representation on the right makes it easier to see the regions of non-negligible density around those peaks:
 
-```{r}
+```{r 15-08}
 base <- ggplot(faithfuld, aes(waiting, eruptions)) + 
   geom_raster(aes(fill = density)) + 
   scale_x_continuous(NULL, NULL, expand = c(0, 0)) +
@@ -232,7 +232,7 @@ base + scale_fill_continuous(trans = "sqrt")
 
 Transforming size aesthetics is also possible:
 
-```{r}
+```{r 15-09}
 df <- data.frame(x = runif(20), y = runif(20), z = sample(20))
 base <- ggplot(df, aes(x, y, size = z)) + geom_point()
 
@@ -256,7 +256,7 @@ Merging legends occurs quite frequently when using ggplot2. For example, if you�
 By default, a layer will only appear if the corresponding aesthetic is mapped to a variable with `aes()`. You can override whether or not a layer appears in the legend with `show.legend: FALSE` to prevent a layer from ever appearing in the legend; `TRUE` forces it to appear when it otherwise wouldn’t. Using `TRUE` can be useful in conjunction with the following trick to make points stand out:
 
 
-```{r, echo=FALSE}
+```{r 15-10, echo=FALSE}
 toy <- data.frame(
   const = 1, 
   up = 1:4,
@@ -270,7 +270,7 @@ toy <- data.frame(
 
 
 
-```{r}
+```{r 15-11}
 ggplot(toy, aes(up, up)) + 
   geom_point(size = 4, colour = "grey20") +
   geom_point(aes(colour = txt), size = 2) 
@@ -282,7 +282,7 @@ ggplot(toy, aes(up, up)) +
 
 ggplot2 tries to use the fewest number of legends to accurately convey the aesthetics used in the plot. It does this by combining legends where the same variable is mapped to different aesthetics. The figure below shows how this works for points: if both colour and shape are mapped to the same variable, then only a single legend is necessary.
 
-```{r}
+```{r 15-12}
 base <- ggplot(toy, aes(const, up)) +
   scale_x_continuous(NULL, breaks = NULL)
 base + geom_point(aes(colour = txt))
@@ -293,7 +293,7 @@ base + geom_point(aes(shape = txt, colour = txt))
 In order for legends to be merged, they must have the same name. So if you change the name of one of the scales, you’ll need to change it for all of them. One way to do this is by using `labs()` helper function:
 
 
-```{r}
+```{r 15-13}
 base <- ggplot(toy, aes(const, up)) + 
   geom_point(aes(shape = txt, colour = txt)) + 
   scale_x_continuous(NULL, breaks = NULL)
@@ -312,7 +312,7 @@ Splitting a legend is a much less common data visualisation task. In general it 
 To illustrate this the plot on the left uses `geom_point()` to display a large marker for each vehicle make in the mpg data, with a single colour scale that maps to the year. On the right, a second `geom_point()` layer is overlaid on the plot using small markers: this layer is associated with a different colour scale, used to indicate whether the vehicle has a 4-cylinder engine.
 
 
-```{r}
+```{r 15-14}
 base <- ggplot(mpg, aes(displ, hwy)) + 
   geom_point(aes(colour = factor(year)), size = 5) + 
   scale_colour_brewer("year", type = "qual", palette = 5) 
@@ -330,7 +330,7 @@ Additional details, including functions that apply to other scale types, are ava
 
 In most cases the default glyphs shown in the legend key will be appropriate to the layer and the aesthetic.  Should you need to override this behaviour, the `key_glyph` argument can be used to associate a particular layer with a different kind of glyph. For example:
 
-```{r}
+```{r 15-15}
 base <- ggplot(economics, aes(date, psavert, color = "savings"))
 
 base + geom_line()
@@ -339,4 +339,6 @@ base + geom_line(key_glyph = "timeseries")
 
 
 More precisely, each geom is associated with a function such as `draw_key_path()`, `draw_key_boxplot()` or `draw_key_path()` which is responsible for drawing the key when the legend is created. You can pass the desired key drawing function directly: for example, `base + geom_line(key_glyph = draw_key_timeseries`) would also produce the plot shown above.
+
+For more information about changing key glyphs, see https://www.emilhvitfeldt.com/post/changing-glyph-in-ggplot2/.
 
