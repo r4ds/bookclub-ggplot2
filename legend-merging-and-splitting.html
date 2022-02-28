@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>16.7 Legend merging and splitting | ggplot2 Book Club</title>
+  <title>15.7 Legend merging and splitting | ggplot2 Book Club</title>
   <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="16.7 Legend merging and splitting | ggplot2 Book Club" />
+  <meta property="og:title" content="15.7 Legend merging and splitting | ggplot2 Book Club" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="r4ds/bookclub-ggplot2" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="16.7 Legend merging and splitting | ggplot2 Book Club" />
+  <meta name="twitter:title" content="15.7 Legend merging and splitting | ggplot2 Book Club" />
   
   <meta name="twitter:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="scale-transformation.html"/>
-
+<link rel="next" href="legend-key-glyphs.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -376,25 +376,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="14.6" data-path="position-adjustments.html"><a href="position-adjustments.html"><i class="fa fa-check"></i><b>14.6</b> Position adjustments</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>15</b> PLACEHOLDER</a><ul>
-<li class="chapter" data-level="15.1" data-path="slide-1-title-1.html"><a href="slide-1-title-1.html"><i class="fa fa-check"></i><b>15.1</b> {Slide 1 title}</a></li>
-<li class="chapter" data-level="15.2" data-path="meeting-videos-13.html"><a href="meeting-videos-13.html"><i class="fa fa-check"></i><b>15.2</b> Meeting Videos</a><ul>
-<li class="chapter" data-level="15.2.1" data-path="meeting-videos-13.html"><a href="meeting-videos-13.html#cohort-1-13"><i class="fa fa-check"></i><b>15.2.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="15" data-path="scales-and-guides.html"><a href="scales-and-guides.html"><i class="fa fa-check"></i><b>15</b> Scales and Guides</a><ul>
+<li class="chapter" data-level="15.1" data-path="theory-of-scales-and-guides.html"><a href="theory-of-scales-and-guides.html"><i class="fa fa-check"></i><b>15.1</b> Theory of scales and guides</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="theory-of-scales-and-guides.html"><a href="theory-of-scales-and-guides.html#scale-specification"><i class="fa fa-check"></i><b>15.1.1</b> Scale specification</a></li>
+<li class="chapter" data-level="15.1.2" data-path="theory-of-scales-and-guides.html"><a href="theory-of-scales-and-guides.html#naming-scheme"><i class="fa fa-check"></i><b>15.1.2</b> Naming scheme</a></li>
+<li class="chapter" data-level="15.1.3" data-path="theory-of-scales-and-guides.html"><a href="theory-of-scales-and-guides.html#fundamental-scale-types"><i class="fa fa-check"></i><b>15.1.3</b> Fundamental scale types</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="scale-names.html"><a href="scale-names.html"><i class="fa fa-check"></i><b>15.2</b> Scale Names</a></li>
+<li class="chapter" data-level="15.3" data-path="scale-breaks.html"><a href="scale-breaks.html"><i class="fa fa-check"></i><b>15.3</b> Scale Breaks</a></li>
+<li class="chapter" data-level="15.4" data-path="scale-limits.html"><a href="scale-limits.html"><i class="fa fa-check"></i><b>15.4</b> Scale Limits</a></li>
+<li class="chapter" data-level="15.5" data-path="scale-guides.html"><a href="scale-guides.html"><i class="fa fa-check"></i><b>15.5</b> Scale guides</a></li>
+<li class="chapter" data-level="15.6" data-path="scale-transformation.html"><a href="scale-transformation.html"><i class="fa fa-check"></i><b>15.6</b> Scale transformation</a></li>
+<li class="chapter" data-level="15.7" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html"><i class="fa fa-check"></i><b>15.7</b> Legend merging and splitting</a><ul>
+<li class="chapter" data-level="15.7.1" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html#merging-legends"><i class="fa fa-check"></i><b>15.7.1</b> Merging legends</a></li>
+<li class="chapter" data-level="15.7.2" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html#splitting-legends"><i class="fa fa-check"></i><b>15.7.2</b> Splitting legends</a></li>
+</ul></li>
+<li class="chapter" data-level="15.8" data-path="legend-key-glyphs.html"><a href="legend-key-glyphs.html"><i class="fa fa-check"></i><b>15.8</b> Legend key glyphs</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>16</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="16.1" data-path="slide-1-title-1.html"><a href="slide-1-title-1.html"><i class="fa fa-check"></i><b>16.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="16.2" data-path="meeting-videos-13.html"><a href="meeting-videos-13.html"><i class="fa fa-check"></i><b>16.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="16.2.1" data-path="meeting-videos-13.html"><a href="meeting-videos-13.html#cohort-1-13"><i class="fa fa-check"></i><b>16.2.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="scales-and-guides.html"><a href="scales-and-guides.html"><i class="fa fa-check"></i><b>16</b> Scales and Guides</a><ul>
-<li class="chapter" data-level="16.1" data-path="theory-of-scales-and-guides.html"><a href="theory-of-scales-and-guides.html"><i class="fa fa-check"></i><b>16.1</b> Theory of scales and guides</a><ul>
-<li class="chapter" data-level="16.1.1" data-path="theory-of-scales-and-guides.html"><a href="theory-of-scales-and-guides.html#scale-specification"><i class="fa fa-check"></i><b>16.1.1</b> Scale specification</a></li>
-<li class="chapter" data-level="16.1.2" data-path="theory-of-scales-and-guides.html"><a href="theory-of-scales-and-guides.html#naming-scheme"><i class="fa fa-check"></i><b>16.1.2</b> Naming scheme</a></li>
-<li class="chapter" data-level="16.1.3" data-path="theory-of-scales-and-guides.html"><a href="theory-of-scales-and-guides.html#fundamental-scale-types"><i class="fa fa-check"></i><b>16.1.3</b> Fundamental scale types</a></li>
+<li class="chapter" data-level="17" data-path="placeholder-1.html"><a href="placeholder-1.html"><i class="fa fa-check"></i><b>17</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="17.1" data-path="slide-1-title-2.html"><a href="slide-1-title-2.html"><i class="fa fa-check"></i><b>17.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="17.2" data-path="meeting-videos-14.html"><a href="meeting-videos-14.html"><i class="fa fa-check"></i><b>17.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="meeting-videos-14.html"><a href="meeting-videos-14.html#cohort-1-14"><i class="fa fa-check"></i><b>17.2.1</b> Cohort 1</a></li>
 </ul></li>
-<li class="chapter" data-level="16.2" data-path="scale-names.html"><a href="scale-names.html"><i class="fa fa-check"></i><b>16.2</b> Scale Names</a></li>
-<li class="chapter" data-level="16.3" data-path="scale-breaks.html"><a href="scale-breaks.html"><i class="fa fa-check"></i><b>16.3</b> Scale Breaks</a></li>
-<li class="chapter" data-level="16.4" data-path="scale-limits.html"><a href="scale-limits.html"><i class="fa fa-check"></i><b>16.4</b> Scale Limits</a></li>
-<li class="chapter" data-level="16.5" data-path="scale-guides.html"><a href="scale-guides.html"><i class="fa fa-check"></i><b>16.5</b> Scale guides</a></li>
-<li class="chapter" data-level="16.6" data-path="scale-transformation.html"><a href="scale-transformation.html"><i class="fa fa-check"></i><b>16.6</b> Scale transformation</a></li>
-<li class="chapter" data-level="16.7" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html"><i class="fa fa-check"></i><b>16.7</b> Legend merging and splitting</a><ul>
-<li class="chapter" data-level="16.7.1" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html#merging-legends"><i class="fa fa-check"></i><b>16.7.1</b> Merging legends</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="placeholder-2.html"><a href="placeholder-2.html"><i class="fa fa-check"></i><b>18</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="18.1" data-path="slide-1-title-3.html"><a href="slide-1-title-3.html"><i class="fa fa-check"></i><b>18.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="18.2" data-path="meeting-videos-15.html"><a href="meeting-videos-15.html"><i class="fa fa-check"></i><b>18.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="meeting-videos-15.html"><a href="meeting-videos-15.html#cohort-1-15"><i class="fa fa-check"></i><b>18.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="placeholder-3.html"><a href="placeholder-3.html"><i class="fa fa-check"></i><b>19</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="19.1" data-path="slide-1-title-4.html"><a href="slide-1-title-4.html"><i class="fa fa-check"></i><b>19.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="19.2" data-path="meeting-videos-16.html"><a href="meeting-videos-16.html"><i class="fa fa-check"></i><b>19.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="19.2.1" data-path="meeting-videos-16.html"><a href="meeting-videos-16.html#cohort-1-16"><i class="fa fa-check"></i><b>19.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="placeholder-4.html"><a href="placeholder-4.html"><i class="fa fa-check"></i><b>20</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="20.1" data-path="slide-1-title-5.html"><a href="slide-1-title-5.html"><i class="fa fa-check"></i><b>20.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="20.2" data-path="meeting-videos-17.html"><a href="meeting-videos-17.html"><i class="fa fa-check"></i><b>20.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="20.2.1" data-path="meeting-videos-17.html"><a href="meeting-videos-17.html#cohort-1-17"><i class="fa fa-check"></i><b>20.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="placeholder-5.html"><a href="placeholder-5.html"><i class="fa fa-check"></i><b>21</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="21.1" data-path="slide-1-title-6.html"><a href="slide-1-title-6.html"><i class="fa fa-check"></i><b>21.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="21.2" data-path="meeting-videos-18.html"><a href="meeting-videos-18.html"><i class="fa fa-check"></i><b>21.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="21.2.1" data-path="meeting-videos-18.html"><a href="meeting-videos-18.html#cohort-1-18"><i class="fa fa-check"></i><b>21.2.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="placeholder-6.html"><a href="placeholder-6.html"><i class="fa fa-check"></i><b>22</b> PLACEHOLDER</a><ul>
+<li class="chapter" data-level="22.1" data-path="slide-1-title-7.html"><a href="slide-1-title-7.html"><i class="fa fa-check"></i><b>22.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="22.2" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html"><i class="fa fa-check"></i><b>22.2</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="22.2.1" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html#cohort-1-19"><i class="fa fa-check"></i><b>22.2.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -418,223 +456,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="legend-merging-and-splitting" class="section level2">
-<h2><span class="header-section-number">16.7</span> Legend merging and splitting</h2>
+<h2><span class="header-section-number">15.7</span> Legend merging and splitting</h2>
 <p>There is always a one-to-one correspondence between position scales and axes. But the connection between non-position scales and legend is more complex: one legend may need to draw symbols from multiple layers (“merging”), or one aesthetic may need multiple legends (“splitting”).</p>
 <div id="merging-legends" class="section level3">
-<h3><span class="header-section-number">16.7.1</span> Merging legends</h3>
+<h3><span class="header-section-number">15.7.1</span> Merging legends</h3>
 <p>Merging legends occurs quite frequently when using ggplot2. For example, if you’ve mapped colour to both points and lines, the keys will show both points and lines. If you’ve mapped fill colour, you get a rectangle. Note the way the legend varies in the plots below:</p>
 <p>By default, a layer will only appear if the corresponding aesthetic is mapped to a variable with <code>aes()</code>. You can override whether or not a layer appears in the legend with <code>show.legend: FALSE</code> to prevent a layer from ever appearing in the legend; <code>TRUE</code> forces it to appear when it otherwise wouldn’t. Using <code>TRUE</code> can be useful in conjunction with the following trick to make points stand out:</p>
-<pre><code>
-
-
-&lt;img src=&quot;bookclub-ggplot2_01_files/figure-html/15-11-1.png&quot; width=&quot;672&quot; /&gt;&lt;img src=&quot;bookclub-ggplot2_01_files/figure-html/15-11-2.png&quot; width=&quot;672&quot; /&gt;
-
-ggplot2 tries to use the fewest number of legends to accurately convey the aesthetics used in the plot. It does this by combining legends where the same variable is mapped to different aesthetics. The figure below shows how this works for points: if both colour and shape are mapped to the same variable, then only a single legend is necessary.
-
-&lt;img src=&quot;bookclub-ggplot2_01_files/figure-html/15-12-1.png&quot; width=&quot;672&quot; /&gt;&lt;img src=&quot;bookclub-ggplot2_01_files/figure-html/15-12-2.png&quot; width=&quot;672&quot; /&gt;&lt;img src=&quot;bookclub-ggplot2_01_files/figure-html/15-12-3.png&quot; width=&quot;672&quot; /&gt;
-
-In order for legends to be merged, they must have the same name. So if you change the name of one of the scales, you’ll need to change it for all of them. One way to do this is by using `labs()` helper function:
-
-
-&lt;img src=&quot;bookclub-ggplot2_01_files/figure-html/15-13-1.png&quot; width=&quot;672&quot; /&gt;&lt;img src=&quot;bookclub-ggplot2_01_files/figure-html/15-13-2.png&quot; width=&quot;672&quot; /&gt;&lt;img src=&quot;bookclub-ggplot2_01_files/figure-html/15-13-3.png&quot; width=&quot;672&quot; /&gt;
-
-
-### Splitting legends
-
-
-Splitting a legend is a much less common data visualisation task. In general it is not advisable to map one aesthetic (e.g. colour) to multiple variables, and so by default ggplot2 does not allow you to “split” the colour aesthetic into multiple scales with separate legends. Nevertheless, there are exceptions to this general rule, and it is possible to override this behaviour using the ggnewscale package. The `ggnewscale::new_scale_colour()` command acts as an instruction to ggplot2 to initialise a new colour scale: scale and guide commands that appear above the `new_scale_colour()` command will be applied to the first colour scale, and commands that appear below are applied to the second colour scale.
-
-To illustrate this the plot on the left uses `geom_point()` to display a large marker for each vehicle make in the mpg data, with a single colour scale that maps to the year. On the right, a second `geom_point()` layer is overlaid on the plot using small markers: this layer is associated with a different colour scale, used to indicate whether the vehicle has a 4-cylinder engine.
-
-
-&lt;img src=&quot;bookclub-ggplot2_01_files/figure-html/15-14-1.png&quot; width=&quot;672&quot; /&gt;&lt;img src=&quot;bookclub-ggplot2_01_files/figure-html/15-14-2.png&quot; width=&quot;672&quot; /&gt;
-
-Additional details, including functions that apply to other scale types, are available on the package website, https://github.com/eliocamp/ggnewscale.
-
-## Legend key glyphs
-
-In most cases the default glyphs shown in the legend key will be appropriate to the layer and the aesthetic.  Should you need to override this behaviour, the `key_glyph` argument can be used to associate a particular layer with a different kind of glyph. For example:
-
-&lt;img src=&quot;bookclub-ggplot2_01_files/figure-html/15-15-1.png&quot; width=&quot;672&quot; /&gt;&lt;img src=&quot;bookclub-ggplot2_01_files/figure-html/15-15-2.png&quot; width=&quot;672&quot; /&gt;
-
-
-More precisely, each geom is associated with a function such as `draw_key_path()`, `draw_key_boxplot()` or `draw_key_path()` which is responsible for drawing the key when the legend is created. You can pass the desired key drawing function directly: for example, `base + geom_line(key_glyph = draw_key_timeseries)` would also produce the plot shown above.
-
-For more information about changing key glyphs, see https://www.emilhvitfeldt.com/post/changing-glyph-in-ggplot2/.
-
-
-&lt;!--chapter:end:15.Rmd--&gt;
-
-# PLACEHOLDER
-
-**Learning objectives:**
-
-- {These are nice to have, but take some extra work. It&#39;s ok to skip these if necessary.}
-
-## {Slide 1 title}
-
-- {Create slides as sections marked with `##`, but keep them short like a slide.}
-
-## Meeting Videos
-
-### Cohort 1
-
-&lt;iframe src=&quot;https://www.youtube.com/embed/URL&quot; width=&quot;100%&quot; height=&quot;400px&quot; data-external=&quot;1&quot;&gt;&lt;/iframe&gt;
-
-&lt;details&gt;
-  &lt;summary&gt; Meeting chat log &lt;/summary&gt;
-  </code></pre>
-<pre><code>&lt;/details&gt;
-
-&lt;!--chapter:end:16.Rmd--&gt;
-
-# PLACEHOLDER
-
-**Learning objectives:**
-
-- {These are nice to have, but take some extra work. It&#39;s ok to skip these if necessary.}
-
-## {Slide 1 title}
-
-- {Create slides as sections marked with `##`, but keep them short like a slide.}
-
-## Meeting Videos
-
-### Cohort 1
-
-&lt;iframe src=&quot;https://www.youtube.com/embed/URL&quot; width=&quot;100%&quot; height=&quot;400px&quot; data-external=&quot;1&quot;&gt;&lt;/iframe&gt;
-
-&lt;details&gt;
-  &lt;summary&gt; Meeting chat log &lt;/summary&gt;
-  </code></pre>
-<pre><code>&lt;/details&gt;
-
-&lt;!--chapter:end:17.Rmd--&gt;
-
-# PLACEHOLDER
-
-**Learning objectives:**
-
-- {These are nice to have, but take some extra work. It&#39;s ok to skip these if necessary.}
-
-## {Slide 1 title}
-
-- {Create slides as sections marked with `##`, but keep them short like a slide.}
-
-## Meeting Videos
-
-### Cohort 1
-
-&lt;iframe src=&quot;https://www.youtube.com/embed/URL&quot; width=&quot;100%&quot; height=&quot;400px&quot; data-external=&quot;1&quot;&gt;&lt;/iframe&gt;
-
-&lt;details&gt;
-  &lt;summary&gt; Meeting chat log &lt;/summary&gt;
-  </code></pre>
-<pre><code>&lt;/details&gt;
-
-&lt;!--chapter:end:18.Rmd--&gt;
-
-# PLACEHOLDER
-
-**Learning objectives:**
-
-- {These are nice to have, but take some extra work. It&#39;s ok to skip these if necessary.}
-
-## {Slide 1 title}
-
-- {Create slides as sections marked with `##`, but keep them short like a slide.}
-
-## Meeting Videos
-
-### Cohort 1
-
-&lt;iframe src=&quot;https://www.youtube.com/embed/URL&quot; width=&quot;100%&quot; height=&quot;400px&quot; data-external=&quot;1&quot;&gt;&lt;/iframe&gt;
-
-&lt;details&gt;
-  &lt;summary&gt; Meeting chat log &lt;/summary&gt;
-  </code></pre>
-<pre><code>&lt;/details&gt;
-
-&lt;!--chapter:end:19.Rmd--&gt;
-
-# PLACEHOLDER
-
-**Learning objectives:**
-
-- {These are nice to have, but take some extra work. It&#39;s ok to skip these if necessary.}
-
-## {Slide 1 title}
-
-- {Create slides as sections marked with `##`, but keep them short like a slide.}
-
-## Meeting Videos
-
-### Cohort 1
-
-&lt;iframe src=&quot;https://www.youtube.com/embed/URL&quot; width=&quot;100%&quot; height=&quot;400px&quot; data-external=&quot;1&quot;&gt;&lt;/iframe&gt;
-
-&lt;details&gt;
-  &lt;summary&gt; Meeting chat log &lt;/summary&gt;
-  </code></pre>
-<pre><code>&lt;/details&gt;
-
-&lt;!--chapter:end:20.Rmd--&gt;
-
-# PLACEHOLDER
-
-**Learning objectives:**
-
-- {These are nice to have, but take some extra work. It&#39;s ok to skip these if necessary.}
-
-## {Slide 1 title}
-
-- {Create slides as sections marked with `##`, but keep them short like a slide.}
-
-## Meeting Videos
-
-### Cohort 1
-
-&lt;iframe src=&quot;https://www.youtube.com/embed/URL&quot; width=&quot;100%&quot; height=&quot;400px&quot; data-external=&quot;1&quot;&gt;&lt;/iframe&gt;
-
-&lt;details&gt;
-  &lt;summary&gt; Meeting chat log &lt;/summary&gt;
-  </code></pre>
-<pre><code>&lt;/details&gt;
-
-&lt;!--chapter:end:21.Rmd--&gt;
-
-# PLACEHOLDER
-
-**Learning objectives:**
-
-- {These are nice to have, but take some extra work. It&#39;s ok to skip these if necessary.}
-
-## {Slide 1 title}
-
-- {Create slides as sections marked with `##`, but keep them short like a slide.}
-
-## Meeting Videos
-
-### Cohort 1
-
-&lt;iframe src=&quot;https://www.youtube.com/embed/URL&quot; width=&quot;100%&quot; height=&quot;400px&quot; data-external=&quot;1&quot;&gt;&lt;/iframe&gt;
-
-&lt;details&gt;
-  &lt;summary&gt; Meeting chat log &lt;/summary&gt;
-  </code></pre>
-```
-</details>
-
+<p><img src="bookclub-ggplot2_01_files/figure-html/15-11-1.png" width="672" /><img src="bookclub-ggplot2_01_files/figure-html/15-11-2.png" width="672" /></p>
+<p>ggplot2 tries to use the fewest number of legends to accurately convey the aesthetics used in the plot. It does this by combining legends where the same variable is mapped to different aesthetics. The figure below shows how this works for points: if both colour and shape are mapped to the same variable, then only a single legend is necessary.</p>
+<p><img src="bookclub-ggplot2_01_files/figure-html/15-12-1.png" width="672" /><img src="bookclub-ggplot2_01_files/figure-html/15-12-2.png" width="672" /><img src="bookclub-ggplot2_01_files/figure-html/15-12-3.png" width="672" /></p>
+<p>In order for legends to be merged, they must have the same name. So if you change the name of one of the scales, you’ll need to change it for all of them. One way to do this is by using <code>labs()</code> helper function:</p>
+<p><img src="bookclub-ggplot2_01_files/figure-html/15-13-1.png" width="672" /><img src="bookclub-ggplot2_01_files/figure-html/15-13-2.png" width="672" /><img src="bookclub-ggplot2_01_files/figure-html/15-13-3.png" width="672" /></p>
+</div>
+<div id="splitting-legends" class="section level3">
+<h3><span class="header-section-number">15.7.2</span> Splitting legends</h3>
+<p>Splitting a legend is a much less common data visualisation task. In general it is not advisable to map one aesthetic (e.g. colour) to multiple variables, and so by default ggplot2 does not allow you to “split” the colour aesthetic into multiple scales with separate legends. Nevertheless, there are exceptions to this general rule, and it is possible to override this behaviour using the ggnewscale package. The <code>ggnewscale::new_scale_colour()</code> command acts as an instruction to ggplot2 to initialise a new colour scale: scale and guide commands that appear above the <code>new_scale_colour()</code> command will be applied to the first colour scale, and commands that appear below are applied to the second colour scale.</p>
+<p>To illustrate this the plot on the left uses <code>geom_point()</code> to display a large marker for each vehicle make in the mpg data, with a single colour scale that maps to the year. On the right, a second <code>geom_point()</code> layer is overlaid on the plot using small markers: this layer is associated with a different colour scale, used to indicate whether the vehicle has a 4-cylinder engine.</p>
+<p><img src="bookclub-ggplot2_01_files/figure-html/15-14-1.png" width="672" /><img src="bookclub-ggplot2_01_files/figure-html/15-14-2.png" width="672" /></p>
+<p>Additional details, including functions that apply to other scale types, are available on the package website, <a href="https://github.com/eliocamp/ggnewscale" class="uri">https://github.com/eliocamp/ggnewscale</a>.</p>
 </div>
 </div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="scale-transformation.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="scale-transformation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="legend-key-glyphs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -665,7 +513,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/r4ds/bookclub-ggplot2/edit/main/22.Rmd",
+"link": "https://github.com/r4ds/bookclub-ggplot2/edit/main/15.Rmd",
 "text": "Edit"
 },
 "history": {
