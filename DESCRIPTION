@@ -38,7 +38,8 @@ Imports:
     showtext,
     SpatialEpi,
     tidyverse,
-    tidygraph
+    tidygraph,
+    ggnewscale
 Remotes: 
     hadley/emo,
     drsimonj/ourworldindata,

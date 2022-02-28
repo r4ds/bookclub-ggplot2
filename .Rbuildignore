@@ -1,3 +1,6 @@
 ^\.github$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^ggplot2club\.Rcheck$
+^ggplot2club.*\.tar\.gz$
+^ggplot2club.*\.tgz$
