@@ -1,11 +1,3 @@
----
-title: "11-Colour_scales_and_legends"
-author: "Lydia Gibson"
-date: "12/19/2021"
-output: pdf_document
----
-
-
 # Colour Scales and Legends
 
 ```{r 11-library, include=FALSE}
@@ -18,9 +10,8 @@ library(dplyr)
 
 **Learning Objectives**
 
--Learn how to map values to colours in ggplot2
-
--Learn about colour theory (a more detailed exposition is available online at http://tinyurl.com/clrdtls)
+- Learn how to map values to colours in ggplot2
+- Learn about colour theory (a more detailed exposition is available online at http://tinyurl.com/clrdtls)
 
 
 
