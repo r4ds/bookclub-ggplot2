@@ -331,3 +331,21 @@ More precisely, each geom is associated with a function such as `draw_key_path()
 
 For more information about changing key glyphs, see https://www.emilhvitfeldt.com/post/changing-glyph-in-ggplot2/.
 
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/8fjjoGTGC6c")`
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:07:09	June Choe:	hello!
+00:08:55	Federica Gazzelloni:	Hello!
+00:46:16	Kent Johnson:	Examples of key glyphs: https://www.emilhvitfeldt.com/post/changing-glyph-in-ggplot2/
+00:48:30	June Choe:	that one is just two overlapping points i think (with different sizes)
+00:48:35	June Choe:	(yes what kent said)
+```
+</details>

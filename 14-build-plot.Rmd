@@ -457,3 +457,52 @@ p3+p4
 ```
 
 
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/EMozFk_EA88")`
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:08:06	June Choe:	hey all!
+00:08:13	Federica Gazzelloni:	Hi!!
+00:08:18	June Choe:	thanks for moving the time to this hour
+00:08:37	Federica Gazzelloni:	That’s better for me either
+00:08:43	Lydia Gibson:	https://imstat.org/meetings-calendar/ims-international-conference-on-statistics-and-data-science-icsds/
+00:08:51	June Choe:	(now i get to call in as I eat lunch at the student common space)
+00:57:46	Kent Johnson:	Thank you, this was an interesting chapter!
+00:57:52	Michael Haugen:	Thank you!
+00:57:57	June Choe:	thanks!
+00:58:12	Ryan Metcalf:	Thank you Federica!
+00:58:23	Stan Piotrowski:	Thanks for a great presentation!
+```
+</details>
+
+`r knitr::include_url("https://www.youtube.com/embed/PbrfoBulxfU")`
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:14:06	June Choe:	gray is default iirc
+00:23:25	June Choe:	I wonder if something like this works with datetime values on x
+
+scale_x_date(date_breaks = "2 weeks", offset = 31)
+00:23:54	June Choe:	(or offset = -31, maybe)
+00:25:30	June Choe:	I see - I'll play around with it more !
+00:36:05	Federica Gazzelloni:	rle {base}: Compute the lengths and values of runs of equal values in a vector – or the reverse operation.
+00:36:27	Ryan Metcalf:	Sorry team, I have to drop. Great job Kent!
+00:48:15	Federica Gazzelloni:	related with cumulative values
+00:48:29	Priyanka Gagneja:	Thanks Ryan. See you next time
+00:50:34	June Choe:	It's discussed in Advanced R book Ch. 10.2.4! https://adv-r.hadley.nz/function-factories.html?q=stateful#stateful-funs
+00:50:43	Federica Gazzelloni:	thanks!
+00:52:04	Priyanka Gagneja:	@June this in response the environment() ?
+01:05:03	June Choe:	I have the 2nd edition of R Graphics book from 2011 that has a chapter on ggplot2 back then and the code has not changed (i'll see if I can upload a page from that)
+01:06:06	June Choe:	they also changed some syntax from tidyr in the new update from like a few days ago
+01:06:16	June Choe:	(to make it easier for users especailly with respect to nest!)
+01:07:39	June Choe:	thanks!
+```
+</details>
