@@ -39,7 +39,8 @@ Imports:
     SpatialEpi,
     tidyverse,
     tidygraph,
-    ggnewscale
+    ggnewscale,
+    mapproj
 Remotes: 
     hadley/emo,
     drsimonj/ourworldindata,
