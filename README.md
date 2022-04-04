@@ -32,6 +32,8 @@ If you would like to present, please add your name next to a chapter using the [
 - 2022-01-24: Chapter 13: Mastering the grammar: Michael Haugen
 - 2022-01-31: Chapter 14: Build a plot layer by layer: Federica Gazzelloni
 - 2022-02-28: Chapter 15: Scales and guides: Lydia Gibson
+- 2022-04-04: Chapter 16: Coordinate systems: Federica Gazzelloni
+- 2022-04-11: Chapter 17 & 18: Faceting & Themes: TBD
 
 ## How to Present
 
