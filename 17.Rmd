@@ -12,11 +12,12 @@
 
 ### Cohort 1
 
-`r knitr::include_url("https://www.youtube.com/embed/URL")`
+`r knitr::include_url("https://www.youtube.com/embed/gKVGjht4N20")`
 
 <details>
   <summary> Meeting chat log </summary>
   
 ```
+01:11:15	Federica Gazzelloni:	https://exts.ggplot2.tidyverse.org/gallery/
 ```
 </details>

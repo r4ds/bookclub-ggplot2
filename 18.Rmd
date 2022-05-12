@@ -12,11 +12,23 @@
 
 ### Cohort 1
 
-`r knitr::include_url("https://www.youtube.com/embed/URL")`
+`r knitr::include_url("https://www.youtube.com/embed/gKVGjht4N20")`
 
 <details>
   <summary> Meeting chat log </summary>
   
 ```
+01:11:15	Federica Gazzelloni:	https://exts.ggplot2.tidyverse.org/gallery/
+```
+</details>
+
+`r knitr::include_url("https://www.youtube.com/embed/ihl-15wL7zY")`
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:56:29	Lydia Gibson:	https://github.com/lgibson7/Gender-Wage-Inequality-in-STEM
+00:57:04	Lydia Gibson:	https://github.com/fivethirtyeight/data/tree/master/college-majors
 ```
 </details>
