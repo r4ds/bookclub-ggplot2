@@ -1,14 +1,10 @@
 # Coordinate systems
 
-
 **Learning objectives:**
-
 
 - What are `coord_<functions>` ?
 - What are the differences between `coord_<functions>` in {ggplot2} ?
 - How to use **coordinate systems** in {ggplot2}
-
-
 
 
 ## Introduction
@@ -251,11 +247,20 @@ worldmap + coord_map("stereographic")
 
 ### Cohort 1
 
-`r knitr::include_url("https://www.youtube.com/embed/URL")`
+`r knitr::include_url("https://www.youtube.com/embed/J8JEDPvv660")`
 
 <details>
   <summary> Meeting chat log </summary>
   
 ```
+00:08:33	June Choe:	hi all :)
+00:08:50	Federica Gazzelloni:	Hi
+00:09:48	June Choe:	yeah I think folks can catch up on youtube maybe
+00:28:00	June Choe:	thats very neat - didn't know you could "squish" the polar-transformed shapes with scale expansion
+00:38:32	June Choe:	An interesting discussion for coord_polar on twitter - https://twitter.com/mattansb/status/1506620436771229715?s=20&t=I4IebpuwA_ZxDwzA4BqqwQ
+00:38:45	June Choe:	I was in an exchange with @mattansb on how to "crop" polar coordinate plots
+00:39:15	June Choe:	this was his solution, and I find it quite nice - https://mattansb.github.io/MSBMisc/reference/crop_coord_polar.html
+00:40:30	June Choe:	this was great - thank you!
+00:41:03	June Choe:	sounds good!
 ```
 </details>
