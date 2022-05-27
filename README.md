@@ -3,10 +3,14 @@
 Welcome to the R4DS ggplot2 Book Club!
 
 We are working together to read [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/index.html) by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen.
-Join the #book_club-ggplot2 channel on the [R4DS Slack](https://r4ds.io/join) to participate.
+Join the [#book_club-ggplot2](https://rfordatascience.slack.com/archives/C025VADE84A) channel on the [R4DS Slack](https://r4ds.io/join) to participate.
 As we read, we are producing [notes about the book](https://r4ds.github.io/bookclub-ggplot2/).
 
 ## Meeting Schedule
+
+If you would like to present, please see the sign-up sheet for your cohort (linked below, and pinned in the [#book_club-ggplot2](https://rfordatascience.slack.com/archives/C025VADE84A) channel on Slack)!
+
+- [Cohort 1](https://docs.google.com/spreadsheets/d/1xpdIUn9Ow7NvUlBiJjn6NNJ7R1ZYiWXR5TeYPtxcoDM/edit?usp=sharing) (started 2021-08-30): [Mondays, 11:00am CST/CDT](https://www.timeanddate.com/worldclock/converter.html?iso=20220606T160000&p1=24&p2=tz_et) | [meeting videos](https://www.youtube.com/playlist?list=PL3x6DOfs2NGhUxGvu46tXQtBl0qyTcDet)
 
 If you would like to present, please add your name next to a chapter using the [GitHub Web Editor](https://youtu.be/d41oc2OMAuI)!
 
