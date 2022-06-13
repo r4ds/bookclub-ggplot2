@@ -1,0 +1,231 @@
+# Programming with ggplot2
+
+
+**Learning objectives:**
+
+- Programming single and multiple components
+- Use components, annotation, and additional arguments in a plot
+- Functional programming
+
+---
+
+```{r message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+library(tidyverse)
+```
+
+
+**What are the components of a plot?**
+
+- data.frame
+- aes()
+- Scales
+- Coords systems
+- Theme components
+
+## Programming single and multiple components
+
+In ggplot2 it is possible to build up plot components easily. This is a good practice to reduce duplicated code. 
+
+Generalising code allows you with more flexibility when making customised plots.
+
+### Components
+
+One example of a component of a plot is this one below:
+```{r}
+bestfit <- geom_smooth(
+  method = "lm", 
+  se = FALSE, 
+  colour = alpha("steelblue", 0.5), 
+  size = 2)
+```
+
+This single component can be placed inside the syntax of the grammar of graphics and used as a plot layer.
+```{r}
+ggplot(mpg, aes(cty, hwy)) + 
+  geom_point() + 
+  bestfit
+```
+
+Another way is to bulid a layer passing through build a function:
+```{r}
+geom_lm <- function(formula = y ~ x, colour = alpha("steelblue", 0.5), 
+                    size = 2, ...)  {
+  geom_smooth(formula = formula, se = FALSE, method = "lm", colour = colour,
+    size = size, ...)
+}
+```
+
+And the apply the function layer to the plot
+```{r}
+ggplot(mpg, aes(displ, 1 / hwy)) + 
+  geom_point() + 
+  geom_lm(y ~ poly(x, 2), size = 1, colour = "red")
+```
+
+The book points out attention to the "open" parameter **...**.
+A suggestion is to use it inside the function instead of in the function parameters definition.
+
+Instead of only one component, we can build a plot made of more components.
+```{r}
+geom_mean <- function() {
+  list(
+    stat_summary(fun = "mean", geom = "bar", fill = "grey70"),
+    stat_summary(fun.data = "mean_cl_normal", geom = "errorbar", width = 0.4)
+  )
+}
+```
+
+Whit this result:
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+ggplot(mpg, aes(class, cty)) + geom_mean()
+```
+
+
+## Use components, annotation, and additional arguments in a plot
+
+We have just seen some examples on how to make new components, what if we want to know more about existing components?
+
+As an example the `borders()` option function, provided by {ggplot2}	to create a layer of map borders.
+
+> "A quick and dirty way to get map data (from the maps package) on to your plot."
+
+```{r}
+borders <- function(database = "world", regions = ".", fill = NA, 
+                    colour = "grey50", ...) {
+  df <- map_data(database, regions)
+  geom_polygon(
+    aes_(~long, ~lat, group = ~group), 
+    data = df, fill = fill, colour = colour, ..., 
+    inherit.aes = FALSE, show.legend = FALSE
+  )
+}
+```
+
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+library(maps)
+data(us.cities)
+capitals <- subset(us.cities, capital == 2)
+
+ggplot(capitals, aes(long, lat)) +
+  borders("world", xlim = c(-130, -60), ylim = c(20, 50)) +
+  geom_point(aes(size = pop)) +
+  scale_size_area() +
+  coord_quickmap()
+```
+
+We can even add addtional arguments, such as those ones to modify and add things:
+
+      modifyList()
+      do.call()
+
+```{r}
+geom_mean <- function(..., bar.params = list(), errorbar.params = list()) {
+  params <- list(...)
+  bar.params <- modifyList(params, bar.params)
+  errorbar.params  <- modifyList(params, errorbar.params)
+  
+  bar <- do.call("stat_summary", modifyList(
+    list(fun = "mean", geom = "bar", fill = "grey70"),
+    bar.params)
+  )
+  errorbar <- do.call("stat_summary", modifyList(
+    list(fun.data = "mean_cl_normal", geom = "errorbar", width = 0.4),
+    errorbar.params)
+  )
+
+  list(bar, errorbar)
+}
+```
+      
+And here is the result:
+```{r}
+ggplot(mpg, aes(class, cty)) + 
+  geom_mean(
+    colour = "steelblue",
+    errorbar.params = list(width = 0.5, size = 1)
+  )
+```
+
+## Functional programming
+
+An example is to make a geom. For this we can have a look at the **"Corporate Reputation"** data from #TidyTuesday 2022 week22. 
+
+```{r}
+poll <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-31/poll.csv')
+reputation <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-31/reputation.csv')
+
+
+rep2<-reputation%>%
+  group_by(company,industry)%>%
+  summarize(score,rank)%>%
+  ungroup()%>%
+  mutate(year=2022)
+
+
+full <- poll%>%
+  filter(!is.na(year))%>%
+  full_join(rep2,by=c("2022_rank"="rank","2022_rq"="score","company","industry","year")) %>%
+  count(year,company,industry,"rank"=`2022_rank`,"score"=`2022_rq`,sort=T) %>%
+  arrange(-year)
+
+##################
+
+# mapping = aes(x = fct_reorder(x,-y), y = y, fill = y, color = y, label = y)
+
+rank_plot <- function(data,mapping) {
+  data %>%
+    ggplot(mapping)+                   # aes(x=fct_reorder(x,-y),y=y)
+    geom_col(width =0.3,               # aes(fill=rank)
+             show.legend = F)+
+    geom_text(hjust=0,fontface="bold", # aes(label=rank,color=rank),
+              show.legend = F)+
+    scale_y_discrete(expand = c(0, 0, .5, 0))+
+    coord_flip()+
+    ggthemes::scale_fill_continuous_tableau(palette = "Green-Gold")+
+    ggthemes::scale_color_continuous_tableau(palette = "Green-Gold")+
+    labs(title="",
+         x="",y="")+
+    theme(axis.text.x = element_blank(),
+          axis.text.y = element_text(face="bold"),
+          axis.ticks.x = element_blank(),
+          axis.ticks.y = element_line(size=2),
+          panel.grid.major.x = element_blank(),
+          panel.grid.minor.x = element_blank(),
+          panel.grid.major.y = element_line(size=2),
+          plot.background = element_rect(color="grey95",fill="grey95"),
+          panel.background = element_rect(color="grey92",fill="grey92"))
+}
+
+df<-full%>%
+  filter(year==2017,
+         industry=="Retail")
+
+rank_plot(data = df, 
+          mapping = aes(x=fct_reorder(company,-rank),y=rank,
+                                   fill = rank, color = rank, label = rank))
+```
+
+## References
+
+- [extending ggplot2](https://ggplot2.tidyverse.org/articles/extending-ggplot2.html)
+- [functions](https://adv-r.hadley.nz/functions.html)
+- [expressions](http://adv-r.had.co.nz/Expressions.html)
+- [functional programming](http://adv-r.had.co.nz/Functional-programming.html)
+- [advanced R - functionals](https://adv-r.hadley.nz/fp.html)
+
+
+
+---
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/URL")`
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+```
+</details>
