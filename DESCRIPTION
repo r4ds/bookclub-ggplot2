@@ -40,7 +40,8 @@ Imports:
     tidyverse,
     tidygraph,
     ggnewscale,
-    mapproj
+    mapproj,
+    Hmisc
 Remotes: 
     hadley/emo,
     drsimonj/ourworldindata,
