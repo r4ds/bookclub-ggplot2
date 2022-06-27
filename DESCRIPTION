@@ -11,6 +11,7 @@ Imports:
     bookdown,
     cowplot,
     details,
+    DiagrammeR,
     directlabels,
     emo,
     gameofthrones,
