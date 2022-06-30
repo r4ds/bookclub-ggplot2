@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11.4 Binned colour scales | ggplot2 Book Club</title>
   <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11.4 Binned colour scales | ggplot2 Book Club" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="The R4DS Online Learning Community" />
 
 
-<meta name="date" content="2022-06-13" />
+<meta name="date" content="2022-06-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,14 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.9/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -500,7 +508,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.5.1" data-path="meeting-videos-18.html"><a href="meeting-videos-18.html#cohort-1-18"><i class="fa fa-check"></i><b>19.5.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>20</b> PLACEHOLDER</a>
+<li class="chapter" data-level="20" data-path="ggplot2-internals.html"><a href="ggplot2-internals.html"><i class="fa fa-check"></i><b>20</b> ggplot2 internals</a>
 <ul>
 <li class="chapter" data-level="20.1" data-path="slide-1-title-1.html"><a href="slide-1-title-1.html"><i class="fa fa-check"></i><b>20.1</b> {Slide 1 title}</a></li>
 <li class="chapter" data-level="20.2" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html"><i class="fa fa-check"></i><b>20.2</b> Meeting Videos</a>
@@ -508,17 +516,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20.2.1" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html#cohort-1-19"><i class="fa fa-check"></i><b>20.2.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="placeholder-1.html"><a href="placeholder-1.html"><i class="fa fa-check"></i><b>21</b> PLACEHOLDER</a>
+<li class="chapter" data-level="21" data-path="writing-ggplot2-extensions.html"><a href="writing-ggplot2-extensions.html"><i class="fa fa-check"></i><b>21</b> Writing ggplot2 extensions</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="slide-1-title-2.html"><a href="slide-1-title-2.html"><i class="fa fa-check"></i><b>21.1</b> {Slide 1 title}</a></li>
-<li class="chapter" data-level="21.2" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html"><i class="fa fa-check"></i><b>21.2</b> Meeting Videos</a>
+<li class="chapter" data-level="21.1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>21.1</b> Overview</a></li>
+<li class="chapter" data-level="21.2" data-path="themes-1.html"><a href="themes-1.html"><i class="fa fa-check"></i><b>21.2</b> Themes</a></li>
+<li class="chapter" data-level="21.3" data-path="stats-1.html"><a href="stats-1.html"><i class="fa fa-check"></i><b>21.3</b> Stats</a></li>
+<li class="chapter" data-level="21.4" data-path="geoms-2.html"><a href="geoms-2.html"><i class="fa fa-check"></i><b>21.4</b> Geoms</a></li>
+<li class="chapter" data-level="21.5" data-path="coords.html"><a href="coords.html"><i class="fa fa-check"></i><b>21.5</b> Coords</a></li>
+<li class="chapter" data-level="21.6" data-path="scales.html"><a href="scales.html"><i class="fa fa-check"></i><b>21.6</b> Scales</a></li>
+<li class="chapter" data-level="21.7" data-path="other-important-parts.html"><a href="other-important-parts.html"><i class="fa fa-check"></i><b>21.7</b> Other important parts</a>
 <ul>
-<li class="chapter" data-level="21.2.1" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html#cohort-1-20"><i class="fa fa-check"></i><b>21.2.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="21.7.1" data-path="other-important-parts.html"><a href="other-important-parts.html#positions"><i class="fa fa-check"></i><b>21.7.1</b> Positions</a></li>
+<li class="chapter" data-level="21.7.2" data-path="other-important-parts.html"><a href="other-important-parts.html#facets-1"><i class="fa fa-check"></i><b>21.7.2</b> Facets</a></li>
+<li class="chapter" data-level="21.7.3" data-path="other-important-parts.html"><a href="other-important-parts.html#guides"><i class="fa fa-check"></i><b>21.7.3</b> Guides</a></li>
+</ul></li>
+<li class="chapter" data-level="21.8" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i><b>21.8</b> References</a></li>
+<li class="chapter" data-level="21.9" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html"><i class="fa fa-check"></i><b>21.9</b> Meeting Videos</a>
+<ul>
+<li class="chapter" data-level="21.9.1" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html#cohort-1-20"><i class="fa fa-check"></i><b>21.9.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="placeholder-2.html"><a href="placeholder-2.html"><i class="fa fa-check"></i><b>22</b> PLACEHOLDER</a>
+<li class="chapter" data-level="22" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>22</b> PLACEHOLDER</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="slide-1-title-3.html"><a href="slide-1-title-3.html"><i class="fa fa-check"></i><b>22.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="22.1" data-path="slide-1-title-2.html"><a href="slide-1-title-2.html"><i class="fa fa-check"></i><b>22.1</b> {Slide 1 title}</a></li>
 <li class="chapter" data-level="22.2" data-path="meeting-videos-21.html"><a href="meeting-videos-21.html"><i class="fa fa-check"></i><b>22.2</b> Meeting Videos</a>
 <ul>
 <li class="chapter" data-level="22.2.1" data-path="meeting-videos-21.html"><a href="meeting-videos-21.html#cohort-1-21"><i class="fa fa-check"></i><b>22.2.1</b> Cohort 1</a></li>
