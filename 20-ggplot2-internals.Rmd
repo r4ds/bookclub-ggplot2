@@ -10,7 +10,6 @@
 ```{r 20-01, message=FALSE}
 library(ggplot2)
 library(ggtrace) # remotes::install_github("yjunechoe/ggtrace")
-
 library(purrr)
 library(dplyr)
 ```
