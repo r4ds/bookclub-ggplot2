@@ -229,7 +229,7 @@ Inside the `layers` element of the ggplot are `Layer` objects which hold informa
 ```{r 20-17}
 data_demo_p$layers
 
-map( data_demo_p$layers, class )
+purrr::map( data_demo_p$layers, class )
 ```
 
 And the calculated data from each layer can be accessed with `layer_data()` method of the `Layer` object:
@@ -502,7 +502,7 @@ list(
 
 Each element of `geom_grobs` is a list of graphical objects representing a layer's data in a facet. For example, this draws the data plotted by the first layer in the first facet
 
-```{r 20-40}
+```{r 20-40, eval = FALSE}
 grid.newpage()
 pushViewport(viewport())
 grid.draw(geom_grobs[[1]][[1]])
@@ -531,7 +531,7 @@ plot_table
 
 When it is first defined, it's only a partially complete representation of the plot - title, legend, margins, etc. are missing:
 
-```{r 20-44}
+```{r 20-44, eval = FALSE}
 grid.newpage()
 grid.draw(plot_table)
 ```
@@ -623,7 +623,7 @@ The legend (`legend_box`) is first defined in Step 11:
 body(ggplot2:::ggplot_gtable.ggplot_built)[[11]]
 ```
 
-```{r 20-53}
+```{r 20-53, eval = FALSE}
 legend_box <- ggtrace_inspect_vars(
   x = p, method = ggplot2:::ggplot_gtable.ggplot_built,
   at = 12, vars = "legend_box"
@@ -638,7 +638,7 @@ It then undergoes some edits/tweaks, including resolving the `legend.position` t
 body(ggplot2:::ggplot_gtable.ggplot_built)[[15]]
 ```
 
-```{r 20-55}
+```{r 20-55, eval = FALSE}
 p_with_legend <- ggtrace_inspect_vars(
   x = p, method = ggplot2:::ggplot_gtable.ggplot_built,
   at = 16, vars = "plot_table"

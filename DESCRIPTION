@@ -8,6 +8,7 @@ URL: https://r4ds.github.io/bookclub-ggplot2, https://github.com/r4ds/bookclub-g
 Depends: 
     R (>= 3.1.0)
 Imports: 
+    bench,
     bookdown,
     cowplot,
     details,
@@ -17,6 +18,7 @@ Imports:
     gameofthrones,
     ggh4x,
     gghighlight,
+    ggnewscale,
     ggraph,
     ggpubr,
     ggrepel,
@@ -26,8 +28,10 @@ Imports:
     grid,
     gridExtra,
     hexbin,
+    Hmisc,
     igraph,
     janitor,
+    mapproj,
     maps,
     ourworldindata,
     paletteer,
@@ -39,10 +43,7 @@ Imports:
     showtext,
     SpatialEpi,
     tidyverse,
-    tidygraph,
-    ggnewscale,
-    mapproj,
-    Hmisc
+    tidygraph
 Remotes: 
     hadley/emo,
     drsimonj/ourworldindata,
