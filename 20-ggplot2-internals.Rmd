@@ -278,7 +278,7 @@ ggtrace_inspect_vars(
 
 Continuing with the book example, the data is augmented with the `PANEL` variable at Step 11:
 
-```{r 20-22}
+```{r 20-22, eval = FALSE}
 body(ggplot2:::ggplot_build.ggplot)[[11]]
 
 ggtrace_inspect_vars(
@@ -292,7 +292,7 @@ ggtrace_inspect_vars(
 
 And then the `group` variable appears at Step 12, which is also when aesthetics get "mapped" (= just `mutate()`, essentially):
 
-```{r 20-23}
+```{r 20-23, eval = FALSE}
 body(ggplot2:::ggplot_build.ggplot)[[12]]
 
 ggtrace_inspect_vars(
@@ -308,7 +308,7 @@ ggtrace_inspect_vars(
 
 Then, scales are applied in Step 13. This leaves the data unchanged for the original plot:
 
-```{r 20-24}
+```{r 20-24, eval = FALSE}
 body(ggplot2:::ggplot_build.ggplot)[[13]]
 
 ggtrace_inspect_vars(
@@ -322,7 +322,7 @@ ggtrace_inspect_vars(
 
 But the effect can be seen with something like `scale_x_log10()`:
 
-```{r 20-25}
+```{r 20-25, eval = FALSE}
 ggtrace_inspect_vars(
   x = p + scale_x_log10(),
   method = ggplot2:::ggplot_build.ggplot,
@@ -334,7 +334,7 @@ ggtrace_inspect_vars(
 
 Out-of-bounds handling happens down the line, at Step 17:
 
-```{r 20-26}
+```{r 20-26, eval = FALSE}
 body(ggplot2:::ggplot_build.ggplot)[[17]]
 
 ggtrace_inspect_vars(
