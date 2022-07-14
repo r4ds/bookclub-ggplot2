@@ -262,7 +262,7 @@ ggtrace_inspect_vars(
 
 For the expository plot `p` from the book, the `data` variable after step 8 looks like the original `mpg` data:
 
-```{r 20-21}
+```{r 20-21, eval = FALSE}
 ggtrace_inspect_vars(
   x = p,
   method = ggplot2:::ggplot_build.ggplot,
