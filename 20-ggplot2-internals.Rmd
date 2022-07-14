@@ -226,10 +226,10 @@ data_demo_p
 
 Inside the `layers` element of the ggplot are `Layer` objects which hold information about each layer:
 
-```{r 20-17}
+```{r 20-17, eval = FALSE}
 data_demo_p$layers
 
-purrr::map( data_demo_p$layers, class )
+map( data_demo_p$layers, class )
 ```
 
 And the calculated data from each layer can be accessed with `layer_data()` method of the `Layer` object:
