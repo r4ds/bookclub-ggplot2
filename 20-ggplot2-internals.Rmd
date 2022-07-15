@@ -350,7 +350,7 @@ ggtrace_inspect_vars(
 
 Stat transformation happens right after, at Step 18 (this is why understanding out-of-bounds handling and scale transformation is important!)
 
-```{r 20-27}
+```{r 20-27, eval = FALSE}
 body(ggplot2:::ggplot_build.ggplot)[[18]]
 
 ggtrace_inspect_vars(
@@ -373,7 +373,7 @@ class( geom_smooth()$stat )
 
 At Step 22, positions are adjusted (jittering, dodging, stacking, etc.). We gave `geom_point()` a jitter so we see that reflected for the first layer:
 
-```{r 20-29}
+```{r 20-29, eval = FALSE}
 body(ggplot2:::ggplot_build.ggplot)[[22]]
 
 ggtrace_inspect_vars(
@@ -389,7 +389,7 @@ ggtrace_inspect_vars(
 
 Variables relevant for drawing each layer's geometry are added in by the Geom, at Step 29:
 
-```{r 20-30}
+```{r 20-30, eval = FALSE}
 body(ggplot2:::ggplot_build.ggplot)[[29]]
 
 ggtrace_inspect_vars(
@@ -405,14 +405,14 @@ ggtrace_inspect_vars(
 
 The final state of the data after `ggplot_build()` is stored in the `data` element of the output of `ggplot_build()`:
 
-```{r 20-31}
+```{r 20-31, eval = FALSE}
 ggplot_build(p)$data %>% 
   map(head, 3)
 ```
 
 `ggplot_build()` also returns the trained layout of the plot (scales, panels, etc.) in the `layout` element, as well as the original ggplot object in the `plot` element:
 
-```{r 20-32}
+```{r 20-32, eval = FALSE}
 lapply( ggplot_build(p), class )
 ```
 
