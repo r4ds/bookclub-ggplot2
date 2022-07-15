@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>21.6 Scales | ggplot2 Book Club</title>
+  <title>20.3 The gtable step | ggplot2 Book Club</title>
   <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="21.6 Scales | ggplot2 Book Club" />
+  <meta property="og:title" content="20.3 The gtable step | ggplot2 Book Club" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   <meta name="github-repo" content="r4ds/bookclub-ggplot2" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="21.6 Scales | ggplot2 Book Club" />
+  <meta name="twitter:title" content="20.3 The gtable step | ggplot2 Book Club" />
   
   <meta name="twitter:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   
@@ -23,15 +23,15 @@
 <meta name="author" content="The R4DS Online Learning Community" />
 
 
-<meta name="date" content="2022-06-30" />
+<meta name="date" content="2022-07-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="coords.html"/>
-<link rel="next" href="other-important-parts.html"/>
+<link rel="prev" href="the-build-step.html"/>
+<link rel="next" href="introducing-ggproto.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -508,12 +508,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.5.1" data-path="meeting-videos-18.html"><a href="meeting-videos-18.html#cohort-1-18"><i class="fa fa-check"></i><b>19.5.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="ggplot2-internals.html"><a href="ggplot2-internals.html"><i class="fa fa-check"></i><b>20</b> ggplot2 internals</a>
+<li class="chapter" data-level="20" data-path="ggplot-internals.html"><a href="ggplot-internals.html"><i class="fa fa-check"></i><b>20</b> ggplot internals</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="slide-1-title-1.html"><a href="slide-1-title-1.html"><i class="fa fa-check"></i><b>20.1</b> {Slide 1 title}</a></li>
-<li class="chapter" data-level="20.2" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html"><i class="fa fa-check"></i><b>20.2</b> Meeting Videos</a>
+<li class="chapter" data-level="20.1" data-path="the-plot-method.html"><a href="the-plot-method.html"><i class="fa fa-check"></i><b>20.1</b> The <code>plot()</code> method</a></li>
+<li class="chapter" data-level="20.2" data-path="the-build-step.html"><a href="the-build-step.html"><i class="fa fa-check"></i><b>20.2</b> The build step</a>
 <ul>
-<li class="chapter" data-level="20.2.1" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html#cohort-1-19"><i class="fa fa-check"></i><b>20.2.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="20.2.1" data-path="the-build-step.html"><a href="the-build-step.html#data-preparation"><i class="fa fa-check"></i><b>20.2.1</b> Data preparation</a></li>
+<li class="chapter" data-level="20.2.2" data-path="the-build-step.html"><a href="the-build-step.html#data-transformation"><i class="fa fa-check"></i><b>20.2.2</b> Data transformation</a></li>
+<li class="chapter" data-level="20.2.3" data-path="the-build-step.html"><a href="the-build-step.html#output-1"><i class="fa fa-check"></i><b>20.2.3</b> Output</a></li>
+<li class="chapter" data-level="20.2.4" data-path="the-build-step.html"><a href="the-build-step.html#explore"><i class="fa fa-check"></i><b>20.2.4</b> Explore</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="the-gtable-step.html"><a href="the-gtable-step.html"><i class="fa fa-check"></i><b>20.3</b> The gtable step</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="the-gtable-step.html"><a href="the-gtable-step.html#rendering-the-panels"><i class="fa fa-check"></i><b>20.3.1</b> Rendering the panels</a></li>
+<li class="chapter" data-level="20.3.2" data-path="the-gtable-step.html"><a href="the-gtable-step.html#adding-guides"><i class="fa fa-check"></i><b>20.3.2</b> Adding guides</a></li>
+<li class="chapter" data-level="20.3.3" data-path="the-gtable-step.html"><a href="the-gtable-step.html#adding-adornment"><i class="fa fa-check"></i><b>20.3.3</b> Adding adornment</a></li>
+<li class="chapter" data-level="20.3.4" data-path="the-gtable-step.html"><a href="the-gtable-step.html#output-2"><i class="fa fa-check"></i><b>20.3.4</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="introducing-ggproto.html"><a href="introducing-ggproto.html"><i class="fa fa-check"></i><b>20.4</b> Introducing ggproto</a>
+<ul>
+<li class="chapter" data-level="20.4.1" data-path="introducing-ggproto.html"><a href="introducing-ggproto.html#ggproto-syntax"><i class="fa fa-check"></i><b>20.4.1</b> ggproto syntax</a></li>
+<li class="chapter" data-level="20.4.2" data-path="introducing-ggproto.html"><a href="introducing-ggproto.html#ggproto-style-guide"><i class="fa fa-check"></i><b>20.4.2</b> ggproto style guide</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="21" data-path="writing-ggplot2-extensions.html"><a href="writing-ggplot2-extensions.html"><i class="fa fa-check"></i><b>21</b> Writing ggplot2 extensions</a>
@@ -523,7 +538,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.3" data-path="stats-1.html"><a href="stats-1.html"><i class="fa fa-check"></i><b>21.3</b> Stats</a></li>
 <li class="chapter" data-level="21.4" data-path="geoms-2.html"><a href="geoms-2.html"><i class="fa fa-check"></i><b>21.4</b> Geoms</a></li>
 <li class="chapter" data-level="21.5" data-path="coords.html"><a href="coords.html"><i class="fa fa-check"></i><b>21.5</b> Coords</a></li>
-<li class="chapter" data-level="21.6" data-path="scales.html"><a href="scales.html"><i class="fa fa-check"></i><b>21.6</b> Scales</a></li>
+<li class="chapter" data-level="21.6" data-path="scales-1.html"><a href="scales-1.html"><i class="fa fa-check"></i><b>21.6</b> Scales</a></li>
 <li class="chapter" data-level="21.7" data-path="other-important-parts.html"><a href="other-important-parts.html"><i class="fa fa-check"></i><b>21.7</b> Other important parts</a>
 <ul>
 <li class="chapter" data-level="21.7.1" data-path="other-important-parts.html"><a href="other-important-parts.html#positions"><i class="fa fa-check"></i><b>21.7.1</b> Positions</a></li>
@@ -531,17 +546,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.7.3" data-path="other-important-parts.html"><a href="other-important-parts.html#guides"><i class="fa fa-check"></i><b>21.7.3</b> Guides</a></li>
 </ul></li>
 <li class="chapter" data-level="21.8" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i><b>21.8</b> References</a></li>
-<li class="chapter" data-level="21.9" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html"><i class="fa fa-check"></i><b>21.9</b> Meeting Videos</a>
+<li class="chapter" data-level="21.9" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html"><i class="fa fa-check"></i><b>21.9</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="21.9.1" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html#cohort-1-20"><i class="fa fa-check"></i><b>21.9.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="21.9.1" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html#cohort-1-19"><i class="fa fa-check"></i><b>21.9.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="22" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>22</b> PLACEHOLDER</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="slide-1-title-2.html"><a href="slide-1-title-2.html"><i class="fa fa-check"></i><b>22.1</b> {Slide 1 title}</a></li>
-<li class="chapter" data-level="22.2" data-path="meeting-videos-21.html"><a href="meeting-videos-21.html"><i class="fa fa-check"></i><b>22.2</b> Meeting Videos</a>
+<li class="chapter" data-level="22.1" data-path="slide-1-title-1.html"><a href="slide-1-title-1.html"><i class="fa fa-check"></i><b>22.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="22.2" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html"><i class="fa fa-check"></i><b>22.2</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="22.2.1" data-path="meeting-videos-21.html"><a href="meeting-videos-21.html#cohort-1-21"><i class="fa fa-check"></i><b>22.2.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="22.2.1" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html#cohort-1-20"><i class="fa fa-check"></i><b>22.2.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -564,30 +579,353 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="scales" class="section level2 hasAnchor" number="21.6">
-<h2><span class="header-section-number">21.6</span> Scales<a href="scales.html#scales" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><strong>Example</strong>
-Build a wrapper for a new palette to an existing scale.
-This is done by providing a new palette scale into the relevant basic scale.</p>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="scales.html#cb377-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(scale_fill_viridis_c)</span></code></pre></div>
-<pre><code>function (..., alpha = 1, begin = 0, end = 1, direction = 1, 
-    option = &quot;D&quot;, values = NULL, space = &quot;Lab&quot;, na.value = &quot;grey50&quot;, 
-    guide = &quot;colourbar&quot;, aesthetics = &quot;fill&quot;) 
+<div id="the-gtable-step" class="section level2 hasAnchor" number="20.3">
+<h2><span class="header-section-number">20.3</span> The gtable step<a href="the-gtable-step.html#the-gtable-step" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Again, still working with our plot <code>p</code></p>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="the-gtable-step.html#cb428-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy, <span class="at">color =</span> drv)) <span class="sc">+</span> </span>
+<span id="cb428-2"><a href="the-gtable-step.html#cb428-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">seed =</span> <span class="dv">2022</span>)) <span class="sc">+</span></span>
+<span id="cb428-3"><a href="the-gtable-step.html#cb428-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span> </span>
+<span id="cb428-4"><a href="the-gtable-step.html#cb428-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(year)) <span class="sc">+</span> </span>
+<span id="cb428-5"><a href="the-gtable-step.html#cb428-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;A plot for expository purposes&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="the-gtable-step.html#cb429-1" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/20-08-1.png" width="672" /></p>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="the-gtable-step.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print(p)</span></span>
+<span id="cb430-2"><a href="the-gtable-step.html#cb430-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(p)</span></span></code></pre></div>
+<p>The return value of <code>ggplot_build()</code> contains the computed data associated with each layer and a <code>Layout</code> ggproto object which holds information about data other than the layers, including the scales, coordinate system, facets, etc.</p>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="the-gtable-step.html#cb431-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">ggplot_build</span>(p))</span></code></pre></div>
+<pre><code>[1] &quot;data&quot;   &quot;layout&quot; &quot;plot&quot;  </code></pre>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="the-gtable-step.html#cb433-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot_build</span>(p)<span class="sc">$</span>data <span class="sc">%&gt;%</span> <span class="fu">map</span>(head, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="the-gtable-step.html#cb434-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">ggplot_build</span>(p)<span class="sc">$</span>layout)</span></code></pre></div>
+<pre><code>[1] &quot;Layout&quot;  &quot;ggproto&quot; &quot;gg&quot;     </code></pre>
+<p>The output of <code>ggplot_build()</code> is then passed to <code>ggplot_gtable()</code> to be converted into graphical elements before being drawn:</p>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="the-gtable-step.html#cb436-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">:::</span>plot.ggplot</span></code></pre></div>
+<pre><code>function (x, newpage = is.null(vp), vp = NULL, ...) 
 {
-    continuous_scale(aesthetics, &quot;viridis_c&quot;, gradient_n_pal(viridis_pal(alpha, 
-        begin, end, direction, option)(6), values, space), na.value = na.value, 
-        guide = guide, ...)
+    set_last_plot(x)
+    if (newpage) 
+        grid.newpage()
+    grDevices::recordGraphics(requireNamespace(&quot;ggplot2&quot;, quietly = TRUE), 
+        list(), getNamespace(&quot;ggplot2&quot;))
+    data &lt;- ggplot_build(x)
+    gtable &lt;- ggplot_gtable(data)
+    if (is.null(vp)) {
+        grid.draw(gtable)
+    }
+    else {
+        if (is.character(vp)) 
+            seekViewport(vp)
+        else pushViewport(vp)
+        grid.draw(gtable)
+        upViewport()
+    }
+    if (isTRUE(getOption(&quot;BrailleR.VI&quot;)) &amp;&amp; rlang::is_installed(&quot;BrailleR&quot;)) {
+        print(asNamespace(&quot;BrailleR&quot;)$VI(x))
+    }
+    invisible(x)
 }
-&lt;bytecode: 0x561d2f11aad0&gt;
+&lt;bytecode: 0x55e825c40e50&gt;
 &lt;environment: namespace:ggplot2&gt;</code></pre>
+<div id="rendering-the-panels" class="section level3 hasAnchor" number="20.3.1">
+<h3><span class="header-section-number">20.3.1</span> Rendering the panels<a href="the-gtable-step.html#rendering-the-panels" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<blockquote>
+<p>First, each layer is converted into a list of graphical objects (<code>grobs</code>) …</p>
+</blockquote>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="the-gtable-step.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_gtable.ggplot_built)[[<span class="dv">6</span>]]</span></code></pre></div>
+<pre><code>geom_grobs &lt;- Map(function(l, d) l$draw_geom(d, layout), plot$layers, 
+    data)</code></pre>
+<p>This step draws loops through each layer, taking the layer object <code>l</code> and the data associated with that layer <code>d</code> and using the Geom from the layer to draw the data.</p>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="the-gtable-step.html#cb440-1" aria-hidden="true" tabindex="-1"></a>geom_grobs <span class="ot">&lt;-</span> <span class="fu">ggtrace_inspect_vars</span>(</span>
+<span id="cb440-2"><a href="the-gtable-step.html#cb440-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p, <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_gtable.ggplot_built,</span>
+<span id="cb440-3"><a href="the-gtable-step.html#cb440-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">7</span>, <span class="at">vars =</span> <span class="st">&quot;geom_grobs&quot;</span></span>
+<span id="cb440-4"><a href="the-gtable-step.html#cb440-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb440-5"><a href="the-gtable-step.html#cb440-5" aria-hidden="true" tabindex="-1"></a>geom_grobs</span></code></pre></div>
+<pre><code>named list()</code></pre>
+<p>The <code>geom_grobs</code> calculated at this step can also be accessed using the <code>layer_grob()</code> function on the ggplot object, which is similar to the <code>layer_data()</code> function:</p>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="the-gtable-step.html#cb442-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(</span>
+<span id="cb442-2"><a href="the-gtable-step.html#cb442-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_grob</span>(p, <span class="at">i =</span> <span class="dv">1</span>),</span>
+<span id="cb442-3"><a href="the-gtable-step.html#cb442-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_grob</span>(p, <span class="at">i =</span> <span class="dv">2</span>)</span>
+<span id="cb442-4"><a href="the-gtable-step.html#cb442-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>[[1]]
+[[1]]$`1`
+points[geom_point.points.31486] 
+
+[[1]]$`2`
+points[geom_point.points.31488] 
+
+
+[[2]]
+[[2]]$`1`
+gTree[geom_smooth.gTree.31505] 
+
+[[2]]$`2`
+gTree[geom_smooth.gTree.31522] </code></pre>
+<p>Each element of <code>geom_grobs</code> is a list of graphical objects representing a layer’s data in a facet. For example, this draws the data plotted by the first layer in the first facet</p>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="the-gtable-step.html#cb444-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.newpage</span>()</span>
+<span id="cb444-2"><a href="the-gtable-step.html#cb444-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pushViewport</span>(<span class="fu">viewport</span>())</span>
+<span id="cb444-3"><a href="the-gtable-step.html#cb444-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.draw</span>(geom_grobs[[<span class="dv">1</span>]][[<span class="dv">1</span>]])</span></code></pre></div>
+<blockquote>
+<p>After this, the facet takes over and assembles the panels…</p>
+</blockquote>
+<p>The graphical representation of each layer in each facet are combined with other “non-data” elements of the plot at this step, where the <code>plot_table</code> variable is defined.</p>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="the-gtable-step.html#cb445-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_gtable.ggplot_built)[[<span class="dv">8</span>]]</span></code></pre></div>
+<pre><code>plot_table &lt;- layout$render(geom_grobs, data, theme, plot$labels)</code></pre>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="the-gtable-step.html#cb447-1" aria-hidden="true" tabindex="-1"></a>plot_table <span class="ot">&lt;-</span> <span class="fu">ggtrace_inspect_vars</span>(</span>
+<span id="cb447-2"><a href="the-gtable-step.html#cb447-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p, <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_gtable.ggplot_built,</span>
+<span id="cb447-3"><a href="the-gtable-step.html#cb447-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">9</span>, <span class="at">vars =</span> <span class="st">&quot;plot_table&quot;</span></span>
+<span id="cb447-4"><a href="the-gtable-step.html#cb447-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><code>plot_table</code> is a special <code>grob</code> called a <code>gtable</code>, which is the same structure as the final form of the ggplot figure before it’s sent off to the rendering system to get drawn:</p>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="the-gtable-step.html#cb448-1" aria-hidden="true" tabindex="-1"></a>plot_table</span></code></pre></div>
+<pre><code>named list()</code></pre>
+<p>When it is first defined, it’s only a partially complete representation of the plot - title, legend, margins, etc. are missing:</p>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="the-gtable-step.html#cb450-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.newpage</span>()</span>
+<span id="cb450-2"><a href="the-gtable-step.html#cb450-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.draw</span>(plot_table)</span></code></pre></div>
+<p>Recall that <code>plot_table</code> is the output of <code>layout$render</code>:</p>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="the-gtable-step.html#cb451-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_gtable.ggplot_built)[[<span class="dv">8</span>]]</span></code></pre></div>
+<pre><code>plot_table &lt;- layout$render(geom_grobs, data, theme, plot$labels)</code></pre>
+<p>This is the load-bearing step that computes/defines a bunch of smaller components internally:</p>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="the-gtable-step.html#cb453-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot_build</span>(p)<span class="sc">$</span>layout<span class="sc">$</span>render</span></code></pre></div>
+<pre><code>&lt;ggproto method&gt;
+  &lt;Wrapper function&gt;
+    function (...) 
+f(..., self = self)
+
+  &lt;Inner function (f)&gt;
+    function (self, panels, data, theme, labels) 
+{
+    facet_bg &lt;- self$facet$draw_back(data, self$layout, self$panel_scales_x, 
+        self$panel_scales_y, theme, self$facet_params)
+    facet_fg &lt;- self$facet$draw_front(data, self$layout, self$panel_scales_x, 
+        self$panel_scales_y, theme, self$facet_params)
+    panels &lt;- lapply(seq_along(panels[[1]]), function(i) {
+        panel &lt;- lapply(panels, `[[`, i)
+        panel &lt;- c(facet_bg[i], panel, facet_fg[i])
+        coord_fg &lt;- self$coord$render_fg(self$panel_params[[i]], 
+            theme)
+        coord_bg &lt;- self$coord$render_bg(self$panel_params[[i]], 
+            theme)
+        if (isTRUE(theme$panel.ontop)) {
+            panel &lt;- c(panel, list(coord_bg), list(coord_fg))
+        }
+        else {
+            panel &lt;- c(list(coord_bg), panel, list(coord_fg))
+        }
+        ggname(paste(&quot;panel&quot;, i, sep = &quot;-&quot;), gTree(children = do.call(&quot;gList&quot;, 
+            panel)))
+    })
+    plot_table &lt;- self$facet$draw_panels(panels, self$layout, 
+        self$panel_scales_x, self$panel_scales_y, self$panel_params, 
+        self$coord, data, theme, self$facet_params)
+    labels &lt;- self$coord$labels(list(x = self$xlabel(labels), 
+        y = self$ylabel(labels)), self$panel_params[[1]])
+    labels &lt;- self$render_labels(labels, theme)
+    self$facet$draw_labels(plot_table, self$layout, self$panel_scales_x, 
+        self$panel_scales_y, self$panel_params, self$coord, data, 
+        theme, labels, self$params)
+}</code></pre>
+<p>We can inspect these individual components:</p>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="the-gtable-step.html#cb455-1" aria-hidden="true" tabindex="-1"></a>layout_render_env <span class="ot">&lt;-</span> <span class="fu">ggtrace_capture_env</span>(p, ggplot2<span class="sc">:::</span>Layout<span class="sc">$</span>render)</span></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="the-gtable-step.html#cb456-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grob in between the Coord&#39;s background and the layer for each panel</span></span>
+<span id="cb456-2"><a href="the-gtable-step.html#cb456-2" aria-hidden="true" tabindex="-1"></a>layout_render_env<span class="sc">$</span>facet_bg</span></code></pre></div>
+<pre><code>[[1]]
+zeroGrob[NULL] 
+
+[[2]]
+zeroGrob[NULL] </code></pre>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="the-gtable-step.html#cb458-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grob in between the Coord&#39;s foreground and the layer for each panel</span></span>
+<span id="cb458-2"><a href="the-gtable-step.html#cb458-2" aria-hidden="true" tabindex="-1"></a>layout_render_env<span class="sc">$</span>facet_fg</span></code></pre></div>
+<pre><code>[[1]]
+zeroGrob[NULL] 
+
+[[2]]
+zeroGrob[NULL] </code></pre>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="the-gtable-step.html#cb460-1" aria-hidden="true" tabindex="-1"></a><span class="co"># individual panels (integrating the bg/fg)</span></span>
+<span id="cb460-2"><a href="the-gtable-step.html#cb460-2" aria-hidden="true" tabindex="-1"></a>layout_render_env<span class="sc">$</span>panels</span></code></pre></div>
+<pre><code>[[1]]
+gTree[panel-1.gTree.31741] 
+
+[[2]]
+gTree[panel-2.gTree.31755] </code></pre>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="the-gtable-step.html#cb462-1" aria-hidden="true" tabindex="-1"></a><span class="co"># panels assembled into a gtable</span></span>
+<span id="cb462-2"><a href="the-gtable-step.html#cb462-2" aria-hidden="true" tabindex="-1"></a>layout_render_env<span class="sc">$</span>plot_table</span></code></pre></div>
+<pre><code>TableGrob (4 x 7) &quot;layout&quot;: 12 grobs
+   z     cells        name                                  grob
+1  1 (3-3,2-2)   panel-1-1            gTree[panel-1.gTree.31741]
+2  1 (3-3,6-6)   panel-2-1            gTree[panel-2.gTree.31755]
+3  3 (1-1,2-2)  axis-t-1-1                        zeroGrob[NULL]
+4  3 (1-1,6-6)  axis-t-2-1                        zeroGrob[NULL]
+5  3 (4-4,2-2)  axis-b-1-1 absoluteGrob[GRID.absoluteGrob.31758]
+6  3 (4-4,6-6)  axis-b-2-1 absoluteGrob[GRID.absoluteGrob.31758]
+7  3 (3-3,5-5)  axis-l-1-2                        zeroGrob[NULL]
+8  3 (3-3,1-1)  axis-l-1-1 absoluteGrob[GRID.absoluteGrob.31764]
+9  3 (3-3,7-7)  axis-r-1-2                        zeroGrob[NULL]
+10 3 (3-3,3-3)  axis-r-1-1                        zeroGrob[NULL]
+11 2 (2-2,2-2) strip-t-1-1                         gtable[strip]
+12 2 (2-2,6-6) strip-t-2-1                         gtable[strip]</code></pre>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="the-gtable-step.html#cb464-1" aria-hidden="true" tabindex="-1"></a><span class="co"># individual labels drawn before being added to gtable and returned</span></span>
+<span id="cb464-2"><a href="the-gtable-step.html#cb464-2" aria-hidden="true" tabindex="-1"></a>layout_render_env<span class="sc">$</span>labels</span></code></pre></div>
+<pre><code>$x
+$x[[1]]
+zeroGrob[NULL] 
+
+$x[[2]]
+titleGrob[axis.title.x.bottom..titleGrob.31814] 
+
+
+$y
+$y[[1]]
+titleGrob[axis.title.y.left..titleGrob.31817] 
+
+$y[[2]]
+zeroGrob[NULL] </code></pre>
+<div id="sneak-peak" class="section level4 hasAnchor" number="20.3.1.1">
+<h4><span class="header-section-number">20.3.1.1</span> Sneak peak:<a href="the-gtable-step.html#sneak-peak" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The rest of the gtable step is just updating this <code>plot_table</code> object.</p>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="the-gtable-step.html#cb466-1" aria-hidden="true" tabindex="-1"></a>all_plot_table_versions <span class="ot">&lt;-</span> <span class="fu">ggtrace_inspect_vars</span>(</span>
+<span id="cb466-2"><a href="the-gtable-step.html#cb466-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p, <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_gtable.ggplot_built,</span>
+<span id="cb466-3"><a href="the-gtable-step.html#cb466-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="st">&quot;all&quot;</span>, <span class="at">vars =</span> <span class="st">&quot;plot_table&quot;</span></span>
+<span id="cb466-4"><a href="the-gtable-step.html#cb466-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb466-5"><a href="the-gtable-step.html#cb466-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(all_plot_table_versions)</span></code></pre></div>
+<pre><code>character(0)</code></pre>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="the-gtable-step.html#cb468-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">seq_along</span>(all_plot_table_versions), <span class="cf">function</span>(i) {</span>
+<span id="cb468-2"><a href="the-gtable-step.html#cb468-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggsave</span>(<span class="fu">tempfile</span>(<span class="fu">sprintf</span>(<span class="st">&quot;plot_table_%02d_&quot;</span>, i), <span class="at">fileext =</span> <span class="st">&quot;.png&quot;</span>), all_plot_table_versions[[i]])</span>
+<span id="cb468-3"><a href="the-gtable-step.html#cb468-3" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb468-4"><a href="the-gtable-step.html#cb468-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dir</span>(<span class="fu">tempdir</span>(), <span class="st">&quot;plot_table_.*png&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb468-5"><a href="the-gtable-step.html#cb468-5" aria-hidden="true" tabindex="-1"></a>  magick<span class="sc">::</span><span class="fu">image_read</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb468-6"><a href="the-gtable-step.html#cb468-6" aria-hidden="true" tabindex="-1"></a>  magick<span class="sc">::</span><span class="fu">image_annotate</span>(<span class="fu">names</span>(all_plot_table_versions), <span class="at">location =</span> <span class="st">&quot;+1050+0&quot;</span>, <span class="at">size =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb468-7"><a href="the-gtable-step.html#cb468-7" aria-hidden="true" tabindex="-1"></a>  magick<span class="sc">::</span><span class="fu">image_write_gif</span>(<span class="st">&quot;images/plot_table_animation1.gif&quot;</span>, <span class="at">delay =</span> .<span class="dv">5</span>)</span></code></pre></div>
+<div class="figure">
+<img src="images/plot_table_animation1.gif" alt="" />
+<p class="caption">plot_table_animation1</p>
+</div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="the-gtable-step.html#cb469-1" aria-hidden="true" tabindex="-1"></a>all_plot_table_versions2 <span class="ot">&lt;-</span> <span class="fu">ggtrace_inspect_vars</span>(</span>
+<span id="cb469-2"><a href="the-gtable-step.html#cb469-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p <span class="sc">+</span></span>
+<span id="cb469-3"><a href="the-gtable-step.html#cb469-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb469-4"><a href="the-gtable-step.html#cb469-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">subtitle =</span> <span class="st">&quot;This is a subtitle&quot;</span>,</span>
+<span id="cb469-5"><a href="the-gtable-step.html#cb469-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">&quot;@yjunechoe&quot;</span>,</span>
+<span id="cb469-6"><a href="the-gtable-step.html#cb469-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">tag =</span> <span class="st">&quot;A&quot;</span></span>
+<span id="cb469-7"><a href="the-gtable-step.html#cb469-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb469-8"><a href="the-gtable-step.html#cb469-8" aria-hidden="true" tabindex="-1"></a>  ,</span>
+<span id="cb469-9"><a href="the-gtable-step.html#cb469-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_gtable.ggplot_built,</span>
+<span id="cb469-10"><a href="the-gtable-step.html#cb469-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="st">&quot;all&quot;</span>, <span class="at">vars =</span> <span class="st">&quot;plot_table&quot;</span></span>
+<span id="cb469-11"><a href="the-gtable-step.html#cb469-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb469-12"><a href="the-gtable-step.html#cb469-12" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(<span class="fu">names</span>(all_plot_table_versions), <span class="fu">names</span>(all_plot_table_versions2))</span>
+<span id="cb469-13"><a href="the-gtable-step.html#cb469-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">seq_along</span>(all_plot_table_versions2), <span class="cf">function</span>(i) {</span>
+<span id="cb469-14"><a href="the-gtable-step.html#cb469-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggsave</span>(<span class="fu">tempfile</span>(<span class="fu">sprintf</span>(<span class="st">&quot;plot_table2_%02d_&quot;</span>, i), <span class="at">fileext =</span> <span class="st">&quot;.png&quot;</span>), all_plot_table_versions2[[i]])</span>
+<span id="cb469-15"><a href="the-gtable-step.html#cb469-15" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb469-16"><a href="the-gtable-step.html#cb469-16" aria-hidden="true" tabindex="-1"></a><span class="fu">dir</span>(<span class="fu">tempdir</span>(), <span class="st">&quot;plot_table2_.*png&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb469-17"><a href="the-gtable-step.html#cb469-17" aria-hidden="true" tabindex="-1"></a>  magick<span class="sc">::</span><span class="fu">image_read</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb469-18"><a href="the-gtable-step.html#cb469-18" aria-hidden="true" tabindex="-1"></a>  magick<span class="sc">::</span><span class="fu">image_annotate</span>(<span class="fu">names</span>(all_plot_table_versions), <span class="at">location =</span> <span class="st">&quot;+1050+0&quot;</span>, <span class="at">size =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb469-19"><a href="the-gtable-step.html#cb469-19" aria-hidden="true" tabindex="-1"></a>  magick<span class="sc">::</span><span class="fu">image_write_gif</span>(<span class="st">&quot;images/plot_table_animation2.gif&quot;</span>, <span class="at">delay =</span> .<span class="dv">5</span>)</span></code></pre></div>
+<div class="figure">
+<img src="images/plot_table_animation2.gif" alt="" />
+<p class="caption">plot_table_animation2</p>
+</div>
+</div>
+</div>
+<div id="adding-guides" class="section level3 hasAnchor" number="20.3.2">
+<h3><span class="header-section-number">20.3.2</span> Adding guides<a href="the-gtable-step.html#adding-guides" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The legend (<code>legend_box</code>) is first defined in Step 11:</p>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="the-gtable-step.html#cb470-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_gtable.ggplot_built)[[<span class="dv">11</span>]]</span></code></pre></div>
+<pre><code>legend_box &lt;- if (position != &quot;none&quot;) {
+    build_guides(plot$scales, plot$layers, plot$mapping, position, 
+        theme, plot$guides, plot$labels)
+} else {
+    zeroGrob()
+}</code></pre>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="the-gtable-step.html#cb472-1" aria-hidden="true" tabindex="-1"></a>legend_box <span class="ot">&lt;-</span> <span class="fu">ggtrace_inspect_vars</span>(</span>
+<span id="cb472-2"><a href="the-gtable-step.html#cb472-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p, <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_gtable.ggplot_built,</span>
+<span id="cb472-3"><a href="the-gtable-step.html#cb472-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">12</span>, <span class="at">vars =</span> <span class="st">&quot;legend_box&quot;</span></span>
+<span id="cb472-4"><a href="the-gtable-step.html#cb472-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb472-5"><a href="the-gtable-step.html#cb472-5" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.newpage</span>()</span>
+<span id="cb472-6"><a href="the-gtable-step.html#cb472-6" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.draw</span>(legend_box)</span></code></pre></div>
+<p>It then undergoes some edits/tweaks, including resolving the <code>legend.position</code> theme setting, and then finally gets added to the plot in Step 15:</p>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="the-gtable-step.html#cb473-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_gtable.ggplot_built)[[<span class="dv">15</span>]]</span></code></pre></div>
+<pre><code>if (position == &quot;left&quot;) {
+    plot_table &lt;- gtable_add_cols(plot_table, theme$legend.box.spacing, 
+        pos = 0)
+    plot_table &lt;- gtable_add_cols(plot_table, legend_width, pos = 0)
+    plot_table &lt;- gtable_add_grob(plot_table, legend_box, clip = &quot;off&quot;, 
+        t = panel_dim$t, b = panel_dim$b, l = 1, r = 1, name = &quot;guide-box&quot;)
+} else if (position == &quot;right&quot;) {
+    plot_table &lt;- gtable_add_cols(plot_table, theme$legend.box.spacing, 
+        pos = -1)
+    plot_table &lt;- gtable_add_cols(plot_table, legend_width, pos = -1)
+    plot_table &lt;- gtable_add_grob(plot_table, legend_box, clip = &quot;off&quot;, 
+        t = panel_dim$t, b = panel_dim$b, l = -1, r = -1, name = &quot;guide-box&quot;)
+} else if (position == &quot;bottom&quot;) {
+    plot_table &lt;- gtable_add_rows(plot_table, theme$legend.box.spacing, 
+        pos = -1)
+    plot_table &lt;- gtable_add_rows(plot_table, legend_height, 
+        pos = -1)
+    plot_table &lt;- gtable_add_grob(plot_table, legend_box, clip = &quot;off&quot;, 
+        t = -1, b = -1, l = panel_dim$l, r = panel_dim$r, name = &quot;guide-box&quot;)
+} else if (position == &quot;top&quot;) {
+    plot_table &lt;- gtable_add_rows(plot_table, theme$legend.box.spacing, 
+        pos = 0)
+    plot_table &lt;- gtable_add_rows(plot_table, legend_height, 
+        pos = 0)
+    plot_table &lt;- gtable_add_grob(plot_table, legend_box, clip = &quot;off&quot;, 
+        t = 1, b = 1, l = panel_dim$l, r = panel_dim$r, name = &quot;guide-box&quot;)
+} else if (position == &quot;manual&quot;) {
+    plot_table &lt;- gtable_add_grob(plot_table, legend_box, t = panel_dim$t, 
+        b = panel_dim$b, l = panel_dim$l, r = panel_dim$r, clip = &quot;off&quot;, 
+        name = &quot;guide-box&quot;)
+}</code></pre>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="the-gtable-step.html#cb475-1" aria-hidden="true" tabindex="-1"></a>p_with_legend <span class="ot">&lt;-</span> <span class="fu">ggtrace_inspect_vars</span>(</span>
+<span id="cb475-2"><a href="the-gtable-step.html#cb475-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p, <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_gtable.ggplot_built,</span>
+<span id="cb475-3"><a href="the-gtable-step.html#cb475-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">16</span>, <span class="at">vars =</span> <span class="st">&quot;plot_table&quot;</span></span>
+<span id="cb475-4"><a href="the-gtable-step.html#cb475-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb475-5"><a href="the-gtable-step.html#cb475-5" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.newpage</span>()</span>
+<span id="cb475-6"><a href="the-gtable-step.html#cb475-6" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.draw</span>(p_with_legend)</span></code></pre></div>
+<p>The bulk of the work was done in Step 11, with the <code>build_guides()</code> function. That in turn calls <code>guides_train()</code> and <code>guides_gengrob()</code> which in turn calls <code>guide_train()</code> and <code>guide_gengrob</code> for each scale (including positional aesthetics like x and y).</p>
+<p>Why scale? The scale is actually what holds information about guide. They’re two sides of the same coin - the scale translates the underlying data to some defined space, and the guide reverses that (translates a space to data). One’s for drawing, the other is for reading.</p>
+<p>This is also why all <code>scale_*()</code> functions take a <code>guide</code> argument. Positional scales use <code>guide_axis()</code> as default, and non-positional scales use <code>guide_legend()</code> as default.</p>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="the-gtable-step.html#cb476-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">guide_legend</span>())</span></code></pre></div>
+<pre><code>[1] &quot;guide&quot;  &quot;legend&quot;</code></pre>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="the-gtable-step.html#cb478-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This explicitly spells out the default</span></span>
+<span id="cb478-2"><a href="the-gtable-step.html#cb478-2" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span></span>
+<span id="cb478-3"><a href="the-gtable-step.html#cb478-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">guide =</span> <span class="fu">guide_legend</span>())</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/20-56-1.png" width="672" /></p>
+<p>This is the output of the <code>guide_train()</code> method defined for <code>guide_legend()</code>. The most important piece of it is <code>key</code>, which is the data associated with the legend.</p>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="the-gtable-step.html#cb479-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>( <span class="fu">ggtrace_inspect_return</span>(p, ggplot2<span class="sc">:::</span>guide_train.legend) )</span></code></pre></div>
+<pre><code> [1] &quot;title&quot;          &quot;title.position&quot; &quot;title.theme&quot;    &quot;title.hjust&quot;   
+ [5] &quot;title.vjust&quot;    &quot;label&quot;          &quot;label.position&quot; &quot;label.theme&quot;   
+ [9] &quot;label.hjust&quot;    &quot;label.vjust&quot;    &quot;keywidth&quot;       &quot;keyheight&quot;     
+[13] &quot;direction&quot;      &quot;override.aes&quot;   &quot;nrow&quot;           &quot;ncol&quot;          
+[17] &quot;byrow&quot;          &quot;reverse&quot;        &quot;order&quot;          &quot;available_aes&quot; 
+[21] &quot;name&quot;           &quot;key&quot;            &quot;hash&quot;          </code></pre>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="the-gtable-step.html#cb481-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtrace_inspect_return</span>(p, ggplot2<span class="sc">:::</span>guide_train.legend)<span class="sc">$</span>key</span></code></pre></div>
+<pre><code>   colour .label
+1 #F8766D      4
+2 #00BA38      f
+3 #619CFF      r</code></pre>
+<p>The output of <code>guide_train()</code> is passed to <code>guide_gengrob()</code>. This is the output of the <code>guide_gebgrob()</code> method defined for <code>guide_legend()</code>:</p>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="the-gtable-step.html#cb483-1" aria-hidden="true" tabindex="-1"></a>legend_gengrob <span class="ot">&lt;-</span> <span class="fu">ggtrace_inspect_return</span>(p, ggplot2<span class="sc">:::</span>guide_gengrob.legend)</span>
+<span id="cb483-2"><a href="the-gtable-step.html#cb483-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.newpage</span>()</span>
+<span id="cb483-3"><a href="the-gtable-step.html#cb483-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.draw</span>(legend_gengrob)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/20-58-1.png" width="672" /></p>
+</div>
+<div id="adding-adornment" class="section level3 hasAnchor" number="20.3.3">
+<h3><span class="header-section-number">20.3.3</span> Adding adornment<a href="the-gtable-step.html#adding-adornment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>It’s everything else after the legend step that we saw in the gifs above. It looks trivial but this step we’re glossing over is <a href="https://github.com/tidyverse/ggplot2/blob/main/R/plot-build.r#L258-L398">~150 lines of code</a>. But it’s not super complicated - just a lot of if-else statements and a handful of low-level {grid} and {gtable} functions.</p>
+</div>
+<div id="output-2" class="section level3 hasAnchor" number="20.3.4">
+<h3><span class="header-section-number">20.3.4</span> Output<a href="the-gtable-step.html#output-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To put it all together:</p>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="the-gtable-step.html#cb484-1" aria-hidden="true" tabindex="-1"></a>p_built <span class="ot">&lt;-</span> <span class="fu">ggplot_build</span>(p)</span>
+<span id="cb484-2"><a href="the-gtable-step.html#cb484-2" aria-hidden="true" tabindex="-1"></a>p_gtable <span class="ot">&lt;-</span> <span class="fu">ggplot_gtable</span>(p_built)</span>
+<span id="cb484-3"><a href="the-gtable-step.html#cb484-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.newpage</span>()</span>
+<span id="cb484-4"><a href="the-gtable-step.html#cb484-4" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.draw</span>(p_gtable)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/20-59-1.png" width="672" /></p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="coords.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="other-important-parts.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="the-build-step.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introducing-ggproto.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -618,7 +956,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/r4ds/bookclub-ggplot2/edit/main/21-Writing-ggplot2-extensions.Rmd",
+"link": "https://github.com/r4ds/bookclub-ggplot2/edit/main/20-ggplot2-internals.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>22.2 Meeting Videos | ggplot2 Book Club</title>
+  <title>20.1 The plot() method | ggplot2 Book Club</title>
   <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="22.2 Meeting Videos | ggplot2 Book Club" />
+  <meta property="og:title" content="20.1 The plot() method | ggplot2 Book Club" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   <meta name="github-repo" content="r4ds/bookclub-ggplot2" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="22.2 Meeting Videos | ggplot2 Book Club" />
+  <meta name="twitter:title" content="20.1 The plot() method | ggplot2 Book Club" />
   
   <meta name="twitter:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   
@@ -23,15 +23,15 @@
 <meta name="author" content="The R4DS Online Learning Community" />
 
 
-<meta name="date" content="2022-06-30" />
+<meta name="date" content="2022-07-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="slide-1-title-2.html"/>
-
+<link rel="prev" href="ggplot-internals.html"/>
+<link rel="next" href="the-build-step.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -508,12 +508,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.5.1" data-path="meeting-videos-18.html"><a href="meeting-videos-18.html#cohort-1-18"><i class="fa fa-check"></i><b>19.5.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="ggplot2-internals.html"><a href="ggplot2-internals.html"><i class="fa fa-check"></i><b>20</b> ggplot2 internals</a>
+<li class="chapter" data-level="20" data-path="ggplot-internals.html"><a href="ggplot-internals.html"><i class="fa fa-check"></i><b>20</b> ggplot internals</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="slide-1-title-1.html"><a href="slide-1-title-1.html"><i class="fa fa-check"></i><b>20.1</b> {Slide 1 title}</a></li>
-<li class="chapter" data-level="20.2" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html"><i class="fa fa-check"></i><b>20.2</b> Meeting Videos</a>
+<li class="chapter" data-level="20.1" data-path="the-plot-method.html"><a href="the-plot-method.html"><i class="fa fa-check"></i><b>20.1</b> The <code>plot()</code> method</a></li>
+<li class="chapter" data-level="20.2" data-path="the-build-step.html"><a href="the-build-step.html"><i class="fa fa-check"></i><b>20.2</b> The build step</a>
 <ul>
-<li class="chapter" data-level="20.2.1" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html#cohort-1-19"><i class="fa fa-check"></i><b>20.2.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="20.2.1" data-path="the-build-step.html"><a href="the-build-step.html#data-preparation"><i class="fa fa-check"></i><b>20.2.1</b> Data preparation</a></li>
+<li class="chapter" data-level="20.2.2" data-path="the-build-step.html"><a href="the-build-step.html#data-transformation"><i class="fa fa-check"></i><b>20.2.2</b> Data transformation</a></li>
+<li class="chapter" data-level="20.2.3" data-path="the-build-step.html"><a href="the-build-step.html#output-1"><i class="fa fa-check"></i><b>20.2.3</b> Output</a></li>
+<li class="chapter" data-level="20.2.4" data-path="the-build-step.html"><a href="the-build-step.html#explore"><i class="fa fa-check"></i><b>20.2.4</b> Explore</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="the-gtable-step.html"><a href="the-gtable-step.html"><i class="fa fa-check"></i><b>20.3</b> The gtable step</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="the-gtable-step.html"><a href="the-gtable-step.html#rendering-the-panels"><i class="fa fa-check"></i><b>20.3.1</b> Rendering the panels</a></li>
+<li class="chapter" data-level="20.3.2" data-path="the-gtable-step.html"><a href="the-gtable-step.html#adding-guides"><i class="fa fa-check"></i><b>20.3.2</b> Adding guides</a></li>
+<li class="chapter" data-level="20.3.3" data-path="the-gtable-step.html"><a href="the-gtable-step.html#adding-adornment"><i class="fa fa-check"></i><b>20.3.3</b> Adding adornment</a></li>
+<li class="chapter" data-level="20.3.4" data-path="the-gtable-step.html"><a href="the-gtable-step.html#output-2"><i class="fa fa-check"></i><b>20.3.4</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="introducing-ggproto.html"><a href="introducing-ggproto.html"><i class="fa fa-check"></i><b>20.4</b> Introducing ggproto</a>
+<ul>
+<li class="chapter" data-level="20.4.1" data-path="introducing-ggproto.html"><a href="introducing-ggproto.html#ggproto-syntax"><i class="fa fa-check"></i><b>20.4.1</b> ggproto syntax</a></li>
+<li class="chapter" data-level="20.4.2" data-path="introducing-ggproto.html"><a href="introducing-ggproto.html#ggproto-style-guide"><i class="fa fa-check"></i><b>20.4.2</b> ggproto style guide</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="21" data-path="writing-ggplot2-extensions.html"><a href="writing-ggplot2-extensions.html"><i class="fa fa-check"></i><b>21</b> Writing ggplot2 extensions</a>
@@ -523,7 +538,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.3" data-path="stats-1.html"><a href="stats-1.html"><i class="fa fa-check"></i><b>21.3</b> Stats</a></li>
 <li class="chapter" data-level="21.4" data-path="geoms-2.html"><a href="geoms-2.html"><i class="fa fa-check"></i><b>21.4</b> Geoms</a></li>
 <li class="chapter" data-level="21.5" data-path="coords.html"><a href="coords.html"><i class="fa fa-check"></i><b>21.5</b> Coords</a></li>
-<li class="chapter" data-level="21.6" data-path="scales.html"><a href="scales.html"><i class="fa fa-check"></i><b>21.6</b> Scales</a></li>
+<li class="chapter" data-level="21.6" data-path="scales-1.html"><a href="scales-1.html"><i class="fa fa-check"></i><b>21.6</b> Scales</a></li>
 <li class="chapter" data-level="21.7" data-path="other-important-parts.html"><a href="other-important-parts.html"><i class="fa fa-check"></i><b>21.7</b> Other important parts</a>
 <ul>
 <li class="chapter" data-level="21.7.1" data-path="other-important-parts.html"><a href="other-important-parts.html#positions"><i class="fa fa-check"></i><b>21.7.1</b> Positions</a></li>
@@ -531,17 +546,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.7.3" data-path="other-important-parts.html"><a href="other-important-parts.html#guides"><i class="fa fa-check"></i><b>21.7.3</b> Guides</a></li>
 </ul></li>
 <li class="chapter" data-level="21.8" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i><b>21.8</b> References</a></li>
-<li class="chapter" data-level="21.9" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html"><i class="fa fa-check"></i><b>21.9</b> Meeting Videos</a>
+<li class="chapter" data-level="21.9" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html"><i class="fa fa-check"></i><b>21.9</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="21.9.1" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html#cohort-1-20"><i class="fa fa-check"></i><b>21.9.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="21.9.1" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html#cohort-1-19"><i class="fa fa-check"></i><b>21.9.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="22" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>22</b> PLACEHOLDER</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="slide-1-title-2.html"><a href="slide-1-title-2.html"><i class="fa fa-check"></i><b>22.1</b> {Slide 1 title}</a></li>
-<li class="chapter" data-level="22.2" data-path="meeting-videos-21.html"><a href="meeting-videos-21.html"><i class="fa fa-check"></i><b>22.2</b> Meeting Videos</a>
+<li class="chapter" data-level="22.1" data-path="slide-1-title-1.html"><a href="slide-1-title-1.html"><i class="fa fa-check"></i><b>22.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="22.2" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html"><i class="fa fa-check"></i><b>22.2</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="22.2.1" data-path="meeting-videos-21.html"><a href="meeting-videos-21.html#cohort-1-21"><i class="fa fa-check"></i><b>22.2.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="22.2.1" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html#cohort-1-20"><i class="fa fa-check"></i><b>22.2.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -564,29 +579,127 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="meeting-videos-21" class="section level2 hasAnchor" number="22.2">
-<h2><span class="header-section-number">22.2</span> Meeting Videos<a href="meeting-videos-21.html#meeting-videos-21" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="cohort-1-21" class="section level3 hasAnchor" number="22.2.1">
-<h3><span class="header-section-number">22.2.1</span> Cohort 1<a href="meeting-videos-21.html#cohort-1-21" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<iframe src="https://www.youtube.com/embed/URL" width="100%" height="400px" data-external="1">
-</iframe>
-<details>
-<summary>
-Meeting chat log
-</summary>
-<pre><code></code></pre>
-</details>
-
+<div id="the-plot-method" class="section level2 hasAnchor" number="20.1">
+<h2><span class="header-section-number">20.1</span> The <code>plot()</code> method<a href="the-plot-method.html#the-plot-method" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The user-facing code and internal code is also separated by <em>when</em> they are evaluated. The user-facing code like <code>geom_smooth()</code> is evaluated immediately to give you a ggplot object, but the internal code is only evaluated when a ggplot object is printed or plotted, via <code>print()</code> and <code>plot()</code>.</p>
+<p>The following code simply creates a ggplot object from user-facing code, and <strong>DOES NOT</strong> print or plot the ggplot (yet).</p>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="the-plot-method.html#cb369-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy, <span class="at">color =</span> drv)) <span class="sc">+</span> </span>
+<span id="cb369-2"><a href="the-plot-method.html#cb369-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">seed =</span> <span class="dv">2022</span>)) <span class="sc">+</span></span>
+<span id="cb369-3"><a href="the-plot-method.html#cb369-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span> </span>
+<span id="cb369-4"><a href="the-plot-method.html#cb369-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(year)) <span class="sc">+</span> </span>
+<span id="cb369-5"><a href="the-plot-method.html#cb369-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;A plot for expository purposes&quot;</span>)</span></code></pre></div>
+<p>The ggplot object is actually just a list under the hood:</p>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="the-plot-method.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(p)</span></code></pre></div>
+<pre><code>[1] &quot;gg&quot;     &quot;ggplot&quot;</code></pre>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="the-plot-method.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(p)</span></code></pre></div>
+<pre><code>[1] &quot;list&quot;</code></pre>
+<p>Evaluating the ggplot is what gives you the actual points, rectangles, text, etc. that make up the figure (and you can also do so explicitly with <code>print()</code>/<code>plot()</code>)</p>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="the-plot-method.html#cb374-1" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/20-08-1.png" width="672" /></p>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="the-plot-method.html#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print(p)</span></span>
+<span id="cb375-2"><a href="the-plot-method.html#cb375-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(p)</span></span></code></pre></div>
+<p>These are two separate processes, but we often think of them as one monolithic process:</p>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="the-plot-method.html#cb376-1" aria-hidden="true" tabindex="-1"></a>defining_benchmark <span class="ot">&lt;-</span> bench<span class="sc">::</span><span class="fu">mark</span>(</span>
+<span id="cb376-2"><a href="the-plot-method.html#cb376-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Evaluates user-facing code to define ggplot,</span></span>
+<span id="cb376-3"><a href="the-plot-method.html#cb376-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># but does not call plot/print method</span></span>
+<span id="cb376-4"><a href="the-plot-method.html#cb376-4" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy, <span class="at">color =</span> drv)) <span class="sc">+</span> </span>
+<span id="cb376-5"><a href="the-plot-method.html#cb376-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">seed =</span> <span class="dv">2022</span>)) <span class="sc">+</span></span>
+<span id="cb376-6"><a href="the-plot-method.html#cb376-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span> </span>
+<span id="cb376-7"><a href="the-plot-method.html#cb376-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(year)) <span class="sc">+</span> </span>
+<span id="cb376-8"><a href="the-plot-method.html#cb376-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&quot;A plot for expository purposes&quot;</span>)</span>
+<span id="cb376-9"><a href="the-plot-method.html#cb376-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb376-10"><a href="the-plot-method.html#cb376-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb376-11"><a href="the-plot-method.html#cb376-11" aria-hidden="true" tabindex="-1"></a>plotting_benchmark <span class="ot">&lt;-</span> bench<span class="sc">::</span><span class="fu">mark</span>(</span>
+<span id="cb376-12"><a href="the-plot-method.html#cb376-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plots the ggplot</span></span>
+<span id="cb376-13"><a href="the-plot-method.html#cb376-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(p)</span>
+<span id="cb376-14"><a href="the-plot-method.html#cb376-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="the-plot-method.html#cb377-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(</span>
+<span id="cb377-2"><a href="the-plot-method.html#cb377-2" aria-hidden="true" tabindex="-1"></a>  defining_benchmark[,<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>],</span>
+<span id="cb377-3"><a href="the-plot-method.html#cb377-3" aria-hidden="true" tabindex="-1"></a>  plotting_benchmark[,<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb377-4"><a href="the-plot-method.html#cb377-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code># A tibble: 2 × 4
+       min   median `itr/sec` mem_alloc
+  &lt;bch:tm&gt; &lt;bch:tm&gt;     &lt;dbl&gt; &lt;bch:byt&gt;
+1   3.22ms   3.46ms    287.      4.89KB
+2 386.57ms 386.57ms      2.59    3.72MB</code></pre>
+<p>The plot that gets rendered from a ggplot object is actually a <strong>side effect</strong> of evaluating the ggplot object:</p>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="the-plot-method.html#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Same as ggplot2:::print.ggplot</span></span>
+<span id="cb379-2"><a href="the-plot-method.html#cb379-2" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">:::</span>plot.ggplot</span></code></pre></div>
+<pre><code>function (x, newpage = is.null(vp), vp = NULL, ...) 
+{
+    set_last_plot(x)
+    if (newpage) 
+        grid.newpage()
+    grDevices::recordGraphics(requireNamespace(&quot;ggplot2&quot;, quietly = TRUE), 
+        list(), getNamespace(&quot;ggplot2&quot;))
+    data &lt;- ggplot_build(x)
+    gtable &lt;- ggplot_gtable(data)
+    if (is.null(vp)) {
+        grid.draw(gtable)
+    }
+    else {
+        if (is.character(vp)) 
+            seekViewport(vp)
+        else pushViewport(vp)
+        grid.draw(gtable)
+        upViewport()
+    }
+    if (isTRUE(getOption(&quot;BrailleR.VI&quot;)) &amp;&amp; rlang::is_installed(&quot;BrailleR&quot;)) {
+        print(asNamespace(&quot;BrailleR&quot;)$VI(x))
+    }
+    invisible(x)
+}
+&lt;bytecode: 0x55e825c40e50&gt;
+&lt;environment: namespace:ggplot2&gt;</code></pre>
+<p>The above code can be simplified to this:</p>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="the-plot-method.html#cb381-1" aria-hidden="true" tabindex="-1"></a>ggprint <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb381-2"><a href="the-plot-method.html#cb381-2" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> <span class="fu">ggplot_build</span>(x)</span>
+<span id="cb381-3"><a href="the-plot-method.html#cb381-3" aria-hidden="true" tabindex="-1"></a>  gtable <span class="ot">&lt;-</span> <span class="fu">ggplot_gtable</span>(data)</span>
+<span id="cb381-4"><a href="the-plot-method.html#cb381-4" aria-hidden="true" tabindex="-1"></a>  grid<span class="sc">::</span><span class="fu">grid.newpage</span>()</span>
+<span id="cb381-5"><a href="the-plot-method.html#cb381-5" aria-hidden="true" tabindex="-1"></a>  grid<span class="sc">::</span><span class="fu">grid.draw</span>(gtable)</span>
+<span id="cb381-6"><a href="the-plot-method.html#cb381-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(x)) <span class="co">#&lt; hence &quot;side effect&quot;</span></span>
+<span id="cb381-7"><a href="the-plot-method.html#cb381-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb381-8"><a href="the-plot-method.html#cb381-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb381-9"><a href="the-plot-method.html#cb381-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggprint</span>(p)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/20-11-1.png" width="672" /></p>
+<p>Roughly put, you first start out as the ggplot object, which then gets passed to <code>ggplot_build()</code>, result of which in turn gets passed to <code>ggplot_gtable()</code> and finally drawn with <code>{grid}</code></p>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="the-plot-method.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb382-2"><a href="the-plot-method.html#cb382-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.newpage</span>() <span class="co"># Clear display</span></span>
+<span id="cb382-3"><a href="the-plot-method.html#cb382-3" aria-hidden="true" tabindex="-1"></a>p <span class="sc">%&gt;%</span> </span>
+<span id="cb382-4"><a href="the-plot-method.html#cb382-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot_build</span>() <span class="sc">%&gt;%</span>  <span class="co"># 1. data for each layer is prepared for drawing</span></span>
+<span id="cb382-5"><a href="the-plot-method.html#cb382-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot_gtable</span>() <span class="sc">%&gt;%</span> <span class="co"># 2. drawing-ready data is turned into graphical elements</span></span>
+<span id="cb382-6"><a href="the-plot-method.html#cb382-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grid.draw</span>()         <span class="co"># 3. graphical elements are converted to an image</span></span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/20-12-1.png" width="672" /></p>
+<p>At each step, you get closer to the low-level information you need to draw the actual plot</p>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="the-plot-method.html#cb383-1" aria-hidden="true" tabindex="-1"></a>obj_byte <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb383-2"><a href="the-plot-method.html#cb383-2" aria-hidden="true" tabindex="-1"></a>  scales<span class="sc">::</span><span class="fu">label_bytes</span>()(<span class="fu">as.numeric</span>(<span class="fu">object.size</span>(x)))</span>
+<span id="cb383-3"><a href="the-plot-method.html#cb383-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb383-4"><a href="the-plot-method.html#cb383-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb383-5"><a href="the-plot-method.html#cb383-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot object</span></span>
+<span id="cb383-6"><a href="the-plot-method.html#cb383-6" aria-hidden="true" tabindex="-1"></a>p <span class="sc">%&gt;%</span> <span class="fu">obj_byte</span>()</span></code></pre></div>
+<pre><code>[1] &quot;31 kB&quot;</code></pre>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="the-plot-method.html#cb385-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data used to make graphical elements</span></span>
+<span id="cb385-2"><a href="the-plot-method.html#cb385-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot_build</span>(p) <span class="sc">%&gt;%</span> <span class="fu">obj_byte</span>()</span></code></pre></div>
+<pre><code>[1] &quot;101 kB&quot;</code></pre>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="the-plot-method.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="co"># graphical elements for the plot</span></span>
+<span id="cb387-2"><a href="the-plot-method.html#cb387-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot_gtable</span>(<span class="fu">ggplot_build</span>(p)) <span class="sc">%&gt;%</span> <span class="fu">obj_byte</span>()</span></code></pre></div>
+<pre><code>[1] &quot;2 MB&quot;</code></pre>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="the-plot-method.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the rendered plot</span></span>
+<span id="cb389-2"><a href="the-plot-method.html#cb389-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
+<span id="cb389-3"><a href="the-plot-method.html#cb389-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">&quot;.png&quot;</span>),</span>
+<span id="cb389-4"><a href="the-plot-method.html#cb389-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> <span class="fu">ggplot_gtable</span>(<span class="fu">ggplot_build</span>(p)),</span>
+<span id="cb389-5"><a href="the-plot-method.html#cb389-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># File size depends on format, dimension, resolution, etc.</span></span>
+<span id="cb389-6"><a href="the-plot-method.html#cb389-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">file.size</span>() <span class="sc">%&gt;%</span> {scales<span class="sc">::</span><span class="fu">label_bytes</span>()(.)}</span></code></pre></div>
+<pre><code>[1] &quot;201 kB&quot;</code></pre>
+<p>The rest of the chapter focuses what happens in this pipeine - the <code>ggplot_build()</code> step and the <code>ggplot_gtable()</code> step.</p>
 </div>
-</div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="slide-1-title-2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="ggplot-internals.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="the-build-step.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -617,7 +730,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/r4ds/bookclub-ggplot2/edit/main/22-Case-Study.Rmd",
+"link": "https://github.com/r4ds/bookclub-ggplot2/edit/main/20-ggplot2-internals.Rmd",
 "text": "Edit"
 },
 "history": {
