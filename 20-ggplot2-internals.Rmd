@@ -458,7 +458,7 @@ The return value of `ggplot_build()` contains the computed data associated with 
 names(ggplot_build(p))
 ```
 
-```{r 20-34}
+```{r 20-34, eval = FALSE}
 ggplot_build(p)$data %>% map(head, 3)
 ```
 
