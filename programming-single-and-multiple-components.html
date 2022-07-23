@@ -23,7 +23,7 @@
 <meta name="author" content="The R4DS Online Learning Community" />
 
 
-<meta name="date" content="2022-07-15" />
+<meta name="date" content="2022-07-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -530,6 +530,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20.4.1" data-path="introducing-ggproto.html"><a href="introducing-ggproto.html#ggproto-syntax"><i class="fa fa-check"></i><b>20.4.1</b> ggproto syntax</a></li>
 <li class="chapter" data-level="20.4.2" data-path="introducing-ggproto.html"><a href="introducing-ggproto.html#ggproto-style-guide"><i class="fa fa-check"></i><b>20.4.2</b> ggproto style guide</a></li>
 </ul></li>
+<li class="chapter" data-level="20.5" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html"><i class="fa fa-check"></i><b>20.5</b> Meeting Videos</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html#cohort-1-19"><i class="fa fa-check"></i><b>20.5.1</b> Cohort 1</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="21" data-path="writing-ggplot2-extensions.html"><a href="writing-ggplot2-extensions.html"><i class="fa fa-check"></i><b>21</b> Writing ggplot2 extensions</a>
 <ul>
@@ -546,17 +550,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.7.3" data-path="other-important-parts.html"><a href="other-important-parts.html#guides"><i class="fa fa-check"></i><b>21.7.3</b> Guides</a></li>
 </ul></li>
 <li class="chapter" data-level="21.8" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i><b>21.8</b> References</a></li>
-<li class="chapter" data-level="21.9" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html"><i class="fa fa-check"></i><b>21.9</b> Meeting Videos</a>
+<li class="chapter" data-level="21.9" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html"><i class="fa fa-check"></i><b>21.9</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="21.9.1" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html#cohort-1-19"><i class="fa fa-check"></i><b>21.9.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="21.9.1" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html#cohort-1-20"><i class="fa fa-check"></i><b>21.9.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="22" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>22</b> PLACEHOLDER</a>
 <ul>
 <li class="chapter" data-level="22.1" data-path="slide-1-title-1.html"><a href="slide-1-title-1.html"><i class="fa fa-check"></i><b>22.1</b> {Slide 1 title}</a></li>
-<li class="chapter" data-level="22.2" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html"><i class="fa fa-check"></i><b>22.2</b> Meeting Videos</a>
+<li class="chapter" data-level="22.2" data-path="meeting-videos-21.html"><a href="meeting-videos-21.html"><i class="fa fa-check"></i><b>22.2</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="22.2.1" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html#cohort-1-20"><i class="fa fa-check"></i><b>22.2.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="22.2.1" data-path="meeting-videos-21.html"><a href="meeting-videos-21.html#cohort-1-21"><i class="fa fa-check"></i><b>22.2.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -586,38 +590,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="components" class="section level3 hasAnchor" number="19.1.1">
 <h3><span class="header-section-number">19.1.1</span> Components<a href="programming-single-and-multiple-components.html#components" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>One example of a component of a plot is this one below:</p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="programming-single-and-multiple-components.html#cb349-1" aria-hidden="true" tabindex="-1"></a>bestfit <span class="ot">&lt;-</span> <span class="fu">geom_smooth</span>(</span>
-<span id="cb349-2"><a href="programming-single-and-multiple-components.html#cb349-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, </span>
-<span id="cb349-3"><a href="programming-single-and-multiple-components.html#cb349-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">se =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb349-4"><a href="programming-single-and-multiple-components.html#cb349-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">colour =</span> <span class="fu">alpha</span>(<span class="st">&quot;steelblue&quot;</span>, <span class="fl">0.5</span>), </span>
-<span id="cb349-5"><a href="programming-single-and-multiple-components.html#cb349-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="programming-single-and-multiple-components.html#cb347-1" aria-hidden="true" tabindex="-1"></a>bestfit <span class="ot">&lt;-</span> <span class="fu">geom_smooth</span>(</span>
+<span id="cb347-2"><a href="programming-single-and-multiple-components.html#cb347-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, </span>
+<span id="cb347-3"><a href="programming-single-and-multiple-components.html#cb347-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">se =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb347-4"><a href="programming-single-and-multiple-components.html#cb347-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">colour =</span> <span class="fu">alpha</span>(<span class="st">&quot;steelblue&quot;</span>, <span class="fl">0.5</span>), </span>
+<span id="cb347-5"><a href="programming-single-and-multiple-components.html#cb347-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p>This single component can be placed inside the syntax of the grammar of graphics and used as a plot layer.</p>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="programming-single-and-multiple-components.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cty, hwy)) <span class="sc">+</span> </span>
-<span id="cb350-2"><a href="programming-single-and-multiple-components.html#cb350-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb350-3"><a href="programming-single-and-multiple-components.html#cb350-3" aria-hidden="true" tabindex="-1"></a>  bestfit</span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="programming-single-and-multiple-components.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cty, hwy)) <span class="sc">+</span> </span>
+<span id="cb348-2"><a href="programming-single-and-multiple-components.html#cb348-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb348-3"><a href="programming-single-and-multiple-components.html#cb348-3" aria-hidden="true" tabindex="-1"></a>  bestfit</span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
 <p>Another way is to bulid a layer passing through build a function:</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="programming-single-and-multiple-components.html#cb351-1" aria-hidden="true" tabindex="-1"></a>geom_lm <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">colour =</span> <span class="fu">alpha</span>(<span class="st">&quot;steelblue&quot;</span>, <span class="fl">0.5</span>), </span>
-<span id="cb351-2"><a href="programming-single-and-multiple-components.html#cb351-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">size =</span> <span class="dv">2</span>, ...)  {</span>
-<span id="cb351-3"><a href="programming-single-and-multiple-components.html#cb351-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">formula =</span> formula, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">colour =</span> colour,</span>
-<span id="cb351-4"><a href="programming-single-and-multiple-components.html#cb351-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> size, ...)</span>
-<span id="cb351-5"><a href="programming-single-and-multiple-components.html#cb351-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="programming-single-and-multiple-components.html#cb349-1" aria-hidden="true" tabindex="-1"></a>geom_lm <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">colour =</span> <span class="fu">alpha</span>(<span class="st">&quot;steelblue&quot;</span>, <span class="fl">0.5</span>), </span>
+<span id="cb349-2"><a href="programming-single-and-multiple-components.html#cb349-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">size =</span> <span class="dv">2</span>, ...)  {</span>
+<span id="cb349-3"><a href="programming-single-and-multiple-components.html#cb349-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">formula =</span> formula, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">colour =</span> colour,</span>
+<span id="cb349-4"><a href="programming-single-and-multiple-components.html#cb349-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> size, ...)</span>
+<span id="cb349-5"><a href="programming-single-and-multiple-components.html#cb349-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>And the apply the function layer to the plot</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="programming-single-and-multiple-components.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, <span class="dv">1</span> <span class="sc">/</span> hwy)) <span class="sc">+</span> </span>
-<span id="cb352-2"><a href="programming-single-and-multiple-components.html#cb352-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb352-3"><a href="programming-single-and-multiple-components.html#cb352-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_lm</span>(y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">2</span>), <span class="at">size =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="programming-single-and-multiple-components.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, <span class="dv">1</span> <span class="sc">/</span> hwy)) <span class="sc">+</span> </span>
+<span id="cb350-2"><a href="programming-single-and-multiple-components.html#cb350-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb350-3"><a href="programming-single-and-multiple-components.html#cb350-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_lm</span>(y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">2</span>), <span class="at">size =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
 <p>The book points out attention to the “open” parameter <strong>…</strong>.
 A suggestion is to use it inside the function instead of in the function parameters definition.</p>
 <p>Instead of only one component, we can build a plot made of more components.</p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="programming-single-and-multiple-components.html#cb353-1" aria-hidden="true" tabindex="-1"></a>geom_mean <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb353-2"><a href="programming-single-and-multiple-components.html#cb353-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
-<span id="cb353-3"><a href="programming-single-and-multiple-components.html#cb353-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="st">&quot;mean&quot;</span>, <span class="at">geom =</span> <span class="st">&quot;bar&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;grey70&quot;</span>),</span>
-<span id="cb353-4"><a href="programming-single-and-multiple-components.html#cb353-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">&quot;mean_cl_normal&quot;</span>, <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="at">width =</span> <span class="fl">0.4</span>)</span>
-<span id="cb353-5"><a href="programming-single-and-multiple-components.html#cb353-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb353-6"><a href="programming-single-and-multiple-components.html#cb353-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="programming-single-and-multiple-components.html#cb351-1" aria-hidden="true" tabindex="-1"></a>geom_mean <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb351-2"><a href="programming-single-and-multiple-components.html#cb351-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb351-3"><a href="programming-single-and-multiple-components.html#cb351-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="st">&quot;mean&quot;</span>, <span class="at">geom =</span> <span class="st">&quot;bar&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;grey70&quot;</span>),</span>
+<span id="cb351-4"><a href="programming-single-and-multiple-components.html#cb351-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">&quot;mean_cl_normal&quot;</span>, <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="at">width =</span> <span class="fl">0.4</span>)</span>
+<span id="cb351-5"><a href="programming-single-and-multiple-components.html#cb351-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb351-6"><a href="programming-single-and-multiple-components.html#cb351-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Whit this result:</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="programming-single-and-multiple-components.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(class, cty)) <span class="sc">+</span> <span class="fu">geom_mean</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="programming-single-and-multiple-components.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(class, cty)) <span class="sc">+</span> <span class="fu">geom_mean</span>()</span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
 </div>
 </div>

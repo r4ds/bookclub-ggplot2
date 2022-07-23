@@ -257,6 +257,8 @@ output-2
 introducing-ggproto
 ggproto-syntax
 ggproto-style-guide
+meeting-videos-19
+cohort-1-19
 writing-ggplot2-extensions
 overview
 themes-1
@@ -269,9 +271,9 @@ positions
 facets-1
 guides
 references-1
-meeting-videos-19
-cohort-1-19
-placeholder
-slide-1-title-1
 meeting-videos-20
 cohort-1-20
+placeholder
+slide-1-title-1
+meeting-videos-21
+cohort-1-21

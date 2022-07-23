@@ -23,7 +23,7 @@
 <meta name="author" content="The R4DS Online Learning Community" />
 
 
-<meta name="date" content="2022-07-15" />
+<meta name="date" content="2022-07-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -530,6 +530,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20.4.1" data-path="introducing-ggproto.html"><a href="introducing-ggproto.html#ggproto-syntax"><i class="fa fa-check"></i><b>20.4.1</b> ggproto syntax</a></li>
 <li class="chapter" data-level="20.4.2" data-path="introducing-ggproto.html"><a href="introducing-ggproto.html#ggproto-style-guide"><i class="fa fa-check"></i><b>20.4.2</b> ggproto style guide</a></li>
 </ul></li>
+<li class="chapter" data-level="20.5" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html"><i class="fa fa-check"></i><b>20.5</b> Meeting Videos</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html#cohort-1-19"><i class="fa fa-check"></i><b>20.5.1</b> Cohort 1</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="21" data-path="writing-ggplot2-extensions.html"><a href="writing-ggplot2-extensions.html"><i class="fa fa-check"></i><b>21</b> Writing ggplot2 extensions</a>
 <ul>
@@ -546,17 +550,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.7.3" data-path="other-important-parts.html"><a href="other-important-parts.html#guides"><i class="fa fa-check"></i><b>21.7.3</b> Guides</a></li>
 </ul></li>
 <li class="chapter" data-level="21.8" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i><b>21.8</b> References</a></li>
-<li class="chapter" data-level="21.9" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html"><i class="fa fa-check"></i><b>21.9</b> Meeting Videos</a>
+<li class="chapter" data-level="21.9" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html"><i class="fa fa-check"></i><b>21.9</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="21.9.1" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html#cohort-1-19"><i class="fa fa-check"></i><b>21.9.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="21.9.1" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html#cohort-1-20"><i class="fa fa-check"></i><b>21.9.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="22" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>22</b> PLACEHOLDER</a>
 <ul>
 <li class="chapter" data-level="22.1" data-path="slide-1-title-1.html"><a href="slide-1-title-1.html"><i class="fa fa-check"></i><b>22.1</b> {Slide 1 title}</a></li>
-<li class="chapter" data-level="22.2" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html"><i class="fa fa-check"></i><b>22.2</b> Meeting Videos</a>
+<li class="chapter" data-level="22.2" data-path="meeting-videos-21.html"><a href="meeting-videos-21.html"><i class="fa fa-check"></i><b>22.2</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="22.2.1" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html#cohort-1-20"><i class="fa fa-check"></i><b>22.2.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="22.2.1" data-path="meeting-videos-21.html"><a href="meeting-videos-21.html#cohort-1-21"><i class="fa fa-check"></i><b>22.2.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -582,7 +586,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="the-build-step" class="section level2 hasAnchor" number="20.2">
 <h2><span class="header-section-number">20.2</span> The build step<a href="the-build-step.html#the-build-step" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This is the function body of <code>ggplot_build()</code>:</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="the-build-step.html#cb391-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">:::</span>ggplot_build.ggplot</span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="the-build-step.html#cb389-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">:::</span>ggplot_build.ggplot</span></code></pre></div>
 <pre><code>function (plot) 
 {
     plot &lt;- plot_clone(plot)
@@ -630,10 +634,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     structure(list(data = data, layout = layout, plot = plot), 
         class = &quot;ggplot_built&quot;)
 }
-&lt;bytecode: 0x55e806cf2670&gt;
+&lt;bytecode: 0x55f4afb760e0&gt;
 &lt;environment: namespace:ggplot2&gt;</code></pre>
 <p>It takes the ggplot object as input, and transforms the user-provided data to a drawing-ready data (+ some other auxiliary/meta-data like information about the layout). You can see that the drawing-ready data <code>data</code> is built up incrementally (much like data wrangling minus pipes):</p>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="the-build-step.html#cb393-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.list</span>(<span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_build.ggplot))</span></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="the-build-step.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.list</span>(<span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_build.ggplot))</span></code></pre></div>
 <pre><code>[[1]]
 `{`
 
@@ -752,31 +756,31 @@ structure(list(data = data, layout = layout, plot = plot), class = &quot;ggplot_
 <li>Supplied directly from the layer’s <code>data</code> argument</li>
 <li>A function that returns a data when applied to the global data</li>
 </ul>
-<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="the-build-step.html#cb395-1" aria-hidden="true" tabindex="-1"></a>data_demo_p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(disp, cyl)) <span class="sc">+</span></span>
-<span id="cb395-2"><a href="the-build-step.html#cb395-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1) Inherited data</span></span>
-<span id="cb395-3"><a href="the-build-step.html#cb395-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb395-4"><a href="the-build-step.html#cb395-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 2) Data supplied directly</span></span>
-<span id="cb395-5"><a href="the-build-step.html#cb395-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb395-6"><a href="the-build-step.html#cb395-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> .<span class="dv">2</span>,</span>
-<span id="cb395-7"><a href="the-build-step.html#cb395-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> mpg <span class="sc">%&gt;%</span> </span>
-<span id="cb395-8"><a href="the-build-step.html#cb395-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">disp =</span> displ <span class="sc">*</span> <span class="dv">100</span>)</span>
-<span id="cb395-9"><a href="the-build-step.html#cb395-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb395-10"><a href="the-build-step.html#cb395-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 3) Function to be applied to inherited data</span></span>
-<span id="cb395-11"><a href="the-build-step.html#cb395-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(</span>
-<span id="cb395-12"><a href="the-build-step.html#cb395-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(<span class="st">&quot;cyl:&quot;</span>, cyl)),</span>
-<span id="cb395-13"><a href="the-build-step.html#cb395-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> . <span class="sc">%&gt;%</span> </span>
-<span id="cb395-14"><a href="the-build-step.html#cb395-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> </span>
-<span id="cb395-15"><a href="the-build-step.html#cb395-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">summarize</span>(<span class="at">disp =</span> <span class="fu">mean</span>(disp))</span>
-<span id="cb395-16"><a href="the-build-step.html#cb395-16" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb395-17"><a href="the-build-step.html#cb395-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb395-18"><a href="the-build-step.html#cb395-18" aria-hidden="true" tabindex="-1"></a>data_demo_p</span></code></pre></div>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="the-build-step.html#cb393-1" aria-hidden="true" tabindex="-1"></a>data_demo_p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(disp, cyl)) <span class="sc">+</span></span>
+<span id="cb393-2"><a href="the-build-step.html#cb393-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1) Inherited data</span></span>
+<span id="cb393-3"><a href="the-build-step.html#cb393-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb393-4"><a href="the-build-step.html#cb393-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 2) Data supplied directly</span></span>
+<span id="cb393-5"><a href="the-build-step.html#cb393-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb393-6"><a href="the-build-step.html#cb393-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> .<span class="dv">2</span>,</span>
+<span id="cb393-7"><a href="the-build-step.html#cb393-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb393-8"><a href="the-build-step.html#cb393-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">disp =</span> displ <span class="sc">*</span> <span class="dv">100</span>)</span>
+<span id="cb393-9"><a href="the-build-step.html#cb393-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb393-10"><a href="the-build-step.html#cb393-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 3) Function to be applied to inherited data</span></span>
+<span id="cb393-11"><a href="the-build-step.html#cb393-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(</span>
+<span id="cb393-12"><a href="the-build-step.html#cb393-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(<span class="st">&quot;cyl:&quot;</span>, cyl)),</span>
+<span id="cb393-13"><a href="the-build-step.html#cb393-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> . <span class="sc">%&gt;%</span> </span>
+<span id="cb393-14"><a href="the-build-step.html#cb393-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> </span>
+<span id="cb393-15"><a href="the-build-step.html#cb393-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">summarize</span>(<span class="at">disp =</span> <span class="fu">mean</span>(disp))</span>
+<span id="cb393-16"><a href="the-build-step.html#cb393-16" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb393-17"><a href="the-build-step.html#cb393-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb393-18"><a href="the-build-step.html#cb393-18" aria-hidden="true" tabindex="-1"></a>data_demo_p</span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/20-16-1.png" width="672" /></p>
 <p>Inside the <code>layers</code> element of the ggplot are <code>Layer</code> objects which hold information about each layer:</p>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="the-build-step.html#cb396-1" aria-hidden="true" tabindex="-1"></a>data_demo_p<span class="sc">$</span>layers</span>
-<span id="cb396-2"><a href="the-build-step.html#cb396-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb396-3"><a href="the-build-step.html#cb396-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>( data_demo_p<span class="sc">$</span>layers, class )</span></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="the-build-step.html#cb394-1" aria-hidden="true" tabindex="-1"></a>data_demo_p<span class="sc">$</span>layers</span>
+<span id="cb394-2"><a href="the-build-step.html#cb394-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb394-3"><a href="the-build-step.html#cb394-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>( data_demo_p<span class="sc">$</span>layers, class )</span></code></pre></div>
 <p>And the calculated data from each layer can be accessed with <code>layer_data()</code> method of the <code>Layer</code> object:</p>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="the-build-step.html#cb397-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">:::</span>Layer<span class="sc">$</span>layer_data</span></code></pre></div>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="the-build-step.html#cb395-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">:::</span>Layer<span class="sc">$</span>layer_data</span></code></pre></div>
 <pre><code>&lt;ggproto method&gt;
   &lt;Wrapper function&gt;
     function (...) 
@@ -799,7 +803,7 @@ f(..., self = self)
         self$data
     }
 }</code></pre>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="the-build-step.html#cb399-1" aria-hidden="true" tabindex="-1"></a>data_demo_p<span class="sc">$</span>layers[[<span class="dv">1</span>]]<span class="sc">$</span><span class="fu">layer_data</span>(data_demo_p<span class="sc">$</span>data)</span></code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="the-build-step.html#cb397-1" aria-hidden="true" tabindex="-1"></a>data_demo_p<span class="sc">$</span>layers[[<span class="dv">1</span>]]<span class="sc">$</span><span class="fu">layer_data</span>(data_demo_p<span class="sc">$</span>data)</span></code></pre></div>
 <pre><code>                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
 Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
 Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
@@ -833,22 +837,23 @@ Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
 Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
 Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
 Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="the-build-step.html#cb401-1" aria-hidden="true" tabindex="-1"></a>data_demo_p<span class="sc">$</span>layers[[<span class="dv">2</span>]]<span class="sc">$</span><span class="fu">layer_data</span>(data_demo_p<span class="sc">$</span>data)</span></code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="the-build-step.html#cb399-1" aria-hidden="true" tabindex="-1"></a>data_demo_p<span class="sc">$</span>layers[[<span class="dv">2</span>]]<span class="sc">$</span><span class="fu">layer_data</span>(data_demo_p<span class="sc">$</span>data)</span></code></pre></div>
 <pre><code># A tibble: 234 × 12
-   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class
-   &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
- 1 audi         a4           1.8  1999     4 auto… f        18    29 p     comp…
- 2 audi         a4           1.8  1999     4 manu… f        21    29 p     comp…
- 3 audi         a4           2    2008     4 manu… f        20    31 p     comp…
- 4 audi         a4           2    2008     4 auto… f        21    30 p     comp…
- 5 audi         a4           2.8  1999     6 auto… f        16    26 p     comp…
- 6 audi         a4           2.8  1999     6 manu… f        18    26 p     comp…
- 7 audi         a4           3.1  2008     6 auto… f        18    27 p     comp…
- 8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…
- 9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…
-10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…
-# … with 224 more rows, and 1 more variable: disp &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="the-build-step.html#cb403-1" aria-hidden="true" tabindex="-1"></a>data_demo_p<span class="sc">$</span>layers[[<span class="dv">3</span>]]<span class="sc">$</span><span class="fu">layer_data</span>(data_demo_p<span class="sc">$</span>data)</span></code></pre></div>
+   manufactu…¹ model displ  year   cyl trans drv     cty   hwy fl    class  disp
+   &lt;chr&gt;       &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;
+ 1 audi        a4      1.8  1999     4 auto… f        18    29 p     comp…   180
+ 2 audi        a4      1.8  1999     4 manu… f        21    29 p     comp…   180
+ 3 audi        a4      2    2008     4 manu… f        20    31 p     comp…   200
+ 4 audi        a4      2    2008     4 auto… f        21    30 p     comp…   200
+ 5 audi        a4      2.8  1999     6 auto… f        16    26 p     comp…   280
+ 6 audi        a4      2.8  1999     6 manu… f        18    26 p     comp…   280
+ 7 audi        a4      3.1  2008     6 auto… f        18    27 p     comp…   310
+ 8 audi        a4 q…   1.8  1999     4 manu… 4        18    26 p     comp…   180
+ 9 audi        a4 q…   1.8  1999     4 auto… 4        16    25 p     comp…   180
+10 audi        a4 q…   2    2008     4 manu… 4        20    28 p     comp…   200
+# … with 224 more rows, and abbreviated variable name ¹​manufacturer
+# ℹ Use `print(n = ...)` to see more rows</code></pre>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="the-build-step.html#cb401-1" aria-hidden="true" tabindex="-1"></a>data_demo_p<span class="sc">$</span>layers[[<span class="dv">3</span>]]<span class="sc">$</span><span class="fu">layer_data</span>(data_demo_p<span class="sc">$</span>data)</span></code></pre></div>
 <pre><code># A tibble: 3 × 2
     cyl  disp
   &lt;dbl&gt; &lt;dbl&gt;
@@ -856,18 +861,19 @@ Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></
 2     6  183.
 3     8  353.</code></pre>
 <p>This is where the data transformation journey begins inside the plot method:</p>
-<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="the-build-step.html#cb405-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_build.ggplot)[[<span class="dv">5</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="the-build-step.html#cb403-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_build.ggplot)[[<span class="dv">5</span>]]</span></code></pre></div>
 <pre><code>layer_data &lt;- lapply(layers, function(y) y$layer_data(plot$data))</code></pre>
-<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="the-build-step.html#cb407-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_build.ggplot)[[<span class="dv">8</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="the-build-step.html#cb405-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_build.ggplot)[[<span class="dv">8</span>]]</span></code></pre></div>
 <pre><code>data &lt;- layer_data</code></pre>
 <p>For <code>data_demo_p</code>, the <code>data</code> variable after step 8 looks like this:</p>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="the-build-step.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtrace_inspect_vars</span>(</span>
-<span id="cb409-2"><a href="the-build-step.html#cb409-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> data_demo_p,</span>
-<span id="cb409-3"><a href="the-build-step.html#cb409-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_build.ggplot,</span>
-<span id="cb409-4"><a href="the-build-step.html#cb409-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">9</span>,</span>
-<span id="cb409-5"><a href="the-build-step.html#cb409-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">&quot;data&quot;</span></span>
-<span id="cb409-6"><a href="the-build-step.html#cb409-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<pre><code>                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="the-build-step.html#cb407-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtrace_inspect_vars</span>(</span>
+<span id="cb407-2"><a href="the-build-step.html#cb407-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> data_demo_p,</span>
+<span id="cb407-3"><a href="the-build-step.html#cb407-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_build.ggplot,</span>
+<span id="cb407-4"><a href="the-build-step.html#cb407-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">9</span>,</span>
+<span id="cb407-5"><a href="the-build-step.html#cb407-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">&quot;data&quot;</span></span>
+<span id="cb407-6"><a href="the-build-step.html#cb407-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>[[1]]
+                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
 Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
 Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
 Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
@@ -899,124 +905,149 @@ Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
 Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
 Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
 Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
-Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
+Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
+
+[[2]]
+# A tibble: 234 × 12
+   manufactu…¹ model displ  year   cyl trans drv     cty   hwy fl    class  disp
+   &lt;chr&gt;       &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;
+ 1 audi        a4      1.8  1999     4 auto… f        18    29 p     comp…   180
+ 2 audi        a4      1.8  1999     4 manu… f        21    29 p     comp…   180
+ 3 audi        a4      2    2008     4 manu… f        20    31 p     comp…   200
+ 4 audi        a4      2    2008     4 auto… f        21    30 p     comp…   200
+ 5 audi        a4      2.8  1999     6 auto… f        16    26 p     comp…   280
+ 6 audi        a4      2.8  1999     6 manu… f        18    26 p     comp…   280
+ 7 audi        a4      3.1  2008     6 auto… f        18    27 p     comp…   310
+ 8 audi        a4 q…   1.8  1999     4 manu… 4        18    26 p     comp…   180
+ 9 audi        a4 q…   1.8  1999     4 auto… 4        16    25 p     comp…   180
+10 audi        a4 q…   2    2008     4 manu… 4        20    28 p     comp…   200
+# … with 224 more rows, and abbreviated variable name ¹​manufacturer
+# ℹ Use `print(n = ...)` to see more rows
+
+[[3]]
+# A tibble: 3 × 2
+    cyl  disp
+  &lt;dbl&gt; &lt;dbl&gt;
+1     4  105.
+2     6  183.
+3     8  353.</code></pre>
 <p>For the expository plot <code>p</code> from the book, the <code>data</code> variable after step 8 looks like the original <code>mpg</code> data:</p>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="the-build-step.html#cb411-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtrace_inspect_vars</span>(</span>
-<span id="cb411-2"><a href="the-build-step.html#cb411-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p,</span>
-<span id="cb411-3"><a href="the-build-step.html#cb411-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_build.ggplot,</span>
-<span id="cb411-4"><a href="the-build-step.html#cb411-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">9</span>,</span>
-<span id="cb411-5"><a href="the-build-step.html#cb411-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">&quot;data&quot;</span></span>
-<span id="cb411-6"><a href="the-build-step.html#cb411-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb411-7"><a href="the-build-step.html#cb411-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(head)</span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="the-build-step.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtrace_inspect_vars</span>(</span>
+<span id="cb409-2"><a href="the-build-step.html#cb409-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p,</span>
+<span id="cb409-3"><a href="the-build-step.html#cb409-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_build.ggplot,</span>
+<span id="cb409-4"><a href="the-build-step.html#cb409-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">9</span>,</span>
+<span id="cb409-5"><a href="the-build-step.html#cb409-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">&quot;data&quot;</span></span>
+<span id="cb409-6"><a href="the-build-step.html#cb409-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb409-7"><a href="the-build-step.html#cb409-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(head)</span></code></pre></div>
 </div>
 <div id="data-transformation" class="section level3 hasAnchor" number="20.2.2">
 <h3><span class="header-section-number">20.2.2</span> Data transformation<a href="the-build-step.html#data-transformation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="panel-variable-and-aesthetic-mappings" class="section level4 hasAnchor" number="20.2.2.1">
 <h4><span class="header-section-number">20.2.2.1</span> PANEL variable and aesthetic mappings<a href="the-build-step.html#panel-variable-and-aesthetic-mappings" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Continuing with the book example, the data is augmented with the <code>PANEL</code> variable at Step 11:</p>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="the-build-step.html#cb412-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_build.ggplot)[[<span class="dv">11</span>]]</span>
-<span id="cb412-2"><a href="the-build-step.html#cb412-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb412-3"><a href="the-build-step.html#cb412-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtrace_inspect_vars</span>(</span>
-<span id="cb412-4"><a href="the-build-step.html#cb412-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p,</span>
-<span id="cb412-5"><a href="the-build-step.html#cb412-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_build.ggplot,</span>
-<span id="cb412-6"><a href="the-build-step.html#cb412-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">12</span>,</span>
-<span id="cb412-7"><a href="the-build-step.html#cb412-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">&quot;data&quot;</span></span>
-<span id="cb412-8"><a href="the-build-step.html#cb412-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb412-9"><a href="the-build-step.html#cb412-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(head)</span></code></pre></div>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="the-build-step.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_build.ggplot)[[<span class="dv">11</span>]]</span>
+<span id="cb410-2"><a href="the-build-step.html#cb410-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb410-3"><a href="the-build-step.html#cb410-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtrace_inspect_vars</span>(</span>
+<span id="cb410-4"><a href="the-build-step.html#cb410-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p,</span>
+<span id="cb410-5"><a href="the-build-step.html#cb410-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_build.ggplot,</span>
+<span id="cb410-6"><a href="the-build-step.html#cb410-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">12</span>,</span>
+<span id="cb410-7"><a href="the-build-step.html#cb410-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">&quot;data&quot;</span></span>
+<span id="cb410-8"><a href="the-build-step.html#cb410-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb410-9"><a href="the-build-step.html#cb410-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(head)</span></code></pre></div>
 <p>And then the <code>group</code> variable appears at Step 12, which is also when aesthetics get “mapped” (= just <code>mutate()</code>, essentially):</p>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="the-build-step.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_build.ggplot)[[<span class="dv">12</span>]]</span>
-<span id="cb413-2"><a href="the-build-step.html#cb413-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb413-3"><a href="the-build-step.html#cb413-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtrace_inspect_vars</span>(</span>
-<span id="cb413-4"><a href="the-build-step.html#cb413-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p,</span>
-<span id="cb413-5"><a href="the-build-step.html#cb413-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_build.ggplot,</span>
-<span id="cb413-6"><a href="the-build-step.html#cb413-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">13</span>,</span>
-<span id="cb413-7"><a href="the-build-step.html#cb413-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">&quot;data&quot;</span></span>
-<span id="cb413-8"><a href="the-build-step.html#cb413-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb413-9"><a href="the-build-step.html#cb413-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(head)</span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="the-build-step.html#cb411-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_build.ggplot)[[<span class="dv">12</span>]]</span>
+<span id="cb411-2"><a href="the-build-step.html#cb411-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb411-3"><a href="the-build-step.html#cb411-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtrace_inspect_vars</span>(</span>
+<span id="cb411-4"><a href="the-build-step.html#cb411-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p,</span>
+<span id="cb411-5"><a href="the-build-step.html#cb411-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_build.ggplot,</span>
+<span id="cb411-6"><a href="the-build-step.html#cb411-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">13</span>,</span>
+<span id="cb411-7"><a href="the-build-step.html#cb411-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">&quot;data&quot;</span></span>
+<span id="cb411-8"><a href="the-build-step.html#cb411-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb411-9"><a href="the-build-step.html#cb411-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(head)</span></code></pre></div>
 </div>
 <div id="scales" class="section level4 hasAnchor" number="20.2.2.2">
 <h4><span class="header-section-number">20.2.2.2</span> Scales<a href="the-build-step.html#scales" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Then, scales are applied in Step 13. This leaves the data unchanged for the original plot:</p>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="the-build-step.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_build.ggplot)[[<span class="dv">13</span>]]</span>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="the-build-step.html#cb412-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_build.ggplot)[[<span class="dv">13</span>]]</span>
+<span id="cb412-2"><a href="the-build-step.html#cb412-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb412-3"><a href="the-build-step.html#cb412-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtrace_inspect_vars</span>(</span>
+<span id="cb412-4"><a href="the-build-step.html#cb412-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p,</span>
+<span id="cb412-5"><a href="the-build-step.html#cb412-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_build.ggplot,</span>
+<span id="cb412-6"><a href="the-build-step.html#cb412-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">14</span>,</span>
+<span id="cb412-7"><a href="the-build-step.html#cb412-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">&quot;data&quot;</span></span>
+<span id="cb412-8"><a href="the-build-step.html#cb412-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb412-9"><a href="the-build-step.html#cb412-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(head)</span></code></pre></div>
+<p>But the effect can be seen with something like <code>scale_x_log10()</code>:</p>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="the-build-step.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtrace_inspect_vars</span>(</span>
+<span id="cb413-2"><a href="the-build-step.html#cb413-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p <span class="sc">+</span> <span class="fu">scale_x_log10</span>(),</span>
+<span id="cb413-3"><a href="the-build-step.html#cb413-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_build.ggplot,</span>
+<span id="cb413-4"><a href="the-build-step.html#cb413-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">14</span>,</span>
+<span id="cb413-5"><a href="the-build-step.html#cb413-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">&quot;data&quot;</span></span>
+<span id="cb413-6"><a href="the-build-step.html#cb413-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb413-7"><a href="the-build-step.html#cb413-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(head, <span class="dv">3</span>)</span></code></pre></div>
+<p>Out-of-bounds handling happens down the line, at Step 17:</p>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="the-build-step.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_build.ggplot)[[<span class="dv">17</span>]]</span>
 <span id="cb414-2"><a href="the-build-step.html#cb414-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb414-3"><a href="the-build-step.html#cb414-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtrace_inspect_vars</span>(</span>
-<span id="cb414-4"><a href="the-build-step.html#cb414-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p,</span>
+<span id="cb414-4"><a href="the-build-step.html#cb414-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p <span class="sc">+</span> <span class="fu">xlim</span>(<span class="dv">2</span>, <span class="dv">8</span>), <span class="co"># or scale_x_continuous(oob = scales::oob_censor)</span></span>
 <span id="cb414-5"><a href="the-build-step.html#cb414-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_build.ggplot,</span>
-<span id="cb414-6"><a href="the-build-step.html#cb414-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">14</span>,</span>
+<span id="cb414-6"><a href="the-build-step.html#cb414-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">18</span>,</span>
 <span id="cb414-7"><a href="the-build-step.html#cb414-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">&quot;data&quot;</span></span>
 <span id="cb414-8"><a href="the-build-step.html#cb414-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb414-9"><a href="the-build-step.html#cb414-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(head)</span></code></pre></div>
-<p>But the effect can be seen with something like <code>scale_x_log10()</code>:</p>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="the-build-step.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtrace_inspect_vars</span>(</span>
-<span id="cb415-2"><a href="the-build-step.html#cb415-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p <span class="sc">+</span> <span class="fu">scale_x_log10</span>(),</span>
-<span id="cb415-3"><a href="the-build-step.html#cb415-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_build.ggplot,</span>
-<span id="cb415-4"><a href="the-build-step.html#cb415-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">14</span>,</span>
-<span id="cb415-5"><a href="the-build-step.html#cb415-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">&quot;data&quot;</span></span>
-<span id="cb415-6"><a href="the-build-step.html#cb415-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb415-7"><a href="the-build-step.html#cb415-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(head, <span class="dv">3</span>)</span></code></pre></div>
-<p>Out-of-bounds handling happens down the line, at Step 17:</p>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="the-build-step.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_build.ggplot)[[<span class="dv">17</span>]]</span>
-<span id="cb416-2"><a href="the-build-step.html#cb416-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb416-3"><a href="the-build-step.html#cb416-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtrace_inspect_vars</span>(</span>
-<span id="cb416-4"><a href="the-build-step.html#cb416-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p <span class="sc">+</span> <span class="fu">xlim</span>(<span class="dv">2</span>, <span class="dv">8</span>), <span class="co"># or scale_x_continuous(oob = scales::oob_censor)</span></span>
-<span id="cb416-5"><a href="the-build-step.html#cb416-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_build.ggplot,</span>
-<span id="cb416-6"><a href="the-build-step.html#cb416-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">18</span>,</span>
-<span id="cb416-7"><a href="the-build-step.html#cb416-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">&quot;data&quot;</span></span>
-<span id="cb416-8"><a href="the-build-step.html#cb416-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb416-9"><a href="the-build-step.html#cb416-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(head, <span class="dv">3</span>)</span></code></pre></div>
+<span id="cb414-9"><a href="the-build-step.html#cb414-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(head, <span class="dv">3</span>)</span></code></pre></div>
 </div>
 <div id="stat" class="section level4 hasAnchor" number="20.2.2.3">
 <h4><span class="header-section-number">20.2.2.3</span> Stat<a href="the-build-step.html#stat" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Stat transformation happens right after, at Step 18 (this is why understanding out-of-bounds handling and scale transformation is important!)</p>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="the-build-step.html#cb417-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_build.ggplot)[[<span class="dv">18</span>]]</span>
-<span id="cb417-2"><a href="the-build-step.html#cb417-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb417-3"><a href="the-build-step.html#cb417-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtrace_inspect_vars</span>(</span>
-<span id="cb417-4"><a href="the-build-step.html#cb417-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p,</span>
-<span id="cb417-5"><a href="the-build-step.html#cb417-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_build.ggplot,</span>
-<span id="cb417-6"><a href="the-build-step.html#cb417-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">19</span>,</span>
-<span id="cb417-7"><a href="the-build-step.html#cb417-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">&quot;data&quot;</span></span>
-<span id="cb417-8"><a href="the-build-step.html#cb417-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb417-9"><a href="the-build-step.html#cb417-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(head, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="the-build-step.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_build.ggplot)[[<span class="dv">18</span>]]</span>
+<span id="cb415-2"><a href="the-build-step.html#cb415-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb415-3"><a href="the-build-step.html#cb415-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtrace_inspect_vars</span>(</span>
+<span id="cb415-4"><a href="the-build-step.html#cb415-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p,</span>
+<span id="cb415-5"><a href="the-build-step.html#cb415-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_build.ggplot,</span>
+<span id="cb415-6"><a href="the-build-step.html#cb415-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">19</span>,</span>
+<span id="cb415-7"><a href="the-build-step.html#cb415-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">&quot;data&quot;</span></span>
+<span id="cb415-8"><a href="the-build-step.html#cb415-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb415-9"><a href="the-build-step.html#cb415-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(head, <span class="dv">3</span>)</span></code></pre></div>
 <p>Note how this point on the data for two layers look different. This is because <code>geom_point()</code> and <code>geom_smooth()</code> have different <strong>Stat</strong>s.</p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="the-build-step.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>( <span class="fu">geom_point</span>()<span class="sc">$</span>stat )</span></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="the-build-step.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>( <span class="fu">geom_point</span>()<span class="sc">$</span>stat )</span></code></pre></div>
 <pre><code>[1] &quot;StatIdentity&quot; &quot;Stat&quot;         &quot;ggproto&quot;      &quot;gg&quot;          </code></pre>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="the-build-step.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>( <span class="fu">geom_smooth</span>()<span class="sc">$</span>stat )</span></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="the-build-step.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>( <span class="fu">geom_smooth</span>()<span class="sc">$</span>stat )</span></code></pre></div>
 <pre><code>[1] &quot;StatSmooth&quot; &quot;Stat&quot;       &quot;ggproto&quot;    &quot;gg&quot;        </code></pre>
 </div>
 <div id="position" class="section level4 hasAnchor" number="20.2.2.4">
 <h4><span class="header-section-number">20.2.2.4</span> Position<a href="the-build-step.html#position" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>At Step 22, positions are adjusted (jittering, dodging, stacking, etc.). We gave <code>geom_point()</code> a jitter so we see that reflected for the first layer:</p>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="the-build-step.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_build.ggplot)[[<span class="dv">22</span>]]</span>
-<span id="cb422-2"><a href="the-build-step.html#cb422-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb422-3"><a href="the-build-step.html#cb422-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtrace_inspect_vars</span>(</span>
-<span id="cb422-4"><a href="the-build-step.html#cb422-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p,</span>
-<span id="cb422-5"><a href="the-build-step.html#cb422-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_build.ggplot,</span>
-<span id="cb422-6"><a href="the-build-step.html#cb422-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">23</span>,</span>
-<span id="cb422-7"><a href="the-build-step.html#cb422-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">&quot;data&quot;</span></span>
-<span id="cb422-8"><a href="the-build-step.html#cb422-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb422-9"><a href="the-build-step.html#cb422-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(head, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="the-build-step.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_build.ggplot)[[<span class="dv">22</span>]]</span>
+<span id="cb420-2"><a href="the-build-step.html#cb420-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb420-3"><a href="the-build-step.html#cb420-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtrace_inspect_vars</span>(</span>
+<span id="cb420-4"><a href="the-build-step.html#cb420-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p,</span>
+<span id="cb420-5"><a href="the-build-step.html#cb420-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_build.ggplot,</span>
+<span id="cb420-6"><a href="the-build-step.html#cb420-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">23</span>,</span>
+<span id="cb420-7"><a href="the-build-step.html#cb420-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">&quot;data&quot;</span></span>
+<span id="cb420-8"><a href="the-build-step.html#cb420-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb420-9"><a href="the-build-step.html#cb420-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(head, <span class="dv">3</span>)</span></code></pre></div>
 </div>
 <div id="geom" class="section level4 hasAnchor" number="20.2.2.5">
 <h4><span class="header-section-number">20.2.2.5</span> Geom<a href="the-build-step.html#geom" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Variables relevant for drawing each layer’s geometry are added in by the Geom, at Step 29:</p>
-<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="the-build-step.html#cb423-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_build.ggplot)[[<span class="dv">29</span>]]</span>
-<span id="cb423-2"><a href="the-build-step.html#cb423-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb423-3"><a href="the-build-step.html#cb423-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtrace_inspect_vars</span>(</span>
-<span id="cb423-4"><a href="the-build-step.html#cb423-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p,</span>
-<span id="cb423-5"><a href="the-build-step.html#cb423-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_build.ggplot,</span>
-<span id="cb423-6"><a href="the-build-step.html#cb423-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">30</span>,</span>
-<span id="cb423-7"><a href="the-build-step.html#cb423-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">&quot;data&quot;</span></span>
-<span id="cb423-8"><a href="the-build-step.html#cb423-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb423-9"><a href="the-build-step.html#cb423-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(head, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="the-build-step.html#cb421-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_build.ggplot)[[<span class="dv">29</span>]]</span>
+<span id="cb421-2"><a href="the-build-step.html#cb421-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb421-3"><a href="the-build-step.html#cb421-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtrace_inspect_vars</span>(</span>
+<span id="cb421-4"><a href="the-build-step.html#cb421-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> p,</span>
+<span id="cb421-5"><a href="the-build-step.html#cb421-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> ggplot2<span class="sc">:::</span>ggplot_build.ggplot,</span>
+<span id="cb421-6"><a href="the-build-step.html#cb421-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">at =</span> <span class="dv">30</span>,</span>
+<span id="cb421-7"><a href="the-build-step.html#cb421-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">&quot;data&quot;</span></span>
+<span id="cb421-8"><a href="the-build-step.html#cb421-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb421-9"><a href="the-build-step.html#cb421-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(head, <span class="dv">3</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="output-1" class="section level3 hasAnchor" number="20.2.3">
 <h3><span class="header-section-number">20.2.3</span> Output<a href="the-build-step.html#output-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The final state of the data after <code>ggplot_build()</code> is stored in the <code>data</code> element of the output of <code>ggplot_build()</code>:</p>
-<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="the-build-step.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot_build</span>(p)<span class="sc">$</span>data <span class="sc">%&gt;%</span> </span>
-<span id="cb424-2"><a href="the-build-step.html#cb424-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(head, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="the-build-step.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot_build</span>(p)<span class="sc">$</span>data <span class="sc">%&gt;%</span> </span>
+<span id="cb422-2"><a href="the-build-step.html#cb422-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(head, <span class="dv">3</span>)</span></code></pre></div>
 <p><code>ggplot_build()</code> also returns the trained layout of the plot (scales, panels, etc.) in the <code>layout</code> element, as well as the original ggplot object in the <code>plot</code> element:</p>
-<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="the-build-step.html#cb425-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>( <span class="fu">ggplot_build</span>(p), class )</span></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="the-build-step.html#cb423-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>( <span class="fu">ggplot_build</span>(p), class )</span></code></pre></div>
 </div>
 <div id="explore" class="section level3 hasAnchor" number="20.2.4">
 <h3><span class="header-section-number">20.2.4</span> Explore<a href="the-build-step.html#explore" class="anchor-section" aria-label="Anchor link to header"></a></h3>

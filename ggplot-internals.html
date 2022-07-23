@@ -23,7 +23,7 @@
 <meta name="author" content="The R4DS Online Learning Community" />
 
 
-<meta name="date" content="2022-07-15" />
+<meta name="date" content="2022-07-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -530,6 +530,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20.4.1" data-path="introducing-ggproto.html"><a href="introducing-ggproto.html#ggproto-syntax"><i class="fa fa-check"></i><b>20.4.1</b> ggproto syntax</a></li>
 <li class="chapter" data-level="20.4.2" data-path="introducing-ggproto.html"><a href="introducing-ggproto.html#ggproto-style-guide"><i class="fa fa-check"></i><b>20.4.2</b> ggproto style guide</a></li>
 </ul></li>
+<li class="chapter" data-level="20.5" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html"><i class="fa fa-check"></i><b>20.5</b> Meeting Videos</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html#cohort-1-19"><i class="fa fa-check"></i><b>20.5.1</b> Cohort 1</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="21" data-path="writing-ggplot2-extensions.html"><a href="writing-ggplot2-extensions.html"><i class="fa fa-check"></i><b>21</b> Writing ggplot2 extensions</a>
 <ul>
@@ -546,17 +550,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.7.3" data-path="other-important-parts.html"><a href="other-important-parts.html#guides"><i class="fa fa-check"></i><b>21.7.3</b> Guides</a></li>
 </ul></li>
 <li class="chapter" data-level="21.8" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i><b>21.8</b> References</a></li>
-<li class="chapter" data-level="21.9" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html"><i class="fa fa-check"></i><b>21.9</b> Meeting Videos</a>
+<li class="chapter" data-level="21.9" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html"><i class="fa fa-check"></i><b>21.9</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="21.9.1" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html#cohort-1-19"><i class="fa fa-check"></i><b>21.9.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="21.9.1" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html#cohort-1-20"><i class="fa fa-check"></i><b>21.9.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="22" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>22</b> PLACEHOLDER</a>
 <ul>
 <li class="chapter" data-level="22.1" data-path="slide-1-title-1.html"><a href="slide-1-title-1.html"><i class="fa fa-check"></i><b>22.1</b> {Slide 1 title}</a></li>
-<li class="chapter" data-level="22.2" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html"><i class="fa fa-check"></i><b>22.2</b> Meeting Videos</a>
+<li class="chapter" data-level="22.2" data-path="meeting-videos-21.html"><a href="meeting-videos-21.html"><i class="fa fa-check"></i><b>22.2</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="22.2.1" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html#cohort-1-20"><i class="fa fa-check"></i><b>22.2.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="22.2.1" data-path="meeting-videos-21.html"><a href="meeting-videos-21.html#cohort-1-21"><i class="fa fa-check"></i><b>22.2.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -588,10 +592,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>What the division of labor between <code>{ggplot2}</code> and <code>{grid}</code>?</li>
 <li>What is the basic structure of/motivation for ggproto?</li>
 </ul>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="ggplot-internals.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb362-2"><a href="ggplot-internals.html#cb362-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtrace) <span class="co"># remotes::install_github(&quot;yjunechoe/ggtrace&quot;)</span></span>
-<span id="cb362-3"><a href="ggplot-internals.html#cb362-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb362-4"><a href="ggplot-internals.html#cb362-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="ggplot-internals.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb360-2"><a href="ggplot-internals.html#cb360-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtrace) <span class="co"># remotes::install_github(&quot;yjunechoe/ggtrace&quot;)</span></span>
+<span id="cb360-3"><a href="ggplot-internals.html#cb360-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb360-4"><a href="ggplot-internals.html#cb360-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <div id="introduction-the-existence-of-internals" class="section level4 hasAnchor" number="20.0.0.1">
 <h4><span class="header-section-number">20.0.0.1</span> Introduction (the existence of internals)<a href="ggplot-internals.html#introduction-the-existence-of-internals" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The <strong>user-facing code</strong> that <em>defines</em> a ggplot on the surface is not the same as the <strong>internal code</strong> that <em>creates</em> a ggplot under the hood. In this chapter, we’ll learn about how the internal code operates and develop some intuitions about thinking about the internals, starting with these two simple examples of mismatches between surface and underlying form:</p>
@@ -600,40 +604,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">20.0.0.2</span> Case 1: Order<a href="ggplot-internals.html#case-1-order" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>You can change the order of some “layers” without change to the graphical output.</p>
 <p>For example, <code>scale_*()</code> can be added anywhere and always ends up applying for the whole plot:</p>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="ggplot-internals.html#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(mpg, hp, <span class="at">color =</span> <span class="fu">as.factor</span>(am))) <span class="sc">+</span></span>
-<span id="cb363-2"><a href="ggplot-internals.html#cb363-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span> <span class="co">#&lt; scale first</span></span>
-<span id="cb363-3"><a href="ggplot-internals.html#cb363-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb363-4"><a href="ggplot-internals.html#cb363-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span>
-<span id="cb363-5"><a href="ggplot-internals.html#cb363-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb363-6"><a href="ggplot-internals.html#cb363-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(mpg, hp, <span class="at">color =</span> <span class="fu">as.factor</span>(am))) <span class="sc">+</span></span>
-<span id="cb363-7"><a href="ggplot-internals.html#cb363-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb363-8"><a href="ggplot-internals.html#cb363-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span> <span class="co">#&lt; scale middle</span></span>
-<span id="cb363-9"><a href="ggplot-internals.html#cb363-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="ggplot-internals.html#cb361-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(mpg, hp, <span class="at">color =</span> <span class="fu">as.factor</span>(am))) <span class="sc">+</span></span>
+<span id="cb361-2"><a href="ggplot-internals.html#cb361-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span> <span class="co">#&lt; scale first</span></span>
+<span id="cb361-3"><a href="ggplot-internals.html#cb361-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb361-4"><a href="ggplot-internals.html#cb361-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span>
+<span id="cb361-5"><a href="ggplot-internals.html#cb361-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb361-6"><a href="ggplot-internals.html#cb361-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(mpg, hp, <span class="at">color =</span> <span class="fu">as.factor</span>(am))) <span class="sc">+</span></span>
+<span id="cb361-7"><a href="ggplot-internals.html#cb361-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb361-8"><a href="ggplot-internals.html#cb361-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span> <span class="co">#&lt; scale middle</span></span>
+<span id="cb361-9"><a href="ggplot-internals.html#cb361-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/20-02-1.png" width="50%" /><img src="bookclub-ggplot2_01_files/figure-html/20-02-2.png" width="50%" /></p>
 <p>Though the order of <code>geom_*()</code> and <code>stat_*()</code> matters for order of drawing:</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="ggplot-internals.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(mpg, hp, <span class="at">color =</span> <span class="fu">as.factor</span>(am))) <span class="sc">+</span></span>
-<span id="cb364-2"><a href="ggplot-internals.html#cb364-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb364-3"><a href="ggplot-internals.html#cb364-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">fill =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb364-4"><a href="ggplot-internals.html#cb364-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb364-5"><a href="ggplot-internals.html#cb364-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(mpg, hp, <span class="at">color =</span> <span class="fu">as.factor</span>(am))) <span class="sc">+</span></span>
-<span id="cb364-6"><a href="ggplot-internals.html#cb364-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">fill =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb364-7"><a href="ggplot-internals.html#cb364-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="ggplot-internals.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(mpg, hp, <span class="at">color =</span> <span class="fu">as.factor</span>(am))) <span class="sc">+</span></span>
+<span id="cb362-2"><a href="ggplot-internals.html#cb362-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb362-3"><a href="ggplot-internals.html#cb362-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">fill =</span> <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb362-4"><a href="ggplot-internals.html#cb362-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb362-5"><a href="ggplot-internals.html#cb362-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(mpg, hp, <span class="at">color =</span> <span class="fu">as.factor</span>(am))) <span class="sc">+</span></span>
+<span id="cb362-6"><a href="ggplot-internals.html#cb362-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">fill =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb362-7"><a href="ggplot-internals.html#cb362-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/20-03-1.png" width="50%" /><img src="bookclub-ggplot2_01_files/figure-html/20-03-2.png" width="50%" /></p>
 </div>
 <div id="case-2-modularity" class="section level4 hasAnchor" number="20.0.0.3">
 <h4><span class="header-section-number">20.0.0.3</span> Case 2: Modularity<a href="ggplot-internals.html#case-2-modularity" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We know that user-facing “layer” code that we add to a ggplot with <code>+</code> are stand-alone functions:</p>
-<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="ggplot-internals.html#cb365-1" aria-hidden="true" tabindex="-1"></a>lm_smooth <span class="ot">&lt;-</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">formula =</span> y <span class="sc">~</span> x)</span>
-<span id="cb365-2"><a href="ggplot-internals.html#cb365-2" aria-hidden="true" tabindex="-1"></a>lm_smooth</span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="ggplot-internals.html#cb363-1" aria-hidden="true" tabindex="-1"></a>lm_smooth <span class="ot">&lt;-</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">formula =</span> y <span class="sc">~</span> x)</span>
+<span id="cb363-2"><a href="ggplot-internals.html#cb363-2" aria-hidden="true" tabindex="-1"></a>lm_smooth</span></code></pre></div>
 <pre><code>geom_smooth: na.rm = FALSE, orientation = NA, se = TRUE
 stat_smooth: na.rm = FALSE, orientation = NA, se = TRUE, method = lm, formula = y ~ x
 position_identity </code></pre>
 <p>When we add this object to different ggplots, it <em>materializes</em> in different ways:</p>
-<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="ggplot-internals.html#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(mpg, hp)) <span class="sc">+</span></span>
-<span id="cb367-2"><a href="ggplot-internals.html#cb367-2" aria-hidden="true" tabindex="-1"></a>  lm_smooth</span></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="ggplot-internals.html#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(mpg, hp)) <span class="sc">+</span></span>
+<span id="cb365-2"><a href="ggplot-internals.html#cb365-2" aria-hidden="true" tabindex="-1"></a>  lm_smooth</span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/20-05-1.png" width="672" /></p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="ggplot-internals.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(wt, disp)) <span class="sc">+</span></span>
-<span id="cb368-2"><a href="ggplot-internals.html#cb368-2" aria-hidden="true" tabindex="-1"></a>  lm_smooth</span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="ggplot-internals.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(wt, disp)) <span class="sc">+</span></span>
+<span id="cb366-2"><a href="ggplot-internals.html#cb366-2" aria-hidden="true" tabindex="-1"></a>  lm_smooth</span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/20-05-2.png" width="672" /></p>
 </div>
 </div>

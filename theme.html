@@ -23,7 +23,7 @@
 <meta name="author" content="The R4DS Online Learning Community" />
 
 
-<meta name="date" content="2022-07-15" />
+<meta name="date" content="2022-07-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -530,6 +530,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20.4.1" data-path="introducing-ggproto.html"><a href="introducing-ggproto.html#ggproto-syntax"><i class="fa fa-check"></i><b>20.4.1</b> ggproto syntax</a></li>
 <li class="chapter" data-level="20.4.2" data-path="introducing-ggproto.html"><a href="introducing-ggproto.html#ggproto-style-guide"><i class="fa fa-check"></i><b>20.4.2</b> ggproto style guide</a></li>
 </ul></li>
+<li class="chapter" data-level="20.5" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html"><i class="fa fa-check"></i><b>20.5</b> Meeting Videos</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html#cohort-1-19"><i class="fa fa-check"></i><b>20.5.1</b> Cohort 1</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="21" data-path="writing-ggplot2-extensions.html"><a href="writing-ggplot2-extensions.html"><i class="fa fa-check"></i><b>21</b> Writing ggplot2 extensions</a>
 <ul>
@@ -546,17 +550,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.7.3" data-path="other-important-parts.html"><a href="other-important-parts.html#guides"><i class="fa fa-check"></i><b>21.7.3</b> Guides</a></li>
 </ul></li>
 <li class="chapter" data-level="21.8" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i><b>21.8</b> References</a></li>
-<li class="chapter" data-level="21.9" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html"><i class="fa fa-check"></i><b>21.9</b> Meeting Videos</a>
+<li class="chapter" data-level="21.9" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html"><i class="fa fa-check"></i><b>21.9</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="21.9.1" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html#cohort-1-19"><i class="fa fa-check"></i><b>21.9.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="21.9.1" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html#cohort-1-20"><i class="fa fa-check"></i><b>21.9.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="22" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>22</b> PLACEHOLDER</a>
 <ul>
 <li class="chapter" data-level="22.1" data-path="slide-1-title-1.html"><a href="slide-1-title-1.html"><i class="fa fa-check"></i><b>22.1</b> {Slide 1 title}</a></li>
-<li class="chapter" data-level="22.2" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html"><i class="fa fa-check"></i><b>22.2</b> Meeting Videos</a>
+<li class="chapter" data-level="22.2" data-path="meeting-videos-21.html"><a href="meeting-videos-21.html"><i class="fa fa-check"></i><b>22.2</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="22.2.1" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html#cohort-1-20"><i class="fa fa-check"></i><b>22.2.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="22.2.1" data-path="meeting-videos-21.html"><a href="meeting-videos-21.html#cohort-1-21"><i class="fa fa-check"></i><b>22.2.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -591,34 +595,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="complete-themes" class="section level3 hasAnchor" number="18.1.1">
 <h3><span class="header-section-number">18.1.1</span> Complete themes<a href="theme.html#complete-themes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In ggplo2 there are preset themes ready to use:</p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="theme.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb344-2"><a href="theme.html#cb344-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
-<span id="cb344-3"><a href="theme.html#cb344-3" aria-hidden="true" tabindex="-1"></a>base <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(x, y)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
-<span id="cb344-4"><a href="theme.html#cb344-4" aria-hidden="true" tabindex="-1"></a>p1<span class="ot">&lt;-</span>base <span class="sc">+</span> <span class="fu">theme_grey</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;theme_grey()&quot;</span>)</span>
-<span id="cb344-5"><a href="theme.html#cb344-5" aria-hidden="true" tabindex="-1"></a>p2<span class="ot">&lt;-</span>base <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;theme_bw()&quot;</span>)</span>
-<span id="cb344-6"><a href="theme.html#cb344-6" aria-hidden="true" tabindex="-1"></a>p3<span class="ot">&lt;-</span>base <span class="sc">+</span> <span class="fu">theme_linedraw</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;theme_linedraw()&quot;</span>)</span>
-<span id="cb344-7"><a href="theme.html#cb344-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb344-8"><a href="theme.html#cb344-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb344-9"><a href="theme.html#cb344-9" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span>p2<span class="sc">+</span>p3</span></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="theme.html#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb343-2"><a href="theme.html#cb343-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb343-3"><a href="theme.html#cb343-3" aria-hidden="true" tabindex="-1"></a>base <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(x, y)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
+<span id="cb343-4"><a href="theme.html#cb343-4" aria-hidden="true" tabindex="-1"></a>p1<span class="ot">&lt;-</span>base <span class="sc">+</span> <span class="fu">theme_grey</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;theme_grey()&quot;</span>)</span>
+<span id="cb343-5"><a href="theme.html#cb343-5" aria-hidden="true" tabindex="-1"></a>p2<span class="ot">&lt;-</span>base <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;theme_bw()&quot;</span>)</span>
+<span id="cb343-6"><a href="theme.html#cb343-6" aria-hidden="true" tabindex="-1"></a>p3<span class="ot">&lt;-</span>base <span class="sc">+</span> <span class="fu">theme_linedraw</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;theme_linedraw()&quot;</span>)</span>
+<span id="cb343-7"><a href="theme.html#cb343-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb343-8"><a href="theme.html#cb343-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb343-9"><a href="theme.html#cb343-9" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span>p2<span class="sc">+</span>p3</span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/unnamed-chunk-63-2.png" width="672" /></p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="theme.html#cb345-1" aria-hidden="true" tabindex="-1"></a>p4<span class="ot">&lt;-</span>base <span class="sc">+</span> <span class="fu">theme_light</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;theme_light()&quot;</span>)</span>
-<span id="cb345-2"><a href="theme.html#cb345-2" aria-hidden="true" tabindex="-1"></a>p5<span class="ot">&lt;-</span> base <span class="sc">+</span> <span class="fu">theme_dark</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;theme_dark()&quot;</span>)</span>
-<span id="cb345-3"><a href="theme.html#cb345-3" aria-hidden="true" tabindex="-1"></a>p6<span class="ot">&lt;-</span>base <span class="sc">+</span> <span class="fu">theme_minimal</span>()  <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;theme_minimal()&quot;</span>)</span>
-<span id="cb345-4"><a href="theme.html#cb345-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb345-5"><a href="theme.html#cb345-5" aria-hidden="true" tabindex="-1"></a>p4<span class="sc">+</span>p5<span class="sc">+</span>p6</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="theme.html#cb344-1" aria-hidden="true" tabindex="-1"></a>p4<span class="ot">&lt;-</span>base <span class="sc">+</span> <span class="fu">theme_light</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;theme_light()&quot;</span>)</span>
+<span id="cb344-2"><a href="theme.html#cb344-2" aria-hidden="true" tabindex="-1"></a>p5<span class="ot">&lt;-</span> base <span class="sc">+</span> <span class="fu">theme_dark</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;theme_dark()&quot;</span>)</span>
+<span id="cb344-3"><a href="theme.html#cb344-3" aria-hidden="true" tabindex="-1"></a>p6<span class="ot">&lt;-</span>base <span class="sc">+</span> <span class="fu">theme_minimal</span>()  <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;theme_minimal()&quot;</span>)</span>
+<span id="cb344-4"><a href="theme.html#cb344-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb344-5"><a href="theme.html#cb344-5" aria-hidden="true" tabindex="-1"></a>p4<span class="sc">+</span>p5<span class="sc">+</span>p6</span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="theme.html#cb346-1" aria-hidden="true" tabindex="-1"></a>p7<span class="ot">&lt;-</span>base <span class="sc">+</span> <span class="fu">theme_classic</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;theme_classic()&quot;</span>)</span>
-<span id="cb346-2"><a href="theme.html#cb346-2" aria-hidden="true" tabindex="-1"></a>p8<span class="ot">&lt;-</span>base <span class="sc">+</span> <span class="fu">theme_void</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;theme_void()&quot;</span>)</span>
-<span id="cb346-3"><a href="theme.html#cb346-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb346-4"><a href="theme.html#cb346-4" aria-hidden="true" tabindex="-1"></a>p7<span class="sc">+</span>p8</span></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="theme.html#cb345-1" aria-hidden="true" tabindex="-1"></a>p7<span class="ot">&lt;-</span>base <span class="sc">+</span> <span class="fu">theme_classic</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;theme_classic()&quot;</span>)</span>
+<span id="cb345-2"><a href="theme.html#cb345-2" aria-hidden="true" tabindex="-1"></a>p8<span class="ot">&lt;-</span>base <span class="sc">+</span> <span class="fu">theme_void</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;theme_void()&quot;</span>)</span>
+<span id="cb345-3"><a href="theme.html#cb345-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb345-4"><a href="theme.html#cb345-4" aria-hidden="true" tabindex="-1"></a>p7<span class="sc">+</span>p8</span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
 <p>Or, you can use other packages such as {ggthemes} or other here: <a href="https://exts.ggplot2.tidyverse.org/gallery/">ggplot extension gallery</a></p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="theme.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb347-2"><a href="theme.html#cb347-2" aria-hidden="true" tabindex="-1"></a>p9<span class="ot">&lt;-</span>base <span class="sc">+</span> <span class="fu">theme_tufte</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;theme_tufte()&quot;</span>)</span>
-<span id="cb347-3"><a href="theme.html#cb347-3" aria-hidden="true" tabindex="-1"></a>p10<span class="ot">&lt;-</span>base <span class="sc">+</span> <span class="fu">theme_solarized</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;theme_solarized()&quot;</span>)</span>
-<span id="cb347-4"><a href="theme.html#cb347-4" aria-hidden="true" tabindex="-1"></a>p11<span class="ot">&lt;-</span>base <span class="sc">+</span> <span class="fu">theme_excel</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;theme_excel()&quot;</span>) </span>
-<span id="cb347-5"><a href="theme.html#cb347-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb347-6"><a href="theme.html#cb347-6" aria-hidden="true" tabindex="-1"></a>p9<span class="sc">+</span>p10<span class="sc">+</span>p11</span></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="theme.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb346-2"><a href="theme.html#cb346-2" aria-hidden="true" tabindex="-1"></a>p9<span class="ot">&lt;-</span>base <span class="sc">+</span> <span class="fu">theme_tufte</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;theme_tufte()&quot;</span>)</span>
+<span id="cb346-3"><a href="theme.html#cb346-3" aria-hidden="true" tabindex="-1"></a>p10<span class="ot">&lt;-</span>base <span class="sc">+</span> <span class="fu">theme_solarized</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;theme_solarized()&quot;</span>)</span>
+<span id="cb346-4"><a href="theme.html#cb346-4" aria-hidden="true" tabindex="-1"></a>p11<span class="ot">&lt;-</span>base <span class="sc">+</span> <span class="fu">theme_excel</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;theme_excel()&quot;</span>) </span>
+<span id="cb346-5"><a href="theme.html#cb346-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb346-6"><a href="theme.html#cb346-6" aria-hidden="true" tabindex="-1"></a>p9<span class="sc">+</span>p10<span class="sc">+</span>p11</span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
 <ul>
 <li>Modifying complete theme components with <code>theme()</code> function</li>
