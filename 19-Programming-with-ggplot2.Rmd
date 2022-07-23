@@ -221,11 +221,13 @@ rank_plot(data = df,
 
 ### Cohort 1
 
-`r knitr::include_url("https://www.youtube.com/embed/URL")`
+`r knitr::include_url("https://www.youtube.com/embed/jf-Qn4iFqHY")`
 
 <details>
   <summary> Meeting chat log </summary>
   
 ```
+00:41:31	Priyanka Gagneja:	There’s a lot of disturbance :(
+01:00:48	Priyanka Gagneja:	https://plotly.com/ggplot2/setting-graph-size/
 ```
 </details>

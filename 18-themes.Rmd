@@ -73,11 +73,6 @@ Look at `?theme()` funtion in your help pane of RStudio for more info.
 
 ### Cohort 1
 
-`r knitr::include_url("https://www.youtube.com/embed/URL")`
+`r knitr::include_url("https://www.youtube.com/embed/gKVGjht4N20")`
 
-<details>
-  <summary> Meeting chat log </summary>
-  
-```
-```
-</details>
+`r knitr::include_url("https://www.youtube.com/embed/ihl-15wL7zY")`

@@ -171,19 +171,6 @@ plot + facet_wrap(~disp_w, nrow = 1)
 
 ## Meeting Videos
 
-
-
-
-
-
-
 ### Cohort 1
 
-`r knitr::include_url("https://www.youtube.com/embed/URL")`
-
-<details>
-  <summary> Meeting chat log </summary>
-  
-```
-```
-</details>
+`r knitr::include_url("https://www.youtube.com/embed/gKVGjht4N20")`

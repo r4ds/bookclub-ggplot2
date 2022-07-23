@@ -248,11 +248,18 @@ The answer is back in chapter20 [ggplot2 internals](https://ggplot2-book.org/int
 
 ### Cohort 1
 
-`r knitr::include_url("https://www.youtube.com/embed/URL")`
+`r knitr::include_url("https://www.youtube.com/embed/mPAvK6EzbiQ")`
 
 <details>
   <summary> Meeting chat log </summary>
   
 ```
+00:10:52	June Choe:	I'm fine with anything!
+00:39:47	Federica Gazzelloni:	- [Extending ggplot2](https://ggplot2.tidyverse.org/articles/extending-ggplot2.html)
+- [A List of ggplot2 extensions](https://exts.ggplot2.tidyverse.org/)
+- [ggplot Extension Course](https://mq-software-carpentry.github.io/r-ggplot-extension/aio.html)
+- [Example](https://github.com/EvaMaeRey/mytidytuesday/blob/master/2022-01-03-easy-geom-recipes/easy_geom_recipes.Rmd)
+- [extending-your-ability-to-extend-ggplot2](https://www.rstudio.com/resources/rstudioconf-2020/extending-your-ability-to-extend-ggplot2/)
+- [ggtrace](https://yjunechoe.github.io/ggtrace-user2022/#/title-slide)
 ```
 </details>
