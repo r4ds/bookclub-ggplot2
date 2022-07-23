@@ -745,3 +745,33 @@ Person <- ggproto("Person", NULL,
 ### ggproto style guide
 
 Kind of dense - can read through on your own but most can be picked up as we read the rest of the book.
+
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/__yndiht_gw")`
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:58:20	Ryan S:	so sorry that I have to drop off in a second.  I'll look for the remaining few minutes on the video.
+00:58:28	Ryan S:	Thanks, June!
+```
+</details>
+
+`r knitr::include_url("https://www.youtube.com/embed/JFBROPy_BeU")`
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:49:23	June Choe:	https://yjunechoe.github.io/ggtrace-user2022
+00:54:24	June Choe:	https://github.com/EvaMaeRey/mytidytuesday/blob/master/2022-01-03-easy-geom-recipes/easy_geom_recipes.Rmd
+00:59:31	June Choe:	https://www.rstudio.com/resources/rstudioconf-2020/extending-your-ability-to-extend-ggplot2/
+```
+</details>
+
+`r knitr::include_url("https://www.youtube.com/embed/NhMI-GvppMo")`
