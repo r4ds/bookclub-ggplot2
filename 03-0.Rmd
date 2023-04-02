@@ -8,7 +8,7 @@
 - to display a **statistical summary** of the data.
 - to add **metadata** such as context, annotations or references to your plot.
 
-## Layers: Chapters
+## Layers: Chapters {-}
 
 **The section on layers is broken up into the following chapters:**
 

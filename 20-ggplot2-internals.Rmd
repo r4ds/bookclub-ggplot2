@@ -1,4 +1,4 @@
-# ggplot internals
+# Internals of ggplot2
 
 **Learning Objectives**
 
