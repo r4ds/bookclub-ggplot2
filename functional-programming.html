@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>19.3 Functional programming | ggplot2 Book Club</title>
   <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
   <meta property="og:title" content="19.3 Functional programming | ggplot2 Book Club" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="The R4DS Online Learning Community" />
 
 
-<meta name="date" content="2022-07-23" />
+<meta name="date" content="2023-04-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,7 +52,7 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <script src="libs/d3-3.3.8/d3.min.js"></script>
 <script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
 <link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
@@ -100,7 +100,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -113,7 +113,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -175,7 +175,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="layers.html"><a href="layers.html"><i class="fa fa-check"></i>Layers</a>
 <ul>
-<li class="chapter" data-level="2.12" data-path="layers-chapters.html"><a href="layers-chapters.html"><i class="fa fa-check"></i><b>2.12</b> Layers: Chapters</a></li>
+<li class="chapter" data-level="" data-path="layers-chapters.html"><a href="layers-chapters.html"><i class="fa fa-check"></i>Layers: Chapters</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="individual-geoms.html"><a href="individual-geoms.html"><i class="fa fa-check"></i><b>3</b> Individual Geoms</a>
 <ul>
@@ -508,7 +508,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.5.1" data-path="meeting-videos-18.html"><a href="meeting-videos-18.html#cohort-1-18"><i class="fa fa-check"></i><b>19.5.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="ggplot-internals.html"><a href="ggplot-internals.html"><i class="fa fa-check"></i><b>20</b> ggplot internals</a>
+<li class="chapter" data-level="20" data-path="internals-of-ggplot2.html"><a href="internals-of-ggplot2.html"><i class="fa fa-check"></i><b>20</b> Internals of ggplot2</a>
 <ul>
 <li class="chapter" data-level="20.1" data-path="the-plot-method.html"><a href="the-plot-method.html"><i class="fa fa-check"></i><b>20.1</b> The <code>plot()</code> method</a></li>
 <li class="chapter" data-level="20.2" data-path="the-build-step.html"><a href="the-build-step.html"><i class="fa fa-check"></i><b>20.2</b> The build step</a>
@@ -535,7 +535,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20.5.1" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html#cohort-1-19"><i class="fa fa-check"></i><b>20.5.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="writing-ggplot2-extensions.html"><a href="writing-ggplot2-extensions.html"><i class="fa fa-check"></i><b>21</b> Writing ggplot2 extensions</a>
+<li class="chapter" data-level="21" data-path="extending-ggplot2.html"><a href="extending-ggplot2.html"><i class="fa fa-check"></i><b>21</b> Extending ggplot2</a>
 <ul>
 <li class="chapter" data-level="21.1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>21.1</b> Overview</a></li>
 <li class="chapter" data-level="21.2" data-path="themes-1.html"><a href="themes-1.html"><i class="fa fa-check"></i><b>21.2</b> Themes</a></li>
@@ -555,7 +555,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.9.1" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html#cohort-1-20"><i class="fa fa-check"></i><b>21.9.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>22</b> PLACEHOLDER</a>
+<li class="chapter" data-level="22" data-path="a-case-study.html"><a href="a-case-study.html"><i class="fa fa-check"></i><b>22</b> A case study</a>
 <ul>
 <li class="chapter" data-level="22.1" data-path="slide-1-title-1.html"><a href="slide-1-title-1.html"><i class="fa fa-check"></i><b>22.1</b> {Slide 1 title}</a></li>
 <li class="chapter" data-level="22.2" data-path="meeting-videos-21.html"><a href="meeting-videos-21.html"><i class="fa fa-check"></i><b>22.2</b> Meeting Videos</a>
@@ -586,58 +586,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="functional-programming" class="section level2 hasAnchor" number="19.3">
 <h2><span class="header-section-number">19.3</span> Functional programming<a href="functional-programming.html#functional-programming" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>An example is to make a geom. For this we can have a look at the <strong>“Corporate Reputation”</strong> data from #TidyTuesday 2022 week22.</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="functional-programming.html#cb358-1" aria-hidden="true" tabindex="-1"></a>poll <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-31/poll.csv&#39;</span>)</span>
-<span id="cb358-2"><a href="functional-programming.html#cb358-2" aria-hidden="true" tabindex="-1"></a>reputation <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-31/reputation.csv&#39;</span>)</span>
-<span id="cb358-3"><a href="functional-programming.html#cb358-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb358-4"><a href="functional-programming.html#cb358-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb358-5"><a href="functional-programming.html#cb358-5" aria-hidden="true" tabindex="-1"></a>rep2<span class="ot">&lt;-</span>reputation<span class="sc">%&gt;%</span></span>
-<span id="cb358-6"><a href="functional-programming.html#cb358-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(company,industry)<span class="sc">%&gt;%</span></span>
-<span id="cb358-7"><a href="functional-programming.html#cb358-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(score,rank)<span class="sc">%&gt;%</span></span>
-<span id="cb358-8"><a href="functional-programming.html#cb358-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()<span class="sc">%&gt;%</span></span>
-<span id="cb358-9"><a href="functional-programming.html#cb358-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year=</span><span class="dv">2022</span>)</span>
-<span id="cb358-10"><a href="functional-programming.html#cb358-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb358-11"><a href="functional-programming.html#cb358-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb358-12"><a href="functional-programming.html#cb358-12" aria-hidden="true" tabindex="-1"></a>full <span class="ot">&lt;-</span> poll<span class="sc">%&gt;%</span></span>
-<span id="cb358-13"><a href="functional-programming.html#cb358-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(year))<span class="sc">%&gt;%</span></span>
-<span id="cb358-14"><a href="functional-programming.html#cb358-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(rep2,<span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;2022_rank&quot;</span><span class="ot">=</span><span class="st">&quot;rank&quot;</span>,<span class="st">&quot;2022_rq&quot;</span><span class="ot">=</span><span class="st">&quot;score&quot;</span>,<span class="st">&quot;company&quot;</span>,<span class="st">&quot;industry&quot;</span>,<span class="st">&quot;year&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb358-15"><a href="functional-programming.html#cb358-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(year,company,industry,<span class="st">&quot;rank&quot;</span><span class="ot">=</span><span class="st">`</span><span class="at">2022_rank</span><span class="st">`</span>,<span class="st">&quot;score&quot;</span><span class="ot">=</span><span class="st">`</span><span class="at">2022_rq</span><span class="st">`</span>,<span class="at">sort=</span>T) <span class="sc">%&gt;%</span></span>
-<span id="cb358-16"><a href="functional-programming.html#cb358-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>year)</span>
-<span id="cb358-17"><a href="functional-programming.html#cb358-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb358-18"><a href="functional-programming.html#cb358-18" aria-hidden="true" tabindex="-1"></a><span class="do">##################</span></span>
-<span id="cb358-19"><a href="functional-programming.html#cb358-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb358-20"><a href="functional-programming.html#cb358-20" aria-hidden="true" tabindex="-1"></a><span class="co"># mapping = aes(x = fct_reorder(x,-y), y = y, fill = y, color = y, label = y)</span></span>
-<span id="cb358-21"><a href="functional-programming.html#cb358-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb358-22"><a href="functional-programming.html#cb358-22" aria-hidden="true" tabindex="-1"></a>rank_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(data,mapping) {</span>
-<span id="cb358-23"><a href="functional-programming.html#cb358-23" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span></span>
-<span id="cb358-24"><a href="functional-programming.html#cb358-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(mapping)<span class="sc">+</span>                   <span class="co"># aes(x=fct_reorder(x,-y),y=y)</span></span>
-<span id="cb358-25"><a href="functional-programming.html#cb358-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">width =</span><span class="fl">0.3</span>,               <span class="co"># aes(fill=rank)</span></span>
-<span id="cb358-26"><a href="functional-programming.html#cb358-26" aria-hidden="true" tabindex="-1"></a>             <span class="at">show.legend =</span> F)<span class="sc">+</span></span>
-<span id="cb358-27"><a href="functional-programming.html#cb358-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">hjust=</span><span class="dv">0</span>,<span class="at">fontface=</span><span class="st">&quot;bold&quot;</span>, <span class="co"># aes(label=rank,color=rank),</span></span>
-<span id="cb358-28"><a href="functional-programming.html#cb358-28" aria-hidden="true" tabindex="-1"></a>              <span class="at">show.legend =</span> F)<span class="sc">+</span></span>
-<span id="cb358-29"><a href="functional-programming.html#cb358-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_discrete</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, .<span class="dv">5</span>, <span class="dv">0</span>))<span class="sc">+</span></span>
-<span id="cb358-30"><a href="functional-programming.html#cb358-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
-<span id="cb358-31"><a href="functional-programming.html#cb358-31" aria-hidden="true" tabindex="-1"></a>    ggthemes<span class="sc">::</span><span class="fu">scale_fill_continuous_tableau</span>(<span class="at">palette =</span> <span class="st">&quot;Green-Gold&quot;</span>)<span class="sc">+</span></span>
-<span id="cb358-32"><a href="functional-programming.html#cb358-32" aria-hidden="true" tabindex="-1"></a>    ggthemes<span class="sc">::</span><span class="fu">scale_color_continuous_tableau</span>(<span class="at">palette =</span> <span class="st">&quot;Green-Gold&quot;</span>)<span class="sc">+</span></span>
-<span id="cb358-33"><a href="functional-programming.html#cb358-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;&quot;</span>,</span>
-<span id="cb358-34"><a href="functional-programming.html#cb358-34" aria-hidden="true" tabindex="-1"></a>         <span class="at">x=</span><span class="st">&quot;&quot;</span>,<span class="at">y=</span><span class="st">&quot;&quot;</span>)<span class="sc">+</span></span>
-<span id="cb358-35"><a href="functional-programming.html#cb358-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb358-36"><a href="functional-programming.html#cb358-36" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb358-37"><a href="functional-programming.html#cb358-37" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb358-38"><a href="functional-programming.html#cb358-38" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.ticks.y =</span> <span class="fu">element_line</span>(<span class="at">size=</span><span class="dv">2</span>),</span>
-<span id="cb358-39"><a href="functional-programming.html#cb358-39" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb358-40"><a href="functional-programming.html#cb358-40" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.grid.minor.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb358-41"><a href="functional-programming.html#cb358-41" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.grid.major.y =</span> <span class="fu">element_line</span>(<span class="at">size=</span><span class="dv">2</span>),</span>
-<span id="cb358-42"><a href="functional-programming.html#cb358-42" aria-hidden="true" tabindex="-1"></a>          <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">color=</span><span class="st">&quot;grey95&quot;</span>,<span class="at">fill=</span><span class="st">&quot;grey95&quot;</span>),</span>
-<span id="cb358-43"><a href="functional-programming.html#cb358-43" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">color=</span><span class="st">&quot;grey92&quot;</span>,<span class="at">fill=</span><span class="st">&quot;grey92&quot;</span>))</span>
-<span id="cb358-44"><a href="functional-programming.html#cb358-44" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb358-45"><a href="functional-programming.html#cb358-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb358-46"><a href="functional-programming.html#cb358-46" aria-hidden="true" tabindex="-1"></a>df<span class="ot">&lt;-</span>full<span class="sc">%&gt;%</span></span>
-<span id="cb358-47"><a href="functional-programming.html#cb358-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2017</span>,</span>
-<span id="cb358-48"><a href="functional-programming.html#cb358-48" aria-hidden="true" tabindex="-1"></a>         industry<span class="sc">==</span><span class="st">&quot;Retail&quot;</span>)</span>
-<span id="cb358-49"><a href="functional-programming.html#cb358-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb358-50"><a href="functional-programming.html#cb358-50" aria-hidden="true" tabindex="-1"></a><span class="fu">rank_plot</span>(<span class="at">data =</span> df, </span>
-<span id="cb358-51"><a href="functional-programming.html#cb358-51" aria-hidden="true" tabindex="-1"></a>          <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">fct_reorder</span>(company,<span class="sc">-</span>rank),<span class="at">y=</span>rank,</span>
-<span id="cb358-52"><a href="functional-programming.html#cb358-52" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">fill =</span> rank, <span class="at">color =</span> rank, <span class="at">label =</span> rank))</span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="functional-programming.html#cb359-1" aria-hidden="true" tabindex="-1"></a>poll <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-31/poll.csv&#39;</span>)</span>
+<span id="cb359-2"><a href="functional-programming.html#cb359-2" aria-hidden="true" tabindex="-1"></a>reputation <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-31/reputation.csv&#39;</span>)</span>
+<span id="cb359-3"><a href="functional-programming.html#cb359-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-4"><a href="functional-programming.html#cb359-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-5"><a href="functional-programming.html#cb359-5" aria-hidden="true" tabindex="-1"></a>rep2<span class="ot">&lt;-</span>reputation<span class="sc">%&gt;%</span></span>
+<span id="cb359-6"><a href="functional-programming.html#cb359-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(company,industry)<span class="sc">%&gt;%</span></span>
+<span id="cb359-7"><a href="functional-programming.html#cb359-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(score,rank)<span class="sc">%&gt;%</span></span>
+<span id="cb359-8"><a href="functional-programming.html#cb359-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()<span class="sc">%&gt;%</span></span>
+<span id="cb359-9"><a href="functional-programming.html#cb359-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year=</span><span class="dv">2022</span>)</span>
+<span id="cb359-10"><a href="functional-programming.html#cb359-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-11"><a href="functional-programming.html#cb359-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-12"><a href="functional-programming.html#cb359-12" aria-hidden="true" tabindex="-1"></a>full <span class="ot">&lt;-</span> poll<span class="sc">%&gt;%</span></span>
+<span id="cb359-13"><a href="functional-programming.html#cb359-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(year))<span class="sc">%&gt;%</span></span>
+<span id="cb359-14"><a href="functional-programming.html#cb359-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(rep2,<span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;2022_rank&quot;</span><span class="ot">=</span><span class="st">&quot;rank&quot;</span>,<span class="st">&quot;2022_rq&quot;</span><span class="ot">=</span><span class="st">&quot;score&quot;</span>,<span class="st">&quot;company&quot;</span>,<span class="st">&quot;industry&quot;</span>,<span class="st">&quot;year&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb359-15"><a href="functional-programming.html#cb359-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(year,company,industry,<span class="st">&quot;rank&quot;</span><span class="ot">=</span><span class="st">`</span><span class="at">2022_rank</span><span class="st">`</span>,<span class="st">&quot;score&quot;</span><span class="ot">=</span><span class="st">`</span><span class="at">2022_rq</span><span class="st">`</span>,<span class="at">sort=</span>T) <span class="sc">%&gt;%</span></span>
+<span id="cb359-16"><a href="functional-programming.html#cb359-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>year)</span>
+<span id="cb359-17"><a href="functional-programming.html#cb359-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-18"><a href="functional-programming.html#cb359-18" aria-hidden="true" tabindex="-1"></a><span class="do">##################</span></span>
+<span id="cb359-19"><a href="functional-programming.html#cb359-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-20"><a href="functional-programming.html#cb359-20" aria-hidden="true" tabindex="-1"></a><span class="co"># mapping = aes(x = fct_reorder(x,-y), y = y, fill = y, color = y, label = y)</span></span>
+<span id="cb359-21"><a href="functional-programming.html#cb359-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-22"><a href="functional-programming.html#cb359-22" aria-hidden="true" tabindex="-1"></a>rank_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(data,mapping) {</span>
+<span id="cb359-23"><a href="functional-programming.html#cb359-23" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span></span>
+<span id="cb359-24"><a href="functional-programming.html#cb359-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(mapping)<span class="sc">+</span>                   <span class="co"># aes(x=fct_reorder(x,-y),y=y)</span></span>
+<span id="cb359-25"><a href="functional-programming.html#cb359-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">width =</span><span class="fl">0.3</span>,               <span class="co"># aes(fill=rank)</span></span>
+<span id="cb359-26"><a href="functional-programming.html#cb359-26" aria-hidden="true" tabindex="-1"></a>             <span class="at">show.legend =</span> F)<span class="sc">+</span></span>
+<span id="cb359-27"><a href="functional-programming.html#cb359-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">hjust=</span><span class="dv">0</span>,<span class="at">fontface=</span><span class="st">&quot;bold&quot;</span>, <span class="co"># aes(label=rank,color=rank),</span></span>
+<span id="cb359-28"><a href="functional-programming.html#cb359-28" aria-hidden="true" tabindex="-1"></a>              <span class="at">show.legend =</span> F)<span class="sc">+</span></span>
+<span id="cb359-29"><a href="functional-programming.html#cb359-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_discrete</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, .<span class="dv">5</span>, <span class="dv">0</span>))<span class="sc">+</span></span>
+<span id="cb359-30"><a href="functional-programming.html#cb359-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
+<span id="cb359-31"><a href="functional-programming.html#cb359-31" aria-hidden="true" tabindex="-1"></a>    ggthemes<span class="sc">::</span><span class="fu">scale_fill_continuous_tableau</span>(<span class="at">palette =</span> <span class="st">&quot;Green-Gold&quot;</span>)<span class="sc">+</span></span>
+<span id="cb359-32"><a href="functional-programming.html#cb359-32" aria-hidden="true" tabindex="-1"></a>    ggthemes<span class="sc">::</span><span class="fu">scale_color_continuous_tableau</span>(<span class="at">palette =</span> <span class="st">&quot;Green-Gold&quot;</span>)<span class="sc">+</span></span>
+<span id="cb359-33"><a href="functional-programming.html#cb359-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;&quot;</span>,</span>
+<span id="cb359-34"><a href="functional-programming.html#cb359-34" aria-hidden="true" tabindex="-1"></a>         <span class="at">x=</span><span class="st">&quot;&quot;</span>,<span class="at">y=</span><span class="st">&quot;&quot;</span>)<span class="sc">+</span></span>
+<span id="cb359-35"><a href="functional-programming.html#cb359-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb359-36"><a href="functional-programming.html#cb359-36" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb359-37"><a href="functional-programming.html#cb359-37" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb359-38"><a href="functional-programming.html#cb359-38" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.ticks.y =</span> <span class="fu">element_line</span>(<span class="at">size=</span><span class="dv">2</span>),</span>
+<span id="cb359-39"><a href="functional-programming.html#cb359-39" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb359-40"><a href="functional-programming.html#cb359-40" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.grid.minor.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb359-41"><a href="functional-programming.html#cb359-41" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.grid.major.y =</span> <span class="fu">element_line</span>(<span class="at">size=</span><span class="dv">2</span>),</span>
+<span id="cb359-42"><a href="functional-programming.html#cb359-42" aria-hidden="true" tabindex="-1"></a>          <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">color=</span><span class="st">&quot;grey95&quot;</span>,<span class="at">fill=</span><span class="st">&quot;grey95&quot;</span>),</span>
+<span id="cb359-43"><a href="functional-programming.html#cb359-43" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">color=</span><span class="st">&quot;grey92&quot;</span>,<span class="at">fill=</span><span class="st">&quot;grey92&quot;</span>))</span>
+<span id="cb359-44"><a href="functional-programming.html#cb359-44" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb359-45"><a href="functional-programming.html#cb359-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-46"><a href="functional-programming.html#cb359-46" aria-hidden="true" tabindex="-1"></a>df<span class="ot">&lt;-</span>full<span class="sc">%&gt;%</span></span>
+<span id="cb359-47"><a href="functional-programming.html#cb359-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2017</span>,</span>
+<span id="cb359-48"><a href="functional-programming.html#cb359-48" aria-hidden="true" tabindex="-1"></a>         industry<span class="sc">==</span><span class="st">&quot;Retail&quot;</span>)</span>
+<span id="cb359-49"><a href="functional-programming.html#cb359-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-50"><a href="functional-programming.html#cb359-50" aria-hidden="true" tabindex="-1"></a><span class="fu">rank_plot</span>(<span class="at">data =</span> df, </span>
+<span id="cb359-51"><a href="functional-programming.html#cb359-51" aria-hidden="true" tabindex="-1"></a>          <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">fct_reorder</span>(company,<span class="sc">-</span>rank),<span class="at">y=</span>rank,</span>
+<span id="cb359-52"><a href="functional-programming.html#cb359-52" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">fill =</span> rank, <span class="at">color =</span> rank, <span class="at">label =</span> rank))</span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
 </div>
             </section>

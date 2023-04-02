@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.4 From the ggplot2 book | ggplot2 Book Club</title>
   <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.4 From the ggplot2 book | ggplot2 Book Club" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="The R4DS Online Learning Community" />
 
 
-<meta name="date" content="2022-07-23" />
+<meta name="date" content="2023-04-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,7 +52,7 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <script src="libs/d3-3.3.8/d3.min.js"></script>
 <script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
 <link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
@@ -100,7 +100,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -113,7 +113,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -175,7 +175,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="layers.html"><a href="layers.html"><i class="fa fa-check"></i>Layers</a>
 <ul>
-<li class="chapter" data-level="2.12" data-path="layers-chapters.html"><a href="layers-chapters.html"><i class="fa fa-check"></i><b>2.12</b> Layers: Chapters</a></li>
+<li class="chapter" data-level="" data-path="layers-chapters.html"><a href="layers-chapters.html"><i class="fa fa-check"></i>Layers: Chapters</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="individual-geoms.html"><a href="individual-geoms.html"><i class="fa fa-check"></i><b>3</b> Individual Geoms</a>
 <ul>
@@ -508,7 +508,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.5.1" data-path="meeting-videos-18.html"><a href="meeting-videos-18.html#cohort-1-18"><i class="fa fa-check"></i><b>19.5.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="ggplot-internals.html"><a href="ggplot-internals.html"><i class="fa fa-check"></i><b>20</b> ggplot internals</a>
+<li class="chapter" data-level="20" data-path="internals-of-ggplot2.html"><a href="internals-of-ggplot2.html"><i class="fa fa-check"></i><b>20</b> Internals of ggplot2</a>
 <ul>
 <li class="chapter" data-level="20.1" data-path="the-plot-method.html"><a href="the-plot-method.html"><i class="fa fa-check"></i><b>20.1</b> The <code>plot()</code> method</a></li>
 <li class="chapter" data-level="20.2" data-path="the-build-step.html"><a href="the-build-step.html"><i class="fa fa-check"></i><b>20.2</b> The build step</a>
@@ -535,7 +535,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20.5.1" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html#cohort-1-19"><i class="fa fa-check"></i><b>20.5.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="writing-ggplot2-extensions.html"><a href="writing-ggplot2-extensions.html"><i class="fa fa-check"></i><b>21</b> Writing ggplot2 extensions</a>
+<li class="chapter" data-level="21" data-path="extending-ggplot2.html"><a href="extending-ggplot2.html"><i class="fa fa-check"></i><b>21</b> Extending ggplot2</a>
 <ul>
 <li class="chapter" data-level="21.1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>21.1</b> Overview</a></li>
 <li class="chapter" data-level="21.2" data-path="themes-1.html"><a href="themes-1.html"><i class="fa fa-check"></i><b>21.2</b> Themes</a></li>
@@ -555,7 +555,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.9.1" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html#cohort-1-20"><i class="fa fa-check"></i><b>21.9.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>22</b> PLACEHOLDER</a>
+<li class="chapter" data-level="22" data-path="a-case-study.html"><a href="a-case-study.html"><i class="fa fa-check"></i><b>22</b> A case study</a>
 <ul>
 <li class="chapter" data-level="22.1" data-path="slide-1-title-1.html"><a href="slide-1-title-1.html"><i class="fa fa-check"></i><b>22.1</b> {Slide 1 title}</a></li>
 <li class="chapter" data-level="22.2" data-path="meeting-videos-21.html"><a href="meeting-videos-21.html"><i class="fa fa-check"></i><b>22.2</b> Meeting Videos</a>
@@ -646,7 +646,7 @@ What’s the grouping variable for Oxboys?
 <span id="cb69-2"><a href="from-the-ggplot2-book.html#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
 <span id="cb69-3"><a href="from-the-ggplot2-book.html#cb69-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb69-4"><a href="from-the-ggplot2-book.html#cb69-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="bookclub-ggplot2_01_files/figure-html/04-group-at-ggplot-layer-1.png" width="672" /></p>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="from-the-ggplot2-book.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
 <ul>
@@ -660,7 +660,7 @@ What’s the grouping variable for Oxboys?
 <span id="cb72-2"><a href="from-the-ggplot2-book.html#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> Subject)) <span class="sc">+</span> </span>
 <span id="cb72-3"><a href="from-the-ggplot2-book.html#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb72-4"><a href="from-the-ggplot2-book.html#cb72-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="bookclub-ggplot2_01_files/figure-html/04-group-at-line-layer-1.png" width="672" /></p>
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="from-the-ggplot2-book.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
 </div>
@@ -685,36 +685,43 @@ What’s the grouping variable for Oxboys?
 <span id="cb77-2"><a href="from-the-ggplot2-book.html#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
 <span id="cb77-3"><a href="from-the-ggplot2-book.html#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="fu">stat_boxplot</span>(<span class="at">fill =</span> <span class="cn">NA</span>, <span class="fu">aes</span>(<span class="at">group =</span> drv)) <span class="sc">+</span></span>
 <span id="cb77-4"><a href="from-the-ggplot2-book.html#cb77-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;we override the default or earlier grouping by adding</span><span class="sc">\n</span><span class="st">a group -- inside the aes -- on the layer where we want it&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: colour
+## ℹ This can happen when ggplot fails to infer the correct grouping structure in
+##   the data.
+## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
+##   variable into a factor?</code></pre>
 <p><img src="bookclub-ggplot2_01_files/figure-html/04-overriding-3.png" width="672" /></p>
 </div>
 <div id="a-couple-of-exercises" class="section level3 hasAnchor" number="4.4.4">
 <h3><span class="header-section-number">4.4.4</span> A couple of exercises<a href="from-the-ggplot2-book.html#a-couple-of-exercises" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="from-the-ggplot2-book.html#cb78-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="from-the-ggplot2-book.html#cb79-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 11
 ##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
 ##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
 ## 1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compa…
 ## 2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa…</code></pre>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="from-the-ggplot2-book.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Draw a boxplot of hwy for each value of cyl, without turning cyl into a factor. What extra aesthetic do you need to set?</span></span>
-<span id="cb80-2"><a href="from-the-ggplot2-book.html#cb80-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-3"><a href="from-the-ggplot2-book.html#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Wrong... but cyl is an integer data type -- are integers considered continuous?</span></span>
-<span id="cb80-4"><a href="from-the-ggplot2-book.html#cb80-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cyl, hwy)) <span class="sc">+</span></span>
-<span id="cb80-5"><a href="from-the-ggplot2-book.html#cb80-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
-<pre><code>## Warning: Continuous x aesthetic -- did you forget aes(group=...)?</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="from-the-ggplot2-book.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Draw a boxplot of hwy for each value of cyl, without turning cyl into a factor. What extra aesthetic do you need to set?</span></span>
+<span id="cb81-2"><a href="from-the-ggplot2-book.html#cb81-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-3"><a href="from-the-ggplot2-book.html#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Wrong... but cyl is an integer data type -- are integers considered continuous?</span></span>
+<span id="cb81-4"><a href="from-the-ggplot2-book.html#cb81-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cyl, hwy)) <span class="sc">+</span></span>
+<span id="cb81-5"><a href="from-the-ggplot2-book.html#cb81-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<pre><code>## Warning: Continuous x aesthetic
+## ℹ did you forget `aes(group = ...)`?</code></pre>
 <p><img src="bookclub-ggplot2_01_files/figure-html/04-exercises-1-1.png" width="672" /></p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="from-the-ggplot2-book.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Right</span></span>
-<span id="cb82-2"><a href="from-the-ggplot2-book.html#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cyl, hwy, <span class="at">group =</span> <span class="fu">as.factor</span>(cyl))) <span class="sc">+</span></span>
-<span id="cb82-3"><a href="from-the-ggplot2-book.html#cb82-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="from-the-ggplot2-book.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Right</span></span>
+<span id="cb83-2"><a href="from-the-ggplot2-book.html#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cyl, hwy, <span class="at">group =</span> <span class="fu">as.factor</span>(cyl))) <span class="sc">+</span></span>
+<span id="cb83-3"><a href="from-the-ggplot2-book.html#cb83-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/04-exercises-1-2.png" width="672" /></p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="from-the-ggplot2-book.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Modify the following plot so that you get one boxplot per integer value of displ.</span></span>
-<span id="cb83-2"><a href="from-the-ggplot2-book.html#cb83-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-3"><a href="from-the-ggplot2-book.html#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, cty)) <span class="sc">+</span> </span>
-<span id="cb83-4"><a href="from-the-ggplot2-book.html#cb83-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
-<pre><code>## Warning: Continuous x aesthetic -- did you forget aes(group=...)?</code></pre>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="from-the-ggplot2-book.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Modify the following plot so that you get one boxplot per integer value of displ.</span></span>
+<span id="cb84-2"><a href="from-the-ggplot2-book.html#cb84-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-3"><a href="from-the-ggplot2-book.html#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, cty)) <span class="sc">+</span> </span>
+<span id="cb84-4"><a href="from-the-ggplot2-book.html#cb84-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<pre><code>## Warning: Continuous x aesthetic
+## ℹ did you forget `aes(group = ...)`?</code></pre>
 <p><img src="bookclub-ggplot2_01_files/figure-html/04-exercises-2-1.png" width="672" /></p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="from-the-ggplot2-book.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># probably better ways to do this, especially ways to make the boxplot line up with the x-axis</span></span>
-<span id="cb85-2"><a href="from-the-ggplot2-book.html#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">ceiling</span>(displ), cty, <span class="at">group =</span> <span class="fu">ceiling</span>(displ))) <span class="sc">+</span> </span>
-<span id="cb85-3"><a href="from-the-ggplot2-book.html#cb85-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="from-the-ggplot2-book.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># probably better ways to do this, especially ways to make the boxplot line up with the x-axis</span></span>
+<span id="cb86-2"><a href="from-the-ggplot2-book.html#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">ceiling</span>(displ), cty, <span class="at">group =</span> <span class="fu">ceiling</span>(displ))) <span class="sc">+</span> </span>
+<span id="cb86-3"><a href="from-the-ggplot2-book.html#cb86-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/04-exercises-2-2.png" width="672" /></p>
 </div>
 <div id="matching-aesthetics-to-graphic-objects" class="section level3 hasAnchor" number="4.4.5">

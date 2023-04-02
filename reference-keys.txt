@@ -16,7 +16,6 @@ modifying-the-axes
 output
 meeting-videos-1
 cohort-1-1
-layers-chapters
 individual-geoms
 scatterplot
 line-plot
@@ -233,7 +232,7 @@ functional-programming
 references
 meeting-videos-18
 cohort-1-18
-ggplot-internals
+internals-of-ggplot2
 introduction-the-existence-of-internals
 case-1-order
 case-2-modularity
@@ -259,7 +258,7 @@ ggproto-syntax
 ggproto-style-guide
 meeting-videos-19
 cohort-1-19
-writing-ggplot2-extensions
+extending-ggplot2
 overview
 themes-1
 stats-1
@@ -273,7 +272,7 @@ guides
 references-1
 meeting-videos-20
 cohort-1-20
-placeholder
+a-case-study
 slide-1-title-1
 meeting-videos-21
 cohort-1-21
