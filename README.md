@@ -10,7 +10,8 @@ As we read, we are producing [notes about the book](https://r4ds.github.io/bookc
 
 If you would like to present, please see the sign-up sheet for your cohort (linked below, and pinned in the [#book_club-ggplot2](https://rfordatascience.slack.com/archives/C025VADE84A) channel on Slack)!
 
-- [Cohort 1](https://docs.google.com/spreadsheets/d/1xpdIUn9Ow7NvUlBiJjn6NNJ7R1ZYiWXR5TeYPtxcoDM/edit?usp=sharing) (started 2021-08-30): [Mondays, 11:00am CST/CDT](https://www.timeanddate.com/worldclock/converter.html?iso=20220606T160000&p1=24&p2=tz_et) | [meeting videos](https://www.youtube.com/playlist?list=PL3x6DOfs2NGhUxGvu46tXQtBl0qyTcDet)
+- Cohort 1 (started 2021-08-30, ended 2022-07-18): [meeting videos](https://www.youtube.com/playlist?list=PL3x6DOfs2NGhUxGvu46tXQtBl0qyTcDet)
+- [Cohort 2](https://docs.google.com/spreadsheets/d/1Wt3F_xh45__Zp1Q4v_BJ9jH64el2MHji7sx1tVzCrCU/edit?usp=sharing) (started 2023-04-06): [Thursdays, 08:00pm CST/CDT](https://www.timeanddate.com/worldclock/converter.html?iso=20230407T010000&p1=24&p2=179&p3=tz_ist&p4=1440) | [meeting videos](https://youtube.com/playlist?list=PL3x6DOfs2NGhw3rkmaGipc21j0a7sCPNy)
 
 ## How to Present
 

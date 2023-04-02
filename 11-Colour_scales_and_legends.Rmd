@@ -88,7 +88,7 @@ A particularly useful package is paletteer which aims to provide a common interf
 ```{r particular pallettes 04}
 erupt + paletteer::scale_fill_paletteer_c("viridis::plasma")
 erupt + paletteer::scale_fill_paletteer_c("scico::tokyo")
-erupt + paletteer::scale_fill_paletteer_c("gameofthrones::targaryen")
+# erupt + paletteer::scale_fill_paletteer_c("gameofthrones::targaryen")
 ```
 
 

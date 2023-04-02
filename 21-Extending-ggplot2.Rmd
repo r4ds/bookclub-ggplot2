@@ -1,4 +1,4 @@
-# Writing ggplot2 extensions
+# Extending ggplot2
 
 **Learning objectives:**
 

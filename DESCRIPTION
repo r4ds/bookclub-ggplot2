@@ -15,7 +15,6 @@ Imports:
     DiagrammeR,
     directlabels,
     emo,
-    gameofthrones,
     ggh4x,
     gghighlight,
     ggnewscale,
