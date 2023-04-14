@@ -42,7 +42,8 @@ Imports:
     showtext,
     SpatialEpi,
     tidyverse,
-    tidygraph
+    tidygraph,
+    png
 Remotes: 
     hadley/emo,
     drsimonj/ourworldindata,
