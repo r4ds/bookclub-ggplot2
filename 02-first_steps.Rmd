@@ -25,6 +25,32 @@ library(tidyverse)
 
 ---
 
+## Introduction
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+library(png)
+library(grid)
+library(gridExtra)
+img1 <- rasterGrob(as.raster(readPNG("images/grammar-of-graphics.png")),interpolate = FALSE)
+
+img2 <- rasterGrob(as.raster(readPNG("images/ggplot2_logo.png")),interpolate = FALSE)
+
+
+grid.arrange(img1,img2,ncol=2)
+```
+
+Leland Wilkinson (Grammar of Graphics, 1999) formalized two main principles in his plotting framework:
+
+- Graphics = distinct layers of grammatical elements
+
+- Meaningful plots through aesthetic mappings
+
+
+- The essential grammatical elements to create any visualization with {ggplot2} are:
+
+![](images/ge_all.png)
+
+
 ## Main data set
 
 For this chapter, we'll mainly use the `mpg` dataset that comes with `ggplot`.
@@ -38,7 +64,6 @@ mpg
 - `drv` is front wheel (f), rear wheel (r) or four wheel (4)
 - `model` is the model of the car
 - `class` is two-seater, SUV, compact, etc.
-
 
 ---
 
@@ -54,45 +79,13 @@ It's allowable to omit the `x =` and `y =` arguments of `aes`.  In other words, 
 
 ---
 
-## A few exercises
-
-- What does the below plot show?  Is it useful?  How could it improve?
-
-```{r 02-a-few-exercises}
-ggplot(mpg, aes(model, manufacturer)) + 
-  geom_point() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
-```
-- Practice coding the following plots.  Anticipate what the output will look like.  Become familiar with the common components of the plots.
-```{r 02-scatterplot-with-mpg}
-ggplot(mpg, aes(cty, hwy)) + 
-  geom_point()
-```
-
-```{r 02-scatterplot-with-diamonds}
-ggplot(diamonds, aes(carat, price)) + 
-  geom_point()
-```
-
-```{r 02-scatterplot-with-economics}
-ggplot(economics, aes(date, unemploy)) + 
-  geom_line()
-```
-
-```{r 02-histogram-with-mpg, message=FALSE}
-ggplot(mpg, aes(cty)) + 
-  geom_histogram()
-```
-
-
----
-
 ## Other aesthetic attributes
 
 - color, shape and size can be mapped to variables in the data
 
 
 The `class` variable of the `mpg` dataset has seven unique values.  The plot can assign a specific color to each value by mapping `class` to color _within_ the aesthetic function.
+
 ```{r 02-distinct-class, echo= FALSE}
 mpg %>% distinct(class)
 ```
@@ -104,8 +97,6 @@ ggplot(mpg, aes(displ, hwy, color = class)) +
 ```
 
 
-
-
 Including a color assignment _outside_ the aesthetic of the _geometry_ layer will make all of the points that color.
 
 ```{r 02-color-outside-aes}
@@ -113,17 +104,12 @@ ggplot(mpg, aes(displ, hwy)) +
   geom_point(color = "blue")
 ```
 
-
-
-
 Mapping a variable to `shape` and `color` adds some diversity and information to the plot.
 
 ```{r 02-mapping-shape-and-color}
 ggplot(mpg, aes(displ, hwy, shape = drv, color = drv)) + 
   geom_point()
 ```
-
-
 
 
 Mapping a variable to `size` can also add some new insights.
@@ -146,20 +132,8 @@ ggplot(mpg, aes(displ, hwy)) +
   facet_wrap(~class)
 ```
 
-Exercise: Use faceting to explore the three-way relationship between fuel economy, engine size and number of cylinders.  How does faceting by number of cylinders change your assessment of the relationship between engine size and fuel economy?
+- Exercise: Use faceting to explore the three-way relationship between fuel economy, engine size and number of cylinders.  How does faceting by number of cylinders change your assessment of the relationship between engine size and fuel economy?
 
-**NOT FACETED BY `cyl`**
-```{r 02-not-faceted}
-ggplot(mpg, aes(displ, hwy)) +
-  geom_point()
-```
-
-**FACETED BY `cyl`**
-```{r 02-faceted}
-ggplot(mpg, aes(displ, hwy)) +
-  geom_point() +
-  facet_wrap(~cyl)
-```
 
 ## Geoms
 
@@ -186,7 +160,7 @@ ggplot(mpg, aes(drv, hwy)) +
   geom_boxplot()
 ```
 
-  - consider boxplot variants like `geom_jitter` and `geom_violin`
+- consider boxplot variants like `geom_jitter` and `geom_violin`
 ```{r 02-geom-jitter-and-geom-violing-examples}
 ggplot(mpg, aes(drv, hwy)) +
   geom_jitter()
@@ -196,7 +170,8 @@ ggplot(mpg, aes(drv, hwy)) +
 ```
 
 - `geom_histogram` which generates a histogram and `geom_freqpoly` which generates a frequency polygon
-  - check `help` to see `geom_histogram`'s arguments like `position` and `binwidth`.
+
+- check `help` to see `geom_histogram`'s arguments like `position` and `binwidth`.
   
 ```{r 02-geom-histogram-and-geom-freqpoly-example}
 ggplot(mpg, aes(hwy)) +
@@ -207,20 +182,16 @@ ggplot(mpg, aes(hwy)) +
 ```
   
 - `geom_bar` which generates a bar chart
-  - check `help` to see `geom_bar`'s arguments like `position` and `width`
+
+- check `help` to see `geom_bar`'s arguments like `position` and `width`
 
 ```{r 02-geom-bar-example}
-ggplot(mpg, aes(manufacturer)) +
+ggplot(diamonds, aes(cut)) +
   geom_bar()
 ```
 
-We'll take a second here to talk about the `stat` argument.  Note that in the first bar chart, the y-axis shows the number of observations labeled as `count`.
+![](images/visualization-stat-bar.png)
 
-```{r 02-stat-intro}
-mpg %>% group_by(manufacturer) %>% count()
-```
-
-What if you wanted to sum a certain value for each manufacturer, then you have to tell ggplot "don't just return the number of observations, add up the values in this certain column".  You do this using the `stat` argument and by specifying a new variable for the y-axis.  For instance, we might be interested in knowing the total price of all vehicles in the data set for each manufacturer.  It may be interesting to see if four Land Rovers are more expensive than 14 Hyundais.  (No disrepect to Hyundai drivers...  I am one myself!)  Unfortunately, price isn't a variable in this dataset so, let's use `displ` instead.  The sum of `displ` isn't particularly meaningful in real life, but it illustrates the use of the `stat` argument.
 
 This graph below uses `displ` for `y` in the aesthetic and uses the `stat` of `identity` so that it sums the total displacement for each manufacturer.
 ```{r 02-stat-identity}
@@ -246,7 +217,7 @@ ggplot(economics, aes(date, uempmed)) +
   geom_line()
 ```
   
-  To investigate these plots further, we can draw them on the same plot.
+- To investigate these plots further, we can draw them on the same plot.
   
 ```{r 02-same-plot}
 
