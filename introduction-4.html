@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>13.1 Introduction | ggplot2 Book Club</title>
+  <title>9.1 Introduction | ggplot2 Book Club</title>
   <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="13.1 Introduction | ggplot2 Book Club" />
+  <meta property="og:title" content="9.1 Introduction | ggplot2 Book Club" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   <meta name="github-repo" content="r4ds/bookclub-ggplot2" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="13.1 Introduction | ggplot2 Book Club" />
+  <meta name="twitter:title" content="9.1 Introduction | ggplot2 Book Club" />
   
   <meta name="twitter:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   
@@ -23,15 +23,15 @@
 <meta name="author" content="The R4DS Online Learning Community" />
 
 
-<meta name="date" content="2023-04-02" />
+<meta name="date" content="2023-04-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="mastering-the-grammar.html"/>
-<link rel="next" href="building-a-scatterplot.html"/>
+<link rel="prev" href="arranging-plots.html"/>
+<link rel="next" href="arranging-plots-side-by-side-with-no-overlap.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -160,9 +160,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1" data-path="general-housekeeping-items.html"><a href="general-housekeeping-items.html"><i class="fa fa-check"></i><b>2.1</b> General Housekeeping Items</a></li>
 <li class="chapter" data-level="2.2" data-path="learning-objectives.html"><a href="learning-objectives.html"><i class="fa fa-check"></i><b>2.2</b> Learning Objectives</a></li>
-<li class="chapter" data-level="2.3" data-path="main-data-set.html"><a href="main-data-set.html"><i class="fa fa-check"></i><b>2.3</b> Main data set</a></li>
-<li class="chapter" data-level="2.4" data-path="components-of-every-plot.html"><a href="components-of-every-plot.html"><i class="fa fa-check"></i><b>2.4</b> Components of every plot</a></li>
-<li class="chapter" data-level="2.5" data-path="a-few-exercises.html"><a href="a-few-exercises.html"><i class="fa fa-check"></i><b>2.5</b> A few exercises</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i><b>2.3</b> Introduction</a></li>
+<li class="chapter" data-level="2.4" data-path="main-data-set.html"><a href="main-data-set.html"><i class="fa fa-check"></i><b>2.4</b> Main data set</a></li>
+<li class="chapter" data-level="2.5" data-path="components-of-every-plot.html"><a href="components-of-every-plot.html"><i class="fa fa-check"></i><b>2.5</b> Components of every plot</a></li>
 <li class="chapter" data-level="2.6" data-path="other-aesthetic-attributes.html"><a href="other-aesthetic-attributes.html"><i class="fa fa-check"></i><b>2.6</b> Other aesthetic attributes</a></li>
 <li class="chapter" data-level="2.7" data-path="faceting.html"><a href="faceting.html"><i class="fa fa-check"></i><b>2.7</b> Faceting</a></li>
 <li class="chapter" data-level="2.8" data-path="geoms.html"><a href="geoms.html"><i class="fa fa-check"></i><b>2.8</b> Geoms</a></li>
@@ -247,7 +247,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="networks.html"><a href="networks.html"><i class="fa fa-check"></i><b>7</b> Networks</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.1" data-path="introduction-2.html"><a href="introduction-2.html"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
 <li class="chapter" data-level="7.2" data-path="what-is-network-data.html"><a href="what-is-network-data.html"><i class="fa fa-check"></i><b>7.2</b> What is network data?</a>
 <ul>
 <li class="chapter" data-level="7.2.1" data-path="what-is-network-data.html"><a href="what-is-network-data.html#a-tidy-network-manipulation-api"><i class="fa fa-check"></i><b>7.2.1</b> A tidy network manipulation API</a></li>
@@ -272,7 +272,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="annotations.html"><a href="annotations.html"><i class="fa fa-check"></i><b>8</b> Annotations</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="introduction-2.html"><a href="introduction-2.html"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.1" data-path="introduction-3.html"><a href="introduction-3.html"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
 <li class="chapter" data-level="8.2" data-path="plot-and-axis-titles.html"><a href="plot-and-axis-titles.html"><i class="fa fa-check"></i><b>8.2</b> Plot and Axis Titles</a></li>
 <li class="chapter" data-level="8.3" data-path="text-labels.html"><a href="text-labels.html"><i class="fa fa-check"></i><b>8.3</b> Text labels</a></li>
 <li class="chapter" data-level="8.4" data-path="annotations-1.html"><a href="annotations-1.html"><i class="fa fa-check"></i><b>8.4</b> Annotations</a></li>
@@ -286,7 +286,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="arranging-plots.html"><a href="arranging-plots.html"><i class="fa fa-check"></i><b>9</b> Arranging Plots</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="introduction-3.html"><a href="introduction-3.html"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.1" data-path="introduction-4.html"><a href="introduction-4.html"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
 <li class="chapter" data-level="9.2" data-path="arranging-plots-side-by-side-with-no-overlap.html"><a href="arranging-plots-side-by-side-with-no-overlap.html"><i class="fa fa-check"></i><b>9.2</b> Arranging plots side by side with no overlap</a>
 <ul>
 <li class="chapter" data-level="9.2.1" data-path="arranging-plots-side-by-side-with-no-overlap.html"><a href="arranging-plots-side-by-side-with-no-overlap.html#taking-control-of-the-layout"><i class="fa fa-check"></i><b>9.2.1</b> Taking control of the layout</a></li>
@@ -400,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="13" data-path="mastering-the-grammar.html"><a href="mastering-the-grammar.html"><i class="fa fa-check"></i><b>13</b> Mastering the Grammar</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="introduction-4.html"><a href="introduction-4.html"><i class="fa fa-check"></i><b>13.1</b> Introduction</a></li>
+<li class="chapter" data-level="13.1" data-path="introduction-5.html"><a href="introduction-5.html"><i class="fa fa-check"></i><b>13.1</b> Introduction</a></li>
 <li class="chapter" data-level="13.2" data-path="building-a-scatterplot.html"><a href="building-a-scatterplot.html"><i class="fa fa-check"></i><b>13.2</b> Building a scatterplot</a></li>
 <li class="chapter" data-level="13.3" data-path="scaling.html"><a href="scaling.html"><i class="fa fa-check"></i><b>13.3</b> Scaling</a></li>
 <li class="chapter" data-level="13.4" data-path="adding-complexity-faceting-coordinates-hierarchy-of-defaults.html"><a href="adding-complexity-faceting-coordinates-hierarchy-of-defaults.html"><i class="fa fa-check"></i><b>13.4</b> Adding complexity; faceting, coordinates, hierarchy of defaults</a></li>
@@ -463,7 +463,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="16" data-path="coordinate-systems.html"><a href="coordinate-systems.html"><i class="fa fa-check"></i><b>16</b> Coordinate systems</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="introduction-5.html"><a href="introduction-5.html"><i class="fa fa-check"></i><b>16.1</b> Introduction</a></li>
+<li class="chapter" data-level="16.1" data-path="introduction-6.html"><a href="introduction-6.html"><i class="fa fa-check"></i><b>16.1</b> Introduction</a></li>
 <li class="chapter" data-level="16.2" data-path="linear-coordinate-systems.html"><a href="linear-coordinate-systems.html"><i class="fa fa-check"></i><b>16.2</b> Linear coordinate systems</a></li>
 <li class="chapter" data-level="16.3" data-path="non-linear-coordinate-systems.html"><a href="non-linear-coordinate-systems.html"><i class="fa fa-check"></i><b>16.3</b> Non-linear coordinate systems</a>
 <ul>
@@ -583,53 +583,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction-4" class="section level2 hasAnchor" number="13.1">
-<h2><span class="header-section-number">13.1</span> Introduction<a href="introduction-4.html#introduction-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Definition of a grammar: “the fundamental principles or rules of an art or science” (OED Online 1989).</p>
-<p>“In order to unlock the full power of ggplot2, you’ll need to master the underlying grammar. By understanding the grammar, and how its components fit together, you can create a wider range of visualizations, combine multiple sources of data, and customise to your heart’s content.”</p>
-<p>“The next chapters discuss the components in more detail, and provide more examples of how you can use them in practice.”</p>
-<p>Grammar versus chart heuristics. Often we match data type to a standard chart type (for example: bar chart for categorical comparisions).</p>
-<p><strong>4 parts of a Layer</strong></p>
+<div id="introduction-4" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Introduction<a href="introduction-4.html#introduction-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This chapter focuses on making more than one plot in one visualization, using the following packages:</p>
 <ol style="list-style-type: decimal">
-<li><p>Data and aesthetic mapping.
-“Along with the data, we need a specification of which variables are mapped to which
-aesthetics.” (Wickham, 2010, p. 10)</p></li>
-<li><p>Stat.
-“A statistical transformation, or stat, transforms the data, typically by summarizing them
-in some manner…A statistical transformation, or stat, transforms the data, typically by summarizing them
-in some manner.” (Wickham, 2010, p. 10)</p></li>
-<li><p>Geom.
-“Geometric objects, or geoms for short, control the type of plot that you create. For
-example, using a point geom will create a scatterplot, whereas using a line geom will
-create a line plot.</p></li>
+<li>patchwork</li>
+<li>cowplot</li>
+<li>gridExtra</li>
+<li>ggpubr</li>
 </ol>
-<p>We can classify geoms by their dimensionality:</p>
-<p>• 0d: point, text,
-• 1d: path, line (ordered path),
-• 2d: polygon, interval.” (Wickham, 2010, p. 11)</p>
-<ol start="4" style="list-style-type: decimal">
-<li>Position adjustment
-Examples include geom_jitter or how bar plots adjust so the lines do not overlap.</li>
-</ol>
-<p><strong>Review of key terms</strong></p>
-<p>Geom: point, bar, boxplot, line</p>
-<p>Aesthetics: size, color, shape, position
-<a href="https://ggplot2tor.com/aesthetics/">Aesthetics finder</a></p>
-<p><strong>Benefits of using the Grammar</strong></p>
-<ul>
-<li>Allows one to iterate in the creation and/or updating of a plot.</li>
-<li>Gives a language for viewing, and learning from, existing data viz. </li>
-<li>Enables a better process by focusing the viz developer on the intended purpose of the visual/analysis (not just matching a chart to data).</li>
-<li>Expands data viz beyond just how to use this particular software syntax.</li>
-</ul>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="mastering-the-grammar.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="building-a-scatterplot.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="arranging-plots.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="arranging-plots-side-by-side-with-no-overlap.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -660,7 +630,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/r4ds/bookclub-ggplot2/edit/main/13-Mastering-the-Grammar.Rmd",
+"link": "https://github.com/r4ds/bookclub-ggplot2/edit/main/09-Arranging_plots.Rmd",
 "text": "Edit"
 },
 "history": {

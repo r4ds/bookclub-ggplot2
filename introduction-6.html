@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.5 A few exercises | ggplot2 Book Club</title>
+  <title>16.1 Introduction | ggplot2 Book Club</title>
   <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.5 A few exercises | ggplot2 Book Club" />
+  <meta property="og:title" content="16.1 Introduction | ggplot2 Book Club" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   <meta name="github-repo" content="r4ds/bookclub-ggplot2" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.5 A few exercises | ggplot2 Book Club" />
+  <meta name="twitter:title" content="16.1 Introduction | ggplot2 Book Club" />
   
   <meta name="twitter:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   
@@ -23,15 +23,15 @@
 <meta name="author" content="The R4DS Online Learning Community" />
 
 
-<meta name="date" content="2023-04-02" />
+<meta name="date" content="2023-04-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="components-of-every-plot.html"/>
-<link rel="next" href="other-aesthetic-attributes.html"/>
+<link rel="prev" href="coordinate-systems.html"/>
+<link rel="next" href="linear-coordinate-systems.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -160,9 +160,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1" data-path="general-housekeeping-items.html"><a href="general-housekeeping-items.html"><i class="fa fa-check"></i><b>2.1</b> General Housekeeping Items</a></li>
 <li class="chapter" data-level="2.2" data-path="learning-objectives.html"><a href="learning-objectives.html"><i class="fa fa-check"></i><b>2.2</b> Learning Objectives</a></li>
-<li class="chapter" data-level="2.3" data-path="main-data-set.html"><a href="main-data-set.html"><i class="fa fa-check"></i><b>2.3</b> Main data set</a></li>
-<li class="chapter" data-level="2.4" data-path="components-of-every-plot.html"><a href="components-of-every-plot.html"><i class="fa fa-check"></i><b>2.4</b> Components of every plot</a></li>
-<li class="chapter" data-level="2.5" data-path="a-few-exercises.html"><a href="a-few-exercises.html"><i class="fa fa-check"></i><b>2.5</b> A few exercises</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i><b>2.3</b> Introduction</a></li>
+<li class="chapter" data-level="2.4" data-path="main-data-set.html"><a href="main-data-set.html"><i class="fa fa-check"></i><b>2.4</b> Main data set</a></li>
+<li class="chapter" data-level="2.5" data-path="components-of-every-plot.html"><a href="components-of-every-plot.html"><i class="fa fa-check"></i><b>2.5</b> Components of every plot</a></li>
 <li class="chapter" data-level="2.6" data-path="other-aesthetic-attributes.html"><a href="other-aesthetic-attributes.html"><i class="fa fa-check"></i><b>2.6</b> Other aesthetic attributes</a></li>
 <li class="chapter" data-level="2.7" data-path="faceting.html"><a href="faceting.html"><i class="fa fa-check"></i><b>2.7</b> Faceting</a></li>
 <li class="chapter" data-level="2.8" data-path="geoms.html"><a href="geoms.html"><i class="fa fa-check"></i><b>2.8</b> Geoms</a></li>
@@ -247,7 +247,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="networks.html"><a href="networks.html"><i class="fa fa-check"></i><b>7</b> Networks</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.1" data-path="introduction-2.html"><a href="introduction-2.html"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
 <li class="chapter" data-level="7.2" data-path="what-is-network-data.html"><a href="what-is-network-data.html"><i class="fa fa-check"></i><b>7.2</b> What is network data?</a>
 <ul>
 <li class="chapter" data-level="7.2.1" data-path="what-is-network-data.html"><a href="what-is-network-data.html#a-tidy-network-manipulation-api"><i class="fa fa-check"></i><b>7.2.1</b> A tidy network manipulation API</a></li>
@@ -272,7 +272,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="annotations.html"><a href="annotations.html"><i class="fa fa-check"></i><b>8</b> Annotations</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="introduction-2.html"><a href="introduction-2.html"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.1" data-path="introduction-3.html"><a href="introduction-3.html"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
 <li class="chapter" data-level="8.2" data-path="plot-and-axis-titles.html"><a href="plot-and-axis-titles.html"><i class="fa fa-check"></i><b>8.2</b> Plot and Axis Titles</a></li>
 <li class="chapter" data-level="8.3" data-path="text-labels.html"><a href="text-labels.html"><i class="fa fa-check"></i><b>8.3</b> Text labels</a></li>
 <li class="chapter" data-level="8.4" data-path="annotations-1.html"><a href="annotations-1.html"><i class="fa fa-check"></i><b>8.4</b> Annotations</a></li>
@@ -286,7 +286,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="arranging-plots.html"><a href="arranging-plots.html"><i class="fa fa-check"></i><b>9</b> Arranging Plots</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="introduction-3.html"><a href="introduction-3.html"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.1" data-path="introduction-4.html"><a href="introduction-4.html"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
 <li class="chapter" data-level="9.2" data-path="arranging-plots-side-by-side-with-no-overlap.html"><a href="arranging-plots-side-by-side-with-no-overlap.html"><i class="fa fa-check"></i><b>9.2</b> Arranging plots side by side with no overlap</a>
 <ul>
 <li class="chapter" data-level="9.2.1" data-path="arranging-plots-side-by-side-with-no-overlap.html"><a href="arranging-plots-side-by-side-with-no-overlap.html#taking-control-of-the-layout"><i class="fa fa-check"></i><b>9.2.1</b> Taking control of the layout</a></li>
@@ -400,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="13" data-path="mastering-the-grammar.html"><a href="mastering-the-grammar.html"><i class="fa fa-check"></i><b>13</b> Mastering the Grammar</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="introduction-4.html"><a href="introduction-4.html"><i class="fa fa-check"></i><b>13.1</b> Introduction</a></li>
+<li class="chapter" data-level="13.1" data-path="introduction-5.html"><a href="introduction-5.html"><i class="fa fa-check"></i><b>13.1</b> Introduction</a></li>
 <li class="chapter" data-level="13.2" data-path="building-a-scatterplot.html"><a href="building-a-scatterplot.html"><i class="fa fa-check"></i><b>13.2</b> Building a scatterplot</a></li>
 <li class="chapter" data-level="13.3" data-path="scaling.html"><a href="scaling.html"><i class="fa fa-check"></i><b>13.3</b> Scaling</a></li>
 <li class="chapter" data-level="13.4" data-path="adding-complexity-faceting-coordinates-hierarchy-of-defaults.html"><a href="adding-complexity-faceting-coordinates-hierarchy-of-defaults.html"><i class="fa fa-check"></i><b>13.4</b> Adding complexity; faceting, coordinates, hierarchy of defaults</a></li>
@@ -463,7 +463,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="16" data-path="coordinate-systems.html"><a href="coordinate-systems.html"><i class="fa fa-check"></i><b>16</b> Coordinate systems</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="introduction-5.html"><a href="introduction-5.html"><i class="fa fa-check"></i><b>16.1</b> Introduction</a></li>
+<li class="chapter" data-level="16.1" data-path="introduction-6.html"><a href="introduction-6.html"><i class="fa fa-check"></i><b>16.1</b> Introduction</a></li>
 <li class="chapter" data-level="16.2" data-path="linear-coordinate-systems.html"><a href="linear-coordinate-systems.html"><i class="fa fa-check"></i><b>16.2</b> Linear coordinate systems</a></li>
 <li class="chapter" data-level="16.3" data-path="non-linear-coordinate-systems.html"><a href="non-linear-coordinate-systems.html"><i class="fa fa-check"></i><b>16.3</b> Non-linear coordinate systems</a>
 <ul>
@@ -583,37 +583,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="a-few-exercises" class="section level2 hasAnchor" number="2.5">
-<h2><span class="header-section-number">2.5</span> A few exercises<a href="a-few-exercises.html#a-few-exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="introduction-6" class="section level2 hasAnchor" number="16.1">
+<h2><span class="header-section-number">16.1</span> Introduction<a href="introduction-6.html#introduction-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The coordinate system in {ggplot2} can be managed with the use of <code>coord_&lt;functions&gt;</code>. This is done when we need to:</p>
 <ul>
-<li>What does the below plot show? Is it useful? How could it improve?</li>
+<li><p>zoom into a plot in a particular area of the plot</p></li>
+<li><p>flip the axis of a plot</p></li>
+<li><p>set a fixed aspect ratio of a plot</p></li>
+<li><p>transform coordinates</p></li>
+<li><p>change the shape of the plot</p></li>
+<li><p>set the coordinates for a map projection</p></li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="a-few-exercises.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(model, manufacturer)) <span class="sc">+</span> </span>
-<span id="cb5-2"><a href="a-few-exercises.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb5-3"><a href="a-few-exercises.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code></pre></div>
-<p><img src="bookclub-ggplot2_01_files/figure-html/02-a-few-exercises-1.png" width="672" />
-- Practice coding the following plots. Anticipate what the output will look like. Become familiar with the common components of the plots.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="a-few-exercises.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cty, hwy)) <span class="sc">+</span> </span>
-<span id="cb6-2"><a href="a-few-exercises.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="bookclub-ggplot2_01_files/figure-html/02-scatterplot-with-mpg-1.png" width="672" /></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="a-few-exercises.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(carat, price)) <span class="sc">+</span> </span>
-<span id="cb7-2"><a href="a-few-exercises.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="bookclub-ggplot2_01_files/figure-html/02-scatterplot-with-diamonds-1.png" width="672" /></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="a-few-exercises.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(economics, <span class="fu">aes</span>(date, unemploy)) <span class="sc">+</span> </span>
-<span id="cb8-2"><a href="a-few-exercises.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
-<p><img src="bookclub-ggplot2_01_files/figure-html/02-scatterplot-with-economics-1.png" width="672" /></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="a-few-exercises.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cty)) <span class="sc">+</span> </span>
-<span id="cb9-2"><a href="a-few-exercises.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
-<p><img src="bookclub-ggplot2_01_files/figure-html/02-histogram-with-mpg-1.png" width="672" /></p>
-<hr />
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="introduction-6.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb293-2"><a href="introduction-6.html#cb293-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb293-3"><a href="introduction-6.html#cb293-3" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa</code></pre>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="components-of-every-plot.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="other-aesthetic-attributes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="coordinate-systems.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="linear-coordinate-systems.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -644,7 +642,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/r4ds/bookclub-ggplot2/edit/main/02-first_steps.Rmd",
+"link": "https://github.com/r4ds/bookclub-ggplot2/edit/main/16-Coordinate-systems.Rmd",
 "text": "Edit"
 },
 "history": {
