@@ -23,7 +23,7 @@
 <meta name="author" content="The R4DS Online Learning Community" />
 
 
-<meta name="date" content="2023-04-15" />
+<meta name="date" content="2023-04-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -636,7 +636,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     structure(list(data = data, layout = layout, plot = plot), 
         class = &quot;ggplot_built&quot;)
 }
-&lt;bytecode: 0x55d075a1b288&gt;
+&lt;bytecode: 0x55a3b01b6628&gt;
 &lt;environment: namespace:ggplot2&gt;</code></pre>
 <p>It takes the ggplot object as input, and transforms the user-provided data to a drawing-ready data (+ some other auxiliary/meta-data like information about the layout). You can see that the drawing-ready data <code>data</code> is built up incrementally (much like data wrangling minus pipes):</p>
 <div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="the-build-step.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.list</span>(<span class="fu">body</span>(ggplot2<span class="sc">:::</span>ggplot_build.ggplot))</span></code></pre></div>
