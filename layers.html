@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Layers | ggplot2 Book Club</title>
   <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
-  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Layers | ggplot2 Book Club" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="The R4DS Online Learning Community" />
 
 
-<meta name="date" content="2023-04-19" />
+<meta name="date" content="2023-10-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -59,7 +59,7 @@
 <script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/chromatography-0.1/chromatography.js"></script>
-<script src="libs/DiagrammeR-binding-1.0.9/DiagrammeR.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.10/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -127,6 +127,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -445,20 +449,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.1.2" data-path="theory-of-scales-and-guides.html"><a href="theory-of-scales-and-guides.html#naming-scheme"><i class="fa fa-check"></i><b>15.1.2</b> Naming scheme</a></li>
 <li class="chapter" data-level="15.1.3" data-path="theory-of-scales-and-guides.html"><a href="theory-of-scales-and-guides.html#fundamental-scale-types"><i class="fa fa-check"></i><b>15.1.3</b> Fundamental scale types</a></li>
 </ul></li>
-<li class="chapter" data-level="15.2" data-path="scale-names.html"><a href="scale-names.html"><i class="fa fa-check"></i><b>15.2</b> Scale Names</a></li>
-<li class="chapter" data-level="15.3" data-path="scale-breaks.html"><a href="scale-breaks.html"><i class="fa fa-check"></i><b>15.3</b> Scale Breaks</a></li>
-<li class="chapter" data-level="15.4" data-path="scale-limits.html"><a href="scale-limits.html"><i class="fa fa-check"></i><b>15.4</b> Scale Limits</a></li>
-<li class="chapter" data-level="15.5" data-path="scale-guides.html"><a href="scale-guides.html"><i class="fa fa-check"></i><b>15.5</b> Scale guides</a></li>
-<li class="chapter" data-level="15.6" data-path="scale-transformation.html"><a href="scale-transformation.html"><i class="fa fa-check"></i><b>15.6</b> Scale transformation</a></li>
-<li class="chapter" data-level="15.7" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html"><i class="fa fa-check"></i><b>15.7</b> Legend merging and splitting</a>
+<li class="chapter" data-level="15.2" data-path="scale-breaks.html"><a href="scale-breaks.html"><i class="fa fa-check"></i><b>15.2</b> Scale Breaks</a></li>
+<li class="chapter" data-level="15.3" data-path="scale-limits.html"><a href="scale-limits.html"><i class="fa fa-check"></i><b>15.3</b> Scale Limits</a></li>
+<li class="chapter" data-level="15.4" data-path="scale-guides.html"><a href="scale-guides.html"><i class="fa fa-check"></i><b>15.4</b> Scale guides</a></li>
+<li class="chapter" data-level="15.5" data-path="scale-transformation.html"><a href="scale-transformation.html"><i class="fa fa-check"></i><b>15.5</b> Scale transformation</a></li>
+<li class="chapter" data-level="15.6" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html"><i class="fa fa-check"></i><b>15.6</b> Legend merging and splitting</a>
 <ul>
-<li class="chapter" data-level="15.7.1" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html#merging-legends"><i class="fa fa-check"></i><b>15.7.1</b> Merging legends</a></li>
-<li class="chapter" data-level="15.7.2" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html#splitting-legends"><i class="fa fa-check"></i><b>15.7.2</b> Splitting legends</a></li>
+<li class="chapter" data-level="15.6.1" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html#merging-legends"><i class="fa fa-check"></i><b>15.6.1</b> Merging legends</a></li>
+<li class="chapter" data-level="15.6.2" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html#splitting-legends"><i class="fa fa-check"></i><b>15.6.2</b> Splitting legends</a></li>
 </ul></li>
-<li class="chapter" data-level="15.8" data-path="legend-key-glyphs.html"><a href="legend-key-glyphs.html"><i class="fa fa-check"></i><b>15.8</b> Legend key glyphs</a></li>
-<li class="chapter" data-level="15.9" data-path="meeting-videos-14.html"><a href="meeting-videos-14.html"><i class="fa fa-check"></i><b>15.9</b> Meeting Videos</a>
+<li class="chapter" data-level="15.7" data-path="legend-key-glyphs.html"><a href="legend-key-glyphs.html"><i class="fa fa-check"></i><b>15.7</b> Legend key glyphs</a></li>
+<li class="chapter" data-level="15.8" data-path="meeting-videos-14.html"><a href="meeting-videos-14.html"><i class="fa fa-check"></i><b>15.8</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="15.9.1" data-path="meeting-videos-14.html"><a href="meeting-videos-14.html#cohort-1-14"><i class="fa fa-check"></i><b>15.9.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="15.8.1" data-path="meeting-videos-14.html"><a href="meeting-videos-14.html#cohort-1-14"><i class="fa fa-check"></i><b>15.8.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="coordinate-systems.html"><a href="coordinate-systems.html"><i class="fa fa-check"></i><b>16</b> Coordinate systems</a>

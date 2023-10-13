@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>15.1 Theory of scales and guides | ggplot2 Book Club</title>
   <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
-  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="15.1 Theory of scales and guides | ggplot2 Book Club" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="The R4DS Online Learning Community" />
 
 
-<meta name="date" content="2023-04-19" />
+<meta name="date" content="2023-10-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="scales-and-guides.html"/>
-<link rel="next" href="scale-names.html"/>
+<link rel="next" href="scale-breaks.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -59,7 +59,7 @@
 <script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/chromatography-0.1/chromatography.js"></script>
-<script src="libs/DiagrammeR-binding-1.0.9/DiagrammeR.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.10/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -127,6 +127,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -445,20 +449,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.1.2" data-path="theory-of-scales-and-guides.html"><a href="theory-of-scales-and-guides.html#naming-scheme"><i class="fa fa-check"></i><b>15.1.2</b> Naming scheme</a></li>
 <li class="chapter" data-level="15.1.3" data-path="theory-of-scales-and-guides.html"><a href="theory-of-scales-and-guides.html#fundamental-scale-types"><i class="fa fa-check"></i><b>15.1.3</b> Fundamental scale types</a></li>
 </ul></li>
-<li class="chapter" data-level="15.2" data-path="scale-names.html"><a href="scale-names.html"><i class="fa fa-check"></i><b>15.2</b> Scale Names</a></li>
-<li class="chapter" data-level="15.3" data-path="scale-breaks.html"><a href="scale-breaks.html"><i class="fa fa-check"></i><b>15.3</b> Scale Breaks</a></li>
-<li class="chapter" data-level="15.4" data-path="scale-limits.html"><a href="scale-limits.html"><i class="fa fa-check"></i><b>15.4</b> Scale Limits</a></li>
-<li class="chapter" data-level="15.5" data-path="scale-guides.html"><a href="scale-guides.html"><i class="fa fa-check"></i><b>15.5</b> Scale guides</a></li>
-<li class="chapter" data-level="15.6" data-path="scale-transformation.html"><a href="scale-transformation.html"><i class="fa fa-check"></i><b>15.6</b> Scale transformation</a></li>
-<li class="chapter" data-level="15.7" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html"><i class="fa fa-check"></i><b>15.7</b> Legend merging and splitting</a>
+<li class="chapter" data-level="15.2" data-path="scale-breaks.html"><a href="scale-breaks.html"><i class="fa fa-check"></i><b>15.2</b> Scale Breaks</a></li>
+<li class="chapter" data-level="15.3" data-path="scale-limits.html"><a href="scale-limits.html"><i class="fa fa-check"></i><b>15.3</b> Scale Limits</a></li>
+<li class="chapter" data-level="15.4" data-path="scale-guides.html"><a href="scale-guides.html"><i class="fa fa-check"></i><b>15.4</b> Scale guides</a></li>
+<li class="chapter" data-level="15.5" data-path="scale-transformation.html"><a href="scale-transformation.html"><i class="fa fa-check"></i><b>15.5</b> Scale transformation</a></li>
+<li class="chapter" data-level="15.6" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html"><i class="fa fa-check"></i><b>15.6</b> Legend merging and splitting</a>
 <ul>
-<li class="chapter" data-level="15.7.1" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html#merging-legends"><i class="fa fa-check"></i><b>15.7.1</b> Merging legends</a></li>
-<li class="chapter" data-level="15.7.2" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html#splitting-legends"><i class="fa fa-check"></i><b>15.7.2</b> Splitting legends</a></li>
+<li class="chapter" data-level="15.6.1" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html#merging-legends"><i class="fa fa-check"></i><b>15.6.1</b> Merging legends</a></li>
+<li class="chapter" data-level="15.6.2" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html#splitting-legends"><i class="fa fa-check"></i><b>15.6.2</b> Splitting legends</a></li>
 </ul></li>
-<li class="chapter" data-level="15.8" data-path="legend-key-glyphs.html"><a href="legend-key-glyphs.html"><i class="fa fa-check"></i><b>15.8</b> Legend key glyphs</a></li>
-<li class="chapter" data-level="15.9" data-path="meeting-videos-14.html"><a href="meeting-videos-14.html"><i class="fa fa-check"></i><b>15.9</b> Meeting Videos</a>
+<li class="chapter" data-level="15.7" data-path="legend-key-glyphs.html"><a href="legend-key-glyphs.html"><i class="fa fa-check"></i><b>15.7</b> Legend key glyphs</a></li>
+<li class="chapter" data-level="15.8" data-path="meeting-videos-14.html"><a href="meeting-videos-14.html"><i class="fa fa-check"></i><b>15.8</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="15.9.1" data-path="meeting-videos-14.html"><a href="meeting-videos-14.html#cohort-1-14"><i class="fa fa-check"></i><b>15.9.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="15.8.1" data-path="meeting-videos-14.html"><a href="meeting-videos-14.html#cohort-1-14"><i class="fa fa-check"></i><b>15.8.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="coordinate-systems.html"><a href="coordinate-systems.html"><i class="fa fa-check"></i><b>16</b> Coordinate systems</a>
@@ -585,8 +588,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="theory-of-scales-and-guides" class="section level2 hasAnchor" number="15.1">
 <h2><span class="header-section-number">15.1</span> Theory of scales and guides<a href="theory-of-scales-and-guides.html#theory-of-scales-and-guides" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Each scale is a function from a region in data space (the domain of the scale) to a region in aesthetic space (the range of the scale). The axis or legend is the inverse function, known as the guide: it allows you to convert visual properties back to data.</p>
-<p>Surprisingly, axes and legends are the same type of thing, but while they look very different they have the same purpose: to allow you to read observations from the plot and map them back to their original values.</p>
+<ul>
+<li><p>Each scale is a function from a region in data space to a region in aesthetic space.</p></li>
+<li><p>The axis or legend is the inverse function, known as the <strong>guide</strong>: it allows you to convert visual properties back to data.</p></li>
+<li><p>Surprisingly, axes and legends are the same type of thing, but while they look very different they have the same purpose: to allow you to read observations from the plot and map them back to their original values.</p></li>
+</ul>
 <p>The commonalities between the two are illustrated below:</p>
 <table>
 <thead>
@@ -614,6 +620,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
+<p><img src="images/2023-10-13.png" /></p>
 <p>However, legends are more complicated than axes, and consequently there are a number of topics that are specific to legends:</p>
 <p><strong>1.</strong> A legend can display multiple aesthetics (e.g. colour and shape), from multiple layers (Section 15.7.1), and the symbol displayed in a legend varies based on the geom used in the layer (Section 15.8)</p>
 <p><strong>2.</strong> Axes always appear in the same place. Legends can appear in different places, so you need some global way of positioning them. (Section 11.7)</p>
@@ -629,13 +636,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb288-3"><a href="theory-of-scales-and-guides.html#cb288-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>() <span class="sc">+</span> </span>
 <span id="cb288-4"><a href="theory-of-scales-and-guides.html#cb288-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>() <span class="sc">+</span> </span>
 <span id="cb288-5"><a href="theory-of-scales-and-guides.html#cb288-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_discrete</span>()</span></code></pre></div>
-<p>The choice of default scale depends on the aesthetic and the variable type. In this example <code>hwy</code> is a continuous variable mapped to the y aesthetic so the default scale is <code>scale_y_continuous()</code>; similarly <code>class</code> is discrete so when mapped to the colour aesthetic the default scale becomes <code>scale_colour_discrete()</code>. Specifying these defaults would be tedious so ggplot2 does it for you. But if you want to override the defaults, you’ll need to add the scale yourself, like this:</p>
 <div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="theory-of-scales-and-guides.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy)) <span class="sc">+</span> </span>
 <span id="cb289-2"><a href="theory-of-scales-and-guides.html#cb289-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> class)) <span class="sc">+</span> </span>
 <span id="cb289-3"><a href="theory-of-scales-and-guides.html#cb289-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name =</span> <span class="st">&quot;A really awesome x axis label&quot;</span>) <span class="sc">+</span></span>
 <span id="cb289-4"><a href="theory-of-scales-and-guides.html#cb289-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">&quot;An amazingly great y axis label&quot;</span>)</span></code></pre></div>
-<p>In practice you would typically use <code>labs()</code> for this, discussed in Section 8.1, but it is conceptually helpful to understand that axis labels and legend titles are both examples of scale names: see Section 15.2.</p>
-<p>The use of <code>+</code> to “add” scales to a plot is a little misleading because if you supply two scales for the same aesthetic, the last scale takes precedence. In other words, when you <code>+</code> a scale, you’re not actually adding it to the plot, but overriding the existing scale. This means that the following two specifications are equivalent:</p>
+<p>The use of <code>+</code> to “add” scales to a plot is a little misleading because if you supply two scales for the same aesthetic, the last scale takes precedence:</p>
 <div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="theory-of-scales-and-guides.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy)) <span class="sc">+</span> </span>
 <span id="cb290-2"><a href="theory-of-scales-and-guides.html#cb290-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb290-3"><a href="theory-of-scales-and-guides.html#cb290-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name =</span> <span class="st">&quot;Label 1&quot;</span>) <span class="sc">+</span></span>
@@ -646,13 +651,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb290-8"><a href="theory-of-scales-and-guides.html#cb290-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy)) <span class="sc">+</span> </span>
 <span id="cb290-9"><a href="theory-of-scales-and-guides.html#cb290-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb290-10"><a href="theory-of-scales-and-guides.html#cb290-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name =</span> <span class="st">&quot;Label 2&quot;</span>)</span></code></pre></div>
-<p>Note the message when you add multiple scales for the same aesthetic, which makes it harder to accidentally overwrite an existing scale. If you see this in your own code, you should make sure that you’re only adding one scale to each aesthetic.</p>
-<p>If you’re making small tweaks to the scales, you might continue to use the default scales, supplying a few extra arguments. If you want to make more radical changes you will override the default scales with alternatives:</p>
 <div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="theory-of-scales-and-guides.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy)) <span class="sc">+</span> </span>
 <span id="cb291-2"><a href="theory-of-scales-and-guides.html#cb291-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> class)) <span class="sc">+</span></span>
 <span id="cb291-3"><a href="theory-of-scales-and-guides.html#cb291-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_sqrt</span>() <span class="sc">+</span> </span>
 <span id="cb291-4"><a href="theory-of-scales-and-guides.html#cb291-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_brewer</span>()</span></code></pre></div>
-<p>Here <code>scale_x_sqrt()</code> changes the scale for the x axis scale, and <code>scale_colour_brewer()</code> does the same for the colour scale.</p>
 </div>
 <div id="naming-scheme" class="section level3 hasAnchor" number="15.1.2">
 <h3><span class="header-section-number">15.1.2</span> Naming scheme<a href="theory-of-scales-and-guides.html#naming-scheme" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -660,7 +662,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>1.</strong> <code>scale</code></p>
 <p><strong>2.</strong> The name of the primary aesthetic (e.g., <code>colour</code>, <code>shape</code> or <code>x</code>)</p>
 <p><strong>3.</strong> The name of the scale (e.g., <code>continuous</code>, <code>discrete</code>, <code>brewer</code>).</p>
-<p>The naming structure is often helpful, but can sometimes be ambiguous. For example, while the name <code>scale_colour_continuous()</code> clearly refers to the colour scale associated with a continuous variables, it is less obvious that <code>scale_colour_distiller()</code> is simply a different method for creating colour scales for continuous variables.</p>
 </div>
 <div id="fundamental-scale-types" class="section level3 hasAnchor" number="15.1.3">
 <h3><span class="header-section-number">15.1.3</span> Fundamental scale types<a href="theory-of-scales-and-guides.html#fundamental-scale-types" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -676,7 +677,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>discrete_scale()</code> and</p></li>
 <li><p><code>binned_scale()</code>.</p></li>
 </ul>
-<p>Although you should never need to call these constructor functions, they provide the organising structure for scales and it is useful to know about them.</p>
+<p>Although you should never need to call these constructor functions, they provide the organizing structure for scales and it is useful to know about them.</p>
 </div>
 </div>
             </section>
@@ -685,7 +686,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="scales-and-guides.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="scale-names.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="scale-breaks.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

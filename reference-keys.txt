@@ -196,7 +196,6 @@ theory-of-scales-and-guides
 scale-specification
 naming-scheme
 fundamental-scale-types
-scale-names
 scale-breaks
 scale-limits
 scale-guides

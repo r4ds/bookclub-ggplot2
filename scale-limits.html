@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>15.4 Scale Limits | ggplot2 Book Club</title>
+  <title>15.3 Scale Limits | ggplot2 Book Club</title>
   <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
-  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="15.4 Scale Limits | ggplot2 Book Club" />
+  <meta property="og:title" content="15.3 Scale Limits | ggplot2 Book Club" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   <meta name="github-repo" content="r4ds/bookclub-ggplot2" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="15.4 Scale Limits | ggplot2 Book Club" />
+  <meta name="twitter:title" content="15.3 Scale Limits | ggplot2 Book Club" />
   
   <meta name="twitter:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="The R4DS Online Learning Community" />
 
 
-<meta name="date" content="2023-04-19" />
+<meta name="date" content="2023-10-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -59,7 +59,7 @@
 <script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/chromatography-0.1/chromatography.js"></script>
-<script src="libs/DiagrammeR-binding-1.0.9/DiagrammeR.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.10/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -127,6 +127,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -445,20 +449,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.1.2" data-path="theory-of-scales-and-guides.html"><a href="theory-of-scales-and-guides.html#naming-scheme"><i class="fa fa-check"></i><b>15.1.2</b> Naming scheme</a></li>
 <li class="chapter" data-level="15.1.3" data-path="theory-of-scales-and-guides.html"><a href="theory-of-scales-and-guides.html#fundamental-scale-types"><i class="fa fa-check"></i><b>15.1.3</b> Fundamental scale types</a></li>
 </ul></li>
-<li class="chapter" data-level="15.2" data-path="scale-names.html"><a href="scale-names.html"><i class="fa fa-check"></i><b>15.2</b> Scale Names</a></li>
-<li class="chapter" data-level="15.3" data-path="scale-breaks.html"><a href="scale-breaks.html"><i class="fa fa-check"></i><b>15.3</b> Scale Breaks</a></li>
-<li class="chapter" data-level="15.4" data-path="scale-limits.html"><a href="scale-limits.html"><i class="fa fa-check"></i><b>15.4</b> Scale Limits</a></li>
-<li class="chapter" data-level="15.5" data-path="scale-guides.html"><a href="scale-guides.html"><i class="fa fa-check"></i><b>15.5</b> Scale guides</a></li>
-<li class="chapter" data-level="15.6" data-path="scale-transformation.html"><a href="scale-transformation.html"><i class="fa fa-check"></i><b>15.6</b> Scale transformation</a></li>
-<li class="chapter" data-level="15.7" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html"><i class="fa fa-check"></i><b>15.7</b> Legend merging and splitting</a>
+<li class="chapter" data-level="15.2" data-path="scale-breaks.html"><a href="scale-breaks.html"><i class="fa fa-check"></i><b>15.2</b> Scale Breaks</a></li>
+<li class="chapter" data-level="15.3" data-path="scale-limits.html"><a href="scale-limits.html"><i class="fa fa-check"></i><b>15.3</b> Scale Limits</a></li>
+<li class="chapter" data-level="15.4" data-path="scale-guides.html"><a href="scale-guides.html"><i class="fa fa-check"></i><b>15.4</b> Scale guides</a></li>
+<li class="chapter" data-level="15.5" data-path="scale-transformation.html"><a href="scale-transformation.html"><i class="fa fa-check"></i><b>15.5</b> Scale transformation</a></li>
+<li class="chapter" data-level="15.6" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html"><i class="fa fa-check"></i><b>15.6</b> Legend merging and splitting</a>
 <ul>
-<li class="chapter" data-level="15.7.1" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html#merging-legends"><i class="fa fa-check"></i><b>15.7.1</b> Merging legends</a></li>
-<li class="chapter" data-level="15.7.2" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html#splitting-legends"><i class="fa fa-check"></i><b>15.7.2</b> Splitting legends</a></li>
+<li class="chapter" data-level="15.6.1" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html#merging-legends"><i class="fa fa-check"></i><b>15.6.1</b> Merging legends</a></li>
+<li class="chapter" data-level="15.6.2" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html#splitting-legends"><i class="fa fa-check"></i><b>15.6.2</b> Splitting legends</a></li>
 </ul></li>
-<li class="chapter" data-level="15.8" data-path="legend-key-glyphs.html"><a href="legend-key-glyphs.html"><i class="fa fa-check"></i><b>15.8</b> Legend key glyphs</a></li>
-<li class="chapter" data-level="15.9" data-path="meeting-videos-14.html"><a href="meeting-videos-14.html"><i class="fa fa-check"></i><b>15.9</b> Meeting Videos</a>
+<li class="chapter" data-level="15.7" data-path="legend-key-glyphs.html"><a href="legend-key-glyphs.html"><i class="fa fa-check"></i><b>15.7</b> Legend key glyphs</a></li>
+<li class="chapter" data-level="15.8" data-path="meeting-videos-14.html"><a href="meeting-videos-14.html"><i class="fa fa-check"></i><b>15.8</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="15.9.1" data-path="meeting-videos-14.html"><a href="meeting-videos-14.html#cohort-1-14"><i class="fa fa-check"></i><b>15.9.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="15.8.1" data-path="meeting-videos-14.html"><a href="meeting-videos-14.html#cohort-1-14"><i class="fa fa-check"></i><b>15.8.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="coordinate-systems.html"><a href="coordinate-systems.html"><i class="fa fa-check"></i><b>16</b> Coordinate systems</a>
@@ -583,16 +586,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="scale-limits" class="section level2 hasAnchor" number="15.4">
-<h2><span class="header-section-number">15.4</span> Scale Limits<a href="scale-limits.html#scale-limits" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Section 15.1 introduced the concept that a scale defines a mapping from the data space to the aesthetic space. Scale limits are an extension of this idea: they dictate the <strong>region</strong> of the data space over which the mapping is defined. At a theoretical level this region is defined differently depending on the fundamental scale type.</p>
-<p>For continuous and binned scales, the data space is inherently continuous and one-dimensional, so the limits can be specified by two end points. For discrete scales, however, the data space is unstructured and consists only of a set of categories: as such the limits for a discrete scale can only be specified by enumerating the set of categories over which the mapping is defined.</p>
-<p>The toolbox chapters outline the common practical goals for specifying the limits: for position scales the limits are used to set the end points of the axis, for example. This leads naturally to the question of what ggplot2 should do if the data set contains “out of bounds” values that fall outside the limits.</p>
-<p>The default behaviour in ggplot2 is to convert out of bounds values to NA, the logic for this begin that if a data value is not part of the mapped region, it should be treated as missing. This can occasionally lead to unexpected behaviour, as illustrated in Section 10.1.2. You can override this default by setting <code>oob</code> argument of the scale, a function that is applied to all observations outside the scale limits. The default is <code>scales::oob_censor()</code> which replaces any value outside the limits with <code>NA</code>. Another option is <code>scales::oob_squish()</code> which squishes all values into the range. An example using a fill scale is shown below:</p>
+<div id="scale-limits" class="section level2 hasAnchor" number="15.3">
+<h2><span class="header-section-number">15.3</span> Scale Limits<a href="scale-limits.html#scale-limits" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>Section 15.1 introduced the concept that a scale defines a mapping from the data space to the aesthetic space.</p></li>
+<li><p>Scale limits are an extension of this idea: they dictate the <strong>region</strong> of the data space over which the mapping is defined.</p></li>
+<li><p>For continuous and binned scales, the data space is inherently continuous and one-dimensional, so the limits can be specified by two end points.</p></li>
+<li><p>For discrete scales, however, the data space is unstructured and consists only of a set of categories: as such the limits for a discrete scale can only be specified by enumerating the set of categories over which the mapping is defined.</p></li>
+<li><p>The toolbox chapters outline the common practical goals for specifying the limits: for position scales the limits are used to set the end points of the axis, for example.</p></li>
+</ul>
+<p>This leads naturally to the question of what ggplot2 should do if the data set contains “out of bounds” values that fall outside the limits.</p>
+<ul>
+<li><p>The default behaviour in ggplot2 is to convert out of bounds values to NA.</p></li>
+<li><p>We can override this default by setting <code>oob</code> argument of the scale, a function that is applied to all observations outside the scale limits.</p></li>
+<li><p>The default is <code>scales::oob_censor()</code> which replaces any value outside the limits with <code>NA</code>.</p></li>
+<li><p>Another option is <code>scales::oob_squish()</code> which squishes all values into the range. An example using a fill scale is shown below:</p></li>
+</ul>
 <p><img src="bookclub-ggplot2_01_files/figure-html/15-07-1.png" width="672" /><img src="bookclub-ggplot2_01_files/figure-html/15-07-2.png" width="672" /><img src="bookclub-ggplot2_01_files/figure-html/15-07-3.png" width="672" /></p>
-<p>On the left the default fill colours are shown, ranging from dark blue to light blue.</p>
-<p>In the middle panel the scale limits for the fill aesthetic are reduced so that the values for the three rightmost bars are replace with NA and are mapped to a grey shade.</p>
-<p>In some cases this is desired behaviour but often it is not: the right panel addresses this by modifying the <code>oob</code> function appropriately.</p>
+<p>The first plot the default fill colours are shown, ranging from dark blue to light blue.</p>
+<p>In the second plot the scale limits for the fill aesthetic are reduced so that the values for the three rightmost bars are replace with NA and are mapped to a grey shade.</p>
+<p>In some cases this is desired behaviour but often it is not: the third plot addresses this by modifying the <code>oob</code> function appropriately.</p>
 </div>
             </section>
 
