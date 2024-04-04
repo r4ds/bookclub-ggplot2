@@ -1,14 +1,14 @@
-# R4DS ggplot2 Book Club
+# DSLC ggplot2 Book Club
 
-Welcome to the R4DS ggplot2 Book Club!
+Welcome to the DSLC ggplot2 Book Club!
 
 We are working together to read [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/index.html) by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen.
-Join the [#book_club-ggplot2](https://rfordatascience.slack.com/archives/C025VADE84A) channel on the [R4DS Slack](https://r4ds.io/join) to participate.
+Join the [#book_club-ggplot2](https://dslcio.slack.com/archives/C025VADE84A) channel on the [DSLC Slack](https://dslc.io/join) to participate.
 As we read, we are producing [notes about the book](https://r4ds.github.io/bookclub-ggplot2/).
 
 ## Meeting Schedule
 
-If you would like to present, please see the sign-up sheet for your cohort (linked below, and pinned in the [#book_club-ggplot2](https://rfordatascience.slack.com/archives/C025VADE84A) channel on Slack)!
+If you would like to present, please see the sign-up sheet for your cohort (linked below, and pinned in the [#book_club-ggplot2](https://dslcio.slack.com/archives/C025VADE84A) channel on Slack)!
 
 - Cohort 1 (started 2021-08-30, ended 2022-07-18): [meeting videos](https://www.youtube.com/playlist?list=PL3x6DOfs2NGhUxGvu46tXQtBl0qyTcDet)
 - Cohort 2 (started 2023-04-06, ended 2024-01-19): [meeting videos](https://youtube.com/playlist?list=PL3x6DOfs2NGhw3rkmaGipc21j0a7sCPNy)
