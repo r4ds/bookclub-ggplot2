@@ -15,12 +15,8 @@ To learn about several other aesthetics that ggplot2 can use to represent data, 
 - identity scales
 
 
-
-
 ```{r 12-library 01, include=FALSE}
-
 library(ggplot2)
-
 ```
 
 
@@ -35,7 +31,6 @@ base <- ggplot(mpg, aes(displ, hwy, size = cyl)) +
 
 base
 base + scale_size(range = c(1, 2))
-
 ```
 
 There are several size scales:
@@ -54,7 +49,7 @@ There are several size scales:
 There are situations where area scaling is undesirable, and for such situations *scale_radius()* may be more appropriate. For example,  consider a data set containing astronomical data that includes the radius of different planets:
 
 
-```{r radius size scales 01, echo=FALSE }
+```{r radius size scales 01, echo = FALSE}
 planets <- data.frame(
   name = c("Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"),
   type = c(rep("Inner", 4), rep("Outer", 4)),
@@ -87,25 +82,19 @@ Binned size scales work similarly to binned scales for colour and position aesth
 
 
 ```{r binned size scales 01}
-
 base <- ggplot(mpg, aes(displ, manufacturer, size = hwy)) +
   geom_point(alpha = .2) +
   scale_size_binned()
 
 base
-
 ```
 
 Unlike *guide_legend()*, the guide created for a binned scale by *guide_bins()* does not organize the individual keys into a table. Instead they are arranged in a column (or row) along a single vertical (or horizontal) axis, which by default is displayed with its own axis. The important arguments to guide_bins() are listed below:
 
 - **axis** indicates whether the axis should be drawn (default is TRUE)
 
-
-
 ```{r binned size scales 02}
-
 base + guides(size = guide_bins(axis = FALSE))
-
 ```
 
 - **direction** is a character string specifying the direction of the guide, either "vertical" (the default) or "horizontal"
@@ -149,13 +138,11 @@ The default *scale_shape()* function contains a single argument: **set solid = T
 
 
 ```{r shape 01}
-
 base <- ggplot(mpg, aes(displ, hwy, shape = factor(cyl))) + 
   geom_point()
 
 base
 base + scale_shape(solid = FALSE)
-
 ```
 
 
@@ -176,16 +163,13 @@ It is possible to map a variable onto the linetype aesthetic, which works best f
 
 
 ```{r line type 01}
-
 ggplot(economics_long, aes(date, value01, linetype = variable)) +
   geom_line()
-
 ```
 
 With five categories the above plot is quite difficult to read. 
 
 The default “palette” for linetype is supplied by the *scales::linetype_pal()* function, and includes the 13 linetypes shown below:
-
 
 
 ```{r line types 02}
@@ -211,7 +195,8 @@ This allows you to specify your own line types using *scale_linetype_manual()*, 
 
 Note that the last four lines are blank, because the *linetypes()* function defined above returns NA when the number of categories exceeds 9. 
 
-```{r line types 03}
+```{r line types 03, eval = FALSE}
+# TODO: Eval turned off due to error, you should fix this!
 linetypes <- function(n) {
   types <- c("55",  "75", "95", "1115", "111115", "11111115",
              "5158", "9198", "c1c8")
@@ -227,7 +212,8 @@ The *scale_linetype()* function contains a na.value argument used to specify wha
 
 
 
-```{r line types 04}
+```{r line types 04, eval = FALSE}
+# TODO: Eval turned off due to error, you should fix this!
 base + scale_linetype(palette = linetypes, na.value = "dotted")
 ```
 
@@ -262,23 +248,17 @@ ggplot(huron, aes(year)) +
 ggplot(huron, aes(year)) +
   geom_line(aes(y = level + 5, colour = "above")) +
   geom_line(aes(y = level - 5, colour = "below"))
-
-
 ```
 
 - And then tell the scale how to map labels to colours:
 
-
-
 ```{r manual scales 03}
-
 ggplot(huron, aes(year)) +
   geom_line(aes(y = level + 5, colour = "above")) +
   geom_line(aes(y = level - 5, colour = "below")) +
   scale_colour_manual("Direction",
     values = c("above" = "red", "below" = "blue")
   )
-
 ```
 
 

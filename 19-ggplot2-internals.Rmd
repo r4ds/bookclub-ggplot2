@@ -662,14 +662,16 @@ p +
 
 This is the output of the `guide_train()` method defined for `guide_legend()`. The most important piece of it is `key`, which is the data associated with the legend.
 
-```{r 20-57}
+```{r 20-57, eval = FALSE}
+# TODO: The unexported function no longer exists, so we had to turn off eval.
 names( ggtrace_inspect_return(p, ggplot2:::guide_train.legend) )
 ggtrace_inspect_return(p, ggplot2:::guide_train.legend)$key
 ```
 
 The output of `guide_train()` is passed to `guide_gengrob()`. This is the output of the `guide_gebgrob()` method defined for `guide_legend()`:
 
-```{r 20-58}
+```{r 20-58, eval = FALSE}
+# TODO: The unexported function no longer exists, so we had to turn off eval.
 legend_gengrob <- ggtrace_inspect_return(p, ggplot2:::guide_gengrob.legend)
 grid.newpage()
 grid.draw(legend_gengrob)

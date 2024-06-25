@@ -1,5 +1,6 @@
-# Programming with ggplot2
+# (PART\*) Advanced Topics {-}
 
+# Programming with ggplot2
 
 **Learning objectives:**
 

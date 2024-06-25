@@ -1,6 +1,8 @@
 # Mastering the Grammar
 
-```{r setup, include=FALSE}
+***This was previously covered as chapter 13, but it does not exist as a separate chapter in the current version of the book.***
+
+```{r 99-setup, include=FALSE}
 #library(knitr)
 #knitr::opts_chunk$set(cache=TRUE, cache.lazy= FALSE, warning = FALSE, 
                       
