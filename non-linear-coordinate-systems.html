@@ -4,26 +4,26 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>16.3 Non-linear coordinate systems | ggplot2 Book Club</title>
-  <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
-  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+  <title>15.3 Non-linear coordinate systems | ggplot2 Book Club</title>
+  <meta name="description" content="This is the product of the Data Science Learning Community’s Book Club." />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="16.3 Non-linear coordinate systems | ggplot2 Book Club" />
+  <meta property="og:title" content="15.3 Non-linear coordinate systems | ggplot2 Book Club" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
+  <meta property="og:description" content="This is the product of the Data Science Learning Community’s Book Club." />
   <meta name="github-repo" content="r4ds/bookclub-ggplot2" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="16.3 Non-linear coordinate systems | ggplot2 Book Club" />
+  <meta name="twitter:title" content="15.3 Non-linear coordinate systems | ggplot2 Book Club" />
   
-  <meta name="twitter:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
+  <meta name="twitter:description" content="This is the product of the Data Science Learning Community’s Book Club." />
   
 
-<meta name="author" content="The R4DS Online Learning Community" />
+<meta name="author" content="The Data Science Learning Community" />
 
 
-<meta name="date" content="2023-10-13" />
+<meta name="date" content="2024-06-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="linear-coordinate-systems.html"/>
-<link rel="next" href="meeting-videos-15.html"/>
+<link rel="next" href="meeting-videos-14.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -52,19 +52,19 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <script src="libs/d3-3.3.8/d3.min.js"></script>
 <script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
 <link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
 <script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/chromatography-0.1/chromatography.js"></script>
-<script src="libs/DiagrammeR-binding-1.0.10/DiagrammeR.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.11/DiagrammeR.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -152,6 +152,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="book-club-meetings.html"><a href="book-club-meetings.html"><i class="fa fa-check"></i>Book club meetings</a></li>
 </ul></li>
+<li class="part"><span><b>Getting Started</b></span></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="slide-1-title.html"><a href="slide-1-title.html"><i class="fa fa-check"></i><b>1.1</b> {Slide 1 title}</a></li>
@@ -177,10 +178,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.11.1" data-path="meeting-videos-1.html"><a href="meeting-videos-1.html#cohort-1-1"><i class="fa fa-check"></i><b>2.11.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="layers.html"><a href="layers.html"><i class="fa fa-check"></i>Layers</a>
-<ul>
-<li class="chapter" data-level="" data-path="layers-chapters.html"><a href="layers-chapters.html"><i class="fa fa-check"></i>Layers: Chapters</a></li>
-</ul></li>
+<li class="part"><span><b>Layers</b></span></li>
 <li class="chapter" data-level="3" data-path="individual-geoms.html"><a href="individual-geoms.html"><i class="fa fa-check"></i><b>3</b> Individual Geoms</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="scatterplot.html"><a href="scatterplot.html"><i class="fa fa-check"></i><b>3.1</b> Scatterplot:</a></li>
@@ -308,6 +306,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.6.1" data-path="meeting-videos-8.html"><a href="meeting-videos-8.html#cohort-1-8"><i class="fa fa-check"></i><b>9.6.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
+<li class="part"><span><b>Scales</b></span></li>
 <li class="chapter" data-level="10" data-path="position-scales-and-axes.html"><a href="position-scales-and-axes.html"><i class="fa fa-check"></i><b>10</b> Position scales and axes</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="introduction-preliminaries-asides.html"><a href="introduction-preliminaries-asides.html"><i class="fa fa-check"></i><b>10.1</b> Introduction / preliminaries / asides</a></li>
@@ -402,168 +401,170 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.6.1" data-path="meeting-videos-11.html"><a href="meeting-videos-11.html#cohort-1-11"><i class="fa fa-check"></i><b>12.6.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="mastering-the-grammar.html"><a href="mastering-the-grammar.html"><i class="fa fa-check"></i><b>13</b> Mastering the Grammar</a>
+<li class="part"><span><b>The Grammar</b></span></li>
+<li class="chapter" data-level="13" data-path="build-a-plot-layer-by-layer.html"><a href="build-a-plot-layer-by-layer.html"><i class="fa fa-check"></i><b>13</b> Build a plot layer by layer</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="introduction-5.html"><a href="introduction-5.html"><i class="fa fa-check"></i><b>13.1</b> Introduction</a></li>
-<li class="chapter" data-level="13.2" data-path="building-a-scatterplot.html"><a href="building-a-scatterplot.html"><i class="fa fa-check"></i><b>13.2</b> Building a scatterplot</a></li>
-<li class="chapter" data-level="13.3" data-path="scaling.html"><a href="scaling.html"><i class="fa fa-check"></i><b>13.3</b> Scaling</a></li>
-<li class="chapter" data-level="13.4" data-path="adding-complexity-faceting-coordinates-hierarchy-of-defaults.html"><a href="adding-complexity-faceting-coordinates-hierarchy-of-defaults.html"><i class="fa fa-check"></i><b>13.4</b> Adding complexity; faceting, coordinates, hierarchy of defaults</a></li>
-<li class="chapter" data-level="13.5" data-path="process-and-examples.html"><a href="process-and-examples.html"><i class="fa fa-check"></i><b>13.5</b> Process and Examples</a></li>
-<li class="chapter" data-level="13.6" data-path="meeting-videos-12.html"><a href="meeting-videos-12.html"><i class="fa fa-check"></i><b>13.6</b> Meeting Videos</a>
+<li class="chapter" data-level="13.1" data-path="building-a-plot.html"><a href="building-a-plot.html"><i class="fa fa-check"></i><b>13.1</b> Building a plot</a></li>
+<li class="chapter" data-level="13.2" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>13.2</b> Data</a>
 <ul>
-<li class="chapter" data-level="13.6.1" data-path="meeting-videos-12.html"><a href="meeting-videos-12.html#cohort-1-12"><i class="fa fa-check"></i><b>13.6.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="13.2.1" data-path="data.html"><a href="data.html#exercises-2"><i class="fa fa-check"></i><b>13.2.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="aesthetic-mappings.html"><a href="aesthetic-mappings.html"><i class="fa fa-check"></i><b>13.3</b> Aesthetic mappings</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="aesthetic-mappings.html"><a href="aesthetic-mappings.html#specifying-the-aesthetics-in-the-plot-vs.-in-the-layers"><i class="fa fa-check"></i><b>13.3.1</b> Specifying the aesthetics in the plot vs. in the layers</a></li>
+<li class="chapter" data-level="13.3.2" data-path="aesthetic-mappings.html"><a href="aesthetic-mappings.html#setting-vs.-mapping"><i class="fa fa-check"></i><b>13.3.2</b> Setting vs. mapping</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="geoms-1.html"><a href="geoms-1.html"><i class="fa fa-check"></i><b>13.4</b> Geoms</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="geoms-1.html"><a href="geoms-1.html#exercises-3"><i class="fa fa-check"></i><b>13.4.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="stats.html"><a href="stats.html"><i class="fa fa-check"></i><b>13.5</b> Stats</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="stats.html"><a href="stats.html#generated-variables-from-the-stat_...-functions"><i class="fa fa-check"></i><b>13.5.1</b> Generated variables from the <code>stat_...()</code> functions</a></li>
+<li class="chapter" data-level="13.5.2" data-path="stats.html"><a href="stats.html#exercises-4"><i class="fa fa-check"></i><b>13.5.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="13.6" data-path="position-adjustments.html"><a href="position-adjustments.html"><i class="fa fa-check"></i><b>13.6</b> Position adjustments</a></li>
+<li class="chapter" data-level="13.7" data-path="meeting-videos-12.html"><a href="meeting-videos-12.html"><i class="fa fa-check"></i><b>13.7</b> Meeting Videos</a>
+<ul>
+<li class="chapter" data-level="13.7.1" data-path="meeting-videos-12.html"><a href="meeting-videos-12.html#cohort-1-12"><i class="fa fa-check"></i><b>13.7.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="build-a-plot-layer-by-layer.html"><a href="build-a-plot-layer-by-layer.html"><i class="fa fa-check"></i><b>14</b> Build a plot layer by layer</a>
+<li class="chapter" data-level="14" data-path="scales-and-guides.html"><a href="scales-and-guides.html"><i class="fa fa-check"></i><b>14</b> Scales and Guides</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="building-a-plot.html"><a href="building-a-plot.html"><i class="fa fa-check"></i><b>14.1</b> Building a plot</a></li>
-<li class="chapter" data-level="14.2" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>14.2</b> Data</a>
+<li class="chapter" data-level="14.1" data-path="theory-of-scales-and-guides.html"><a href="theory-of-scales-and-guides.html"><i class="fa fa-check"></i><b>14.1</b> Theory of scales and guides</a>
 <ul>
-<li class="chapter" data-level="14.2.1" data-path="data.html"><a href="data.html#exercises-2"><i class="fa fa-check"></i><b>14.2.1</b> Exercises</a></li>
+<li class="chapter" data-level="14.1.1" data-path="theory-of-scales-and-guides.html"><a href="theory-of-scales-and-guides.html#scale-specification"><i class="fa fa-check"></i><b>14.1.1</b> Scale specification</a></li>
+<li class="chapter" data-level="14.1.2" data-path="theory-of-scales-and-guides.html"><a href="theory-of-scales-and-guides.html#naming-scheme"><i class="fa fa-check"></i><b>14.1.2</b> Naming scheme</a></li>
+<li class="chapter" data-level="14.1.3" data-path="theory-of-scales-and-guides.html"><a href="theory-of-scales-and-guides.html#fundamental-scale-types"><i class="fa fa-check"></i><b>14.1.3</b> Fundamental scale types</a></li>
 </ul></li>
-<li class="chapter" data-level="14.3" data-path="aesthetic-mappings.html"><a href="aesthetic-mappings.html"><i class="fa fa-check"></i><b>14.3</b> Aesthetic mappings</a>
+<li class="chapter" data-level="14.2" data-path="scale-breaks.html"><a href="scale-breaks.html"><i class="fa fa-check"></i><b>14.2</b> Scale Breaks</a></li>
+<li class="chapter" data-level="14.3" data-path="scale-limits.html"><a href="scale-limits.html"><i class="fa fa-check"></i><b>14.3</b> Scale Limits</a></li>
+<li class="chapter" data-level="14.4" data-path="scale-guides.html"><a href="scale-guides.html"><i class="fa fa-check"></i><b>14.4</b> Scale guides</a></li>
+<li class="chapter" data-level="14.5" data-path="scale-transformation.html"><a href="scale-transformation.html"><i class="fa fa-check"></i><b>14.5</b> Scale transformation</a></li>
+<li class="chapter" data-level="14.6" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html"><i class="fa fa-check"></i><b>14.6</b> Legend merging and splitting</a>
 <ul>
-<li class="chapter" data-level="14.3.1" data-path="aesthetic-mappings.html"><a href="aesthetic-mappings.html#specifying-the-aesthetics-in-the-plot-vs.-in-the-layers"><i class="fa fa-check"></i><b>14.3.1</b> Specifying the aesthetics in the plot vs. in the layers</a></li>
-<li class="chapter" data-level="14.3.2" data-path="aesthetic-mappings.html"><a href="aesthetic-mappings.html#setting-vs.-mapping"><i class="fa fa-check"></i><b>14.3.2</b> Setting vs. mapping</a></li>
+<li class="chapter" data-level="14.6.1" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html#merging-legends"><i class="fa fa-check"></i><b>14.6.1</b> Merging legends</a></li>
+<li class="chapter" data-level="14.6.2" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html#splitting-legends"><i class="fa fa-check"></i><b>14.6.2</b> Splitting legends</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="geoms-1.html"><a href="geoms-1.html"><i class="fa fa-check"></i><b>14.4</b> Geoms</a>
+<li class="chapter" data-level="14.7" data-path="legend-key-glyphs.html"><a href="legend-key-glyphs.html"><i class="fa fa-check"></i><b>14.7</b> Legend key glyphs</a></li>
+<li class="chapter" data-level="14.8" data-path="meeting-videos-13.html"><a href="meeting-videos-13.html"><i class="fa fa-check"></i><b>14.8</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="14.4.1" data-path="geoms-1.html"><a href="geoms-1.html#exercises-3"><i class="fa fa-check"></i><b>14.4.1</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="14.5" data-path="stats.html"><a href="stats.html"><i class="fa fa-check"></i><b>14.5</b> Stats</a>
-<ul>
-<li class="chapter" data-level="14.5.1" data-path="stats.html"><a href="stats.html#generated-variables-from-the-stat_...-functions"><i class="fa fa-check"></i><b>14.5.1</b> Generated variables from the <code>stat_...()</code> functions</a></li>
-<li class="chapter" data-level="14.5.2" data-path="stats.html"><a href="stats.html#exercises-4"><i class="fa fa-check"></i><b>14.5.2</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="14.6" data-path="position-adjustments.html"><a href="position-adjustments.html"><i class="fa fa-check"></i><b>14.6</b> Position adjustments</a></li>
-<li class="chapter" data-level="14.7" data-path="meeting-videos-13.html"><a href="meeting-videos-13.html"><i class="fa fa-check"></i><b>14.7</b> Meeting Videos</a>
-<ul>
-<li class="chapter" data-level="14.7.1" data-path="meeting-videos-13.html"><a href="meeting-videos-13.html#cohort-1-13"><i class="fa fa-check"></i><b>14.7.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="14.8.1" data-path="meeting-videos-13.html"><a href="meeting-videos-13.html#cohort-1-13"><i class="fa fa-check"></i><b>14.8.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="scales-and-guides.html"><a href="scales-and-guides.html"><i class="fa fa-check"></i><b>15</b> Scales and Guides</a>
+<li class="chapter" data-level="15" data-path="coordinate-systems.html"><a href="coordinate-systems.html"><i class="fa fa-check"></i><b>15</b> Coordinate systems</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="theory-of-scales-and-guides.html"><a href="theory-of-scales-and-guides.html"><i class="fa fa-check"></i><b>15.1</b> Theory of scales and guides</a>
+<li class="chapter" data-level="15.1" data-path="introduction-5.html"><a href="introduction-5.html"><i class="fa fa-check"></i><b>15.1</b> Introduction</a></li>
+<li class="chapter" data-level="15.2" data-path="linear-coordinate-systems.html"><a href="linear-coordinate-systems.html"><i class="fa fa-check"></i><b>15.2</b> Linear coordinate systems</a></li>
+<li class="chapter" data-level="15.3" data-path="non-linear-coordinate-systems.html"><a href="non-linear-coordinate-systems.html"><i class="fa fa-check"></i><b>15.3</b> Non-linear coordinate systems</a>
 <ul>
-<li class="chapter" data-level="15.1.1" data-path="theory-of-scales-and-guides.html"><a href="theory-of-scales-and-guides.html#scale-specification"><i class="fa fa-check"></i><b>15.1.1</b> Scale specification</a></li>
-<li class="chapter" data-level="15.1.2" data-path="theory-of-scales-and-guides.html"><a href="theory-of-scales-and-guides.html#naming-scheme"><i class="fa fa-check"></i><b>15.1.2</b> Naming scheme</a></li>
-<li class="chapter" data-level="15.1.3" data-path="theory-of-scales-and-guides.html"><a href="theory-of-scales-and-guides.html#fundamental-scale-types"><i class="fa fa-check"></i><b>15.1.3</b> Fundamental scale types</a></li>
+<li class="chapter" data-level="15.3.1" data-path="non-linear-coordinate-systems.html"><a href="non-linear-coordinate-systems.html#example-coord_polar-with-duboischallenge-n8-data"><i class="fa fa-check"></i><b>15.3.1</b> Example: Coord_polar() with DuBoisChallenge N°8 data</a></li>
 </ul></li>
-<li class="chapter" data-level="15.2" data-path="scale-breaks.html"><a href="scale-breaks.html"><i class="fa fa-check"></i><b>15.2</b> Scale Breaks</a></li>
-<li class="chapter" data-level="15.3" data-path="scale-limits.html"><a href="scale-limits.html"><i class="fa fa-check"></i><b>15.3</b> Scale Limits</a></li>
-<li class="chapter" data-level="15.4" data-path="scale-guides.html"><a href="scale-guides.html"><i class="fa fa-check"></i><b>15.4</b> Scale guides</a></li>
-<li class="chapter" data-level="15.5" data-path="scale-transformation.html"><a href="scale-transformation.html"><i class="fa fa-check"></i><b>15.5</b> Scale transformation</a></li>
-<li class="chapter" data-level="15.6" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html"><i class="fa fa-check"></i><b>15.6</b> Legend merging and splitting</a>
+<li class="chapter" data-level="15.4" data-path="meeting-videos-14.html"><a href="meeting-videos-14.html"><i class="fa fa-check"></i><b>15.4</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="15.6.1" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html#merging-legends"><i class="fa fa-check"></i><b>15.6.1</b> Merging legends</a></li>
-<li class="chapter" data-level="15.6.2" data-path="legend-merging-and-splitting.html"><a href="legend-merging-and-splitting.html#splitting-legends"><i class="fa fa-check"></i><b>15.6.2</b> Splitting legends</a></li>
-</ul></li>
-<li class="chapter" data-level="15.7" data-path="legend-key-glyphs.html"><a href="legend-key-glyphs.html"><i class="fa fa-check"></i><b>15.7</b> Legend key glyphs</a></li>
-<li class="chapter" data-level="15.8" data-path="meeting-videos-14.html"><a href="meeting-videos-14.html"><i class="fa fa-check"></i><b>15.8</b> Meeting Videos</a>
-<ul>
-<li class="chapter" data-level="15.8.1" data-path="meeting-videos-14.html"><a href="meeting-videos-14.html#cohort-1-14"><i class="fa fa-check"></i><b>15.8.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="15.4.1" data-path="meeting-videos-14.html"><a href="meeting-videos-14.html#cohort-1-14"><i class="fa fa-check"></i><b>15.4.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="coordinate-systems.html"><a href="coordinate-systems.html"><i class="fa fa-check"></i><b>16</b> Coordinate systems</a>
+<li class="chapter" data-level="16" data-path="faceting-2.html"><a href="faceting-2.html"><i class="fa fa-check"></i><b>16</b> Faceting</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="introduction-6.html"><a href="introduction-6.html"><i class="fa fa-check"></i><b>16.1</b> Introduction</a></li>
-<li class="chapter" data-level="16.2" data-path="linear-coordinate-systems.html"><a href="linear-coordinate-systems.html"><i class="fa fa-check"></i><b>16.2</b> Linear coordinate systems</a></li>
-<li class="chapter" data-level="16.3" data-path="non-linear-coordinate-systems.html"><a href="non-linear-coordinate-systems.html"><i class="fa fa-check"></i><b>16.3</b> Non-linear coordinate systems</a>
+<li class="chapter" data-level="16.1" data-path="facets.html"><a href="facets.html"><i class="fa fa-check"></i><b>16.1</b> Facets</a></li>
+<li class="chapter" data-level="16.2" data-path="meeting-videos-15.html"><a href="meeting-videos-15.html"><i class="fa fa-check"></i><b>16.2</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="16.3.1" data-path="non-linear-coordinate-systems.html"><a href="non-linear-coordinate-systems.html#example-coord_polar-with-duboischallenge-n8-data"><i class="fa fa-check"></i><b>16.3.1</b> Example: Coord_polar() with DuBoisChallenge N°8 data</a></li>
-</ul></li>
-<li class="chapter" data-level="16.4" data-path="meeting-videos-15.html"><a href="meeting-videos-15.html"><i class="fa fa-check"></i><b>16.4</b> Meeting Videos</a>
-<ul>
-<li class="chapter" data-level="16.4.1" data-path="meeting-videos-15.html"><a href="meeting-videos-15.html#cohort-1-15"><i class="fa fa-check"></i><b>16.4.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="16.2.1" data-path="meeting-videos-15.html"><a href="meeting-videos-15.html#cohort-1-15"><i class="fa fa-check"></i><b>16.2.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="faceting-2.html"><a href="faceting-2.html"><i class="fa fa-check"></i><b>17</b> Faceting</a>
+<li class="chapter" data-level="17" data-path="themes.html"><a href="themes.html"><i class="fa fa-check"></i><b>17</b> Themes</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="facets.html"><a href="facets.html"><i class="fa fa-check"></i><b>17.1</b> Facets</a></li>
-<li class="chapter" data-level="17.2" data-path="meeting-videos-16.html"><a href="meeting-videos-16.html"><i class="fa fa-check"></i><b>17.2</b> Meeting Videos</a>
+<li class="chapter" data-level="17.1" data-path="theme.html"><a href="theme.html"><i class="fa fa-check"></i><b>17.1</b> Theme</a>
 <ul>
-<li class="chapter" data-level="17.2.1" data-path="meeting-videos-16.html"><a href="meeting-videos-16.html#cohort-1-16"><i class="fa fa-check"></i><b>17.2.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="17.1.1" data-path="theme.html"><a href="theme.html#complete-themes"><i class="fa fa-check"></i><b>17.1.1</b> Complete themes</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="plot-elements-of-a-theme.html"><a href="plot-elements-of-a-theme.html"><i class="fa fa-check"></i><b>17.2</b> Plot elements of a theme</a></li>
+<li class="chapter" data-level="17.3" data-path="meeting-videos-16.html"><a href="meeting-videos-16.html"><i class="fa fa-check"></i><b>17.3</b> Meeting Videos</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="meeting-videos-16.html"><a href="meeting-videos-16.html#cohort-1-16"><i class="fa fa-check"></i><b>17.3.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="themes.html"><a href="themes.html"><i class="fa fa-check"></i><b>18</b> Themes</a>
+<li class="part"><span><b>Advanced Topics</b></span></li>
+<li class="chapter" data-level="18" data-path="programming-with-ggplot2.html"><a href="programming-with-ggplot2.html"><i class="fa fa-check"></i><b>18</b> Programming with ggplot2</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="theme.html"><a href="theme.html"><i class="fa fa-check"></i><b>18.1</b> Theme</a>
+<li class="chapter" data-level="18.1" data-path="programming-single-and-multiple-components.html"><a href="programming-single-and-multiple-components.html"><i class="fa fa-check"></i><b>18.1</b> Programming single and multiple components</a>
 <ul>
-<li class="chapter" data-level="18.1.1" data-path="theme.html"><a href="theme.html#complete-themes"><i class="fa fa-check"></i><b>18.1.1</b> Complete themes</a></li>
+<li class="chapter" data-level="18.1.1" data-path="programming-single-and-multiple-components.html"><a href="programming-single-and-multiple-components.html#components"><i class="fa fa-check"></i><b>18.1.1</b> Components</a></li>
 </ul></li>
-<li class="chapter" data-level="18.2" data-path="plot-elements-of-a-theme.html"><a href="plot-elements-of-a-theme.html"><i class="fa fa-check"></i><b>18.2</b> Plot elements of a theme</a></li>
-<li class="chapter" data-level="18.3" data-path="meeting-videos-17.html"><a href="meeting-videos-17.html"><i class="fa fa-check"></i><b>18.3</b> Meeting Videos</a>
+<li class="chapter" data-level="18.2" data-path="use-components-annotation-and-additional-arguments-in-a-plot.html"><a href="use-components-annotation-and-additional-arguments-in-a-plot.html"><i class="fa fa-check"></i><b>18.2</b> Use components, annotation, and additional arguments in a plot</a></li>
+<li class="chapter" data-level="18.3" data-path="functional-programming.html"><a href="functional-programming.html"><i class="fa fa-check"></i><b>18.3</b> Functional programming</a></li>
+<li class="chapter" data-level="18.4" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>18.4</b> References</a></li>
+<li class="chapter" data-level="18.5" data-path="meeting-videos-17.html"><a href="meeting-videos-17.html"><i class="fa fa-check"></i><b>18.5</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="18.3.1" data-path="meeting-videos-17.html"><a href="meeting-videos-17.html#cohort-1-17"><i class="fa fa-check"></i><b>18.3.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="18.5.1" data-path="meeting-videos-17.html"><a href="meeting-videos-17.html#cohort-1-17"><i class="fa fa-check"></i><b>18.5.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="programming-with-ggplot2.html"><a href="programming-with-ggplot2.html"><i class="fa fa-check"></i><b>19</b> Programming with ggplot2</a>
+<li class="chapter" data-level="19" data-path="internals-of-ggplot2.html"><a href="internals-of-ggplot2.html"><i class="fa fa-check"></i><b>19</b> Internals of ggplot2</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="programming-single-and-multiple-components.html"><a href="programming-single-and-multiple-components.html"><i class="fa fa-check"></i><b>19.1</b> Programming single and multiple components</a>
+<li class="chapter" data-level="19.1" data-path="the-plot-method.html"><a href="the-plot-method.html"><i class="fa fa-check"></i><b>19.1</b> The <code>plot()</code> method</a></li>
+<li class="chapter" data-level="19.2" data-path="the-build-step.html"><a href="the-build-step.html"><i class="fa fa-check"></i><b>19.2</b> The build step</a>
 <ul>
-<li class="chapter" data-level="19.1.1" data-path="programming-single-and-multiple-components.html"><a href="programming-single-and-multiple-components.html#components"><i class="fa fa-check"></i><b>19.1.1</b> Components</a></li>
+<li class="chapter" data-level="19.2.1" data-path="the-build-step.html"><a href="the-build-step.html#data-preparation"><i class="fa fa-check"></i><b>19.2.1</b> Data preparation</a></li>
+<li class="chapter" data-level="19.2.2" data-path="the-build-step.html"><a href="the-build-step.html#data-transformation"><i class="fa fa-check"></i><b>19.2.2</b> Data transformation</a></li>
+<li class="chapter" data-level="19.2.3" data-path="the-build-step.html"><a href="the-build-step.html#output-1"><i class="fa fa-check"></i><b>19.2.3</b> Output</a></li>
+<li class="chapter" data-level="19.2.4" data-path="the-build-step.html"><a href="the-build-step.html#explore"><i class="fa fa-check"></i><b>19.2.4</b> Explore</a></li>
 </ul></li>
-<li class="chapter" data-level="19.2" data-path="use-components-annotation-and-additional-arguments-in-a-plot.html"><a href="use-components-annotation-and-additional-arguments-in-a-plot.html"><i class="fa fa-check"></i><b>19.2</b> Use components, annotation, and additional arguments in a plot</a></li>
-<li class="chapter" data-level="19.3" data-path="functional-programming.html"><a href="functional-programming.html"><i class="fa fa-check"></i><b>19.3</b> Functional programming</a></li>
-<li class="chapter" data-level="19.4" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>19.4</b> References</a></li>
+<li class="chapter" data-level="19.3" data-path="the-gtable-step.html"><a href="the-gtable-step.html"><i class="fa fa-check"></i><b>19.3</b> The gtable step</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="the-gtable-step.html"><a href="the-gtable-step.html#rendering-the-panels"><i class="fa fa-check"></i><b>19.3.1</b> Rendering the panels</a></li>
+<li class="chapter" data-level="19.3.2" data-path="the-gtable-step.html"><a href="the-gtable-step.html#adding-guides"><i class="fa fa-check"></i><b>19.3.2</b> Adding guides</a></li>
+<li class="chapter" data-level="19.3.3" data-path="the-gtable-step.html"><a href="the-gtable-step.html#adding-adornment"><i class="fa fa-check"></i><b>19.3.3</b> Adding adornment</a></li>
+<li class="chapter" data-level="19.3.4" data-path="the-gtable-step.html"><a href="the-gtable-step.html#output-2"><i class="fa fa-check"></i><b>19.3.4</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="introducing-ggproto.html"><a href="introducing-ggproto.html"><i class="fa fa-check"></i><b>19.4</b> Introducing ggproto</a>
+<ul>
+<li class="chapter" data-level="19.4.1" data-path="introducing-ggproto.html"><a href="introducing-ggproto.html#ggproto-syntax"><i class="fa fa-check"></i><b>19.4.1</b> ggproto syntax</a></li>
+<li class="chapter" data-level="19.4.2" data-path="introducing-ggproto.html"><a href="introducing-ggproto.html#ggproto-style-guide"><i class="fa fa-check"></i><b>19.4.2</b> ggproto style guide</a></li>
+</ul></li>
 <li class="chapter" data-level="19.5" data-path="meeting-videos-18.html"><a href="meeting-videos-18.html"><i class="fa fa-check"></i><b>19.5</b> Meeting Videos</a>
 <ul>
 <li class="chapter" data-level="19.5.1" data-path="meeting-videos-18.html"><a href="meeting-videos-18.html#cohort-1-18"><i class="fa fa-check"></i><b>19.5.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="internals-of-ggplot2.html"><a href="internals-of-ggplot2.html"><i class="fa fa-check"></i><b>20</b> Internals of ggplot2</a>
+<li class="chapter" data-level="20" data-path="extending-ggplot2.html"><a href="extending-ggplot2.html"><i class="fa fa-check"></i><b>20</b> Extending ggplot2</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="the-plot-method.html"><a href="the-plot-method.html"><i class="fa fa-check"></i><b>20.1</b> The <code>plot()</code> method</a></li>
-<li class="chapter" data-level="20.2" data-path="the-build-step.html"><a href="the-build-step.html"><i class="fa fa-check"></i><b>20.2</b> The build step</a>
+<li class="chapter" data-level="20.1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>20.1</b> Overview</a></li>
+<li class="chapter" data-level="20.2" data-path="themes-1.html"><a href="themes-1.html"><i class="fa fa-check"></i><b>20.2</b> Themes</a></li>
+<li class="chapter" data-level="20.3" data-path="stats-1.html"><a href="stats-1.html"><i class="fa fa-check"></i><b>20.3</b> Stats</a></li>
+<li class="chapter" data-level="20.4" data-path="geoms-2.html"><a href="geoms-2.html"><i class="fa fa-check"></i><b>20.4</b> Geoms</a></li>
+<li class="chapter" data-level="20.5" data-path="coords.html"><a href="coords.html"><i class="fa fa-check"></i><b>20.5</b> Coords</a></li>
+<li class="chapter" data-level="20.6" data-path="scales-1.html"><a href="scales-1.html"><i class="fa fa-check"></i><b>20.6</b> Scales</a></li>
+<li class="chapter" data-level="20.7" data-path="other-important-parts.html"><a href="other-important-parts.html"><i class="fa fa-check"></i><b>20.7</b> Other important parts</a>
 <ul>
-<li class="chapter" data-level="20.2.1" data-path="the-build-step.html"><a href="the-build-step.html#data-preparation"><i class="fa fa-check"></i><b>20.2.1</b> Data preparation</a></li>
-<li class="chapter" data-level="20.2.2" data-path="the-build-step.html"><a href="the-build-step.html#data-transformation"><i class="fa fa-check"></i><b>20.2.2</b> Data transformation</a></li>
-<li class="chapter" data-level="20.2.3" data-path="the-build-step.html"><a href="the-build-step.html#output-1"><i class="fa fa-check"></i><b>20.2.3</b> Output</a></li>
-<li class="chapter" data-level="20.2.4" data-path="the-build-step.html"><a href="the-build-step.html#explore"><i class="fa fa-check"></i><b>20.2.4</b> Explore</a></li>
+<li class="chapter" data-level="20.7.1" data-path="other-important-parts.html"><a href="other-important-parts.html#positions"><i class="fa fa-check"></i><b>20.7.1</b> Positions</a></li>
+<li class="chapter" data-level="20.7.2" data-path="other-important-parts.html"><a href="other-important-parts.html#facets-1"><i class="fa fa-check"></i><b>20.7.2</b> Facets</a></li>
+<li class="chapter" data-level="20.7.3" data-path="other-important-parts.html"><a href="other-important-parts.html#guides"><i class="fa fa-check"></i><b>20.7.3</b> Guides</a></li>
 </ul></li>
-<li class="chapter" data-level="20.3" data-path="the-gtable-step.html"><a href="the-gtable-step.html"><i class="fa fa-check"></i><b>20.3</b> The gtable step</a>
+<li class="chapter" data-level="20.8" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i><b>20.8</b> References</a></li>
+<li class="chapter" data-level="20.9" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html"><i class="fa fa-check"></i><b>20.9</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="20.3.1" data-path="the-gtable-step.html"><a href="the-gtable-step.html#rendering-the-panels"><i class="fa fa-check"></i><b>20.3.1</b> Rendering the panels</a></li>
-<li class="chapter" data-level="20.3.2" data-path="the-gtable-step.html"><a href="the-gtable-step.html#adding-guides"><i class="fa fa-check"></i><b>20.3.2</b> Adding guides</a></li>
-<li class="chapter" data-level="20.3.3" data-path="the-gtable-step.html"><a href="the-gtable-step.html#adding-adornment"><i class="fa fa-check"></i><b>20.3.3</b> Adding adornment</a></li>
-<li class="chapter" data-level="20.3.4" data-path="the-gtable-step.html"><a href="the-gtable-step.html#output-2"><i class="fa fa-check"></i><b>20.3.4</b> Output</a></li>
-</ul></li>
-<li class="chapter" data-level="20.4" data-path="introducing-ggproto.html"><a href="introducing-ggproto.html"><i class="fa fa-check"></i><b>20.4</b> Introducing ggproto</a>
-<ul>
-<li class="chapter" data-level="20.4.1" data-path="introducing-ggproto.html"><a href="introducing-ggproto.html#ggproto-syntax"><i class="fa fa-check"></i><b>20.4.1</b> ggproto syntax</a></li>
-<li class="chapter" data-level="20.4.2" data-path="introducing-ggproto.html"><a href="introducing-ggproto.html#ggproto-style-guide"><i class="fa fa-check"></i><b>20.4.2</b> ggproto style guide</a></li>
-</ul></li>
-<li class="chapter" data-level="20.5" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html"><i class="fa fa-check"></i><b>20.5</b> Meeting Videos</a>
-<ul>
-<li class="chapter" data-level="20.5.1" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html#cohort-1-19"><i class="fa fa-check"></i><b>20.5.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="20.9.1" data-path="meeting-videos-19.html"><a href="meeting-videos-19.html#cohort-1-19"><i class="fa fa-check"></i><b>20.9.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="extending-ggplot2.html"><a href="extending-ggplot2.html"><i class="fa fa-check"></i><b>21</b> Extending ggplot2</a>
+<li class="chapter" data-level="21" data-path="a-case-study.html"><a href="a-case-study.html"><i class="fa fa-check"></i><b>21</b> A case study</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>21.1</b> Overview</a></li>
-<li class="chapter" data-level="21.2" data-path="themes-1.html"><a href="themes-1.html"><i class="fa fa-check"></i><b>21.2</b> Themes</a></li>
-<li class="chapter" data-level="21.3" data-path="stats-1.html"><a href="stats-1.html"><i class="fa fa-check"></i><b>21.3</b> Stats</a></li>
-<li class="chapter" data-level="21.4" data-path="geoms-2.html"><a href="geoms-2.html"><i class="fa fa-check"></i><b>21.4</b> Geoms</a></li>
-<li class="chapter" data-level="21.5" data-path="coords.html"><a href="coords.html"><i class="fa fa-check"></i><b>21.5</b> Coords</a></li>
-<li class="chapter" data-level="21.6" data-path="scales-1.html"><a href="scales-1.html"><i class="fa fa-check"></i><b>21.6</b> Scales</a></li>
-<li class="chapter" data-level="21.7" data-path="other-important-parts.html"><a href="other-important-parts.html"><i class="fa fa-check"></i><b>21.7</b> Other important parts</a>
+<li class="chapter" data-level="21.1" data-path="slide-1-title-1.html"><a href="slide-1-title-1.html"><i class="fa fa-check"></i><b>21.1</b> {Slide 1 title}</a></li>
+<li class="chapter" data-level="21.2" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html"><i class="fa fa-check"></i><b>21.2</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="21.7.1" data-path="other-important-parts.html"><a href="other-important-parts.html#positions"><i class="fa fa-check"></i><b>21.7.1</b> Positions</a></li>
-<li class="chapter" data-level="21.7.2" data-path="other-important-parts.html"><a href="other-important-parts.html#facets-1"><i class="fa fa-check"></i><b>21.7.2</b> Facets</a></li>
-<li class="chapter" data-level="21.7.3" data-path="other-important-parts.html"><a href="other-important-parts.html#guides"><i class="fa fa-check"></i><b>21.7.3</b> Guides</a></li>
-</ul></li>
-<li class="chapter" data-level="21.8" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i><b>21.8</b> References</a></li>
-<li class="chapter" data-level="21.9" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html"><i class="fa fa-check"></i><b>21.9</b> Meeting Videos</a>
-<ul>
-<li class="chapter" data-level="21.9.1" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html#cohort-1-20"><i class="fa fa-check"></i><b>21.9.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="21.2.1" data-path="meeting-videos-20.html"><a href="meeting-videos-20.html#cohort-1-20"><i class="fa fa-check"></i><b>21.2.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="a-case-study.html"><a href="a-case-study.html"><i class="fa fa-check"></i><b>22</b> A case study</a>
+<li class="chapter" data-level="22" data-path="mastering-the-grammar.html"><a href="mastering-the-grammar.html"><i class="fa fa-check"></i><b>22</b> Mastering the Grammar</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="slide-1-title-1.html"><a href="slide-1-title-1.html"><i class="fa fa-check"></i><b>22.1</b> {Slide 1 title}</a></li>
-<li class="chapter" data-level="22.2" data-path="meeting-videos-21.html"><a href="meeting-videos-21.html"><i class="fa fa-check"></i><b>22.2</b> Meeting Videos</a>
+<li class="chapter" data-level="22.1" data-path="introduction-6.html"><a href="introduction-6.html"><i class="fa fa-check"></i><b>22.1</b> Introduction</a></li>
+<li class="chapter" data-level="22.2" data-path="building-a-scatterplot.html"><a href="building-a-scatterplot.html"><i class="fa fa-check"></i><b>22.2</b> Building a scatterplot</a></li>
+<li class="chapter" data-level="22.3" data-path="scaling.html"><a href="scaling.html"><i class="fa fa-check"></i><b>22.3</b> Scaling</a></li>
+<li class="chapter" data-level="22.4" data-path="adding-complexity-faceting-coordinates-hierarchy-of-defaults.html"><a href="adding-complexity-faceting-coordinates-hierarchy-of-defaults.html"><i class="fa fa-check"></i><b>22.4</b> Adding complexity; faceting, coordinates, hierarchy of defaults</a></li>
+<li class="chapter" data-level="22.5" data-path="process-and-examples.html"><a href="process-and-examples.html"><i class="fa fa-check"></i><b>22.5</b> Process and Examples</a></li>
+<li class="chapter" data-level="22.6" data-path="meeting-videos-21.html"><a href="meeting-videos-21.html"><i class="fa fa-check"></i><b>22.6</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="22.2.1" data-path="meeting-videos-21.html"><a href="meeting-videos-21.html#cohort-1-21"><i class="fa fa-check"></i><b>22.2.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="22.6.1" data-path="meeting-videos-21.html"><a href="meeting-videos-21.html#cohort-1-21"><i class="fa fa-check"></i><b>22.6.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -586,8 +587,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="non-linear-coordinate-systems" class="section level2 hasAnchor" number="16.3">
-<h2><span class="header-section-number">16.3</span> Non-linear coordinate systems<a href="non-linear-coordinate-systems.html#non-linear-coordinate-systems" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="non-linear-coordinate-systems" class="section level2 hasAnchor" number="15.3">
+<h2><span class="header-section-number">15.3</span> Non-linear coordinate systems<a href="non-linear-coordinate-systems.html#non-linear-coordinate-systems" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p><code>coord_polar()</code>: Polar coordinates.</p></li>
 <li><p><code>coord_map()</code>/<code>coord_quickmap()</code>/<code>coord_sf()</code>: Map projections.</p></li>
@@ -597,123 +598,123 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li><code>coord_polar()</code></li>
 </ol>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="non-linear-coordinate-systems.html#cb298-1" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
-<span id="cb298-2"><a href="non-linear-coordinate-systems.html#cb298-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Petal.Width)) <span class="sc">+</span></span>
-<span id="cb298-3"><a href="non-linear-coordinate-systems.html#cb298-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">color=</span>Species,<span class="at">fill=</span>Species),<span class="at">show.legend =</span> F)<span class="sc">+</span></span>
-<span id="cb298-4"><a href="non-linear-coordinate-systems.html#cb298-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>()</span>
-<span id="cb298-5"><a href="non-linear-coordinate-systems.html#cb298-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb298-6"><a href="non-linear-coordinate-systems.html#cb298-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb298-7"><a href="non-linear-coordinate-systems.html#cb298-7" aria-hidden="true" tabindex="-1"></a>p4 <span class="sc">+</span> <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">&quot;x&quot;</span>) <span class="sc">|</span> p4 <span class="sc">+</span> <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">&quot;y&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="non-linear-coordinate-systems.html#cb298-1" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
+<span id="cb298-2"><a href="non-linear-coordinate-systems.html#cb298-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Petal.Width)) <span class="sc">+</span></span>
+<span id="cb298-3"><a href="non-linear-coordinate-systems.html#cb298-3" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">color=</span>Species,<span class="at">fill=</span>Species),<span class="at">show.legend =</span> F)<span class="sc">+</span></span>
+<span id="cb298-4"><a href="non-linear-coordinate-systems.html#cb298-4" tabindex="-1"></a>  <span class="fu">theme_light</span>()</span>
+<span id="cb298-5"><a href="non-linear-coordinate-systems.html#cb298-5" tabindex="-1"></a></span>
+<span id="cb298-6"><a href="non-linear-coordinate-systems.html#cb298-6" tabindex="-1"></a></span>
+<span id="cb298-7"><a href="non-linear-coordinate-systems.html#cb298-7" tabindex="-1"></a>p4 <span class="sc">+</span> <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">&quot;x&quot;</span>) <span class="sc">|</span> p4 <span class="sc">+</span> <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">&quot;y&quot;</span>)</span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/ch16-06-1.png" width="672" /></p>
-<div id="example-coord_polar-with-duboischallenge-n8-data" class="section level3 hasAnchor" number="16.3.1">
-<h3><span class="header-section-number">16.3.1</span> Example: Coord_polar() with DuBoisChallenge N°8 data<a href="non-linear-coordinate-systems.html#example-coord_polar-with-duboischallenge-n8-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="example-coord_polar-with-duboischallenge-n8-data" class="section level3 hasAnchor" number="15.3.1">
+<h3><span class="header-section-number">15.3.1</span> Example: Coord_polar() with DuBoisChallenge N°8 data<a href="non-linear-coordinate-systems.html#example-coord_polar-with-duboischallenge-n8-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>source: <a href="https://github.com/ajstarks/dubois-data-portraits/tree/master/challenge/2022">DuBois data portraits</a></p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="non-linear-coordinate-systems.html#cb299-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/ajstarks/dubois-data-portraits/master/challenge/2022/challenge08/data.csv&quot;</span>)</span>
-<span id="cb299-2"><a href="non-linear-coordinate-systems.html#cb299-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb299-3"><a href="non-linear-coordinate-systems.html#cb299-3" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb299-4"><a href="non-linear-coordinate-systems.html#cb299-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>Year)  </span>
-<span id="cb299-5"><a href="non-linear-coordinate-systems.html#cb299-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb299-6"><a href="non-linear-coordinate-systems.html#cb299-6" aria-hidden="true" tabindex="-1"></a>df2[<span class="dv">7</span>,<span class="dv">1</span>]  <span class="ot">&lt;-</span> <span class="dv">1875</span></span>
-<span id="cb299-7"><a href="non-linear-coordinate-systems.html#cb299-7" aria-hidden="true" tabindex="-1"></a>df2[<span class="dv">7</span>,<span class="dv">2</span>]  <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb299-8"><a href="non-linear-coordinate-systems.html#cb299-8" aria-hidden="true" tabindex="-1"></a>df2[<span class="dv">7</span>,<span class="dv">3</span>]  <span class="ot">&lt;-</span> <span class="dv">0</span></span></code></pre></div>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="non-linear-coordinate-systems.html#cb300-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="sc">%&gt;%</span>  </span>
-<span id="cb300-2"><a href="non-linear-coordinate-systems.html#cb300-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb300-3"><a href="non-linear-coordinate-systems.html#cb300-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb300-4"><a href="non-linear-coordinate-systems.html#cb300-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span> <span class="fu">subset</span>(df2, Year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1875</span>,<span class="dv">1875</span>)),</span>
-<span id="cb300-5"><a href="non-linear-coordinate-systems.html#cb300-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>Year, <span class="at">y=</span> <span class="st">`</span><span class="at">Houshold Value (Dollars)</span><span class="st">`</span>),</span>
-<span id="cb300-6"><a href="non-linear-coordinate-systems.html#cb300-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">color=</span><span class="st">&quot;#FFCDCB&quot;</span>,<span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span></span>
-<span id="cb300-7"><a href="non-linear-coordinate-systems.html#cb300-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb300-8"><a href="non-linear-coordinate-systems.html#cb300-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span> <span class="fu">subset</span>(df2, Year<span class="sc">%in%</span><span class="fu">c</span>(<span class="dv">1875</span>,<span class="dv">1875</span>,<span class="dv">1880</span>)),</span>
-<span id="cb300-9"><a href="non-linear-coordinate-systems.html#cb300-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping=</span> <span class="fu">aes</span>(<span class="at">x=</span>Year <span class="sc">+</span><span class="dv">2</span>, <span class="at">y=</span> <span class="st">`</span><span class="at">Houshold Value (Dollars)</span><span class="st">`</span>),</span>
-<span id="cb300-10"><a href="non-linear-coordinate-systems.html#cb300-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">color=</span><span class="st">&quot;#989EB4&quot;</span>,<span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span></span>
-<span id="cb300-11"><a href="non-linear-coordinate-systems.html#cb300-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb300-12"><a href="non-linear-coordinate-systems.html#cb300-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span> <span class="fu">subset</span>(df2, Year<span class="sc">%in%</span><span class="fu">c</span>(<span class="dv">1875</span>,<span class="dv">1875</span>,<span class="dv">1880</span>,<span class="dv">1885</span>)),</span>
-<span id="cb300-13"><a href="non-linear-coordinate-systems.html#cb300-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping=</span> <span class="fu">aes</span>(<span class="at">x=</span>Year <span class="sc">+</span><span class="dv">4</span>, <span class="at">y=</span> <span class="st">`</span><span class="at">Houshold Value (Dollars)</span><span class="st">`</span>),</span>
-<span id="cb300-14"><a href="non-linear-coordinate-systems.html#cb300-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">color=</span><span class="st">&quot;#b08c71&quot;</span>,<span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span></span>
-<span id="cb300-15"><a href="non-linear-coordinate-systems.html#cb300-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb300-16"><a href="non-linear-coordinate-systems.html#cb300-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span> <span class="fu">subset</span>(df2, Year<span class="sc">%in%</span><span class="fu">c</span>(<span class="dv">1875</span>,<span class="dv">1875</span>,<span class="dv">1880</span>,<span class="dv">1885</span>,<span class="dv">1890</span>)),</span>
-<span id="cb300-17"><a href="non-linear-coordinate-systems.html#cb300-17" aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping=</span> <span class="fu">aes</span>(<span class="at">x=</span>Year <span class="sc">+</span><span class="dv">6</span>, <span class="at">y=</span> <span class="st">`</span><span class="at">Houshold Value (Dollars)</span><span class="st">`</span>),</span>
-<span id="cb300-18"><a href="non-linear-coordinate-systems.html#cb300-18" aria-hidden="true" tabindex="-1"></a>            <span class="at">color=</span><span class="st">&quot;#FFC942&quot;</span>,<span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span></span>
-<span id="cb300-19"><a href="non-linear-coordinate-systems.html#cb300-19" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb300-20"><a href="non-linear-coordinate-systems.html#cb300-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span> <span class="fu">subset</span>(df2, Year<span class="sc">%in%</span><span class="fu">c</span>(<span class="dv">1875</span>,<span class="dv">1875</span>,<span class="dv">1880</span>,<span class="dv">1885</span>,<span class="dv">1890</span>,<span class="dv">1895</span>)),</span>
-<span id="cb300-21"><a href="non-linear-coordinate-systems.html#cb300-21" aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping=</span> <span class="fu">aes</span>(<span class="at">x=</span>Year <span class="sc">+</span><span class="dv">8</span>, <span class="at">y=</span> <span class="st">`</span><span class="at">Houshold Value (Dollars)</span><span class="st">`</span>),</span>
-<span id="cb300-22"><a href="non-linear-coordinate-systems.html#cb300-22" aria-hidden="true" tabindex="-1"></a>            <span class="at">color=</span><span class="st">&quot;#EFDECC&quot;</span>, <span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span></span>
-<span id="cb300-23"><a href="non-linear-coordinate-systems.html#cb300-23" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb300-24"><a href="non-linear-coordinate-systems.html#cb300-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">mapping=</span> <span class="fu">aes</span>(<span class="at">x=</span>Year <span class="sc">+</span><span class="dv">10</span>, <span class="at">y=</span> <span class="st">`</span><span class="at">Houshold Value (Dollars)</span><span class="st">`</span>),</span>
-<span id="cb300-25"><a href="non-linear-coordinate-systems.html#cb300-25" aria-hidden="true" tabindex="-1"></a>            <span class="at">color=</span><span class="st">&quot;#F02C49&quot;</span>,<span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span></span>
-<span id="cb300-26"><a href="non-linear-coordinate-systems.html#cb300-26" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb300-27"><a href="non-linear-coordinate-systems.html#cb300-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">&quot;y&quot;</span>,</span>
-<span id="cb300-28"><a href="non-linear-coordinate-systems.html#cb300-28" aria-hidden="true" tabindex="-1"></a>              <span class="at">start =</span> <span class="dv">0</span>,</span>
-<span id="cb300-29"><a href="non-linear-coordinate-systems.html#cb300-29" aria-hidden="true" tabindex="-1"></a>              <span class="at">direction =</span> <span class="dv">1</span>, </span>
-<span id="cb300-30"><a href="non-linear-coordinate-systems.html#cb300-30" aria-hidden="true" tabindex="-1"></a>              <span class="at">clip =</span> <span class="st">&quot;off&quot;</span>) <span class="sc">+</span></span>
-<span id="cb300-31"><a href="non-linear-coordinate-systems.html#cb300-31" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb300-32"><a href="non-linear-coordinate-systems.html#cb300-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># other scales that can be used:</span></span>
-<span id="cb300-33"><a href="non-linear-coordinate-systems.html#cb300-33" aria-hidden="true" tabindex="-1"></a>  <span class="co">#scale_x_reverse(expand=expansion(mult=c(-0.9,-0.1),add=c(29,-0.1))) +</span></span>
-<span id="cb300-34"><a href="non-linear-coordinate-systems.html#cb300-34" aria-hidden="true" tabindex="-1"></a>  <span class="co">#scale_y_continuous(expand=expansion(mult=c(0.09,0.01),add=c(0,-790000))) +</span></span>
-<span id="cb300-35"><a href="non-linear-coordinate-systems.html#cb300-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb300-36"><a href="non-linear-coordinate-systems.html#cb300-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>(<span class="at">expand=</span><span class="fu">expansion</span>(<span class="at">add=</span><span class="fu">c</span>(<span class="dv">11</span>,<span class="sc">-</span><span class="dv">5</span>))) <span class="sc">+</span></span>
-<span id="cb300-37"><a href="non-linear-coordinate-systems.html#cb300-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand=</span><span class="fu">expansion</span>(<span class="at">add=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="sc">-</span><span class="dv">600000</span>))) <span class="sc">+</span></span>
-<span id="cb300-38"><a href="non-linear-coordinate-systems.html#cb300-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;ASSESSED VALUE OF HOUSEHOLD AND KITCHEN FURNITURE </span></span>
-<span id="cb300-39"><a href="non-linear-coordinate-systems.html#cb300-39" aria-hidden="true" tabindex="-1"></a><span class="st">       OWNED BY GEORGIA NEGROES.&quot;</span>)<span class="sc">+</span></span>
-<span id="cb300-40"><a href="non-linear-coordinate-systems.html#cb300-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
-<span id="cb300-41"><a href="non-linear-coordinate-systems.html#cb300-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">face=</span><span class="st">&quot;bold&quot;</span>,</span>
-<span id="cb300-42"><a href="non-linear-coordinate-systems.html#cb300-42" aria-hidden="true" tabindex="-1"></a>                            <span class="at">color=</span><span class="st">&quot;grey27&quot;</span>),</span>
-<span id="cb300-43"><a href="non-linear-coordinate-systems.html#cb300-43" aria-hidden="true" tabindex="-1"></a>        <span class="at">aspect.ratio =</span><span class="dv">2</span><span class="sc">/</span><span class="fl">1.9</span>, <span class="co">#y/x</span></span>
-<span id="cb300-44"><a href="non-linear-coordinate-systems.html#cb300-44" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">color=</span> <span class="st">&quot;#d9ccbf&quot;</span>, <span class="at">fill=</span> <span class="st">&quot;#d9ccbf&quot;</span>),</span>
-<span id="cb300-45"><a href="non-linear-coordinate-systems.html#cb300-45" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>,<span class="at">size=</span><span class="dv">9</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="non-linear-coordinate-systems.html#cb299-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/ajstarks/dubois-data-portraits/master/challenge/2022/challenge08/data.csv&quot;</span>)</span>
+<span id="cb299-2"><a href="non-linear-coordinate-systems.html#cb299-2" tabindex="-1"></a></span>
+<span id="cb299-3"><a href="non-linear-coordinate-systems.html#cb299-3" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb299-4"><a href="non-linear-coordinate-systems.html#cb299-4" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>Year)  </span>
+<span id="cb299-5"><a href="non-linear-coordinate-systems.html#cb299-5" tabindex="-1"></a></span>
+<span id="cb299-6"><a href="non-linear-coordinate-systems.html#cb299-6" tabindex="-1"></a>df2[<span class="dv">7</span>,<span class="dv">1</span>]  <span class="ot">&lt;-</span> <span class="dv">1875</span></span>
+<span id="cb299-7"><a href="non-linear-coordinate-systems.html#cb299-7" tabindex="-1"></a>df2[<span class="dv">7</span>,<span class="dv">2</span>]  <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb299-8"><a href="non-linear-coordinate-systems.html#cb299-8" tabindex="-1"></a>df2[<span class="dv">7</span>,<span class="dv">3</span>]  <span class="ot">&lt;-</span> <span class="dv">0</span></span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="non-linear-coordinate-systems.html#cb300-1" tabindex="-1"></a>df2 <span class="sc">%&gt;%</span>  </span>
+<span id="cb300-2"><a href="non-linear-coordinate-systems.html#cb300-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb300-3"><a href="non-linear-coordinate-systems.html#cb300-3" tabindex="-1"></a>  </span>
+<span id="cb300-4"><a href="non-linear-coordinate-systems.html#cb300-4" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span> <span class="fu">subset</span>(df2, Year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1875</span>,<span class="dv">1875</span>)),</span>
+<span id="cb300-5"><a href="non-linear-coordinate-systems.html#cb300-5" tabindex="-1"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>Year, <span class="at">y=</span> <span class="st">`</span><span class="at">Houshold Value (Dollars)</span><span class="st">`</span>),</span>
+<span id="cb300-6"><a href="non-linear-coordinate-systems.html#cb300-6" tabindex="-1"></a>            <span class="at">color=</span><span class="st">&quot;#FFCDCB&quot;</span>,<span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb300-7"><a href="non-linear-coordinate-systems.html#cb300-7" tabindex="-1"></a>  </span>
+<span id="cb300-8"><a href="non-linear-coordinate-systems.html#cb300-8" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span> <span class="fu">subset</span>(df2, Year<span class="sc">%in%</span><span class="fu">c</span>(<span class="dv">1875</span>,<span class="dv">1875</span>,<span class="dv">1880</span>)),</span>
+<span id="cb300-9"><a href="non-linear-coordinate-systems.html#cb300-9" tabindex="-1"></a>            <span class="at">mapping=</span> <span class="fu">aes</span>(<span class="at">x=</span>Year <span class="sc">+</span><span class="dv">2</span>, <span class="at">y=</span> <span class="st">`</span><span class="at">Houshold Value (Dollars)</span><span class="st">`</span>),</span>
+<span id="cb300-10"><a href="non-linear-coordinate-systems.html#cb300-10" tabindex="-1"></a>            <span class="at">color=</span><span class="st">&quot;#989EB4&quot;</span>,<span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb300-11"><a href="non-linear-coordinate-systems.html#cb300-11" tabindex="-1"></a>  </span>
+<span id="cb300-12"><a href="non-linear-coordinate-systems.html#cb300-12" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span> <span class="fu">subset</span>(df2, Year<span class="sc">%in%</span><span class="fu">c</span>(<span class="dv">1875</span>,<span class="dv">1875</span>,<span class="dv">1880</span>,<span class="dv">1885</span>)),</span>
+<span id="cb300-13"><a href="non-linear-coordinate-systems.html#cb300-13" tabindex="-1"></a>            <span class="at">mapping=</span> <span class="fu">aes</span>(<span class="at">x=</span>Year <span class="sc">+</span><span class="dv">4</span>, <span class="at">y=</span> <span class="st">`</span><span class="at">Houshold Value (Dollars)</span><span class="st">`</span>),</span>
+<span id="cb300-14"><a href="non-linear-coordinate-systems.html#cb300-14" tabindex="-1"></a>            <span class="at">color=</span><span class="st">&quot;#b08c71&quot;</span>,<span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb300-15"><a href="non-linear-coordinate-systems.html#cb300-15" tabindex="-1"></a>  </span>
+<span id="cb300-16"><a href="non-linear-coordinate-systems.html#cb300-16" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span> <span class="fu">subset</span>(df2, Year<span class="sc">%in%</span><span class="fu">c</span>(<span class="dv">1875</span>,<span class="dv">1875</span>,<span class="dv">1880</span>,<span class="dv">1885</span>,<span class="dv">1890</span>)),</span>
+<span id="cb300-17"><a href="non-linear-coordinate-systems.html#cb300-17" tabindex="-1"></a>            <span class="at">mapping=</span> <span class="fu">aes</span>(<span class="at">x=</span>Year <span class="sc">+</span><span class="dv">6</span>, <span class="at">y=</span> <span class="st">`</span><span class="at">Houshold Value (Dollars)</span><span class="st">`</span>),</span>
+<span id="cb300-18"><a href="non-linear-coordinate-systems.html#cb300-18" tabindex="-1"></a>            <span class="at">color=</span><span class="st">&quot;#FFC942&quot;</span>,<span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb300-19"><a href="non-linear-coordinate-systems.html#cb300-19" tabindex="-1"></a>  </span>
+<span id="cb300-20"><a href="non-linear-coordinate-systems.html#cb300-20" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span> <span class="fu">subset</span>(df2, Year<span class="sc">%in%</span><span class="fu">c</span>(<span class="dv">1875</span>,<span class="dv">1875</span>,<span class="dv">1880</span>,<span class="dv">1885</span>,<span class="dv">1890</span>,<span class="dv">1895</span>)),</span>
+<span id="cb300-21"><a href="non-linear-coordinate-systems.html#cb300-21" tabindex="-1"></a>            <span class="at">mapping=</span> <span class="fu">aes</span>(<span class="at">x=</span>Year <span class="sc">+</span><span class="dv">8</span>, <span class="at">y=</span> <span class="st">`</span><span class="at">Houshold Value (Dollars)</span><span class="st">`</span>),</span>
+<span id="cb300-22"><a href="non-linear-coordinate-systems.html#cb300-22" tabindex="-1"></a>            <span class="at">color=</span><span class="st">&quot;#EFDECC&quot;</span>, <span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb300-23"><a href="non-linear-coordinate-systems.html#cb300-23" tabindex="-1"></a>  </span>
+<span id="cb300-24"><a href="non-linear-coordinate-systems.html#cb300-24" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">mapping=</span> <span class="fu">aes</span>(<span class="at">x=</span>Year <span class="sc">+</span><span class="dv">10</span>, <span class="at">y=</span> <span class="st">`</span><span class="at">Houshold Value (Dollars)</span><span class="st">`</span>),</span>
+<span id="cb300-25"><a href="non-linear-coordinate-systems.html#cb300-25" tabindex="-1"></a>            <span class="at">color=</span><span class="st">&quot;#F02C49&quot;</span>,<span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb300-26"><a href="non-linear-coordinate-systems.html#cb300-26" tabindex="-1"></a>  </span>
+<span id="cb300-27"><a href="non-linear-coordinate-systems.html#cb300-27" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">&quot;y&quot;</span>,</span>
+<span id="cb300-28"><a href="non-linear-coordinate-systems.html#cb300-28" tabindex="-1"></a>              <span class="at">start =</span> <span class="dv">0</span>,</span>
+<span id="cb300-29"><a href="non-linear-coordinate-systems.html#cb300-29" tabindex="-1"></a>              <span class="at">direction =</span> <span class="dv">1</span>, </span>
+<span id="cb300-30"><a href="non-linear-coordinate-systems.html#cb300-30" tabindex="-1"></a>              <span class="at">clip =</span> <span class="st">&quot;off&quot;</span>) <span class="sc">+</span></span>
+<span id="cb300-31"><a href="non-linear-coordinate-systems.html#cb300-31" tabindex="-1"></a>  </span>
+<span id="cb300-32"><a href="non-linear-coordinate-systems.html#cb300-32" tabindex="-1"></a>  <span class="co"># other scales that can be used:</span></span>
+<span id="cb300-33"><a href="non-linear-coordinate-systems.html#cb300-33" tabindex="-1"></a>  <span class="co">#scale_x_reverse(expand=expansion(mult=c(-0.9,-0.1),add=c(29,-0.1))) +</span></span>
+<span id="cb300-34"><a href="non-linear-coordinate-systems.html#cb300-34" tabindex="-1"></a>  <span class="co">#scale_y_continuous(expand=expansion(mult=c(0.09,0.01),add=c(0,-790000))) +</span></span>
+<span id="cb300-35"><a href="non-linear-coordinate-systems.html#cb300-35" tabindex="-1"></a></span>
+<span id="cb300-36"><a href="non-linear-coordinate-systems.html#cb300-36" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>(<span class="at">expand=</span><span class="fu">expansion</span>(<span class="at">add=</span><span class="fu">c</span>(<span class="dv">11</span>,<span class="sc">-</span><span class="dv">5</span>))) <span class="sc">+</span></span>
+<span id="cb300-37"><a href="non-linear-coordinate-systems.html#cb300-37" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand=</span><span class="fu">expansion</span>(<span class="at">add=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="sc">-</span><span class="dv">600000</span>))) <span class="sc">+</span></span>
+<span id="cb300-38"><a href="non-linear-coordinate-systems.html#cb300-38" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;ASSESSED VALUE OF HOUSEHOLD AND KITCHEN FURNITURE </span></span>
+<span id="cb300-39"><a href="non-linear-coordinate-systems.html#cb300-39" tabindex="-1"></a><span class="st">       OWNED BY GEORGIA NEGROES.&quot;</span>)<span class="sc">+</span></span>
+<span id="cb300-40"><a href="non-linear-coordinate-systems.html#cb300-40" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb300-41"><a href="non-linear-coordinate-systems.html#cb300-41" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">face=</span><span class="st">&quot;bold&quot;</span>,</span>
+<span id="cb300-42"><a href="non-linear-coordinate-systems.html#cb300-42" tabindex="-1"></a>                            <span class="at">color=</span><span class="st">&quot;grey27&quot;</span>),</span>
+<span id="cb300-43"><a href="non-linear-coordinate-systems.html#cb300-43" tabindex="-1"></a>        <span class="at">aspect.ratio =</span><span class="dv">2</span><span class="sc">/</span><span class="fl">1.9</span>, <span class="co">#y/x</span></span>
+<span id="cb300-44"><a href="non-linear-coordinate-systems.html#cb300-44" tabindex="-1"></a>        <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">color=</span> <span class="st">&quot;#d9ccbf&quot;</span>, <span class="at">fill=</span> <span class="st">&quot;#d9ccbf&quot;</span>),</span>
+<span id="cb300-45"><a href="non-linear-coordinate-systems.html#cb300-45" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>,<span class="at">size=</span><span class="dv">9</span>))</span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/ch16-08-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li><code>coord_trans()</code></li>
 </ol>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="non-linear-coordinate-systems.html#cb301-1" aria-hidden="true" tabindex="-1"></a>rect <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">50</span>, <span class="at">y =</span> <span class="dv">50</span>)</span>
-<span id="cb301-2"><a href="non-linear-coordinate-systems.html#cb301-2" aria-hidden="true" tabindex="-1"></a>line <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">200</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">1</span>))</span>
-<span id="cb301-3"><a href="non-linear-coordinate-systems.html#cb301-3" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(x, y)) <span class="sc">+</span> </span>
-<span id="cb301-4"><a href="non-linear-coordinate-systems.html#cb301-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">data =</span> rect, <span class="fu">aes</span>(<span class="at">width =</span> <span class="dv">50</span>, <span class="at">height =</span> <span class="dv">50</span>)) <span class="sc">+</span> </span>
-<span id="cb301-5"><a href="non-linear-coordinate-systems.html#cb301-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> line) <span class="sc">+</span> </span>
-<span id="cb301-6"><a href="non-linear-coordinate-systems.html#cb301-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="cn">NULL</span>)</span>
-<span id="cb301-7"><a href="non-linear-coordinate-systems.html#cb301-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-8"><a href="non-linear-coordinate-systems.html#cb301-8" aria-hidden="true" tabindex="-1"></a>p6</span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="non-linear-coordinate-systems.html#cb301-1" tabindex="-1"></a>rect <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">50</span>, <span class="at">y =</span> <span class="dv">50</span>)</span>
+<span id="cb301-2"><a href="non-linear-coordinate-systems.html#cb301-2" tabindex="-1"></a>line <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">200</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">1</span>))</span>
+<span id="cb301-3"><a href="non-linear-coordinate-systems.html#cb301-3" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(x, y)) <span class="sc">+</span> </span>
+<span id="cb301-4"><a href="non-linear-coordinate-systems.html#cb301-4" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">data =</span> rect, <span class="fu">aes</span>(<span class="at">width =</span> <span class="dv">50</span>, <span class="at">height =</span> <span class="dv">50</span>)) <span class="sc">+</span> </span>
+<span id="cb301-5"><a href="non-linear-coordinate-systems.html#cb301-5" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> line) <span class="sc">+</span> </span>
+<span id="cb301-6"><a href="non-linear-coordinate-systems.html#cb301-6" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="cn">NULL</span>)</span>
+<span id="cb301-7"><a href="non-linear-coordinate-systems.html#cb301-7" tabindex="-1"></a></span>
+<span id="cb301-8"><a href="non-linear-coordinate-systems.html#cb301-8" tabindex="-1"></a>p6</span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/ch16-09-1.png" width="672" /></p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="non-linear-coordinate-systems.html#cb302-1" aria-hidden="true" tabindex="-1"></a>p6 <span class="sc">+</span> <span class="fu">coord_trans</span>(<span class="at">y =</span> <span class="st">&quot;log10&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="non-linear-coordinate-systems.html#cb302-1" tabindex="-1"></a>p6 <span class="sc">+</span> <span class="fu">coord_trans</span>(<span class="at">y =</span> <span class="st">&quot;log10&quot;</span>) </span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/ch16-10-1.png" width="672" /></p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="non-linear-coordinate-systems.html#cb303-1" aria-hidden="true" tabindex="-1"></a>p7 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(Sepal.Length, Petal.Length)) <span class="sc">+</span> </span>
-<span id="cb303-2"><a href="non-linear-coordinate-systems.html#cb303-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_bin2d</span>() <span class="sc">+</span> </span>
-<span id="cb303-3"><a href="non-linear-coordinate-systems.html#cb303-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb303-4"><a href="non-linear-coordinate-systems.html#cb303-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>) <span class="sc">+</span> </span>
-<span id="cb303-5"><a href="non-linear-coordinate-systems.html#cb303-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="cn">NULL</span>) <span class="sc">+</span> </span>
-<span id="cb303-6"><a href="non-linear-coordinate-systems.html#cb303-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb303-7"><a href="non-linear-coordinate-systems.html#cb303-7" aria-hidden="true" tabindex="-1"></a>p7</span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="non-linear-coordinate-systems.html#cb303-1" tabindex="-1"></a>p7 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(Sepal.Length, Petal.Length)) <span class="sc">+</span> </span>
+<span id="cb303-2"><a href="non-linear-coordinate-systems.html#cb303-2" tabindex="-1"></a>  <span class="fu">stat_bin2d</span>() <span class="sc">+</span> </span>
+<span id="cb303-3"><a href="non-linear-coordinate-systems.html#cb303-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb303-4"><a href="non-linear-coordinate-systems.html#cb303-4" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb303-5"><a href="non-linear-coordinate-systems.html#cb303-5" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb303-6"><a href="non-linear-coordinate-systems.html#cb303-6" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb303-7"><a href="non-linear-coordinate-systems.html#cb303-7" tabindex="-1"></a>p7</span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/ch16-11-1.png" width="672" /></p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="non-linear-coordinate-systems.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</span></span>
-<span id="cb304-2"><a href="non-linear-coordinate-systems.html#cb304-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb304-3"><a href="non-linear-coordinate-systems.html#cb304-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Better fit on log scale, but harder to interpret</span></span>
-<span id="cb304-4"><a href="non-linear-coordinate-systems.html#cb304-4" aria-hidden="true" tabindex="-1"></a>p7 <span class="sc">+</span></span>
-<span id="cb304-5"><a href="non-linear-coordinate-systems.html#cb304-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span> </span>
-<span id="cb304-6"><a href="non-linear-coordinate-systems.html#cb304-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="non-linear-coordinate-systems.html#cb304-1" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</span></span>
+<span id="cb304-2"><a href="non-linear-coordinate-systems.html#cb304-2" tabindex="-1"></a></span>
+<span id="cb304-3"><a href="non-linear-coordinate-systems.html#cb304-3" tabindex="-1"></a><span class="co"># Better fit on log scale, but harder to interpret</span></span>
+<span id="cb304-4"><a href="non-linear-coordinate-systems.html#cb304-4" tabindex="-1"></a>p7 <span class="sc">+</span></span>
+<span id="cb304-5"><a href="non-linear-coordinate-systems.html#cb304-5" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span> </span>
+<span id="cb304-6"><a href="non-linear-coordinate-systems.html#cb304-6" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()</span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/ch16-11-2.png" width="672" /></p>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="non-linear-coordinate-systems.html#cb305-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</span></span>
-<span id="cb305-2"><a href="non-linear-coordinate-systems.html#cb305-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb305-3"><a href="non-linear-coordinate-systems.html#cb305-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit on log scale, then backtransform to original.</span></span>
-<span id="cb305-4"><a href="non-linear-coordinate-systems.html#cb305-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Highlights lack of expensive diamonds with large carats</span></span>
-<span id="cb305-5"><a href="non-linear-coordinate-systems.html#cb305-5" aria-hidden="true" tabindex="-1"></a>pow10 <span class="ot">&lt;-</span> scales<span class="sc">::</span><span class="fu">exp_trans</span>(<span class="dv">10</span>)</span>
-<span id="cb305-6"><a href="non-linear-coordinate-systems.html#cb305-6" aria-hidden="true" tabindex="-1"></a>p7 <span class="sc">+</span></span>
-<span id="cb305-7"><a href="non-linear-coordinate-systems.html#cb305-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span> </span>
-<span id="cb305-8"><a href="non-linear-coordinate-systems.html#cb305-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span> </span>
-<span id="cb305-9"><a href="non-linear-coordinate-systems.html#cb305-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_trans</span>(<span class="at">x =</span> pow10, <span class="at">y =</span> pow10)</span></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="non-linear-coordinate-systems.html#cb305-1" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</span></span>
+<span id="cb305-2"><a href="non-linear-coordinate-systems.html#cb305-2" tabindex="-1"></a></span>
+<span id="cb305-3"><a href="non-linear-coordinate-systems.html#cb305-3" tabindex="-1"></a><span class="co"># Fit on log scale, then backtransform to original.</span></span>
+<span id="cb305-4"><a href="non-linear-coordinate-systems.html#cb305-4" tabindex="-1"></a><span class="co"># Highlights lack of expensive diamonds with large carats</span></span>
+<span id="cb305-5"><a href="non-linear-coordinate-systems.html#cb305-5" tabindex="-1"></a>pow10 <span class="ot">&lt;-</span> scales<span class="sc">::</span><span class="fu">exp_trans</span>(<span class="dv">10</span>)</span>
+<span id="cb305-6"><a href="non-linear-coordinate-systems.html#cb305-6" tabindex="-1"></a>p7 <span class="sc">+</span></span>
+<span id="cb305-7"><a href="non-linear-coordinate-systems.html#cb305-7" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span> </span>
+<span id="cb305-8"><a href="non-linear-coordinate-systems.html#cb305-8" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span> </span>
+<span id="cb305-9"><a href="non-linear-coordinate-systems.html#cb305-9" tabindex="-1"></a>  <span class="fu">coord_trans</span>(<span class="at">x =</span> pow10, <span class="at">y =</span> pow10)</span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/ch16-11-3.png" width="672" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li><code>coord_map()</code>/<code>coord_quickmap()</code>/<code>coord_sf()</code></li>
 </ol>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="non-linear-coordinate-systems.html#cb306-1" aria-hidden="true" tabindex="-1"></a>world <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="st">&quot;world&quot;</span>)</span>
-<span id="cb306-2"><a href="non-linear-coordinate-systems.html#cb306-2" aria-hidden="true" tabindex="-1"></a>worldmap <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(world, <span class="fu">aes</span>(long, lat, <span class="at">group =</span> group)) <span class="sc">+</span></span>
-<span id="cb306-3"><a href="non-linear-coordinate-systems.html#cb306-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>() <span class="sc">+</span></span>
-<span id="cb306-4"><a href="non-linear-coordinate-systems.html#cb306-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="cn">NULL</span>, <span class="at">breaks =</span> (<span class="sc">-</span><span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">*</span> <span class="dv">30</span>, <span class="at">labels =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb306-5"><a href="non-linear-coordinate-systems.html#cb306-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="cn">NULL</span>, <span class="at">breaks =</span> (<span class="sc">-</span><span class="dv">4</span><span class="sc">:</span><span class="dv">4</span>) <span class="sc">*</span> <span class="dv">45</span>, <span class="at">labels =</span> <span class="cn">NULL</span>)</span>
-<span id="cb306-6"><a href="non-linear-coordinate-systems.html#cb306-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb306-7"><a href="non-linear-coordinate-systems.html#cb306-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb306-8"><a href="non-linear-coordinate-systems.html#cb306-8" aria-hidden="true" tabindex="-1"></a>worldmap <span class="sc">+</span> <span class="fu">coord_quickmap</span>() <span class="sc">|</span></span>
-<span id="cb306-9"><a href="non-linear-coordinate-systems.html#cb306-9" aria-hidden="true" tabindex="-1"></a>worldmap <span class="sc">+</span> <span class="fu">coord_map</span>(<span class="st">&quot;ortho&quot;</span>) <span class="sc">|</span></span>
-<span id="cb306-10"><a href="non-linear-coordinate-systems.html#cb306-10" aria-hidden="true" tabindex="-1"></a>worldmap <span class="sc">+</span> <span class="fu">coord_map</span>(<span class="st">&quot;stereographic&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="non-linear-coordinate-systems.html#cb306-1" tabindex="-1"></a>world <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="st">&quot;world&quot;</span>)</span>
+<span id="cb306-2"><a href="non-linear-coordinate-systems.html#cb306-2" tabindex="-1"></a>worldmap <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(world, <span class="fu">aes</span>(long, lat, <span class="at">group =</span> group)) <span class="sc">+</span></span>
+<span id="cb306-3"><a href="non-linear-coordinate-systems.html#cb306-3" tabindex="-1"></a>  <span class="fu">geom_path</span>() <span class="sc">+</span></span>
+<span id="cb306-4"><a href="non-linear-coordinate-systems.html#cb306-4" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="cn">NULL</span>, <span class="at">breaks =</span> (<span class="sc">-</span><span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">*</span> <span class="dv">30</span>, <span class="at">labels =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb306-5"><a href="non-linear-coordinate-systems.html#cb306-5" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="cn">NULL</span>, <span class="at">breaks =</span> (<span class="sc">-</span><span class="dv">4</span><span class="sc">:</span><span class="dv">4</span>) <span class="sc">*</span> <span class="dv">45</span>, <span class="at">labels =</span> <span class="cn">NULL</span>)</span>
+<span id="cb306-6"><a href="non-linear-coordinate-systems.html#cb306-6" tabindex="-1"></a></span>
+<span id="cb306-7"><a href="non-linear-coordinate-systems.html#cb306-7" tabindex="-1"></a></span>
+<span id="cb306-8"><a href="non-linear-coordinate-systems.html#cb306-8" tabindex="-1"></a>worldmap <span class="sc">+</span> <span class="fu">coord_quickmap</span>() <span class="sc">|</span></span>
+<span id="cb306-9"><a href="non-linear-coordinate-systems.html#cb306-9" tabindex="-1"></a>worldmap <span class="sc">+</span> <span class="fu">coord_map</span>(<span class="st">&quot;ortho&quot;</span>) <span class="sc">|</span></span>
+<span id="cb306-10"><a href="non-linear-coordinate-systems.html#cb306-10" tabindex="-1"></a>worldmap <span class="sc">+</span> <span class="fu">coord_map</span>(<span class="st">&quot;stereographic&quot;</span>)</span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/ch16-12-1.png" width="672" /></p>
 </div>
 </div>
@@ -723,7 +724,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="linear-coordinate-systems.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="meeting-videos-15.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="meeting-videos-14.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -754,7 +755,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/r4ds/bookclub-ggplot2/edit/main/16-Coordinate-systems.Rmd",
+"link": "https://github.com/r4ds/bookclub-ggplot2/edit/main/15-Coordinate-systems.Rmd",
 "text": "Edit"
 },
 "history": {
