@@ -1,3 +1,5 @@
+# (PART\*) Layers {-}
+
 # Individual Geoms
 
 ```{r 03-individualgeoms, include=FALSE}

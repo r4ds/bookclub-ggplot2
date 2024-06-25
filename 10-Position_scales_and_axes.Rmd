@@ -1,3 +1,5 @@
+# (PART\*) Scales {-}
+
 # Position scales and axes
 
 **Learning Objectives**
