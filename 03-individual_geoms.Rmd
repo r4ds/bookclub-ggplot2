@@ -24,7 +24,7 @@ df <- data.frame(
 
 * Each geom can be useful by itself.
 * Geoms can be used in ways to construct more complex geoms.
-* The geoms discussed in this chapter a two dimensional (e.g., `x` and `y`).
+* The geoms discussed in this chapter are two dimensional (e.g., `x` and `y`).
 * All geoms understand `color` or `colour` and size aesthetics.
 * Bar, tile, and polygon understand `fill`.
 * The terms above are all parameters within ggplot2 functions.
