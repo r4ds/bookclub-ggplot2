@@ -1,17 +1,83 @@
 # (PART\*) Getting Started {-}
 
-# Introduction
+# Introduction {-}
 
 **Learning objectives:**
 
-- {These are nice to have, but take some extra work. It's ok to skip these if necessary.}
-- {Cohort 1 of this club did not create slides for the introduction chapter.}
+- Introduce yourself! 
+- Determine whether this club is for you.
+- We will go over the different sections of the book. 
 
-## {Slide 1 title}
+## Hi, my name is... {-}
 
-- {Create slides as sections, but keep them short like a slide.}
+**Camera on** or **raise your hand** if you're willing to introduce yourself!
 
-## Meeting Videos
+-   **Name**
+-   **Location** and/or **timezone**
+-   **Any previous DSLC clubs?**
+-   **Why are you here?**
+
+## Present a chapter! {-}
+
+- Each member of the book club will have the opportunity to lead a chapter. 
+- We recommend the following format: 
+  1. Use the slides. Try to not use the book, remember we only have one hour!
+  However, sometimes it could be useful to jump into RStudio and have the code ready to create a graph. Remember to increase font size to 14 (at least) by going to Tools > Global Options > Appearance > Editor font size 
+  2. Try to keep all the content in one visible slide. 
+  3. Pick chapters that interest you either because it's content you know but would like to learn more of or chapters of things you want to get better at. 
+  4. Follow the How to present instructions on the GitHub [README for this Book Club](https://github.com/r4ds/bookclub-ggplot2)
+  5. Start each session with **start** in the comments and end the session with **end**
+  6. Introduce the chapter by saying the name of the book we are reading, the cohort, the chapter, and your name. 
+  7. If the book has exercises or you have a specific question regarding something about the chapter, then make sure you have the code ready in RStudio so we can go over this in the last 10 min of the hour. 
+
+## Remember #TidyTuesday {-}
+
+- #TidyTuesday is a great source to keep handy when you are trying to learn about `ggplot2`. You can follow the hashtag on X, Mastodon, or BlueSky and find other researchers posting links to their GitHub repos. I have learned a lot by studying these repos.  
+
+## Welcome to ggplot2 {-}
+
+- ggplot2 has an underlying grammar, based on the Grammar of Graphics (Wilkinson 2005), that allows you to compose graphs by combining independent components.  
+- You can produce publication-quality graphics in seconds. However, ggplot2’s comprehensive themeing system makes it easy to do what you want.  
+- ggplot2 is designed to work iteratively. You start with a layer that shows the raw data. Then you add layers of annotations and statistical summaries.  
+
+## Grammar of graphics {-}
+
+- The grammar tells us that a graphic maps the data to the aesthetic attributes (color, shape, size) of geometric objects (points, lines, bars). 
+- The plot may also include statistical transformations of the data and information about the plot’s coordinate system. 
+- Faceting can be used to plot for different subsets of the data. The combination of these independent components are what make up a graphic.  
+
+## Mapping components {-}
+
+- Plots are composed of the data, the information you want to visualise, and a mapping, the description of how the data’s variables are mapped to aesthetic attributes. There are five mapping components:
+  - **Layer** is a collection of geometric elements and statistical transformations. Geoms for short. 
+  - **Scale**: maps values in the data space to values in the aesthetic space. 
+  - **Coord**: coordinate system, describes data coordinates to the plane of the graphic. 
+  - **Facet**: specifies how to break up and display subsets of data as small multiples. 
+  - **Theme**: controls the finer points of display. 
+  
+## About this book {-}
+
+- **Chapter 2**: This chapter introduces several important ggplot2 concepts: geoms, aesthetic mappings and facetting.
+- **Chapter 3-9**: explore how to use the basic toolbox to solve a wide range of visualisation problems that you’re likely to encounter in practice.
+- **Chapter 10-12**: show you how to control the most important scales, allowing you to tweak the details of axes and legends.
+- **Chapter 13**: demonstrates how to add additional layers to your plot, exercising full control over the geoms and stats used within them.
+- **Chapter 10-12**: will show you what scales are available, how to adjust their parameters, and how to control the appearance of axes and legends.
+- **Section 13.7**:  Faceting is a very powerful graphical tool as it allows you to rapidly compare different subsets of your data.
+- **Chapter 17**: you will learn about how to control the theming system of ggplot2 and how to save plots to disk. 
+
+## Prerequisites {-}
+
+```{r, eval=FALSE}
+install.packages(c(
+  "colorBlindness", "directlabels", "dplyr", "ggforce", "gghighlight", 
+  "ggnewscale", "ggplot2", "ggraph", "ggrepel", "ggtext", "ggthemes", 
+  "hexbin", "Hmisc", "mapproj", "maps", "munsell", "ozmaps", 
+  "paletteer", "patchwork", "rmapshaper", "scico", "seriation", "sf", 
+  "stars", "tidygraph", "tidyr", "wesanderson" 
+))
+```
+
+## Meeting Videos {-}
 
 ### Cohort 1
 
