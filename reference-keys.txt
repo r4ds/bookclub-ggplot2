@@ -1,7 +1,4 @@
 fig:05-diamond-dimensions
-introduction
-slide-1-title
-meeting-videos
 cohort-1
 first-steps
 general-housekeeping-items
@@ -264,7 +261,7 @@ references-1
 meeting-videos-19
 cohort-1-19
 a-case-study
-slide-1-title-1
+slide-1-title
 meeting-videos-20
 cohort-1-20
 mastering-the-grammar
