@@ -2,46 +2,191 @@
 
 # Individual Geoms
 
-```{r 03-individualgeoms, include=FALSE}
+**Learning objectives**
 
-library(ggplot2)
+* Discuss how geoms are the fundamental building blocks of ggplot2.
+* Draw comparisons between geoms and their associated named plot.
+* Explore each individual geom by reviewing their documentation.
+
+```{r 03-individualgeoms-setup, include=FALSE}
+# ggplot2 is attached with the tidyverse
 library(tidyverse)
+
+# some example data
+df <- data.frame(
+  c = c(3, 1, 5),
+  y = c(2, 4, 6),
+  label = c("a", "b", "c")
+)
 ```
 
-- Geoms are the fundamental building blocks of ggplot2.
-- Most of the geoms are associated with a named plot.
-- Some geoms can be added on to low-level geoms to create more complex plots.
-- To find out more about individual geoms see their documentation.
+## The basics
 
-## Scatterplot:
+* Each geom can be useful by itself.
+* Geoms can be used in ways to construct more complex geoms.
+* The geoms discussed in this chapter are two dimensional (e.g., `x` and `y`).
+* All geoms understand `color` or `colour` and size aesthetics.
+* Bar, tile, and polygon understand `fill`.
+* The terms above are all parameters within ggplot2 functions.
+
+## Area chart: `geom_area()`
+
+* Draws an area plot.
+  - A line plot filled to the y-axis.
+  - Multiple groups are stacked.
+
+```{r}
+ggplot(diamonds, aes(x = price)) +
+  geom_area(stat = "bin")
+```
+
+```{r}
+ggplot(diamonds, aes(x = price, fill = cut)) +
+  geom_area(stat = "bin")
+```
+
+## Bar chart: `geom_bar()`
+
+* Makes a bar plot.
+
+```{r}
+ggplot(diamonds, aes(cut)) +
+  geom_bar()
+```
+
+* What's up with `stat = "identity"`?
+  - The default stat is to count values.
+  - Setting this parameter leaves the data unchanged.
+
+```{r}
+# Why, though? Perhaps I want to do my own aggregation
+data_diamond_count <- 
+  diamonds |>
+  count(cut, name = "count")
+
+ggplot(data_diamond_count, aes(cut, count)) +
+  geom_bar(stat = "identity")
+```
+
+## Line chart: `geom_line()`
+
+* A geom that connects points from left to right.
+  - `linetype` is a useful parameter.
+  - Checkout the different linetypes [here](https://ggplot2.tidyverse.org/reference/aes_linetype_size_shape.html).
+  - Also here `?linetype`
+
+```{r}
+ggplot(economics, aes(x = date, y = unemploy)) +
+  geom_line()
+```
+
+* What's up with `geom_path()`?
+  - Connects points as they appear in order of the data
+  - Answer to exercise 2.
+
+```{r}
+ggplot(df, aes(c, y)) +
+  geom_path()
+```
+
+```{r}
+ggplot(economics, aes(unemploy / pop, psavert)) +
+  geom_path()
+```
+
+## Scatterplot: `geom_point()`
+
 ```{r 03-scatter}
 ggplot(mpg, aes(x = displ, y = hwy)) + 
   geom_point()
 ```
 
-##  Line plot:
-```{r 03-lineplot}
-ggplot(economics, aes(date, unemploy / pop)) +
-  geom_line() 
+* The `shape` parameter is useful here.
+  - interested in the different shapes? `?shape`
+
+```{r 03-scatter-dif-shape}
+ggplot(mpg, aes(x = displ, y = hwy, shape = factor(cyl))) + 
+  geom_point()
 ```
 
-## Histogram: 
+## Polygons: `geom_polygon()`
+
+* Draws polygons, which are filled paths.
+* Useful when making maps: more in [Chapter 6](https://ggplot2-book.org/maps).
+
+```{r}
+ggplot(df, aes(c, y)) +
+  geom_polygon()
+```
+
+## Histograms: `geom_histogram()`
+
 ```{r 03-hist}
-ggplot(mpg, aes(hwy)) + geom_histogram() 
+ggplot(mpg, aes(hwy)) + 
+  geom_histogram() 
 ```
 
-## Bar chart
-```{r 03-bar}
-ggplot(mpg, aes(manufacturer)) + 
-  geom_bar() 
+## Drawing rectangles: `geom_rect()`; `geom_tile()`; `geom_raster()`
+
+```{r}
+ggplot(df, aes(c, y)) + 
+  geom_tile() 
 ```
-## geom_path() connects points in order of appearance.
+
+## Add text to a plot: `geom_text()`
+
+* This requires the use of the `label` aesthetic, along with others
+
+```{r}
+# Filtering to simplify the example
+mpg |> 
+  filter(manufacturer == "ford") |>
+  ggplot(aes(displ, hwy, label = model)) +
+    geom_text()
+```
+
+* `position` and other parameters are also useful.
+
+```{r}
+mpg |> 
+  filter(manufacturer == "ford") |>
+  ggplot(aes(displ, hwy, label = model)) +
+    geom_text(position = position_dodge(width = 0.2), angle = 45)
+```
+
+## Exercise solutions
+
+### Exercise 1
+
+* What geoms would you use to draw each of the following named plots?
+  - scatterplot = `geom_point()`
+  - line chart = `geom_line()`
+  - histogram = `geom_histogram()`
+  - bar chart = `geom_bar()` or `geom_col()`
+  - pie chart = `geom_bar()` with `coord_polar()`
+
+```{r}
+ggplot(data_diamond_count, aes(cut, count)) +
+  geom_col()
+```
+
+```{r}
+ggplot(diamonds, aes(x = factor(1), fill = factor(cut))) +
+  geom_bar(width = 1) +
+  coord_polar(theta = "y")
+```
+
+### Exercise 2
+
+* `geom_path()` connects points in order of appearance. `geom_line` connects points from left to right.
+
 ```{r 03-df, include=FALSE}
 df <- data.frame(
   x = c(3, 1, 5), 
   y = c(2, 4, 6), 
   label = c("a","b","c")
 )
+
 p <- ggplot(df, aes(x, y, label = label)) + 
   labs(x = NULL, y = NULL) + # Hide axis label
   theme(plot.title = element_text(size = 12))
@@ -51,19 +196,21 @@ p <- ggplot(df, aes(x, y, label = label)) +
 p + geom_path()
 ```
 
-## geom_polygon() draws polygons which are filled paths.
+
+* `geom_polygon()` draws polygons which are filled paths.
 ```{r 03-poly}
 p + geom_polygon() 
 ```
 
-## geom_line() connects points from left to right.
+* `geom_line()` connects points from left to right.
 ```{r 03-line}
 p + geom_line() 
 ```
 
+### Exercise 3
 
-## What low-level geoms are used to draw geom_smooth()? 
-Geom_smooth() fits a smoother to data, displaying the smooth and its standard error, allowing you to see a dominant pattern within a scatterplot with a lot of "noise". The low level geom for geom_smooth() are geom_path(), geom_area() and geom_point().
+* What low-level geoms are used to draw geom_smooth()? 
+  - `geom_smooth()` fits a smoother to data, displaying the smooth and its standard error, allowing you to see a dominant pattern within a scatterplot with a lot of "noise". The low level geom for `geom_smooth()` are `geom_path()`, `geom_area()` and `geom_point()`.
 
 ```{r 03-smooth}
 ggplot(mpg, aes(displ, hwy)) + 
@@ -71,20 +218,21 @@ ggplot(mpg, aes(displ, hwy)) +
   geom_smooth()
 ```
 
-## What low-level geoms are used to draw geom_boxplot()? 
-Box plots are used to summarize the distribution of a set of points using summary statistics. The low level geom for geom_boxplot() are geom_rect(), geom_line() and geom_point(). 
+* What low-level geoms are used to draw geom_boxplot()? 
+  - Box plots are used to summarize the distribution of a set of points using summary statistics. The low level geom for `geom_boxplot()` are `geom_rect()`, `geom_line()` and `geom_point()`. 
 
 ```{r 03-box}
-ggplot(mpg, aes(drv, hwy)) + geom_boxplot()
+ggplot(mpg, aes(drv, hwy)) + 
+  geom_boxplot()
 ```
 
-## What low-level geoms are used to draw geom_violin()?
-Violin plots show a compact representation of the density of the distribution highlighting the areas where most of the points are found. The low level geom for geom_violin() are geom_area() and geom_path(). 
+* What low-level geoms are used to draw geom_violin()?
+  - Violin plots show a compact representation of the density of the distribution highlighting the areas where most of the points are found. The low level geom for `geom_violin()` are `geom_area()` and `geom_path()`. 
 
 ```{r 03-violin}
-ggplot(mpg, aes(drv, hwy)) + geom_violin()
+ggplot(mpg, aes(drv, hwy)) + 
+  geom_violin()
 ```
-
 
 ## Meeting Videos
 
