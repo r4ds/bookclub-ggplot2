@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.6 geom_line() connects points from left to right. | ggplot2 Book Club</title>
+  <title>2.10 Exercise solutions | ggplot2 Book Club</title>
   <meta name="description" content="This is the product of the Data Science Learning Community’s Book Club." />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.6 geom_line() connects points from left to right. | ggplot2 Book Club" />
+  <meta property="og:title" content="2.10 Exercise solutions | ggplot2 Book Club" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is the product of the Data Science Learning Community’s Book Club." />
   <meta name="github-repo" content="r4ds/bookclub-ggplot2" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.6 geom_line() connects points from left to right. | ggplot2 Book Club" />
+  <meta name="twitter:title" content="2.10 Exercise solutions | ggplot2 Book Club" />
   
   <meta name="twitter:description" content="This is the product of the Data Science Learning Community’s Book Club." />
   
@@ -23,15 +23,15 @@
 <meta name="author" content="The Data Science Learning Community" />
 
 
-<meta name="date" content="2024-08-01" />
+<meta name="date" content="2024-08-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="geom_polygon-draws-polygons-which-are-filled-paths..html"/>
-<link rel="next" href="what-low-level-geoms-are-used-to-draw-geom_smooth.html"/>
+<link rel="prev" href="add-text-to-a-plot-geom_text.html"/>
+<link rel="next" href="meeting-videos-2.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -188,18 +188,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>Layers</b></span></li>
 <li class="chapter" data-level="2" data-path="individual-geoms.html"><a href="individual-geoms.html"><i class="fa fa-check"></i><b>2</b> Individual Geoms</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="scatterplot.html"><a href="scatterplot.html"><i class="fa fa-check"></i><b>2.1</b> Scatterplot:</a></li>
-<li class="chapter" data-level="2.2" data-path="line-plot.html"><a href="line-plot.html"><i class="fa fa-check"></i><b>2.2</b> Line plot:</a></li>
-<li class="chapter" data-level="2.3" data-path="histogram.html"><a href="histogram.html"><i class="fa fa-check"></i><b>2.3</b> Histogram:</a></li>
-<li class="chapter" data-level="2.4" data-path="bar-chart.html"><a href="bar-chart.html"><i class="fa fa-check"></i><b>2.4</b> Bar chart</a></li>
-<li class="chapter" data-level="2.5" data-path="geom_polygon-draws-polygons-which-are-filled-paths..html"><a href="geom_polygon-draws-polygons-which-are-filled-paths..html"><i class="fa fa-check"></i><b>2.5</b> geom_polygon() draws polygons which are filled paths.</a></li>
-<li class="chapter" data-level="2.6" data-path="geom_line-connects-points-from-left-to-right..html"><a href="geom_line-connects-points-from-left-to-right..html"><i class="fa fa-check"></i><b>2.6</b> geom_line() connects points from left to right.</a></li>
-<li class="chapter" data-level="2.7" data-path="what-low-level-geoms-are-used-to-draw-geom_smooth.html"><a href="what-low-level-geoms-are-used-to-draw-geom_smooth.html"><i class="fa fa-check"></i><b>2.7</b> What low-level geoms are used to draw geom_smooth()?</a></li>
-<li class="chapter" data-level="2.8" data-path="what-low-level-geoms-are-used-to-draw-geom_boxplot.html"><a href="what-low-level-geoms-are-used-to-draw-geom_boxplot.html"><i class="fa fa-check"></i><b>2.8</b> What low-level geoms are used to draw geom_boxplot()?</a></li>
-<li class="chapter" data-level="2.9" data-path="what-low-level-geoms-are-used-to-draw-geom_violin.html"><a href="what-low-level-geoms-are-used-to-draw-geom_violin.html"><i class="fa fa-check"></i><b>2.9</b> What low-level geoms are used to draw geom_violin()?</a></li>
-<li class="chapter" data-level="2.10" data-path="meeting-videos-2.html"><a href="meeting-videos-2.html"><i class="fa fa-check"></i><b>2.10</b> Meeting Videos</a>
+<li class="chapter" data-level="2.1" data-path="the-basics.html"><a href="the-basics.html"><i class="fa fa-check"></i><b>2.1</b> The basics</a></li>
+<li class="chapter" data-level="2.2" data-path="area-chart-geom_area.html"><a href="area-chart-geom_area.html"><i class="fa fa-check"></i><b>2.2</b> Area chart: <code>geom_area()</code></a></li>
+<li class="chapter" data-level="2.3" data-path="bar-chart-geom_bar.html"><a href="bar-chart-geom_bar.html"><i class="fa fa-check"></i><b>2.3</b> Bar chart: <code>geom_bar()</code></a></li>
+<li class="chapter" data-level="2.4" data-path="line-chart-geom_line.html"><a href="line-chart-geom_line.html"><i class="fa fa-check"></i><b>2.4</b> Line chart: <code>geom_line()</code></a></li>
+<li class="chapter" data-level="2.5" data-path="scatterplot-geom_point.html"><a href="scatterplot-geom_point.html"><i class="fa fa-check"></i><b>2.5</b> Scatterplot: <code>geom_point()</code></a></li>
+<li class="chapter" data-level="2.6" data-path="polygons-geom_polygon.html"><a href="polygons-geom_polygon.html"><i class="fa fa-check"></i><b>2.6</b> Polygons: <code>geom_polygon()</code></a></li>
+<li class="chapter" data-level="2.7" data-path="histograms-geom_histogram.html"><a href="histograms-geom_histogram.html"><i class="fa fa-check"></i><b>2.7</b> Histograms: <code>geom_histogram()</code></a></li>
+<li class="chapter" data-level="2.8" data-path="drawing-rectangles-geom_rect-geom_tile-geom_raster.html"><a href="drawing-rectangles-geom_rect-geom_tile-geom_raster.html"><i class="fa fa-check"></i><b>2.8</b> Drawing rectangles: <code>geom_rect()</code>; <code>geom_tile()</code>; <code>geom_raster()</code></a></li>
+<li class="chapter" data-level="2.9" data-path="add-text-to-a-plot-geom_text.html"><a href="add-text-to-a-plot-geom_text.html"><i class="fa fa-check"></i><b>2.9</b> Add text to a plot: <code>geom_text()</code></a></li>
+<li class="chapter" data-level="2.10" data-path="exercise-solutions.html"><a href="exercise-solutions.html"><i class="fa fa-check"></i><b>2.10</b> Exercise solutions</a>
 <ul>
-<li class="chapter" data-level="2.10.1" data-path="meeting-videos-2.html"><a href="meeting-videos-2.html#cohort-1-2"><i class="fa fa-check"></i><b>2.10.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="2.10.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#exercise-1"><i class="fa fa-check"></i><b>2.10.1</b> Exercise 1</a></li>
+<li class="chapter" data-level="2.10.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#exercise-2"><i class="fa fa-check"></i><b>2.10.2</b> Exercise 2</a></li>
+<li class="chapter" data-level="2.10.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#exercise-3"><i class="fa fa-check"></i><b>2.10.3</b> Exercise 3</a></li>
+</ul></li>
+<li class="chapter" data-level="2.11" data-path="meeting-videos-2.html"><a href="meeting-videos-2.html"><i class="fa fa-check"></i><b>2.11</b> Meeting Videos</a>
+<ul>
+<li class="chapter" data-level="2.11.1" data-path="meeting-videos-2.html"><a href="meeting-videos-2.html#cohort-1-2"><i class="fa fa-check"></i><b>2.11.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="collective-geoms.html"><a href="collective-geoms.html"><i class="fa fa-check"></i><b>3</b> Collective Geoms</a>
@@ -594,18 +600,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="geom_line-connects-points-from-left-to-right." class="section level2 hasAnchor" number="2.6">
-<h2><span class="header-section-number">2.6</span> geom_line() connects points from left to right.<a href="geom_line-connects-points-from-left-to-right..html#geom_line-connects-points-from-left-to-right." class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="geom_line-connects-points-from-left-to-right..html#cb46-1" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_line</span>() </span></code></pre></div>
+<div id="exercise-solutions" class="section level2 hasAnchor" number="2.10">
+<h2><span class="header-section-number">2.10</span> Exercise solutions<a href="exercise-solutions.html#exercise-solutions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="exercise-1" class="section level3 hasAnchor" number="2.10.1">
+<h3><span class="header-section-number">2.10.1</span> Exercise 1<a href="exercise-solutions.html#exercise-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>What geoms would you use to draw each of the following named plots?
+<ul>
+<li>scatterplot = <code>geom_point()</code></li>
+<li>line chart = <code>geom_line()</code></li>
+<li>histogram = <code>geom_histogram()</code></li>
+<li>bar chart = <code>geom_bar()</code> or <code>geom_col()</code></li>
+<li>pie chart = <code>geom_bar()</code> with <code>coord_polar()</code></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="exercise-solutions.html#cb56-1" tabindex="-1"></a><span class="fu">ggplot</span>(data_diamond_count, <span class="fu">aes</span>(cut, count)) <span class="sc">+</span></span>
+<span id="cb56-2"><a href="exercise-solutions.html#cb56-2" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="exercise-solutions.html#cb57-1" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(<span class="dv">1</span>), <span class="at">fill =</span> <span class="fu">factor</span>(cut))) <span class="sc">+</span></span>
+<span id="cb57-2"><a href="exercise-solutions.html#cb57-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb57-3"><a href="exercise-solutions.html#cb57-3" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">&quot;y&quot;</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+</div>
+<div id="exercise-2" class="section level3 hasAnchor" number="2.10.2">
+<h3><span class="header-section-number">2.10.2</span> Exercise 2<a href="exercise-solutions.html#exercise-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>geom_path()</code> connects points in order of appearance. <code>geom_line</code> connects points from left to right.</li>
+</ul>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="exercise-solutions.html#cb58-1" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_path</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/03-path-1.png" width="672" /></p>
+<ul>
+<li><code>geom_polygon()</code> draws polygons which are filled paths.</li>
+</ul>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="exercise-solutions.html#cb59-1" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_polygon</span>() </span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/03-poly-1.png" width="672" /></p>
+<ul>
+<li><code>geom_line()</code> connects points from left to right.</li>
+</ul>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="exercise-solutions.html#cb60-1" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_line</span>() </span></code></pre></div>
 <p><img src="bookclub-ggplot2_01_files/figure-html/03-line-1.png" width="672" /></p>
+</div>
+<div id="exercise-3" class="section level3 hasAnchor" number="2.10.3">
+<h3><span class="header-section-number">2.10.3</span> Exercise 3<a href="exercise-solutions.html#exercise-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>What low-level geoms are used to draw geom_smooth()?
+<ul>
+<li><code>geom_smooth()</code> fits a smoother to data, displaying the smooth and its standard error, allowing you to see a dominant pattern within a scatterplot with a lot of “noise”. The low level geom for <code>geom_smooth()</code> are <code>geom_path()</code>, <code>geom_area()</code> and <code>geom_point()</code>.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="exercise-solutions.html#cb61-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy)) <span class="sc">+</span> </span>
+<span id="cb61-2"><a href="exercise-solutions.html#cb61-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb61-3"><a href="exercise-solutions.html#cb61-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="bookclub-ggplot2_01_files/figure-html/03-smooth-1.png" width="672" /></p>
+<ul>
+<li>What low-level geoms are used to draw geom_boxplot()?
+<ul>
+<li>Box plots are used to summarize the distribution of a set of points using summary statistics. The low level geom for <code>geom_boxplot()</code> are <code>geom_rect()</code>, <code>geom_line()</code> and <code>geom_point()</code>.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="exercise-solutions.html#cb63-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(drv, hwy)) <span class="sc">+</span> </span>
+<span id="cb63-2"><a href="exercise-solutions.html#cb63-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/03-box-1.png" width="672" /></p>
+<ul>
+<li>What low-level geoms are used to draw geom_violin()?
+<ul>
+<li>Violin plots show a compact representation of the density of the distribution highlighting the areas where most of the points are found. The low level geom for <code>geom_violin()</code> are <code>geom_area()</code> and <code>geom_path()</code>.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="exercise-solutions.html#cb64-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(drv, hwy)) <span class="sc">+</span> </span>
+<span id="cb64-2"><a href="exercise-solutions.html#cb64-2" tabindex="-1"></a>  <span class="fu">geom_violin</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_01_files/figure-html/03-violin-1.png" width="672" /></p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="geom_polygon-draws-polygons-which-are-filled-paths..html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="what-low-level-geoms-are-used-to-draw-geom_smooth.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="add-text-to-a-plot-geom_text.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="meeting-videos-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
