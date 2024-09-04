@@ -1,31 +1,35 @@
 # Arranging Plots
 
-
 **Learning Objectives**
 
-- Produce several subplots part of the same main visualization
-- A range of packages for providing different approaches to arranging separate plots
+1. Produce several subplots as part of the same main visualization
+2. Understand how to arrange plots 
+    - in rows and columns
+    - on top of each other (insets)
 
 
 
-## Introduction
+## Introduction {-}
 
-This chapter focuses on making more than one plot in one visualization, using the following packages:
+Want to arrange multiple plots; need more than faceting
 
-1. patchwork
-2. cowplot
-3. gridExtra
-4. ggpubr
+This chapter discusses {patchwork}. 
 
+Others:
 
-## Arranging plots side by side with no overlap
+  * {cowplot}
+  * {gridExtra}
+  * {ggpubr}
+
+## Arranging plots side by side with no overlap {-}
 
 ```{r 09-library, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 library(tidyverse)
 ```
 
+Let's imagine we have several plots:
 
-```{r 09-dataplots, include=FALSE}
+```{r 09-dataplots}
 p1 <- ggplot(mpg) + 
   geom_point(aes(x = displ, y = hwy))
 
@@ -46,7 +50,7 @@ p4 <- ggplot(mpg) +
 ```{r 09-plot1}
 library(patchwork)
 
-p1 + p2 # same as p3 | p4
+p1 + p2 # same as p1 | p2
 ```
 
 ```{r 09-plot2}
@@ -54,7 +58,7 @@ p1 + p2 + p3 + p4
 ```
 
 
-### Taking control of the layout
+## Controlling the layout {-}
 
 ```{r 09-plot3}
 p1 + p2 + p3 + plot_layout(ncol = 2)
@@ -64,12 +68,13 @@ p1 + p2 + p3 + plot_layout(ncol = 2)
 p1 / p2
 ```
 
-More compositions:
+## More compositions: {-}
+
 ```{r 09-plot5}
 p3 | (p2 / (p1 | p4))
 ```
 
-### More about layouts
+## Layouts can get creative! {-}
 
 ```{r 09-plot6}
 layout <- "
@@ -81,17 +86,22 @@ CDD
 p1 + p2 + p3 + p4 + plot_layout(design = layout)
 ```
 
+## Collect repeats of the same legend {-}
+
 ```{r 09-plot7}
 p1 + p2 + p3 + guide_area() + plot_layout(ncol = 2, guides = "collect")
 ```
 
 
-This way is possible a custom modification of the theme for one plot or for both.
+## Parts of the patchwork object can still be modified {-}
+
 ```{r 09-plot8}
 p12 <- p1 + p2
 p12[[1]] <- p12[[1]] + theme_light()
 p12
 ```
+
+## New operator: `&` adds whole-plot themes {-}
 
 ```{r 09-plot9}
 p1 + p4 & 
@@ -99,7 +109,7 @@ p1 + p4 &
   theme_minimal()
 ```
 
-### Plot annotations
+### Plot annotations {-}
 ```{r 09-plot10}
 p34 <- p3 + p4 + 
   plot_annotation(
@@ -111,21 +121,44 @@ p34 <- p3 + p4 +
 p34
 ```
 
+## Labeling plots (e.g. parts of figures) {-}
+
 ```{r 09-plot11}
-p34[[2]] <- p34[[2]] + plot_layout(tag_level = "new")
+new <- p34
+keep <- p34
+new[[2]] <- new[[2]] + plot_layout(tag_level = "new")
+keep[[2]] <- keep[[2]] + plot_layout(tag_level = "keep")
+```
+
+```{r}
+new
+```
+
+```{r}
+keep
+```
+
+
+## Specify the type of tags/labels {-}
+```{r}
 p34 + plot_annotation(tag_levels = c("I", "a"))
 ```
 
 
-## Arranging plots on top of each other
+## Arranging plots on top of each other {-}
 
-It is possible to arrange plots in a way that they are nested to each other, as well as setting the position inside the main plot.
+Instead of putting plots next to or above/below each other, we can nest them.
 
-General options are left, right, top, and bottom locations, but more specific locations can be set, such as using: `grid::unit()` (default uses npc units which goes from 0 to 1)
+General options: left, right, top, and bottom.
+Set specific locations
 
-In addition, the location is by default set to the **panel area**, but can be align_to` **plot area**. 
+- `grid::unit()`--npc units ("Normalized Parent Coordinates"), ranges from 0 to 1
 
-An inset can be placed exactly 15 mm from the top right corner.
+Location is relative to **panel area**, not **plot area**. `align_to` arg changes this.
+
+## Example: {-}
+
+Placing an inset exactly 15 mm from the top right corner:
 
 ```{r 09-plot12}
 p1 + 
@@ -139,6 +172,8 @@ p1 +
   )
 ```
 
+## Another inset example with annotation {-}
+
 ```{r 09-plot13}
 p24 <- p2 / p4 + plot_layout(guides = "collect")
 
@@ -150,7 +185,7 @@ p1 +
 
 
 
-## Extra
+## Extra {-}
 
 **grid and gridExtra packages**
 ```{r 09-plot14, message=FALSE, warning=FALSE, paged.print=FALSE}
@@ -221,21 +256,21 @@ ggarrange(p1, p2, p3, ncol = 2, nrow = 2,common.legend = TRUE)
 ```
 
 
-## Conclusions
+## Conclusions {-}
 
 
 [Patchwork - imaginist](https://patchwork.data-imaginist.com/) is one of the packages mentioned in the book, also some other packages provide same results with different approaches. 
 
-### Extra resources:
+### Extra resources: {-}
 
 - [grid and gridExtra](https://cran.r-project.org/web/packages/gridExtra/vignettes/arrangeGrob.html)
 - [cowplot](https://wilkelab.org/cowplot/articles/plot_grid.html)
 - [ggpubr](https://rpkgs.datanovia.com/ggpubr/reference/ggarrange.html)
 
 
-## Meeting Videos
+## Meeting Videos {-}
 
-### Cohort 1
+### Cohort 1 {-}
 
 `r knitr::include_url("https://www.youtube.com/embed/mGE639JpneE")`
 
