@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6.2 What is network data? | ggplot2 Book Club</title>
+  <title>What is network data? | ggplot2 Book Club</title>
   <meta name="description" content="This is the product of the Data Science Learning Community’s Book Club." />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6.2 What is network data? | ggplot2 Book Club" />
+  <meta property="og:title" content="What is network data? | ggplot2 Book Club" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is the product of the Data Science Learning Community’s Book Club." />
   <meta name="github-repo" content="r4ds/bookclub-ggplot2" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6.2 What is network data? | ggplot2 Book Club" />
+  <meta name="twitter:title" content="What is network data? | ggplot2 Book Club" />
   
   <meta name="twitter:description" content="This is the product of the Data Science Learning Community’s Book Club." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="The Data Science Learning Community" />
 
 
-<meta name="date" content="2024-08-06" />
+<meta name="date" content="2024-09-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="introduction-2.html"/>
-<link rel="next" href="visualizing-networks.html"/>
+<link rel="next" href="network-data-is-special.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -262,27 +262,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="networks.html"><a href="networks.html"><i class="fa fa-check"></i><b>6</b> Networks</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="introduction-2.html"><a href="introduction-2.html"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
-<li class="chapter" data-level="6.2" data-path="what-is-network-data.html"><a href="what-is-network-data.html"><i class="fa fa-check"></i><b>6.2</b> What is network data?</a>
+<li class="chapter" data-level="" data-path="introduction-2.html"><a href="introduction-2.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="what-is-network-data.html"><a href="what-is-network-data.html"><i class="fa fa-check"></i>What is network data?</a></li>
+<li class="chapter" data-level="" data-path="network-data-is-special.html"><a href="network-data-is-special.html"><i class="fa fa-check"></i>Network data is special</a></li>
+<li class="chapter" data-level="" data-path="tidygraph-a-tidy-network-manipulation-api.html"><a href="tidygraph-a-tidy-network-manipulation-api.html"><i class="fa fa-check"></i>{tidygraph}: A tidy network manipulation API</a></li>
+<li class="chapter" data-level="" data-path="example-creating-a-graph.html"><a href="example-creating-a-graph.html"><i class="fa fa-check"></i>Example: creating a graph</a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="what-is-network-data.html"><a href="what-is-network-data.html#a-tidy-network-manipulation-api"><i class="fa fa-check"></i><b>6.2.1</b> A tidy network manipulation API</a></li>
-<li class="chapter" data-level="6.2.2" data-path="what-is-network-data.html"><a href="what-is-network-data.html#conversion"><i class="fa fa-check"></i><b>6.2.2</b> Conversion</a></li>
-<li class="chapter" data-level="6.2.3" data-path="what-is-network-data.html"><a href="what-is-network-data.html#algorithms"><i class="fa fa-check"></i><b>6.2.3</b> Algorithms</a></li>
+<li class="chapter" data-level="" data-path="example-creating-a-graph.html"><a href="example-creating-a-graph.html#conversion-to-tbl_graph"><i class="fa fa-check"></i>Conversion to <code>tbl_graph</code></a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="visualizing-networks.html"><a href="visualizing-networks.html"><i class="fa fa-check"></i><b>6.3</b> Visualizing networks</a>
+<li class="chapter" data-level="" data-path="example-colors.html"><a href="example-colors.html"><i class="fa fa-check"></i>Example: colors</a></li>
+<li><a href="section.html#section" id="toc-section"></a></li>
+<li><a href="section-1.html#section-1" id="toc-section-1"></a></li>
+<li class="chapter" data-level="" data-path="algorithms.html"><a href="algorithms.html"><i class="fa fa-check"></i>Algorithms</a></li>
+<li class="chapter" data-level="" data-path="visualizing-networks.html"><a href="visualizing-networks.html"><i class="fa fa-check"></i>Visualizing networks</a></li>
+<li class="chapter" data-level="" data-path="setting-up-the-visualization.html"><a href="setting-up-the-visualization.html"><i class="fa fa-check"></i>Setting up the visualization</a></li>
+<li class="chapter" data-level="" data-path="specifying-a-layout.html"><a href="specifying-a-layout.html"><i class="fa fa-check"></i>Specifying a layout</a></li>
+<li><a href="section-2.html#section-2" id="toc-section-2"></a></li>
+<li class="chapter" data-level="" data-path="many-possible-layouts.html"><a href="many-possible-layouts.html"><i class="fa fa-check"></i>Many possible layouts</a></li>
+<li><a href="section-3.html#section-3" id="toc-section-3"></a></li>
+<li class="chapter" data-level="" data-path="more-on-igraph.html"><a href="more-on-igraph.html"><i class="fa fa-check"></i>More on {igraph}</a></li>
+<li class="chapter" data-level="" data-path="circular-layouts.html"><a href="circular-layouts.html"><i class="fa fa-check"></i>Circular layouts</a></li>
+<li class="chapter" data-level="" data-path="drawing-nodes.html"><a href="drawing-nodes.html"><i class="fa fa-check"></i>Drawing nodes</a></li>
+<li class="chapter" data-level="" data-path="color-nodes-by-centrality.html"><a href="color-nodes-by-centrality.html"><i class="fa fa-check"></i>Color nodes by centrality</a></li>
+<li class="chapter" data-level="" data-path="making-tiles.html"><a href="making-tiles.html"><i class="fa fa-check"></i>Making tiles</a></li>
+<li class="chapter" data-level="" data-path="drawing-edges.html"><a href="drawing-edges.html"><i class="fa fa-check"></i>Drawing edges</a></li>
+<li class="chapter" data-level="" data-path="interpolating-edge-colors.html"><a href="interpolating-edge-colors.html"><i class="fa fa-check"></i>Interpolating edge colors</a></li>
+<li class="chapter" data-level="" data-path="other-types-of-edges.html"><a href="other-types-of-edges.html"><i class="fa fa-check"></i>Other types of edges</a></li>
+<li class="chapter" data-level="" data-path="trees-and-specifically-dendrograms.html"><a href="trees-and-specifically-dendrograms.html"><i class="fa fa-check"></i>Trees and specifically <strong>dendrograms</strong>:</a></li>
+<li class="chapter" data-level="" data-path="clipping-edges-around-nodes.html"><a href="clipping-edges-around-nodes.html"><i class="fa fa-check"></i>Clipping edges around nodes</a></li>
+<li class="chapter" data-level="" data-path="an-edge-is-not-always-a-line.html"><a href="an-edge-is-not-always-a-line.html"><i class="fa fa-check"></i>An edge is not always a line</a></li>
+<li class="chapter" data-level="" data-path="faceting-1.html"><a href="faceting-1.html"><i class="fa fa-check"></i>Faceting</a></li>
+<li class="chapter" data-level="" data-path="conclusions.html"><a href="conclusions.html"><i class="fa fa-check"></i>Conclusions</a></li>
+<li class="chapter" data-level="" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="6.1" data-path="meeting-videos-6.html"><a href="meeting-videos-6.html"><i class="fa fa-check"></i><b>6.1</b> Meeting Videos</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="visualizing-networks.html"><a href="visualizing-networks.html#setting-up-the-visualization"><i class="fa fa-check"></i><b>6.3.1</b> Setting up the visualization</a></li>
-<li class="chapter" data-level="6.3.2" data-path="visualizing-networks.html"><a href="visualizing-networks.html#drawing-nodes"><i class="fa fa-check"></i><b>6.3.2</b> Drawing nodes</a></li>
-<li class="chapter" data-level="6.3.3" data-path="visualizing-networks.html"><a href="visualizing-networks.html#drawing-edges"><i class="fa fa-check"></i><b>6.3.3</b> Drawing edges</a></li>
-<li class="chapter" data-level="6.3.4" data-path="visualizing-networks.html"><a href="visualizing-networks.html#faceting-1"><i class="fa fa-check"></i><b>6.3.4</b> Faceting</a></li>
-</ul></li>
-<li class="chapter" data-level="6.4" data-path="conclusions.html"><a href="conclusions.html"><i class="fa fa-check"></i><b>6.4</b> Conclusions</a>
-<ul>
-<li class="chapter" data-level="6.4.1" data-path="conclusions.html"><a href="conclusions.html#resources"><i class="fa fa-check"></i><b>6.4.1</b> Resources:</a></li>
-</ul></li>
-<li class="chapter" data-level="6.5" data-path="meeting-videos-6.html"><a href="meeting-videos-6.html"><i class="fa fa-check"></i><b>6.5</b> Meeting Videos</a>
-<ul>
-<li class="chapter" data-level="6.5.1" data-path="meeting-videos-6.html"><a href="meeting-videos-6.html#cohort-1-6"><i class="fa fa-check"></i><b>6.5.1</b> Cohort 1</a></li>
+<li class="chapter" data-level="6.1.1" data-path="meeting-videos-6.html"><a href="meeting-videos-6.html#cohort-1-6"><i class="fa fa-check"></i><b>6.1.1</b> Cohort 1</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="annotations.html"><a href="annotations.html"><i class="fa fa-check"></i><b>7</b> Annotations</a>
@@ -600,190 +614,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="what-is-network-data" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> What is network data?<a href="what-is-network-data.html#what-is-network-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Networks data consists of entities (nodes or vertices) and their relation (edges or links).</p>
-<p>Edges can be: directed or undirected</p>
-<div id="a-tidy-network-manipulation-api" class="section level3 hasAnchor" number="6.2.1">
-<h3><span class="header-section-number">6.2.1</span> A tidy network manipulation API<a href="what-is-network-data.html#a-tidy-network-manipulation-api" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The first package is <code>tidygraph()</code> a dplyr API for network data.</p>
-<p>New functions:</p>
+<div id="what-is-network-data" class="section level2 unnumbered hasAnchor">
+<h2>What is network data?<a href="what-is-network-data.html#what-is-network-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="bookclub-ggplot2_01_files/figure-html/unnamed-chunk-16-3.png" width="672" /></p>
+<p>Network data consists of entities (<strong>nodes</strong> or vertices) and their relations (<strong>edges</strong> or links).</p>
+<p>Edges: directed/undirected, weighted/unweighted</p>
+<p>Examples:</p>
 <ul>
-<li><code>activate()</code> informs tidygraph on which part of the network you want to work on, either nodes or edges.</li>
-<li><code>.N()</code> which gives access to the node data of the current graph even when working with the edges
-- <code>.E()</code> and <code>.G()</code> to access the edges or the whole graph)</li>
+<li>Social network: friendships (edges) between people (nodes)</li>
+<li>A food web: trophic relationships (edges) between species (nodes)</li>
+<li>Plant-pollinator networks</li>
 </ul>
-<p>In this <strong>example</strong> we create a graph, assign a random label to the nodes, and sort the edges based on the label of their source node.</p>
-<p>The function <code>play_erdos_renyi()</code> creates graphs directly through sampling of different attributes.</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="what-is-network-data.html#cb156-1" tabindex="-1"></a><span class="fu">library</span>(tidygraph)</span>
-<span id="cb156-2"><a href="what-is-network-data.html#cb156-2" tabindex="-1"></a></span>
-<span id="cb156-3"><a href="what-is-network-data.html#cb156-3" tabindex="-1"></a>graph <span class="ot">&lt;-</span> tidygraph<span class="sc">::</span><span class="fu">play_erdos_renyi</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">p =</span> <span class="fl">0.2</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb156-4"><a href="what-is-network-data.html#cb156-4" tabindex="-1"></a>  <span class="fu">activate</span>(nodes) <span class="sc">%&gt;%</span> </span>
-<span id="cb156-5"><a href="what-is-network-data.html#cb156-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">class =</span> <span class="fu">sample</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb156-6"><a href="what-is-network-data.html#cb156-6" tabindex="-1"></a>  <span class="fu">activate</span>(edges) <span class="sc">%&gt;%</span> </span>
-<span id="cb156-7"><a href="what-is-network-data.html#cb156-7" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">.N</span>()<span class="sc">$</span>class[from])</span>
-<span id="cb156-8"><a href="what-is-network-data.html#cb156-8" tabindex="-1"></a></span>
-<span id="cb156-9"><a href="what-is-network-data.html#cb156-9" tabindex="-1"></a>graph</span></code></pre></div>
-<pre><code>## # A tbl_graph: 10 nodes and 14 edges
-## #
-## # A directed simple graph with 1 component
-## #
-## # Edge Data: 14 × 2 (active)
-##     from    to
-##    &lt;int&gt; &lt;int&gt;
-##  1     4     5
-##  2     9     2
-##  3    10     3
-##  4     2     5
-##  5     2     9
-##  6     7     1
-##  7     3     2
-##  8     8     3
-##  9     8     4
-## 10     3     5
-## 11     6    10
-## 12     8     6
-## 13     7     8
-## 14     8    10
-## #
-## # Node Data: 10 × 1
-##   class
-##   &lt;chr&gt;
-## 1 a    
-## 2 c    
-## 3 d    
-## # ℹ 7 more rows</code></pre>
-</div>
-<div id="conversion" class="section level3 hasAnchor" number="6.2.2">
-<h3><span class="header-section-number">6.2.2</span> Conversion<a href="what-is-network-data.html#conversion" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Data can be converted with <code>as_tbl_graph()</code>, a data structure for tidy graph manipulation. It converts a data frame encoded as an edgelist, as well as converting the result of <code>hclust()</code></p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="what-is-network-data.html#cb158-1" tabindex="-1"></a><span class="fu">data</span>(highschool, <span class="at">package =</span> <span class="st">&quot;ggraph&quot;</span>)</span>
-<span id="cb158-2"><a href="what-is-network-data.html#cb158-2" tabindex="-1"></a><span class="fu">head</span>(highschool)</span></code></pre></div>
-<pre><code>##   from to year
-## 1    1 14 1957
-## 2    1 15 1957
-## 3    1 21 1957
-## 4    1 54 1957
-## 5    1 55 1957
-## 6    2 21 1957</code></pre>
-<p>With <code>as_tbl_graph()</code> we obtain:</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="what-is-network-data.html#cb160-1" tabindex="-1"></a>hs_graph <span class="ot">&lt;-</span> tidygraph<span class="sc">::</span><span class="fu">as_tbl_graph</span>(highschool, <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb160-2"><a href="what-is-network-data.html#cb160-2" tabindex="-1"></a>hs_graph</span></code></pre></div>
-<pre><code>## # A tbl_graph: 70 nodes and 506 edges
-## #
-## # An undirected multigraph with 1 component
-## #
-## # Node Data: 70 × 0 (active)
-## #
-## # Edge Data: 506 × 3
-##    from    to  year
-##   &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
-## 1     1    13  1957
-## 2     1    14  1957
-## 3     1    20  1957
-## # ℹ 503 more rows</code></pre>
-<div id="hclust-and-dist-functions" class="section level4 hasAnchor" number="6.2.2.1">
-<h4><span class="header-section-number">6.2.2.1</span> hclust() and dist() functions:<a href="what-is-network-data.html#hclust-and-dist-functions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>In this <strong>example</strong> the <code>luv_colours()</code> function allows for all built-in <code>colors()</code> translated into <strong>Luv colour space</strong>, a data frame with 657 observations and 4 variables:
-<a href="https://github.com/tidyverse/ggplot2/blob/main/data-raw/luv_colours.R">luv_colours</a></p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="what-is-network-data.html#cb162-1" tabindex="-1"></a>luv_colours <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">convertColor</span>(<span class="fu">t</span>(<span class="fu">col2rgb</span>(<span class="fu">colors</span>())),</span>
-<span id="cb162-2"><a href="what-is-network-data.html#cb162-2" tabindex="-1"></a>                                          <span class="st">&quot;sRGB&quot;</span>, <span class="st">&quot;Luv&quot;</span>))</span>
-<span id="cb162-3"><a href="what-is-network-data.html#cb162-3" tabindex="-1"></a>luv_colours<span class="sc">$</span>col <span class="ot">&lt;-</span> <span class="fu">colors</span>()</span>
-<span id="cb162-4"><a href="what-is-network-data.html#cb162-4" tabindex="-1"></a><span class="fu">head</span>(luv_colours)</span></code></pre></div>
-<pre><code>##          L             u         v           col
-## 1 9341.570 -3.370649e-12    0.0000         white
-## 2 9100.962 -4.749170e+02 -635.3502     aliceblue
-## 3 8809.518  1.008865e+03 1668.0042  antiquewhite
-## 4 8935.225  1.065698e+03 1674.5948 antiquewhite1
-## 5 8452.499  1.014911e+03 1609.5923 antiquewhite2
-## 6 7498.378  9.029892e+02 1401.7026 antiquewhite3</code></pre>
-<p>This visualization represent the content of the dataset, then we will see how it looks in a grapg representation.</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="what-is-network-data.html#cb164-1" tabindex="-1"></a><span class="fu">ggplot</span>(luv_colours, <span class="fu">aes</span>(u, v)) <span class="sc">+</span> </span>
-<span id="cb164-2"><a href="what-is-network-data.html#cb164-2" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> col), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb164-3"><a href="what-is-network-data.html#cb164-3" tabindex="-1"></a><span class="fu">scale_color_identity</span>() <span class="sc">+</span> </span>
-<span id="cb164-4"><a href="what-is-network-data.html#cb164-4" tabindex="-1"></a><span class="fu">coord_equal</span>() <span class="sc">+</span></span>
-<span id="cb164-5"><a href="what-is-network-data.html#cb164-5" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
-<p><img src="bookclub-ggplot2_01_files/figure-html/07-colors-1.png" width="672" /></p>
-<p>For example, selecting the first 3 variables and plotting the data with the plot() function we can see that there are some connections within the elements of the dataset, as the colors are connected to each other.</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="what-is-network-data.html#cb165-1" tabindex="-1"></a>ggplot2<span class="sc">::</span>luv_colours[, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>] <span class="sc">%&gt;%</span> head</span></code></pre></div>
-<pre><code>##          L             u         v
-## 1 9341.570 -3.370649e-12    0.0000
-## 2 9100.962 -4.749170e+02 -635.3502
-## 3 8809.518  1.008865e+03 1668.0042
-## 4 8935.225  1.065698e+03 1674.5948
-## 5 8452.499  1.014911e+03 1609.5923
-## 6 7498.378  9.029892e+02 1401.7026</code></pre>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="what-is-network-data.html#cb167-1" tabindex="-1"></a><span class="fu">plot</span>(ggplot2<span class="sc">::</span>luv_colours[, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>])</span></code></pre></div>
-<p><img src="bookclub-ggplot2_01_files/figure-html/07-palette-1.png" width="672" /></p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="what-is-network-data.html#cb168-1" tabindex="-1"></a>luv_clust <span class="ot">&lt;-</span> <span class="fu">hclust</span>(<span class="fu">dist</span>(ggplot2<span class="sc">::</span>luv_colours[, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]))</span></code></pre></div>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="what-is-network-data.html#cb169-1" tabindex="-1"></a><span class="fu">class</span>(luv_clust)</span></code></pre></div>
-<pre><code>## [1] &quot;hclust&quot;</code></pre>
-<p>With the <code>tidygraph::as_tbl_graph()</code> function we can transorm the dataset into classes “tbl_graph”, “igraph” to make it ready to use for making a visualization of the network data.</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="what-is-network-data.html#cb171-1" tabindex="-1"></a>luv_graph <span class="ot">&lt;-</span> <span class="fu">as_tbl_graph</span>(luv_clust)</span>
-<span id="cb171-2"><a href="what-is-network-data.html#cb171-2" tabindex="-1"></a>luv_graph;<span class="fu">class</span>(luv_graph)</span></code></pre></div>
-<pre><code>## # A tbl_graph: 1313 nodes and 1312 edges
-## #
-## # A rooted tree
-## #
-## # Node Data: 1,313 × 4 (active)
-##    height leaf  label members
-##     &lt;dbl&gt; &lt;lgl&gt; &lt;chr&gt;   &lt;int&gt;
-##  1     0  TRUE  &quot;101&quot;       1
-##  2     0  TRUE  &quot;427&quot;       1
-##  3   778. FALSE &quot;&quot;          2
-##  4     0  TRUE  &quot;571&quot;       1
-##  5     0  TRUE  &quot;426&quot;       1
-##  6     0  TRUE  &quot;424&quot;       1
-##  7     0  TRUE  &quot;425&quot;       1
-##  8     0  FALSE &quot;&quot;          2
-##  9   590. FALSE &quot;&quot;          3
-## 10  1652. FALSE &quot;&quot;          4
-## # ℹ 1,303 more rows
-## #
-## # Edge Data: 1,312 × 2
-##    from    to
-##   &lt;int&gt; &lt;int&gt;
-## 1     3     1
-## 2     3     2
-## 3     8     6
-## # ℹ 1,309 more rows</code></pre>
-<pre><code>## [1] &quot;tbl_graph&quot; &quot;igraph&quot;</code></pre>
-</div>
-</div>
-<div id="algorithms" class="section level3 hasAnchor" number="6.2.3">
-<h3><span class="header-section-number">6.2.3</span> Algorithms<a href="what-is-network-data.html#algorithms" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The real benefit of networks comes from the different operations that can be performed on them using the underlying structure.</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="what-is-network-data.html#cb174-1" tabindex="-1"></a>luv_graph <span class="sc">%&gt;%</span> </span>
-<span id="cb174-2"><a href="what-is-network-data.html#cb174-2" tabindex="-1"></a>  tidygraph<span class="sc">::</span><span class="fu">activate</span>(nodes) <span class="sc">%&gt;%</span> </span>
-<span id="cb174-3"><a href="what-is-network-data.html#cb174-3" tabindex="-1"></a>             <span class="fu">mutate</span>(<span class="at">centrality =</span> <span class="fu">centrality_pagerank</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb174-4"><a href="what-is-network-data.html#cb174-4" tabindex="-1"></a>             <span class="fu">arrange</span>(<span class="fu">desc</span>(centrality))</span></code></pre></div>
-<pre><code>## # A tbl_graph: 1313 nodes and 1312 edges
-## #
-## # A rooted tree
-## #
-## # Node Data: 1,313 × 5 (active)
-##    height leaf  label members centrality
-##     &lt;dbl&gt; &lt;lgl&gt; &lt;chr&gt;   &lt;int&gt;      &lt;dbl&gt;
-##  1      0 TRUE  207         1   0.000763
-##  2      0 TRUE  315         1   0.000763
-##  3      0 TRUE  208         1   0.000763
-##  4      0 TRUE  316         1   0.000763
-##  5      0 TRUE  205         1   0.000763
-##  6      0 TRUE  313         1   0.000763
-##  7      0 TRUE  206         1   0.000763
-##  8      0 TRUE  314         1   0.000763
-##  9      0 TRUE  245         1   0.000763
-## 10      0 TRUE  353         1   0.000763
-## # ℹ 1,303 more rows
-## #
-## # Edge Data: 1,312 × 2
-##    from    to
-##   &lt;int&gt; &lt;int&gt;
-## 1  1187  1079
-## 2  1187  1080
-## 3   942   797
-## # ℹ 1,309 more rows</code></pre>
-</div>
 </div>
             </section>
 
@@ -791,7 +632,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="introduction-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="visualizing-networks.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="network-data-is-special.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
