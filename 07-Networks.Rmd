@@ -1,51 +1,88 @@
 # Networks
 
-
 **Learning Objectives**
 
-- What is Network data?
+- What is network data?
 - New functions and geoms
 - Visualization of nodes and edges as abstract concepts 
 
-## Introduction
+## Introduction {-}
 
-This chapter illustrates how to make a Network of data, and how to make practical examples using some of the available packages:
+This chapter illustrates how to visualize network data using additional packages that go beyond what `{ggplot2}` is able to do natively.
 
-- `{tidygraph}` for Tidy API for Graph Manipulation
-- `{ggraph}`    for network visualization
-- `{igraph}`    for generating random and regular graphs
+- `{tidygraph}` tidy graph manipulation
+- `{ggraph}`    network visualization
+- `{igraph}`    generating random and regular graphs (and viz in base R)
+
+## What is network data? {-}
+
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+set.seed(5)
+library(tidygraph)
+library(ggraph)
+g <- tidygraph::play_gnp(n = 10, p = 0.5, directed = F)
+ggraph(g)+
+  geom_edge_link() +
+  geom_node_point(col = "dodgerblue", size = 6)+
+  theme_graph()
+```
+
+Network data consists of entities (**nodes** or vertices) and their relations (**edges** or links).
+
+Edges: directed/undirected, weighted/unweighted
+
+Examples:
+
+* Social network: friendships (edges) between people (nodes)
+* A food web: trophic relationships (edges) between species (nodes)
+* Plant-pollinator networks
+
+## Network data is special {-}
+
+- Must represent both **nodes** and **edges**
+- Two main ways of representing network data:
+  1. Edge list (long format)
+```{r echo = F, message = F}
+set.seed(3)
+edge_list <- 
+  data.frame(from = c(letters[1:4], letters[1:3]),
+         to = c(letters[1:4], letters[2:4]),
+         weight = c(rep(1, 4), runif(3)))
+edge_list
+```
+  
+  2. Adjacency matrix (wide format)
+```{r echo = F}
+g <- igraph::as_adjacency_matrix(igraph::simplify(igraph::graph_from_data_frame(edge_list)))
+g
+```
 
 
-## What is network data?
 
-Networks data consists of entities (nodes or vertices) and their relation (edges or links).
+## {tidygraph}: A tidy network manipulation API {-}
 
-Edges can be: directed or undirected
-
-
-### A tidy network manipulation API
-
-The first package is `tidygraph()` a dplyr API for network data.
+- A {dplyr} API for network data
 
 New functions:
 
-- `activate()` informs tidygraph on which part of the network you want to work on, either nodes or edges. 
+- `activate()` tells tidygraph which part of the network you want to focus on, either nodes or edges
 - `.N()` which gives access to the node data of the current graph even when working with the edges
-      - `.E()` and `.G()` to access the edges or the whole graph)
+- `.E()` and `.G()` to access the edges or the whole graph)
 
 ```{r 07-01, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 library(tidyverse)
 ```
 
+## Example: creating a graph {-}
 
 In this **example** we create a graph, assign a random label to the nodes, and sort the edges based on the label of their source node.
 
-The function `play_erdos_renyi()` creates graphs directly through sampling of different attributes.
+The function `play_gnp()` creates graphs directly through sampling of different attributes.
 
-```{r 07-play_erdos_renyi, message=FALSE, warning=FALSE, paged.print=FALSE}
+```{r 07-play_gnp, message=FALSE, warning=FALSE, paged.print=FALSE}
 library(tidygraph)
 
-graph <- tidygraph::play_erdos_renyi(n = 10, p = 0.2) %>% 
+graph <- tidygraph::play_gnp(n = 10, p = 0.2) %>% 
   activate(nodes) %>% 
   mutate(class = sample(letters[1:4], n(), replace = TRUE)) %>% 
   activate(edges) %>% 
@@ -54,25 +91,27 @@ graph <- tidygraph::play_erdos_renyi(n = 10, p = 0.2) %>%
 graph
 ```
 
-### Conversion
 
 
-Data can be converted with `as_tbl_graph()`, a data structure for tidy graph manipulation. It converts a data frame encoded as an edgelist, as well as converting the result of `hclust()`
+### Conversion to `tbl_graph` {-}
+
+Convert data with `as_tbl_graph()`. A `tbl_graph` is a data structure for tidy graph manipulation. It converts a data frame encoded as an edgelist.
 
 ```{r 07-highschool}
 data(highschool, package = "ggraph")
 head(highschool)
 ```
 
-With `as_tbl_graph()` we obtain:
+With `as_tbl_graph()` we get:
 
 ```{r 07-hs_graph}
 hs_graph <- tidygraph::as_tbl_graph(highschool, directed = FALSE)
 hs_graph
 ```
 
+## Example: colors {-}
 
-#### hclust() and dist() functions:
+Other data that's in a network format:
 
 In this **example** the `luv_colours()` function allows for all built-in `colors()` translated into **Luv colour space**, a data frame with 657 observations and 4 variables:
 [luv_colours](https://github.com/tidyverse/ggplot2/blob/main/data-raw/luv_colours.R)
@@ -84,8 +123,9 @@ luv_colours$col <- colors()
 head(luv_colours)
 ```
 
+## {-}
 
-This visualization represent the content of the dataset, then we will see how it looks in a grapg representation. 
+This visualization represents the content of the dataset. Then we will see how it looks in a graph representation. 
 
 ```{r 07-colors}
 ggplot(luv_colours, aes(u, v)) + 
@@ -95,13 +135,9 @@ coord_equal() +
   theme_void()
 ```
 
+## {-}
 
-For example, selecting the first 3 variables and plotting the data with the plot() function we can see that there are some connections within the elements of the dataset, as the colors are connected to each other.
-```{r 07-palette}
-ggplot2::luv_colours[, 1:3] %>% head
-plot(ggplot2::luv_colours[, 1:3])
-```
-
+We notice some colors are closer to each other than others. We might want to use a clustering algorithm to see how they relate to each other.
 
 ```{r 07-hclust}
 luv_clust <- hclust(dist(ggplot2::luv_colours[, 1:3]))
@@ -111,16 +147,16 @@ luv_clust <- hclust(dist(ggplot2::luv_colours[, 1:3]))
 class(luv_clust)
 ```
 
-
 With the `tidygraph::as_tbl_graph()` function we can transorm the dataset into classes "tbl_graph", "igraph" to make it ready to use for making a visualization of the network data.
 
 ```{r 07-luv_graph}
 luv_graph <- as_tbl_graph(luv_clust)
-luv_graph;class(luv_graph)
+luv_graph
+class(luv_graph)
 ```
 
 
-### Algorithms
+## Algorithms {-}
 
 The real benefit of networks comes from the different operations that can be performed on them using the underlying structure.
 
@@ -132,14 +168,14 @@ luv_graph %>%
 ```
 
 
-## Visualizing networks
+## Visualizing networks {-}
 
 To visualize the **Network data** we use **{ggraph}**. 
 
 It builds on top of {tidygraph} and {ggplot2} to allow a complete and familiar grammar of graphics for network data. 
 
 
-### Setting up the visualization
+## Setting up the visualization {-}
 
 Syntax of **{ggraph}**:
 
@@ -150,16 +186,17 @@ it will choose an appropriate layout based on the type of graph you provide.
 
 [Getting Started guide to layouts](https://ggraph.data-imaginist.com/articles/Layouts.html)
 
-#### Specifying a layout
+## Specifying a layout {-}
 
-What is the base requirenment?
+Basic requirements:
 
-The data frame need to be with at least an x and y column and with the same number of rows as there are nodes in the input graph. 
+The data frame needs to have at least an x and y column and the same number of rows as there are nodes in the input graph. 
 
 As an **example** we take the `data(highschool, package = "ggraph")` and make a **visualization** of the graph:
 
-      hs_graph <- tidygraph::as_tbl_graph(highschool, 
-                                          directed = FALSE)
+```{r include = FALSE}
+hs_graph <- tidygraph::as_tbl_graph(highschool, directed = FALSE)
+```
 
 ```{r 07-02, message=FALSE, warning=FALSE, paged.print=FALSE}
 library(ggraph)
@@ -168,13 +205,14 @@ ggraph(hs_graph) +
   geom_node_point()
 ```
 
-A second **example** is with more features:
+## {-}
+
+A second **example** with more features:
 
 ```{r 07-03}
 hs_graph <- hs_graph %>%
   tidygraph::activate(edges) %>% 
              mutate(edge_weights = runif(n()))
-
 
 ggraph(hs_graph, layout = "stress", weights = edge_weights) + 
   geom_edge_link(aes(alpha = edge_weights)) + 
@@ -183,9 +221,11 @@ ggraph(hs_graph, layout = "stress", weights = edge_weights) +
 ```
 
 
-In the following **examples** we see different [layouts](https://www.data-imaginist.com/2017/ggraph-introduction-layouts/). 
+## Many possible layouts {-} 
 
-Information about "drl" type of layout: DRL force-directed graph layout, an be found in the [igraph](https://igraph.org/r/doc/layout_with_drl.html) package.
+There are many different possible [layouts](https://www.data-imaginist.com/2017/ggraph-introduction-layouts/).
+
+DRL force-directed graph layout from [igraph](https://igraph.org/r/doc/layout_with_drl.html):
 
 ```{r 07-03b}
 layout <- ggraph::create_layout(hs_graph, layout = 'drl')
@@ -195,30 +235,32 @@ ggraph(layout) +
   geom_node_point()
 ```
 
+## {-}
 
 Instead of {tidygraph} we use {igraph}, with layout = "kk": layout.kamada.kawai
 
 ```{r 07-04, message=FALSE, warning=FALSE, paged.print=FALSE}
-require(ggraph)
-require(igraph)
+library(ggraph)
+library(igraph)
 
 hs_graph2 <- igraph::graph_from_data_frame(highschool)
 
 layout <- create_layout(hs_graph2, layout = "kk")
+class(layout)
 
 ggraph(layout) + 
     geom_edge_link(aes(colour = factor(year))) + 
     geom_node_point() 
 ```
 
-
+## More on {igraph} {-}
 
 A very simple example to understand how to make a graph network is from this tutorial: [Networks in igraph](https://kateto.net/netscix2016.html)
 
 To understand a bit more about the graph structure we can use these functions:
 
 ```{r 07-04b}
-g1 <- igraph::graph( edges=c(1,2, 2,3, 3, 1), n=3, directed=F ) 
+g1 <- igraph::graph(edges=c(1,2, 2,3, 3, 1), n=3, directed=F ) 
 
 
 E(g1); # access to the edges
@@ -227,12 +269,11 @@ g1[] # access to the matrix
 ```
 
 
-
-#### Circularity
+## Circular layouts {-}
 
 Layouts can be **linear** and **circular**.
 
-     coord_polar()   changes the coordinate system and not affect the edges
+`coord_polar()` changes the coordinate system, affecting the edges
 
 
 ```{r 07-05}
@@ -249,40 +290,36 @@ ggraph(luv_graph, layout = 'dendrogram') +
   scale_y_reverse()
 ```
 
-### Drawing nodes
+## Drawing nodes {-}
 
-
-- points
-- more specialized geoms: tiles
-
+[Nodes](https://ggraph.data-imaginist.com/articles/Nodes.html) are similar to points, but we don't (usually) care explicitly about the x and y values.
 
       geom_node_<functions>
       geom_node_point()
       geom_node_tile() 
 
-[Getting Started guide to nodes](https://ggraph.data-imaginist.com/articles/Nodes.html)
-
-
 
 ```{r 07-luv_graph_tree}
 ggraph(luv_graph, layout = "stress") + 
   geom_edge_link() + 
-  geom_node_point(aes(colour =factor(members)),
+  geom_node_point(aes(colour = factor(members)),
                   show.legend = F)
 ```  
     
+## Color nodes by centrality {-}
+
 More features could be added to calculate node and edge centrality, such as:
     
-- centrality_power()   
-- centrality_degree()  
+* centrality_power()   
+* centrality_degree()  
 
 ```{r 07-07}
 ggraph(luv_graph, layout = "stress") + 
   geom_edge_link() + 
-  geom_node_point(aes(colour =centrality_power()))
+  geom_node_point(aes(colour = centrality_power()))
 ```
 
-Or making tiles:
+## Making tiles {-}
 
 ```{r 07-08, message=FALSE, warning=FALSE, paged.print=FALSE}
 ggraph(luv_graph, layout = "treemap") + 
@@ -290,10 +327,10 @@ ggraph(luv_graph, layout = "treemap") +
 ```
 
 
+## Drawing edges {-}
 
-### Drawing edges
-
-`geom_edge_link()` draws a straight line between the connected nodes, actually what it does is: it will split up the line in a bunch of small fragments.
+`geom_edge_link()` draws straight lines (edges) between the connected nodes
+(under the hood: splits up the line in a bunch of small fragments.)
 
 
 - geom_edge_link()
@@ -304,10 +341,9 @@ ggraph(luv_graph, layout = "treemap") +
     - geom_edge_bend() 
     - geom_edge_diagonal()
 
-
 [Getting Started guide to edges](https://ggraph.data-imaginist.com/articles/Edges.html)
 
-The  `after_stat(index)`:
+The `after_stat(index)`:
 
 ```{r 07-09}
 set.seed(123)
@@ -315,20 +351,24 @@ ggraph(hs_graph, layout = "stress") +
   geom_edge_link(aes(alpha = after_stat(index)))
 ```
 
+## Interpolating edge colors {-}
 
-Here is an example about how to use `node.class variable`, the graph is the first that we have seen and it is artificially made with:
+Let's make a graph artificially with `tidygraph::play_gnp()` and edit it.
 
-        tidygraph::play_erdos_renyi()
+Note use of `.N$class[from]` even when edges are `activate`d.
 
 ```{r 07-10}
-graph <- tidygraph::play_erdos_renyi(n = 10, p = 0.2) %>% 
+graph <- tidygraph::play_gnp(n = 10, p = 0.2) %>% 
                     activate(nodes) %>% 
                     mutate(class = sample(letters[1:4], 
                                           n(), replace = TRUE)) %>% 
                     activate(edges) %>% 
                     arrange(.N()$class[from])
+```
 
+Interpolating colors between nodes: 
 
+```{r}
 ggraph(graph, layout = "stress") + 
   geom_edge_link2(
     aes(colour = node.class), 
@@ -336,24 +376,25 @@ ggraph(graph, layout = "stress") +
     lineend = "round")
 ```
 
+"Edge geoms have access to the variables of the terminal nodes through specially prefixed variables."
+
+## Other types of edges {-}
 
 ```{r 07-11}
 ggraph(hs_graph, layout = "stress") + 
   geom_edge_parallel()
 ```
 
-Trees and specifically **dendrograms**:
+## Trees and specifically **dendrograms**: {-}
 
 ```{r 07-12}
 ggraph(luv_graph, layout = "dendrogram", height = height) + 
   geom_edge_elbow()
 ```
 
-#### Clipping edges around the nodes
+## Clipping edges around nodes {-}
 
 Example: using arrows to show directionality of edges
-
-
 
 ```{r 07-13}
 set.seed(1011)
@@ -367,24 +408,24 @@ ggraph(graph, layout = "stress") +
 ```
 
 
-#### An edge is not always a line
+## An edge is not always a line {-}
 
 Nodes and edges are abstract concepts and can be visualized in a multitude of ways.
 
 -  geom_edge_point()
 
+Recall: **adjacency matrix**
 
 ```{r 07-14}
 ggraph(hs_graph, layout = "matrix", sort.by = node_rank_traveller()) + 
   geom_edge_point()
 ```
 
-### Faceting
+## Faceting {-}
 
-- facet_nodes() 
-- facet_edges()
-- facet_graph()
-
+* facet_nodes() 
+* facet_edges()
+* facet_graph()
 
 ```{r 07-15}
 ggraph(hs_graph, layout = "stress") + 
@@ -393,14 +434,18 @@ ggraph(hs_graph, layout = "stress") +
   facet_edges(~year)
 ```
 
+This is very useful for e.g. multilayer networks!
 
-## Conclusions
+## Conclusions {-}
 
-Making a **{ggraph}** means understanding of the different classes of datasets that can be used inside the function. Also, very important is to have clear in mind the structure of the graph that you would like to acheive for representing your data. 
-There are many layouts available, and they differ by the class of provided data.
-In addition, to do not forget that you can make a network of data using **{ggplot2}** as well.
+* Network data is awkward to represent in tidy format
+* `{tidygraph}` uses linked data frames of **nodes** and **edges**
+* Special verbs for graph manipulation
+* Layouts can be passed as strings or objects
+* Edges can have many possible representations
+* `{igraph}` can also be used for graph visualization, through a base R plotting framework. 
 
-### Resources:
+## Resources {-}
 
 - [tidygraph website](https://tidygraph.data-imaginist.com)
 - [Data Imaginist](https://ggraph.data-imaginist.com)
