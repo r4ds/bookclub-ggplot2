@@ -12,7 +12,7 @@ If you would like to present, please see the sign-up sheet for your cohort (link
 
 - Cohort 1 (started 2021-08-30, ended 2022-07-18): [meeting videos](https://www.youtube.com/playlist?list=PL3x6DOfs2NGhUxGvu46tXQtBl0qyTcDet)
 - Cohort 2 (started 2023-04-06, ended 2024-01-19): [meeting videos](https://youtube.com/playlist?list=PL3x6DOfs2NGhw3rkmaGipc21j0a7sCPNy)
-- [Cohort 3](https://docs.google.com/spreadsheets/d/1vMD-FxWj9YakVAngHg67ctRVc0izzCu81L_UoaOSWqM/edit?usp=sharing) (starts 2024-07-10): [meeting videos](https://www.youtube.com/playlist?list=PL3x6DOfs2NGi0FPmGOBAeU1LRNp4lRC9-)
+- [Cohort 3](https://docs.google.com/spreadsheets/d/1vMD-FxWj9YakVAngHg67ctRVc0izzCu81L_UoaOSWqM/edit?usp=sharing) (started 2024-07-10): [Wednesdays, 11am America/Chicago](https://www.timeanddate.com/worldclock/converter.html?iso=20240904T160000&p1=24&p2=1440) | [meeting videos](https://www.youtube.com/playlist?list=PL3x6DOfs2NGi0FPmGOBAeU1LRNp4lRC9-)
 
 ## How to Present
 
