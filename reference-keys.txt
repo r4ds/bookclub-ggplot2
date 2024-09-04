@@ -1,4 +1,5 @@
 fig:05-diamond-dimensions
+introduction
 cohort-1
 first-steps
 general-housekeeping-items
@@ -77,17 +78,6 @@ resources-1
 meeting-videos-7
 cohort-1-7
 arranging-plots
-introduction-4
-arranging-plots-side-by-side-with-no-overlap
-taking-control-of-the-layout
-more-about-layouts
-plot-annotations
-arranging-plots-on-top-of-each-other
-extra
-conclusions-1
-extra-resources
-meeting-videos-8
-cohort-1-8
 position-scales-and-axes
 introduction-preliminaries-asides
 numeric
