@@ -4,17 +4,37 @@
 
 - Facet wrap
 - Facet grid
-- Controlling scales
+- Controlling scales and space
 - Missing faceting variables
 - Grouping vs. faceting
 - Continuous variables
 
+## What is faceting?
 
-## Facets
 ```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 library(tidyverse)
 mpg2 <- subset(mpg, cyl != 5 & drv %in% c("4", "f") & class != "2seater")
 ```
+
+Faceting breaks down a dataset into multiple plots that show different subsets of the data, often plotting the same variables in each plot.
+
+There are three types of faceting functions:
+
+- `facet_null()`: a single plot, the default
+- `facet_wrap()`: “wraps” a 1d ribbon of panels into 2d
+- `facet_grid()`: produces a 2d grid of panels defined by variables which form the rows and columns
+
+![](https://ggplot2-book.org/diagrams/position-facets.png)
+
+## Facet wrap
+
+Useful if you have a single variable with many levels and want to arrange the plots in a spatially efficient way. For example, if you have multiple individuals within a study.
+
+Useful arguments:
+
+- `ncol` and `nrow` control how many columns or rows, respectively. Only one of these needs to be set.
+- `as.table` controls whether the facets are laid out like a table (`TRUE`, the default), with highest values at the bottom-right, or a plot (`FALSE`), with the highest values at the top-right. 
+- `dir` controls the direction of wrap: horizontal (`"h"`) or vertical (`"v"`).
 
 ```{r}
 base <- ggplot(mpg2, aes(displ, hwy)) + 
@@ -24,56 +44,63 @@ base <- ggplot(mpg2, aes(displ, hwy)) +
 
 mpg2%>%count(class)
 
-base + facet_wrap(~class, ncol = 3)
-base + facet_wrap(~class, ncol = 3, as.table = FALSE)
+base + facet_wrap(~class, ncol = 3) + labs(title = "ncol = 3")
+base + facet_wrap(~class, ncol = 3, as.table = FALSE) + labs(title = "ncol = 3, as.table = FALSE")
+base + facet_wrap(~class, nrow = 3) + labs(title = "nrow = 3")
+base + facet_wrap(~class, nrow = 3, dir = "v") + labs (title = "nrow = 3, dir = \"v\"")
 ```
+
+## Facet grid
+
+`facet_grid()` uses a formula (`y ~ x`) to lay out plots in a 2-dimensional grid. This can be useful to compare across combinations of variables.
+
+```{r}
+base + facet_grid(. ~ cyl) + labs(title = ". ~ cyl")
+base + facet_grid(drv ~ .) + labs(title = "drv ~ .")
+base + facet_grid(drv ~ cyl) + labs(title = "drv ~ cyl")
+```
+
+Use multiple variables in the rows and columns by "adding" them: `a + b ~ c + d`
+Variables specified on rows and columns will be crossed.
+
+```{r}
+base + facet_grid(drv ~ cyl + class) + labs(title = "drv ~ cyl + class")
+```
+
+## Controlling scales
+
+The `scales` parameter can be used to control whether the position scales are the same in all panels (fixed) or allowed to vary between panels (free).
+
+- `scales = "fixed"`: x and y scales are fixed across all panels.
+- `scales = "free_x"`: the x scale is free, and the y scale is fixed.
+- `scales = "free_y"`: the y scale is free, and the x scale is fixed.
+- `scales = "free"`: x and y scales vary across panels.
 
 
 ```{r}
-base + facet_wrap(~class, nrow = 3)
-base + facet_wrap(~class, nrow = 3, dir = "v")
+p <- ggplot(mpg2, aes(cty, hwy)) + 
+  geom_abline() + # I think this defaults to a default of intercept = 0 and slope = 1?
+  geom_jitter(width = 0.1, height = 0.1)
+
+p + facet_wrap(~cyl) + labs(title = "default (fixed scales)")
+p + facet_wrap(~cyl, scales = "free") + labs(title = "free scales")
 ```
 
-
-
-```{r}
-base + facet_grid(. ~ cyl)
-base + facet_grid(drv ~ .)
-```
-```{r}
-base + facet_grid(drv ~ cyl)
-```
-
-
-```{r}
-p <- ggplot(mpg, aes(cty, hwy)) + 
-  geom_abline() +
-  geom_jitter(width = 0.1, height = 0.1) 
-p + 
-  facet_grid(drv ~ cyl)
-  facet_wrap(~cyl)
-
-```
-
-
-
-```{r}
-p+ 
-  facet_wrap(~cyl, scales = "free_y")
-```
-
+Free scales can be especially useful when comparing multiple time series measured on different scales.
 
 ```{r}
 economics_long%>%count(date)
-```
 
-
-```{r}
 ggplot(economics_long, aes(date, value)) + 
   geom_line() + 
   facet_wrap(~variable, scales = "free_y", ncol = 1)
 ```
 
+## Controlling space
+
+`facet_grid()` has an additional parameter: `space`. This takes the same values as `scales`, but when space is “free”, each column (or row) will have width (or height) proportional to the range of the scale for that column (or row).
+
+This is most useful for categorical scales, where we can assign space proportionally based on the number of levels in each facet.
 
 ```{r}
 mpg2$model <- reorder(mpg2$model, mpg2$cty)
@@ -82,21 +109,51 @@ mpg2$manufacturer <- reorder(mpg2$manufacturer, -mpg2$cty)
 
 ggplot(mpg2, aes(cty, model)) + 
   geom_point() + 
+  facet_grid(manufacturer ~ .) +
+  theme(strip.text.y = element_text(angle = 0)) +
+  labs(title = "fixed space")
+
+ggplot(mpg2, aes(cty, model)) + 
+  geom_point() + 
+  facet_grid(manufacturer ~ ., space = "free") +
+  theme(strip.text.y = element_text(angle = 0)) +
+  labs(title = "free space only")
+
+ggplot(mpg2, aes(cty, model)) + 
+  geom_point() + 
+  facet_grid(manufacturer ~ ., scales = "free") +
+  theme(strip.text.y = element_text(angle = 0)) +
+  labs(title = "free scales only")
+
+ggplot(mpg2, aes(cty, model)) + 
+  geom_point() + 
   facet_grid(manufacturer ~ ., scales = "free", space = "free") +
-  theme(strip.text.y = element_text(angle = 0))
+  theme(strip.text.y = element_text(angle = 0)) +
+  labs(title = "free scales and space")
 ```
 
+
+## Missing faceting variables
+
+When you add a map layer that doesn't contain a variable, ggplot will display the map in every facet: missing faceting variables are treated like they have all values.
+
+This is useful when you want to add annotations that make it easier to compare among facets.
 
 ```{r}
 df1 <- data.frame(x = 1:3, y = 1:3, gender = c("f", "f", "m"))
 df2 <- data.frame(x = 2, y = 2)
-```
-```{r}
+
 ggplot(df1, aes(x, y)) + 
   geom_point(data = df2, colour = "red", size = 2) + 
   geom_point() + 
   facet_wrap(~gender)
 ```
+
+## Grouping vs. faceting
+
+With faceting, each group is quite far apart in its own panel, and there is no overlap between the groups. **This is good if the groups overlap a lot, but it does make small differences harder to see.** 
+
+When using aesthetics to differentiate groups, the groups are close together and may overlap, but **small differences are easier to see**.
 
 ```{r}
 df <- data.frame(
@@ -115,6 +172,10 @@ ggplot(df, aes(x, y)) +
   facet_wrap(~z)
 ```
 
+You can help the viewer make comparisons across facets with some thoughtful annotation. 
+
+In this example, we show the mean of every group in each panel.
+
 ```{r}
 df_sum <- df %>% 
   group_by(z) %>% 
@@ -128,6 +189,8 @@ ggplot(df, aes(x, y)) +
   facet_wrap(~z)
 ```
 
+Alternatively, we could put all data points in each panel, and only colour the focal data.
+
 ```{r}
 df2 <- dplyr::select(df, -z)
 
@@ -137,17 +200,15 @@ ggplot(df, aes(x, y)) +
   facet_wrap(~z)
 ```
 
+## Continuous variables
 
-```{r}
-age<-seq(18,60,1)
-id <- seq(1,42,1)
-my_df <- as.data.frame(cbind(id,age))
+To facet continuous variables, you must first discretise them. ggplot2 provides three helper functions to do so:
 
-my_df %>% mutate(age_cat=cut_interval(age,length=5))%>%head()
-```
+- Divide the data into `n` bins each of the same length: `cut_interval(x, n)`
+- Divide the data into bins of width `width`: `cut_width(x, width)`.
+- Divide the data into `n` bins each containing (approximately) the same number of points: `cut_number(x, n = 10)`
 
-
-
+Because the faceting formula does not evaluate functions, you must first create a new variable containing the discretised data.
 
 
 ```{r}
@@ -163,11 +224,6 @@ plot <- ggplot(mpg2, aes(cty, hwy)) +
   labs(x = NULL, y = NULL)
 plot + facet_wrap(~disp_w, nrow = 1)
 ```
-
-
-
-
-
 
 ## Meeting Videos
 
