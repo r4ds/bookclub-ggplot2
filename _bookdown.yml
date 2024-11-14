@@ -1,5 +1,6 @@
 book_filename: "bookclub-ggplot2_01"
 repo: "https://github.com/r4ds/bookclub-ggplot2"
+edit: "https://github.com/r4ds/bookclub-ggplot2/edit/main/%s"
 output_dir: "_book"
 delete_merged_file: true
 language:
