@@ -14,22 +14,13 @@
 library(tidyverse)
 ```
 
+## Why program with {ggplot2}?
 
-**What are the components of a plot?**
+To reduce duplicated code, build up repeated components
 
-- data.frame
-- aes()
-- Scales
-- Coords systems
-- Theme components
+Can also generalize code to allow for flexibility
 
-## Programming single and multiple components
-
-In ggplot2 it is possible to build up plot components easily. This is a good practice to reduce duplicated code. 
-
-Generalising code allows you with more flexibility when making customised plots.
-
-### Components
+### Plot components are objects! {-}
 
 One example of a component of a plot is this one below:
 ```{r}
@@ -37,36 +28,88 @@ bestfit <- geom_smooth(
   method = "lm", 
   se = FALSE, 
   colour = alpha("steelblue", 0.5), 
-  size = 2)
+  linewidth = 2)
+class(bestfit)
 ```
 
-This single component can be placed inside the syntax of the grammar of graphics and used as a plot layer.
+## Adding the object we created to a plot {-}
+
+Place component in grammar of graphics syntax to use as a plot layer
+
 ```{r}
 ggplot(mpg, aes(cty, hwy)) + 
   geom_point() + 
   bestfit
 ```
 
-Another way is to bulid a layer passing through build a function:
+## Creating a function {-}
+
+Another way is to build a layer via a function:
 ```{r}
 geom_lm <- function(formula = y ~ x, colour = alpha("steelblue", 0.5), 
-                    size = 2, ...)  {
+                    linewidth = 2, ...)  {
   geom_smooth(formula = formula, se = FALSE, method = "lm", colour = colour,
-    size = size, ...)
+    linewidth = linewidth, ...)
 }
 ```
 
-And the apply the function layer to the plot
+Use the layer in the plot:
 ```{r}
 ggplot(mpg, aes(displ, 1 / hwy)) + 
   geom_point() + 
-  geom_lm(y ~ poly(x, 2), size = 1, colour = "red")
+  geom_lm(y ~ poly(x, 2), linewidth = 1, colour = "red")
 ```
 
-The book points out attention to the "open" parameter **...**.
-A suggestion is to use it inside the function instead of in the function parameters definition.
+## `...` gives functions flexibility {-}
 
-Instead of only one component, we can build a plot made of more components.
+The `...` parameter lets a function accept additional arbitrary arguments
+
+e.g. `na.rm` (doesn't make a difference in this case, but the function accepts it!)
+
+```{r}
+ggplot(mpg, aes(displ, 1 / hwy)) + 
+  geom_point() + 
+  geom_lm(y ~ poly(x, 2), linewidth = 1, colour = "red", na.rm = T)
+```
+## Exercises
+
+1. Create an object that represents a pink histogram with 100 bins.
+```{r}
+pinkhist <- geom_histogram(fill = "pink", bins = 100)
+ggplot(diamonds, aes(x = price)) +
+  pinkhist +
+  labs(y = "Frequency",
+       x = "Price")
+```
+2. Create an object that represents a fill scale with the Blues ColorBrewer palette.
+```{r}
+blues_fill_scale <- scale_fill_brewer(palette = "Blues")
+ggplot(data = diamonds, aes(x = cut, y = price, fill = cut))+
+  geom_boxplot()+
+  theme_minimal()+
+  blues_fill_scale
+```
+3. Read the source code for theme_grey(). What are its arguments? How does it work?
+```{r}
+theme_grey
+# It creates a theme object called t
+# uses %+replace% to replace the existing theme with t
+```
+4. Create scale_colour_wesanderson(). It should have a parameter to pick the palette from the wesanderson package, and create either a continuous or discrete scale.
+```{r}
+library(wesanderson)
+scale_colour_wesanderson <- function(palette, type = "discrete", ...){
+  scale_color_manual(values = wes_palette(name = palette, type = type, ...), ...)
+}
+ggplot(diamonds, aes(x = carat, y = price, color = cut))+
+  geom_point()+
+  scale_colour_wesanderson(palette = "Cavalcanti1")+
+  theme_minimal()
+```
+## A ggplot object is a list!
+
+And therefore, we can add more than one component as a list.
+
 ```{r}
 geom_mean <- function() {
   list(
@@ -76,10 +119,64 @@ geom_mean <- function() {
 }
 ```
 
-Whit this result:
 ```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 ggplot(mpg, aes(class, cty)) + geom_mean()
 ```
+## Components of a plot {-}
+
+- data.frame
+- aes()
+- Scales
+- Coords systems
+- Theme components
+
+## We can add any of these to a plot and override existing
+
+For datasets, use `%+%`
+
+```{r}
+dataset1 <- data.frame(id = rep(letters[1:3], each = 100),
+                       Value = c(rnorm(100, mean = 1),
+                                 rnorm(100, mean = 2),
+                                 rnorm(100, mean = 3)))
+
+dataset2 <- data.frame(id = rep(letters[1:3], each = 100),
+                       Value = c(rpois(100, lambda = 1),
+                                 rpois(100, lambda = 2),
+                                 rpois(100, lambda = 3)))
+p1 <- ggplot(dataset1, aes(x = Value, col = id))+
+  geom_density()+
+  theme_minimal()
+p1
+
+p2 <- p1 %+% dataset2
+p2
+```
+## What if the dataset doesn't have the same variables?
+
+```{r error = T}
+dataset3 <- data.frame(id = rep(letters[1:3], each = 100),
+                       test = c(rpois(100, lambda = 4),
+                                 rpois(100, lambda = 5),
+                                 rpois(100, lambda = 6)))
+
+# Try to add a new dataset, but it doesn't work because the code for p1 is expecting a "Value" column and that column doesn't exist in dataset3.
+p1 %+%
+  dataset3
+```
+
+Why doesn't this work?
+
+```{r}
+# Let's override the y aesthetic...
+new_aes <- aes(y = test)
+
+p3 <- p1 +
+  new_aes %+%
+  dataset3 # 
+p3
+```
+
 
 
 ## Use components, annotation, and additional arguments in a plot
@@ -109,7 +206,7 @@ capitals <- subset(us.cities, capital == 2)
 
 ggplot(capitals, aes(long, lat)) +
   borders("world", xlim = c(-130, -60), ylim = c(20, 50)) +
-  geom_point(aes(size = pop)) +
+  geom_point(aes(linewidth = pop)) +
   scale_size_area() +
   coord_quickmap()
 ```
@@ -189,10 +286,10 @@ rank_plot <- function(data,mapping) {
     theme(axis.text.x = element_blank(),
           axis.text.y = element_text(face="bold"),
           axis.ticks.x = element_blank(),
-          axis.ticks.y = element_line(size=2),
+          axis.ticks.y = element_line(linewidth=2),
           panel.grid.major.x = element_blank(),
           panel.grid.minor.x = element_blank(),
-          panel.grid.major.y = element_line(size=2),
+          panel.grid.major.y = element_line(linewidth=2),
           plot.background = element_rect(color="grey95",fill="grey95"),
           panel.background = element_rect(color="grey92",fill="grey92"))
 }
