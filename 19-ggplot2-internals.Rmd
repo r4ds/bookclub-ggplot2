@@ -517,7 +517,7 @@ names(ggplot_build(p))
 <details>
 <summary>Layout data</summary>
 
-```{r 20-34}
+```{r 20-34, eval = FALSE}
 ggplot_build(p)$data %>% map(head, 3)
 ```
 
