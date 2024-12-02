@@ -22,7 +22,7 @@ In this chapter we see how to extend the graphics of a plot, in particular we wi
 
 ---
 
-```{r 21-01,message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+```{r 20-01,message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 library(tidyverse)
 library(patchwork)
 ```
@@ -41,7 +41,7 @@ Use the `print()` function on a theme_<...> to see its specifications, the `%+re
     print(theme_grey)
     print(theme_minimal) and %+replace% operator
     
-```{r 21-02,echo=FALSE}
+```{r 20-02,echo=FALSE}
 df<-data.frame(x=seq(1,10,1),y=rnorm(100))
 tg<-ggplot(data=df,aes(x,y))+
   geom_blank()+
@@ -62,11 +62,11 @@ tg|bw|tm
 ```
 
     
-```{r 21-03}
+```{r 20-03}
 print(theme_bw)
 ```
     
-```{r 21-04}
+```{r 20-04}
 print(theme_minimal)
 ```
     
@@ -92,7 +92,7 @@ Creating new stats *stat* with these extension functions:
 The logic of a **stat** is made of subsequent calls:
 
  
-```{r 21-05,echo=FALSE, fig.align='center', fig.dim="100%"}
+```{r 20-05,echo=FALSE, fig.align='center', fig.dim="100%"}
 DiagrammeR::mermaid("
 graph LR
 A(compute_layer)-->B(compute_panel)
@@ -100,7 +100,7 @@ B-->C(compute_group)
 ",height = '100%', width = '100%')
 ```
  
-```{r 21-06,echo=FALSE, fig.align='center', fig.dim="100%"}
+```{r 20-06,echo=FALSE, fig.align='center', fig.dim="100%"}
 DiagrammeR::mermaid("
 graph TB
 A(compute_layer)---B(split the data by the PANEL column)
@@ -119,7 +119,7 @@ In general the transformation is done to single group starting at the `compute_g
 Before `compute_*()` calls are the`setup_*()` functions which allows the Stat to react and modify itself in response to the given parameters.
 
  
-```{r 21-07,echo=FALSE, fig.align='center', fig.dim="100%"}
+```{r 20-07,echo=FALSE, fig.align='center', fig.dim="100%"}
 DiagrammeR::mermaid("
 graph TB
 A(setup_params)-->B(receives the parameters input)
@@ -132,7 +132,7 @@ E-->F( returns the modified layer data)
 
 >Sometimes, with related stats, all that is necessary is to make a subclass and provide new setup_params()/setup_data() methods.
 
-```{r 21-08}
+```{r 20-08}
 print(stat_bin())
 ```
 
@@ -148,7 +148,7 @@ print(stat_bin())
 The logic of a **geom** is made of subsequent calls:
 
  
-```{r 21-09,echo=FALSE, fig.align='center', fig.dim="100%"}
+```{r 20-09,echo=FALSE, fig.align='center', fig.dim="100%"}
 DiagrammeR::mermaid("
 graph LR
 A(draw_layer)-->B(draw_panel)
@@ -163,7 +163,7 @@ Implementation is easier for `draw_group()`
 
 **Example**
 Reparameterisation of `geom_segment()` with `geom_spoke()`
-```{r 21-10}
+```{r 20-10}
 print(GeomSpoke$setup_data)
 ```
 
@@ -172,7 +172,7 @@ print(GeomSpoke$setup_data)
 
 -  preparing the data for each of the geoms inside the `draw_*()`
 
-```{r 21-11}
+```{r 20-11}
 print(GeomSmooth$draw_group)
 ```
 
@@ -187,10 +187,10 @@ Coords takes care of rendering the axes, axis labels, and panel foreground and b
 - `transform()`
 
 **Example**
-```{r 21-12}
+```{r 20-12}
 print(CoordCartesian$transform)
 ```
-```{r 21-13,eval=FALSE, include=T}
+```{r 20-13,eval=FALSE, include=T}
 print(coord_sf)
 ```
 
@@ -201,7 +201,7 @@ print(coord_sf)
 **Example**
 Build a wrapper for a new palette to an existing scale.
 This is done by providing a new palette scale into the relevant basic scale.
-```{r 21-14}
+```{r 20-14}
 print(scale_fill_viridis_c)
 ```
 
@@ -212,7 +212,7 @@ print(scale_fill_viridis_c)
 The Position class is slightly simpler than the other ggproto classes.
 
  
-```{r 21-15,echo=FALSE, fig.align='center', fig.dim="100%"}
+```{r 20-15,echo=FALSE, fig.align='center', fig.dim="100%"}
 DiagrammeR::mermaid("
 graph LR
 A(compute_layer)-->B(compute_panel)
