@@ -458,6 +458,9 @@ p4<-ggplot(mpg, aes(cty, hwy)) +
 p3+p4
 ```
 
+```{r include=FALSE}
+rm(class, map) # Clean up so these objects don't confuse later chapters.
+```
 
 ## Meeting Videos
 
