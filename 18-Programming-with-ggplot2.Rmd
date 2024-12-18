@@ -14,22 +14,13 @@
 library(tidyverse)
 ```
 
+## Why program with {ggplot2}? {-}
 
-**What are the components of a plot?**
+To reduce duplicated code, build up repeated components
 
-- data.frame
-- aes()
-- Scales
-- Coords systems
-- Theme components
+Can also generalize code to allow for flexibility
 
-## Programming single and multiple components
-
-In ggplot2 it is possible to build up plot components easily. This is a good practice to reduce duplicated code. 
-
-Generalising code allows you with more flexibility when making customised plots.
-
-### Components
+### Plot components are objects! {-}
 
 One example of a component of a plot is this one below:
 ```{r}
@@ -37,36 +28,95 @@ bestfit <- geom_smooth(
   method = "lm", 
   se = FALSE, 
   colour = alpha("steelblue", 0.5), 
-  size = 2)
+  linewidth = 2)
+class(bestfit)
 ```
 
-This single component can be placed inside the syntax of the grammar of graphics and used as a plot layer.
+## Adding the object we created to a plot {-}
+
+Place component in grammar of graphics syntax to use as a plot layer
+
 ```{r}
 ggplot(mpg, aes(cty, hwy)) + 
   geom_point() + 
   bestfit
 ```
 
-Another way is to bulid a layer passing through build a function:
+## Creating a function {-}
+
+Another way is to build a layer via a function:
 ```{r}
 geom_lm <- function(formula = y ~ x, colour = alpha("steelblue", 0.5), 
-                    size = 2, ...)  {
+                    linewidth = 2, ...)  {
   geom_smooth(formula = formula, se = FALSE, method = "lm", colour = colour,
-    size = size, ...)
+    linewidth = linewidth, ...)
 }
 ```
 
-And the apply the function layer to the plot
+Use the layer in the plot:
 ```{r}
 ggplot(mpg, aes(displ, 1 / hwy)) + 
   geom_point() + 
-  geom_lm(y ~ poly(x, 2), size = 1, colour = "red")
+  geom_lm(y ~ poly(x, 2), linewidth = 1, colour = "red")
 ```
 
-The book points out attention to the "open" parameter **...**.
-A suggestion is to use it inside the function instead of in the function parameters definition.
+## `...` gives functions flexibility {-}
 
-Instead of only one component, we can build a plot made of more components.
+The `...` parameter lets a function accept additional arbitrary arguments
+
+e.g. `na.rm` (doesn't make a difference in this case, but the function accepts it!)
+
+```{r}
+ggplot(mpg, aes(displ, 1 / hwy)) + 
+  geom_point() + 
+  geom_lm(y ~ poly(x, 2), linewidth = 1, colour = "red", na.rm = T)
+```
+
+## Exercises {-}
+
+1. Create an object that represents a pink histogram with 100 bins.
+```{r}
+pinkhist <- geom_histogram(fill = "pink", bins = 100)
+ggplot(diamonds, aes(x = price)) +
+  pinkhist +
+  labs(y = "Frequency",
+       x = "Price")
+```
+2. Create an object that represents a fill scale with the Blues ColorBrewer palette.
+```{r}
+blues_fill_scale <- scale_fill_brewer(palette = "Blues")
+ggplot(data = diamonds, aes(x = cut, y = price, fill = cut))+
+  geom_boxplot()+
+  theme_minimal()+
+  blues_fill_scale
+```
+
+3. Read the source code for theme_grey(). What are its arguments? How does it work?
+```{r}
+theme_grey
+# It creates a theme object called t
+# uses %+replace% to replace the existing theme with t
+
+# ggplot_global$theme_all_null %+replace% t
+# ggplot_global$theme_all_null doesn't exist globally, so must refer to the current plot that you're adding theme_grey to.
+```
+
+4. Create scale_colour_wesanderson(). It should have a parameter to pick the palette from the wesanderson package, and create either a continuous or discrete scale.
+```{r}
+library(wesanderson)
+scale_colour_wesanderson <- function(palette, type = "discrete", ...){
+  scale_color_manual(values = wes_palette(name = palette, type = type, ...), ...)
+}
+ggplot(diamonds, aes(x = carat, y = price, color = cut))+
+  geom_point()+
+  scale_colour_wesanderson(palette = "Cavalcanti1")+
+  theme_minimal()
+```
+
+## A ggplot object is a list!
+
+And therefore, we can add more than one component as a list.
+
 ```{r}
 geom_mean <- function() {
   list(
@@ -76,17 +126,70 @@ geom_mean <- function() {
 }
 ```
 
-Whit this result:
 ```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 ggplot(mpg, aes(class, cty)) + geom_mean()
 ```
 
 
-## Use components, annotation, and additional arguments in a plot
+## Components of a plot {-}
 
-We have just seen some examples on how to make new components, what if we want to know more about existing components?
+- data.frame
+- aes()
+- Scales
+- Coords systems
+- Theme components
 
-As an example the `borders()` option function, provided by {ggplot2}	to create a layer of map borders.
+## We can add any of these to a plot and override existing {-}
+
+For datasets, use `%+%`
+
+```{r}
+dataset1 <- data.frame(id = rep(letters[1:3], each = 100),
+                       Value = c(rnorm(100, mean = 1),
+                                 rnorm(100, mean = 2),
+                                 rnorm(100, mean = 3)))
+
+dataset2 <- data.frame(id = rep(letters[1:3], each = 100),
+                       Value = c(rpois(100, lambda = 1),
+                                 rpois(100, lambda = 2),
+                                 rpois(100, lambda = 3)))
+p1 <- ggplot(dataset1, aes(x = Value, col = id))+
+  geom_density()+
+  theme_minimal()
+p1
+
+p2 <- p1 %+% dataset2
+p2
+```
+
+## What if the dataset doesn't have the same variables? {-}
+
+```{r error = T}
+dataset3 <- data.frame(id = rep(letters[1:3], each = 100),
+                       test = c(rpois(100, lambda = 4),
+                                 rpois(100, lambda = 5),
+                                 rpois(100, lambda = 6)))
+
+# Try to add a new dataset, but it doesn't work because the code for p1 is expecting a "Value" column and that column doesn't exist in dataset3.
+p1 %+%
+  dataset3
+```
+
+Why doesn't this work?
+
+```{r}
+# Let's override the y aesthetic...
+new_aes <- aes(y = test)
+
+p3 <- p1 +
+  new_aes %+%
+  dataset3 # 
+p3
+```
+
+## Annotations {-}
+
+Make sure to set `inherit.aes = FALSE` and `show.legend = FALSE`
 
 > "A quick and dirty way to get map data (from the maps package) on to your plot."
 
@@ -109,12 +212,14 @@ capitals <- subset(us.cities, capital == 2)
 
 ggplot(capitals, aes(long, lat)) +
   borders("world", xlim = c(-130, -60), ylim = c(20, 50)) +
-  geom_point(aes(size = pop)) +
+  geom_point(aes(linewidth = pop)) +
   scale_size_area() +
   coord_quickmap()
 ```
 
-We can even add addtional arguments, such as those ones to modify and add things:
+## Additional arguments {-}
+
+"If you want to pass additional arguments to the components in your function, ... is no good: there’s no way to direct different arguments to different components. Instead, you’ll need to think about how you want your function to work, balancing the benefits of having one function that does it all vs. the cost of having a complex function that’s harder to understand."
 
       modifyList()
       do.call()
@@ -147,74 +252,63 @@ ggplot(mpg, aes(class, cty)) +
   )
 ```
 
-## Functional programming
-
-An example is to make a geom. For this we can have a look at the **"Corporate Reputation"** data from #TidyTuesday 2022 week22. 
-
+## Making the complete plot--very limited flexibility {-}
 ```{r}
-poll <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-31/poll.csv')
-reputation <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-31/reputation.csv')
-
-
-rep2<-reputation%>%
-  group_by(company,industry)%>%
-  summarize(score,rank)%>%
-  ungroup()%>%
-  mutate(year=2022)
-
-
-full <- poll%>%
-  filter(!is.na(year))%>%
-  full_join(rep2,by=c("2022_rank"="rank","2022_rq"="score","company","industry","year")) %>%
-  count(year,company,industry,"rank"=`2022_rank`,"score"=`2022_rq`,sort=T) %>%
-  arrange(-year)
-
-##################
-
-# mapping = aes(x = fct_reorder(x,-y), y = y, fill = y, color = y, label = y)
-
-rank_plot <- function(data,mapping) {
-  data %>%
-    ggplot(mapping)+                   # aes(x=fct_reorder(x,-y),y=y)
-    geom_col(width =0.3,               # aes(fill=rank)
-             show.legend = F)+
-    geom_text(hjust=0,fontface="bold", # aes(label=rank,color=rank),
-              show.legend = F)+
-    scale_y_discrete(expand = c(0, 0, .5, 0))+
-    coord_flip()+
-    ggthemes::scale_fill_continuous_tableau(palette = "Green-Gold")+
-    ggthemes::scale_color_continuous_tableau(palette = "Green-Gold")+
-    labs(title="",
-         x="",y="")+
-    theme(axis.text.x = element_blank(),
-          axis.text.y = element_text(face="bold"),
-          axis.ticks.x = element_blank(),
-          axis.ticks.y = element_line(size=2),
-          panel.grid.major.x = element_blank(),
-          panel.grid.minor.x = element_blank(),
-          panel.grid.major.y = element_line(size=2),
-          plot.background = element_rect(color="grey95",fill="grey95"),
-          panel.background = element_rect(color="grey92",fill="grey92"))
+piechart <- function(data, mapping) {
+  ggplot(data, mapping) +
+    geom_bar(width = 1) + 
+    coord_polar(theta = "y") + 
+    xlab(NULL) + 
+    ylab(NULL)
 }
-
-df<-full%>%
-  filter(year==2017,
-         industry=="Retail")
-
-rank_plot(data = df, 
-          mapping = aes(x=fct_reorder(company,-rank),y=rank,
-                                   fill = rank, color = rank, label = rank))
+piechart(mpg, aes(factor(1), fill = class))
 ```
 
-## References
+## What if we want to pass in different variables? {-}
+
+- Instead of writing out the entire `aes()`, the user can just pass in the variable names
+- But there's a catch!
+
+This doesn't work:
+```{r}
+my_function <- function(x_var) {
+  aes(x = x_var)
+}
+my_function(abc)
+#> Aesthetic mapping: 
+#> * `x` -> `x_var`
+```
+
+We can "embrace" the argument to tell ggplot2 to "look inside" the argument and use its value, not its expression
+```{r}
+my_function <- function(x_var) {
+  aes(x = {{x_var}})
+}
+my_function(abc)
+#> Aesthetic mapping: 
+#> * `x` -> `abc`
+```
+
+New version of the piechart function:
+```{r}
+piechart <- function(data, var) {
+  ggplot(data, aes(factor(1), fill = {{ var }})) +
+    geom_bar(width = 1) + 
+    coord_polar(theta = "y") + 
+    xlab(NULL) + 
+    ylab(NULL)
+}
+mpg |> piechart(class)
+```
+
+
+## References {-}
 
 - [extending ggplot2](https://ggplot2.tidyverse.org/articles/extending-ggplot2.html)
 - [functions](https://adv-r.hadley.nz/functions.html)
 - [expressions](http://adv-r.had.co.nz/Expressions.html)
 - [functional programming](http://adv-r.had.co.nz/Functional-programming.html)
 - [advanced R - functionals](https://adv-r.hadley.nz/fp.html)
-
-
 
 ---
 

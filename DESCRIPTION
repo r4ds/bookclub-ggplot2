@@ -43,7 +43,8 @@ Imports:
     SpatialEpi,
     tidyverse,
     tidygraph,
-    png
+    png,
+    wesanderson
 Remotes: 
     hadley/emo,
     drsimonj/ourworldindata,
