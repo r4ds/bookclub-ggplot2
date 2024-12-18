@@ -98,7 +98,7 @@ theme_grey
 # uses %+replace% to replace the existing theme with t
 
 # ggplot_global$theme_all_null %+replace% t
-ggplot_global$theme_all_null # doesn't exist globally, so must refer to the current plot that you're adding theme_grey to.
+# ggplot_global$theme_all_null doesn't exist globally, so must refer to the current plot that you're adding theme_grey to.
 ```
 
 4. Create scale_colour_wesanderson(). It should have a parameter to pick the palette from the wesanderson package, and create either a continuous or discrete scale.
