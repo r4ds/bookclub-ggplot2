@@ -14,7 +14,7 @@
 library(tidyverse)
 ```
 
-## Why program with {ggplot2}?
+## Why program with {ggplot2}? {-}
 
 To reduce duplicated code, build up repeated components
 
@@ -71,7 +71,8 @@ ggplot(mpg, aes(displ, 1 / hwy)) +
   geom_point() + 
   geom_lm(y ~ poly(x, 2), linewidth = 1, colour = "red", na.rm = T)
 ```
-## Exercises
+
+## Exercises {-}
 
 1. Create an object that represents a pink histogram with 100 bins.
 ```{r}
@@ -89,12 +90,17 @@ ggplot(data = diamonds, aes(x = cut, y = price, fill = cut))+
   theme_minimal()+
   blues_fill_scale
 ```
+
 3. Read the source code for theme_grey(). What are its arguments? How does it work?
 ```{r}
 theme_grey
 # It creates a theme object called t
 # uses %+replace% to replace the existing theme with t
+
+# ggplot_global$theme_all_null %+replace% t
+ggplot_global$theme_all_null # doesn't exist globally, so must refer to the current plot that you're adding theme_grey to.
 ```
+
 4. Create scale_colour_wesanderson(). It should have a parameter to pick the palette from the wesanderson package, and create either a continuous or discrete scale.
 ```{r}
 library(wesanderson)
@@ -106,6 +112,7 @@ ggplot(diamonds, aes(x = carat, y = price, color = cut))+
   scale_colour_wesanderson(palette = "Cavalcanti1")+
   theme_minimal()
 ```
+
 ## A ggplot object is a list!
 
 And therefore, we can add more than one component as a list.
@@ -122,6 +129,8 @@ geom_mean <- function() {
 ```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 ggplot(mpg, aes(class, cty)) + geom_mean()
 ```
+
+
 ## Components of a plot {-}
 
 - data.frame
@@ -152,6 +161,7 @@ p1
 p2 <- p1 %+% dataset2
 p2
 ```
+
 ## What if the dataset doesn't have the same variables? {-}
 
 ```{r error = T}
@@ -254,7 +264,7 @@ piechart <- function(data, mapping) {
 piechart(mpg, aes(factor(1), fill = class))
 ```
 
-## What if we want to pass in different variables?
+## What if we want to pass in different variables? {-}
 
 - Instead of writing out the entire `aes()`, the user can just pass in the variable names
 - But there's a catch!
@@ -292,7 +302,7 @@ mpg |> piechart(class)
 ```
 
 
-## References
+## References {-}
 
 - [extending ggplot2](https://ggplot2.tidyverse.org/articles/extending-ggplot2.html)
 - [functions](https://adv-r.hadley.nz/functions.html)
